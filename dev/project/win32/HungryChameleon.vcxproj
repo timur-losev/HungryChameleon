@@ -84,6 +84,7 @@
     <ClCompile Include="..\src\GameScene.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MainMenuScene.cpp" />
+    <ClCompile Include="..\src\MainScene.cpp" />
     <ClCompile Include="..\src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
@@ -95,6 +96,7 @@
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameScene.h" />
     <ClInclude Include="..\src\MainMenuScene.h" />
+    <ClInclude Include="..\src\MainScene.h" />
     <ClInclude Include="..\src\pch.h" />
     <ClInclude Include="..\src\VisibleRect.h" />
   </ItemGroup>

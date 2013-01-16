@@ -28,5 +28,5 @@ public:
     void startCallback(CCObject * pSender);
 
     virtual void onEnter();
-    virtual void createInstance();
+    bool init();
 };

@@ -2,13 +2,11 @@
 
 #include "GameController.h"
 #include "MainMenuScene.h"
-#include "VisibleRect.h"
 
 static CCPoint s_tCurPos = CCPointZero;
 
 GameController::GameController()
 {
-
 }
 
 GameController::~GameController()
@@ -24,18 +22,20 @@ void GameController::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
     m_tBeginPos = touch->getLocation(); 
 }
 
-void GameController::showMainMenu()
+bool GameController::init()
 {
-    setTouchEnabled(true);
+    bool bRet = CCLayer::init();
 
-    GameScene* mmscene = new MainMenuScene();
-    mmscene->createInstance();
-    mmscene->release(); //this scene has been added to CCDirector pool. So, do release here
+    return bRet;
 }
 
-void GameController::testCallback(CCObject* sender)
+void GameController::showMainMenu()
 {
-    int i = 0;
+     setTouchEnabled(true);
+
+     MainMenuScene* mmscene = new MainMenuScene();
+     mmscene->init();
+     mmscene->release(); //this scene has been added to CCDirector pool. So, do release here
 }
 
 void GameController::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)

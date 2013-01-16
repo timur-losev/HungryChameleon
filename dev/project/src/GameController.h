@@ -9,9 +9,9 @@ public:
     GameController();
     ~GameController();
 
-    void         showMainMenu();
-    void         testCallback(CCObject* sender);
+    virtual bool            init();
+    virtual void            showMainMenu();
 
-    virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
-    virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
+    virtual void            ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+    virtual void            ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
 };

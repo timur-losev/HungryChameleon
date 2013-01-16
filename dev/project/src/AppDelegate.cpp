@@ -29,13 +29,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
-    CCScene * pScene = CCScene::create();
     m_pGameController = new GameController();
     m_pGameController->autorelease();
-
-    pScene->addChild(m_pGameController);
-    pDirector->runWithScene(pScene);
-    pDirector->drawScene();
+    if (!m_pGameController->init())
+        return false;
     m_pGameController->showMainMenu();
 
     return true;

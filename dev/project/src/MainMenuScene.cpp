@@ -26,7 +26,6 @@ CCMenuItemLabel* MainMenu::getStartButton() const
 
 MainMenu::~MainMenu()
 {
-    m_pStartButton->release();
 }
 
 //------------------------------------------------------------------//
@@ -46,15 +45,25 @@ void MainMenuScene::onEnter()
 
 }
 
-void MainMenuScene::createInstance()
+bool MainMenuScene::init()
 {
-    m_pMainMenu = new MainMenu();
-    m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
+    if (GameScene::init())
+    {
+        CCLayerColor* pBackground = CCLayerColor::create();
+        pBackground->initWithColor(ccc4(0, 166, 0, 255));
 
-    addChild(m_pMainMenu);
-    m_pMainMenu->autorelease();
+        m_pMainMenu = new MainMenu();
+        m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
+
+        addChild(pBackground);
+        addChild(m_pMainMenu);
+        m_pMainMenu->release();
     
-    CCDirector::sharedDirector()->replaceScene(this);
+        CCDirector::sharedDirector()->runWithScene(this);
+        return true;
+    }
+
+    return false;
 }
 
 void MainMenuScene::startCallback(CCObject * pSender)

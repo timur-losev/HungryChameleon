@@ -9,5 +9,4 @@ public:
     virtual ~GameScene();
 
     virtual void onEnter();
-    virtual void createInstance() = 0;
 };
