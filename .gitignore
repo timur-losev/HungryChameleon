@@ -11,3 +11,16 @@
 *.lai
 *.la
 *.a
+# Other
+#*.exe
+*.ilk
+*.tlog
+*.obj
+*.user
+*.opensdf
+*.sdf
+*.suo
+/_build_win32/
+/dev/project/win32/Debug/
+/dev/project/win32/ipch/
+/dev/project/win32/Debug.win32/
