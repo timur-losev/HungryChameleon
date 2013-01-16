@@ -12,6 +12,8 @@ public:
     MainMenu();
     ~MainMenu();
 
+    bool             init(bool fromGame = false);
+
     CCMenuItemLabel* getStartButton() const;
 };
 
@@ -26,7 +28,8 @@ public:
     ~MainMenuScene();
 
     void startCallback(CCObject * pSender);
+    void returnCallback(CCObject * pSender);
 
     virtual void onEnter();
-    bool init();
+    bool init(bool fromGame = false);
 };

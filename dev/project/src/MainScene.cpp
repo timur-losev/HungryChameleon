@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "MainScene.h"
 #include "VisibleRect.h"
+#include "IngameMenu.h"
+#include "GameDelegate.h"
 
 MainScene::MainScene()
 {
@@ -22,10 +24,24 @@ bool MainScene::init()
 
     addChild(pBackground);
 
+    IngameMenu* igmenu = new IngameMenu();
+    igmenu->init();
+
+    addChild(igmenu);
+
+    igmenu->getBackToMainMenu()->setTarget(this, menu_selector(MainScene::onMainMenuTap));
+
+    igmenu->release();
+
     return kRet;
 }
 
 void MainScene::onEnter()
 {
     GameScene::onEnter();
+}
+
+void MainScene::onMainMenuTap( CCObject* )
+{
+    GameDelegate::sharedGameDelegate()->returnToMainMenu();
 }

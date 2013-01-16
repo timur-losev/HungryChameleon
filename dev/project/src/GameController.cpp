@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include "GameController.h"
-#include "MainMenuScene.h"
+#include "GameDelegate.h"
 
 static CCPoint s_tCurPos = CCPointZero;
 
@@ -32,10 +32,7 @@ bool GameController::init()
 void GameController::showMainMenu()
 {
      setTouchEnabled(true);
-
-     MainMenuScene* mmscene = new MainMenuScene();
-     mmscene->init();
-     mmscene->release(); //this scene has been added to CCDirector pool. So, do release here
+     GameDelegate::sharedGameDelegate()->openMainMenu();
 }
 
 void GameController::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)

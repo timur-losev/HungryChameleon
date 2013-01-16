@@ -49,6 +49,9 @@
     <ClCompile Include="..\src\GameScene.cpp">
       <Filter>src\Game\Base</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\IngameMenu.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch.h">
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="..\src\GameScene.h">
       <Filter>src\Game\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\IngameMenu.h">
+      <Filter>src\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

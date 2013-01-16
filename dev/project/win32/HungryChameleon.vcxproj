@@ -83,6 +83,7 @@
     <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
     <ClCompile Include="..\src\GameScene.cpp" />
+    <ClCompile Include="..\src\IngameMenu.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MainMenuScene.cpp" />
     <ClCompile Include="..\src\MainScene.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameDelegate.h" />
     <ClInclude Include="..\src\GameScene.h" />
+    <ClInclude Include="..\src\IngameMenu.h" />
     <ClInclude Include="..\src\MainMenuScene.h" />
     <ClInclude Include="..\src\MainScene.h" />
     <ClInclude Include="..\src\pch.h" />

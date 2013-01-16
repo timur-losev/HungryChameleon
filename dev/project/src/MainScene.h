@@ -12,4 +12,6 @@ public:
 
     bool         init();
     virtual void onEnter();
+
+    void         onMainMenuTap(CCObject*);
 };

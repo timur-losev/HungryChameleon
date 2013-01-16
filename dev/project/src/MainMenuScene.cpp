@@ -5,9 +5,20 @@
 
 MainMenu::MainMenu()
 {
+
+}
+
+bool MainMenu::init(bool fromGame)
+{
+    CCLayer::init();
+
     m_pMainMenu = CCMenu::create();
 
-    CCLabelTTF* label = CCLabelTTF::create("Start Game", "Arial", 24);
+    CCString caption = "Start Game";
+    if (fromGame)
+        caption = "Resume Game";
+
+    CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "Arial", 24);
     m_pStartButton = CCMenuItemLabel::create(label);
     m_pStartButton->setPosition( ccp( VisibleRect::center().x, VisibleRect::center().y) );
 
@@ -18,6 +29,8 @@ MainMenu::MainMenu()
     addChild(m_pMainMenu);
 
     setTouchEnabled(true);
+
+    return true;
 }
 
 CCMenuItemLabel* MainMenu::getStartButton() const
@@ -46,7 +59,7 @@ void MainMenuScene::onEnter()
 
 }
 
-bool MainMenuScene::init()
+bool MainMenuScene::init(bool fromGame)
 {
     if (GameScene::init())
     {
@@ -55,13 +68,21 @@ bool MainMenuScene::init()
         pBackground->setPosition(VisibleRect::center());
 
         m_pMainMenu = new MainMenu();
-        m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
+        m_pMainMenu->init(fromGame);
+
+        if (fromGame)
+        {
+            m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::returnCallback));
+        }
+        else
+        {
+            m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
+        }
 
         addChild(pBackground);
         addChild(m_pMainMenu);
         m_pMainMenu->release();
-    
-        CCDirector::sharedDirector()->runWithScene(this);
+
         return true;
     }
 
@@ -71,4 +92,10 @@ bool MainMenuScene::init()
 void MainMenuScene::startCallback(CCObject * pSender)
 {
     GameDelegate::sharedGameDelegate()->startGame();
+}
+
+
+void MainMenuScene::returnCallback( CCObject * pSender )
+{
+    GameDelegate::sharedGameDelegate()->returnToGame();
 }

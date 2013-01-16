@@ -11,6 +11,9 @@ public:
     ~GameDelegate();
 
     void                    startGame();
+    void                    openMainMenu();
+    void                    returnToMainMenu();
+    void                    returnToGame();
 
     static GameDelegate*    sharedGameDelegate();
 };
