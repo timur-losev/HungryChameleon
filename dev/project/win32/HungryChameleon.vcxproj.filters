@@ -5,6 +5,15 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="src\Base">
+      <UniqueIdentifier>{89380021-3bb8-402f-b159-3b2154e9c47c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GUI">
+      <UniqueIdentifier>{20fe3abc-0279-487f-9258-d99113b69eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{a57a3422-1c7a-4de4-b4e2-4b3320008314}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -13,10 +22,40 @@
     <ClCompile Include="..\src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\AppDelegate.cpp">
+      <Filter>src\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GameController.cpp">
+      <Filter>src\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GameScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MainMenuScene.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VisibleRect.cpp">
+      <Filter>src\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AppDelegate.h">
+      <Filter>src\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameController.h">
+      <Filter>src\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MainMenuScene.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\VisibleRect.h">
+      <Filter>src\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
