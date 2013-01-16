@@ -10,5 +10,6 @@ public:
     MainScene();
     ~MainScene();
 
+    bool         init();
     virtual void onEnter();
 };

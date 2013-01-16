@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MainMenuScene.h"
 #include "VisibleRect.h"
+#include "GameDelegate.h"
 
 MainMenu::MainMenu()
 {
@@ -36,7 +37,7 @@ MainMenuScene::MainMenuScene(): m_pMainMenu(nullptr)
 
 MainMenuScene::~MainMenuScene()
 {
-    
+
 }
 
 void MainMenuScene::onEnter()
@@ -49,8 +50,9 @@ bool MainMenuScene::init()
 {
     if (GameScene::init())
     {
-        CCLayerColor* pBackground = CCLayerColor::create();
-        pBackground->initWithColor(ccc4(0, 166, 0, 255));
+        CCSprite* pBackground = CCSprite::create();
+        pBackground->initWithFile("data/mmbg.png");
+        pBackground->setPosition(VisibleRect::center());
 
         m_pMainMenu = new MainMenu();
         m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
@@ -68,5 +70,5 @@ bool MainMenuScene::init()
 
 void MainMenuScene::startCallback(CCObject * pSender)
 {
-
+    GameDelegate::sharedGameDelegate()->startGame();
 }

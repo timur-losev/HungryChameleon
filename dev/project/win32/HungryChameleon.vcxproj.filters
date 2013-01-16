@@ -17,6 +17,9 @@
     <Filter Include="src\Game\GameScene">
       <UniqueIdentifier>{f9a01f53-f9bf-4285-97d5-fffa8e617191}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Base">
+      <UniqueIdentifier>{0060f2ec-9a08-489d-bcc3-11f29fa9b3a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -31,9 +34,6 @@
     <ClCompile Include="..\src\GameController.cpp">
       <Filter>src\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\GameScene.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\MainMenuScene.cpp">
       <Filter>src\GUI</Filter>
     </ClCompile>
@@ -42,6 +42,12 @@
     </ClCompile>
     <ClCompile Include="..\src\MainScene.cpp">
       <Filter>src\Game\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GameDelegate.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GameScene.cpp">
+      <Filter>src\Game\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +60,6 @@
     <ClInclude Include="..\src\GameController.h">
       <Filter>src\Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\GameScene.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\MainMenuScene.h">
       <Filter>src\GUI</Filter>
     </ClInclude>
@@ -65,6 +68,12 @@
     </ClInclude>
     <ClInclude Include="..\src\MainScene.h">
       <Filter>src\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameDelegate.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameScene.h">
+      <Filter>src\Game\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
