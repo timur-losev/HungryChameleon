@@ -20,6 +20,9 @@
     <Filter Include="src\Game\Base">
       <UniqueIdentifier>{0060f2ec-9a08-489d-bcc3-11f29fa9b3a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\GUI\MainMenu">
+      <UniqueIdentifier>{a8d0d7f9-55a8-42bf-bb60-e452494f986b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -34,9 +37,6 @@
     <ClCompile Include="..\src\GameController.cpp">
       <Filter>src\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MainMenuScene.cpp">
-      <Filter>src\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\VisibleRect.cpp">
       <Filter>src\Base</Filter>
     </ClCompile>
@@ -46,11 +46,17 @@
     <ClCompile Include="..\src\GameDelegate.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\GameScene.cpp">
+    <ClCompile Include="..\src\GameSceneBase.cpp">
       <Filter>src\Game\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\IngameMenu.cpp">
+    <ClCompile Include="..\src\IngameMenuView.cpp">
       <Filter>src\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MainMenuScene.cpp">
+      <Filter>src\GUI\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MainMenuView.cpp">
+      <Filter>src\GUI\MainMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,9 +69,6 @@
     <ClInclude Include="..\src\GameController.h">
       <Filter>src\Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MainMenuScene.h">
-      <Filter>src\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\VisibleRect.h">
       <Filter>src\Base</Filter>
     </ClInclude>
@@ -75,11 +78,17 @@
     <ClInclude Include="..\src\GameDelegate.h">
       <Filter>src\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\GameScene.h">
+    <ClInclude Include="..\src\GameSceneBase.h">
       <Filter>src\Game\Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\IngameMenu.h">
+    <ClInclude Include="..\src\IngameMenuView.h">
       <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MainMenuScene.h">
+      <Filter>src\GUI\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MainMenuView.h">
+      <Filter>src\GUI\MainMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

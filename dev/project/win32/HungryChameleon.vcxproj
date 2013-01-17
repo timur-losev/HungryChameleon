@@ -82,10 +82,11 @@
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
-    <ClCompile Include="..\src\GameScene.cpp" />
-    <ClCompile Include="..\src\IngameMenu.cpp" />
+    <ClCompile Include="..\src\GameSceneBase.cpp" />
+    <ClCompile Include="..\src\IngameMenuView.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MainMenuScene.cpp" />
+    <ClCompile Include="..\src\MainMenuView.cpp" />
     <ClCompile Include="..\src\MainScene.cpp" />
     <ClCompile Include="..\src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -97,9 +98,10 @@
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameDelegate.h" />
-    <ClInclude Include="..\src\GameScene.h" />
-    <ClInclude Include="..\src\IngameMenu.h" />
+    <ClInclude Include="..\src\GameSceneBase.h" />
+    <ClInclude Include="..\src\IngameMenuView.h" />
     <ClInclude Include="..\src\MainMenuScene.h" />
+    <ClInclude Include="..\src\MainMenuView.h" />
     <ClInclude Include="..\src\MainScene.h" />
     <ClInclude Include="..\src\pch.h" />
     <ClInclude Include="..\src\VisibleRect.h" />

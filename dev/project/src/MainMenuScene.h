@@ -1,26 +1,13 @@
 #pragma once
 
-#include "GameScene.h"
+#include "GameSceneBase.h"
 
-class MainMenu: public CCLayer
+class MainMenuView;
+
+class MainMenuScene : public GameSceneBase
 {
 private:
-    CCMenu*             m_pMainMenu;
-    CCMenuItemLabel*    m_pStartButton;
-protected:
-public:
-    MainMenu();
-    ~MainMenu();
-
-    bool             init(bool fromGame = false);
-
-    CCMenuItemLabel* getStartButton() const;
-};
-
-class MainMenuScene : public GameScene
-{
-private:
-    MainMenu    *m_pMainMenu;
+    MainMenuView    *m_pMainMenu;
 protected:
 public:
 

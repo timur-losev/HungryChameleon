@@ -18,7 +18,7 @@ GameDelegate::~GameDelegate()
 GameDelegate* GameDelegate::sharedGameDelegate()
 {
     if ( !s_SharedGameDelegate )
-    {
+    { 
         s_SharedGameDelegate = new GameDelegate();
         s_SharedGameDelegate->init();
     }

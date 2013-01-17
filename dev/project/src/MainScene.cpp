@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "MainScene.h"
 #include "VisibleRect.h"
-#include "IngameMenu.h"
+#include "IngameMenuView.h"
 #include "GameDelegate.h"
 
 MainScene::MainScene()
@@ -16,7 +16,7 @@ MainScene::~MainScene()
 
 bool MainScene::init()
 {
-    bool kRet = GameScene::init();
+    bool kRet = GameSceneBase::init();
 
     CCSprite* pBackground = CCSprite::create();
     pBackground->initWithFile("data/testscenebg.png");
@@ -24,7 +24,7 @@ bool MainScene::init()
 
     addChild(pBackground);
 
-    IngameMenu* igmenu = new IngameMenu();
+    IngameMenuView* igmenu = new IngameMenuView();
     igmenu->init();
 
     addChild(igmenu);
@@ -38,7 +38,7 @@ bool MainScene::init()
 
 void MainScene::onEnter()
 {
-    GameScene::onEnter();
+    GameSceneBase::onEnter();
 }
 
 void MainScene::onMainMenuTap( CCObject* )

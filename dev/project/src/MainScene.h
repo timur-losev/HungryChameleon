@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GameScene.h"
+#include "GameSceneBase.h"
 
-class MainScene: public GameScene
+class MainScene: public GameSceneBase
 {
 private:
 protected:
