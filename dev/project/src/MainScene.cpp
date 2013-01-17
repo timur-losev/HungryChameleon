@@ -3,6 +3,7 @@
 #include "VisibleRect.h"
 #include "IngameMenuView.h"
 #include "GameDelegate.h"
+#include "Layer3D.h"
 
 MainScene::MainScene()
 {
@@ -22,11 +23,13 @@ bool MainScene::init()
     pBackground->initWithFile("testscenebg.png");
     pBackground->setPosition(VisibleRect::center());
 
-    addChild(pBackground);
-
     IngameMenuView* igmenu = new IngameMenuView();
     igmenu->init();
 
+    m_pBackground = Layer3D::create();
+
+    addChild(pBackground); //temp
+    addChild(m_pBackground);
     addChild(igmenu);
 
     igmenu->getBackToMainMenu()->setTarget(this, menu_selector(MainScene::onMainMenuTap));

@@ -59,6 +59,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Debug.win32</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -84,6 +86,7 @@
     <ClCompile Include="..\src\GameDelegate.cpp" />
     <ClCompile Include="..\src\GameSceneBase.cpp" />
     <ClCompile Include="..\src\IngameMenuView.cpp" />
+    <ClCompile Include="..\src\Layer3D.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MainMenuScene.cpp" />
     <ClCompile Include="..\src\MainMenuView.cpp" />
@@ -100,6 +103,7 @@
     <ClInclude Include="..\src\GameDelegate.h" />
     <ClInclude Include="..\src\GameSceneBase.h" />
     <ClInclude Include="..\src\IngameMenuView.h" />
+    <ClInclude Include="..\src\Layer3D.h" />
     <ClInclude Include="..\src\MainMenuScene.h" />
     <ClInclude Include="..\src\MainMenuView.h" />
     <ClInclude Include="..\src\MainScene.h" />

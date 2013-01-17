@@ -2,9 +2,14 @@
 
 #include "GameSceneBase.h"
 
+class Layer3D;
+
 class MainScene: public GameSceneBase
 {
 private:
+
+    Layer3D*                m_pBackground;
+
 protected:
 public:
     MainScene();

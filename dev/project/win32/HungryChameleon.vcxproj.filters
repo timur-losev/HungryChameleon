@@ -58,6 +58,9 @@
     <ClCompile Include="..\src\MainMenuView.cpp">
       <Filter>src\GUI\MainMenu</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Layer3D.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch.h">
@@ -89,6 +92,9 @@
     </ClInclude>
     <ClInclude Include="..\src\MainMenuView.h">
       <Filter>src\GUI\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Layer3D.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
