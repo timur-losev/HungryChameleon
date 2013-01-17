@@ -10,8 +10,8 @@ public:
     MainScene();
     ~MainScene();
 
-    bool         init();
-    virtual void onEnter();
+    bool                    init();
+    virtual void            onEnter();
 
-    void         onMainMenuTap(CCObject*);
+    void                    onMainMenuTap(CCObject*);
 };

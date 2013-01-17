@@ -8,5 +8,5 @@ public:
     GameSceneBase();
     virtual ~GameSceneBase();
 
-    virtual void onEnter();
+    virtual void            onEnter();
 };

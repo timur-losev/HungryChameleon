@@ -26,7 +26,7 @@ bool MainMenuScene::init(bool fromGame)
     if (GameSceneBase::init())
     {
         CCSprite* pBackground = CCSprite::create();
-        pBackground->initWithFile("data/mmbg.png");
+        pBackground->initWithFile("mmbg.png");
         pBackground->setPosition(VisibleRect::center());
 
         m_pMainMenu = new MainMenuView();

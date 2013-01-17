@@ -17,8 +17,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     {
         //TODO
         CCSize resourceSize = CCSizeMake(960, 640);
-        CCFileUtils::sharedFileUtils()->setResourceDirectory("hd");
+        CCFileUtils::sharedFileUtils()->setResourceDirectory("data/hd");
         pDirector->setContentScaleFactor(resourceSize.height/designSize.height);
+    }
+    else
+    {
+        CCFileUtils::sharedFileUtils()->setResourceDirectory("data");
     }
 
     CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);

@@ -19,7 +19,7 @@ bool MainScene::init()
     bool kRet = GameSceneBase::init();
 
     CCSprite* pBackground = CCSprite::create();
-    pBackground->initWithFile("data/testscenebg.png");
+    pBackground->initWithFile("testscenebg.png");
     pBackground->setPosition(VisibleRect::center());
 
     addChild(pBackground);
