@@ -68,10 +68,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppDelegate.cpp" />
+    <ClCompile Include="BubbleElement.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameView.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MatrixField.cpp" />
     <ClCompile Include="VisibleRect.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -81,9 +83,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppDelegate.h" />
+    <ClInclude Include="BubbleElement.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameView.h" />
+    <ClInclude Include="MatrixField.h" />
     <ClInclude Include="VisibleRect.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
