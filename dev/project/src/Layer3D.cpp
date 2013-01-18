@@ -38,7 +38,7 @@ void Layer3D::draw()
 
     CCSize size = CCDirector::sharedDirector()->getWinSize();
 
-    float scale = size.width/480.0f;
+    float scale = size.width/640.f;
 
     kmMat4 matrixP;
     kmMat4 matrixMV;

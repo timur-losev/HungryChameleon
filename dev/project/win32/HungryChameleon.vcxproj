@@ -91,6 +91,7 @@
     <ClCompile Include="..\src\MainMenuScene.cpp" />
     <ClCompile Include="..\src\MainMenuView.cpp" />
     <ClCompile Include="..\src\MainScene.cpp" />
+    <ClCompile Include="..\src\ParallaxBackground.cpp" />
     <ClCompile Include="..\src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
@@ -107,6 +108,7 @@
     <ClInclude Include="..\src\MainMenuScene.h" />
     <ClInclude Include="..\src\MainMenuView.h" />
     <ClInclude Include="..\src\MainScene.h" />
+    <ClInclude Include="..\src\ParallaxBackground.h" />
     <ClInclude Include="..\src\pch.h" />
     <ClInclude Include="..\src\VisibleRect.h" />
   </ItemGroup>

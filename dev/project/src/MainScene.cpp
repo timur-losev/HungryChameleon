@@ -4,6 +4,7 @@
 #include "IngameMenuView.h"
 #include "GameDelegate.h"
 #include "Layer3D.h"
+#include "ParallaxBackground.h"
 
 MainScene::MainScene()
 {
@@ -19,17 +20,16 @@ bool MainScene::init()
 {
     bool kRet = GameSceneBase::init();
 
-    CCSprite* pBackground = CCSprite::create();
-    pBackground->initWithFile("testscenebg.png");
-    pBackground->setPosition(VisibleRect::center());
+    ParallaxBackground* pBackground = ParallaxBackground::create();
 
     IngameMenuView* igmenu = new IngameMenuView();
     igmenu->init();
 
-    m_pBackground = Layer3D::create();
+    //m_pBackground = Layer3D::create();
 
-    addChild(pBackground); //temp
-    addChild(m_pBackground);
+    
+    addChild(pBackground);
+    //addChild(m_pBackground);
     addChild(igmenu);
 
     igmenu->getBackToMainMenu()->setTarget(this, menu_selector(MainScene::onMainMenuTap));
