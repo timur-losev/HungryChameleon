@@ -3,7 +3,7 @@
 
 GameView::GameView()
 {
-	CCSprite* sprite = CCSprite::create("resource/background.png");
+	CCSprite* sprite = CCSprite::create("resources/background.png");
 	sprite->retain();
 	sprite->setPosition( ccp( VisibleRect::center().x, VisibleRect::center().y) );
 
@@ -16,3 +16,13 @@ GameView::~GameView()
 {
 }
 
+void GameView::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
+{
+    CCSetIterator it = pTouches->begin();
+    CCTouch* touch = (CCTouch*)(*it);
+
+	if (!m_TouchesBeginCallback._Empty())
+	{
+		m_TouchesBeginCallback(touch);
+	}
+}
