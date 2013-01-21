@@ -10,7 +10,7 @@ BubbleElement::BubbleElement(int type)
 	if (m_BubblesMap.find(type) != m_BubblesMap.end())
 	{
 		CCRect rect = m_BubblesMap[type][0];
-		this->initWithFile("resources/cubes.png");
+		this->initWithFile("data/cubes.png");
 		this->setTextureRect(rect);
 	}
 }

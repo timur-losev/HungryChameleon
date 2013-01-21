@@ -3,7 +3,7 @@
 
 GameView::GameView()
 {
-	CCSprite* sprite = CCSprite::create("resources/background.png");
+	CCSprite* sprite = CCSprite::create("data/background.png");
 	sprite->retain();
 	sprite->setPosition( ccp( VisibleRect::center().x, VisibleRect::center().y) );
 
