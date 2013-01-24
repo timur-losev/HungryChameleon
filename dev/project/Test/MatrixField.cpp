@@ -55,9 +55,9 @@ void MatrixField::Scroll(int direction, int startX, int startY)
 		return;
 	}
 
-	int startIndex = (-1 == direction || 0 == direction) ? 0 : m_MaxFieldSize - 1;
-	int endIndex = (-1 == direction || 0 == direction) ? m_MaxFieldSize - 1 : 0;
-	int directionSign = (-1 == direction || 0 == direction) ? 1 : -1;
+	int startIndex		= (-1 == direction || 0 == direction) ? 0 : m_MaxFieldSize - 1;
+	int endIndex		= (-1 == direction || 0 == direction) ? m_MaxFieldSize - 1 : 0;
+	int directionSign	= (-1 == direction || 0 == direction) ? 1 : -1;
 
 	// Store first element
 	int temp = (direction >= 0) ? m_Field[startIndex][startY] : m_Field[startX][startIndex];

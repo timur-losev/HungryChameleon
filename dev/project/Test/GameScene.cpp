@@ -34,7 +34,7 @@ void GameScene::onEnter()
 		{
 			BubbleElement* element;
 			int x = m_BubbleViewDispl + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
-			int y = VisibleRect::top().y - shift - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int y = VisibleRect::top().y - m_BubbleViewDispl - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 			
 			element = new BubbleElement( m_MatrixField.GetVisible(i, j) );//rand() % MatrixField::GetMaxTypes() );
 			element->retain();

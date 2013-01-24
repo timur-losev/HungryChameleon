@@ -9,7 +9,8 @@ class GameView;
 class GameScene : public CCScene
 {
 private:
-	const int					m_BubbleViewDispl = 40;
+	static const int			m_BubbleViewDispl = 40;
+	static const int			m_SpaceBetweenBubbles = 5;
 
 	GameView*					m_pGameView;
 	MatrixField					m_MatrixField;
