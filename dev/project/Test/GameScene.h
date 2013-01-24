@@ -9,9 +9,12 @@ class GameView;
 class GameScene : public CCScene
 {
 private:
-	GameView    *m_pGameView;
-	MatrixField m_MatrixField;
+	const int					m_BubbleViewDispl = 40;
+
+	GameView*					m_pGameView;
+	MatrixField					m_MatrixField;
 	std::vector< std::vector<CCSprite*> >   m_BubblesView;
+
 
 	void OnTouchBegan(CCTouch* touch);
 protected:
@@ -21,4 +24,5 @@ public:
 
     virtual void onEnter();
     virtual void createInstance();
+	bool DoScroll(const CCRect region);
 };

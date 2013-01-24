@@ -33,12 +33,10 @@ void GameScene::onEnter()
 		for(int j = 0; j < MatrixField::GetMaxVisible(); ++j)
 		{
 			BubbleElement* element;
-			const int space = 5;
-			const int shift = 40;
-			int x = shift + i * (BubbleElement::GetBubbleSize() + space);
-			int y = VisibleRect::top().y - shift - j * (BubbleElement::GetBubbleSize() + space);
+			int x = m_BubbleViewDispl + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int y = VisibleRect::top().y - shift - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 			
-			element = new BubbleElement( rand() % MatrixField::GetMaxTypes() );
+			element = new BubbleElement( m_MatrixField.GetVisible(i, j) );//rand() % MatrixField::GetMaxTypes() );
 			element->retain();
 			element->setPosition( ccp( x, y ) );
 
@@ -63,6 +61,36 @@ void GameScene::createInstance()
 
 void GameScene::OnTouchBegan(CCTouch* touch)
 {
+	CCPoint delta = touch->getDelta();
+	CCPoint position = touch->getLocationInView();
+	int fieldSize = m_BubbleViewDispl + MatrixField::GetMaxVisible() * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+
+	if (position.x < m_BubbleViewDispl || 
+		position.y < m_BubbleViewDispl ||
+		position.x >= fieldSize || 
+		position.y >= fieldSize)
+	{
+		return;
+	}
+
+	position.x -= m_BubbleViewDispl;
+	position.y -= m_BubbleViewDispl;
+
+	int yPos = (int)(position.x / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
+	int xPos = (int)(position.y / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
+	int direction;
+
+	if (abs(delta.x) > abs(delta.y))
+	{
+		direction = (delta.x >= 0) ? -2 : -1;
+	}
+	else
+	{
+		direction = (delta.y >= 0) ? 0 : 1;
+	}
+
+	m_MatrixField.Scroll(direction, xPos, yPos);
+
 	for(int i = 0; i < MatrixField::GetMaxVisible(); ++i)
 	{
 		for(int j = 0; j < MatrixField::GetMaxVisible(); ++j)
@@ -71,4 +99,9 @@ void GameScene::OnTouchBegan(CCTouch* touch)
 			element->SetType(m_MatrixField.GetVisible(i, j));
 		}
 	}
+}
+
+bool GameScene::DoScroll(const CCRect region)
+{
+	return true;
 }

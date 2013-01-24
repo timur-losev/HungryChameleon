@@ -12,6 +12,7 @@ BubbleElement::BubbleElement(int type)
 		CCRect rect = m_BubblesMap[type][0];
 		this->initWithFile("data/cubes.png");
 		this->setTextureRect(rect);
+		this->setAnchorPoint(CCPointMake(0.0f, 0.0f));
 	}
 }
 

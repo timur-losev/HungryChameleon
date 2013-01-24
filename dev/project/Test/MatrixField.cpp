@@ -48,4 +48,41 @@ void MatrixField::Scroll(int direction, int startX, int startY)
 	// -2 - right
 	// 0 - top
 	// 1 - down
+
+	if (0 > startX || 0 > startY ||
+		m_MaxFieldSize <= startX || m_MaxFieldSize <= startY)
+	{
+		return;
+	}
+
+	int startIndex = (-1 == direction || 0 == direction) ? 0 : m_MaxFieldSize - 1;
+	int endIndex = (-1 == direction || 0 == direction) ? m_MaxFieldSize - 1 : 0;
+	int directionSign = (-1 == direction || 0 == direction) ? 1 : -1;
+
+	// Store first element
+	int temp = (direction >= 0) ? m_Field[startIndex][startY] : m_Field[startX][startIndex];
+
+	// Shift all items 
+	for (int i = 0; i < m_MaxFieldSize - 1; i++)
+	{
+		int pos = abs(startIndex - i);
+		if (direction >= 0)
+		{
+			m_Field[pos][startY] = m_Field[pos + directionSign][startY];
+		}
+		else
+		{
+			m_Field[startX][pos] = m_Field[startX][pos + directionSign];
+		}
+	}
+
+	// resore first element in end of list
+	if (direction >= 0)
+	{		
+		m_Field[endIndex][startY] = temp;
+	}
+	else
+	{
+		m_Field[startX][endIndex] = temp;
+	}
 }
