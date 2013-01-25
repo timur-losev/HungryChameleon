@@ -46,6 +46,8 @@ void GameScene::onEnter()
 
 		m_BubblesView.push_back(line);
 	}
+
+	schedule(schedule_selector(GameScene::onUpdate), 0.1f);
 }
 
 void GameScene::createInstance()
@@ -104,4 +106,33 @@ void GameScene::OnTouchBegan(CCTouch* touch)
 bool GameScene::DoScroll(const CCRect region)
 {
 	return true;
+}
+
+void GameScene::onUpdate(float dt)
+{
+	MatchesList_t matches = m_MatrixField.GetFirstMatches();
+
+	while (!matches.empty())
+	{
+		BubbleElement* element = static_cast<BubbleElement*>(m_BubblesView[(int)matches[0].y][(int)matches[0].x]);
+		element->setVisible(false);//SetType(MatrixField::GetMaxTypes() + 1);
+		matches.erase(matches.begin());
+
+		scheduleOnce(schedule_selector(GameScene::onUpdateMatrix), 0.5f);
+	}
+}
+
+void GameScene::onUpdateMatrix(float dt)
+{
+	m_MatrixField.GenerateField(true);
+
+	for(int i = 0; i < MatrixField::GetMaxVisible(); ++i)
+	{
+		for(int j = 0; j < MatrixField::GetMaxVisible(); ++j)
+		{
+			BubbleElement* element = static_cast<BubbleElement*>(m_BubblesView[i][j]);
+			element->SetType(m_MatrixField.GetVisible(i, j));
+			element->setVisible(true);
+		}
+	}
 }

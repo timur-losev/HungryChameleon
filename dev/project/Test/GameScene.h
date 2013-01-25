@@ -9,8 +9,8 @@ class GameView;
 class GameScene : public CCScene
 {
 private:
-	static const int			m_BubbleViewDispl = 40;
-	static const int			m_SpaceBetweenBubbles = 5;
+	static const int			m_BubbleViewDispl		= 40;
+	static const int			m_SpaceBetweenBubbles	= 5;
 
 	GameView*					m_pGameView;
 	MatrixField					m_MatrixField;
@@ -18,6 +18,8 @@ private:
 
 
 	void OnTouchBegan(CCTouch* touch);
+	void onUpdate(float dt);
+	void onUpdateMatrix(float dt);
 protected:
 public:
     GameScene();

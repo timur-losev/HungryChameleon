@@ -32,13 +32,13 @@ void BubbleElement::SetType(int type)
 	}
 	else
 	{
-		int k =0;
+		setVisible(false);
 	}
 }
 
 void BubbleElement::FakeBubblesInit()
 {
-	for(int j = 0; j < MatrixField::GetMaxTypes(); ++j)
+	for(int j = 0; j < MatrixField::GetMaxTypes() + 1; ++j)
 	{
 		std::vector<CCRect> animFrames;
 		animFrames.push_back(CCRectMake(0, j * 45, m_BubbleSize, m_BubbleSize));

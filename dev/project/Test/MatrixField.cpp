@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 MatrixField::MatrixField()
 {
 	srand(time(NULL));
@@ -18,7 +19,7 @@ MatrixField::~MatrixField()
 
 }
 
-void MatrixField::GenerateField()
+void MatrixField::GenerateField(bool isRegenerate)
 {
 	for (int i = 0; i < m_MaxFieldSize; ++i)
 	{
@@ -36,7 +37,10 @@ void MatrixField::GenerateField()
 			}
 			while(newValue == prevx || newValue == prevy);
 
-			m_Field[i][j] = newValue;
+			if (!isRegenerate || m_Field[i][j] == -1)
+			{
+				m_Field[i][j] = newValue;
+			}
 		}
 	}
 }
@@ -86,3 +90,67 @@ void MatrixField::Scroll(int direction, int startX, int startY)
 		m_Field[startX][endIndex] = temp;
 	}
 }
+
+MatchesList_t MatrixField::GetFirstMatches()
+{
+	MatchesList_t matches;
+	bool found = false;
+	// Horizontal
+	for (int i = 0; i < m_MaxVisibleSize; i++)
+	{
+		for (int j = 0; j < m_MaxVisibleSize - 2; ++j)
+		{
+			if (m_Field[i][j] == m_Field[i][j + 1] && m_Field[i][j] == m_Field[i][j + 2])
+			{
+				int k = j;
+				int currColor = m_Field[i][j];
+
+				while(k < m_MaxVisibleSize &&
+					  currColor == m_Field[i][k])
+				{
+					matches.push_back(CCPointMake(i, k));
+					m_Field[i][k] = -1;
+					++k;
+				}
+
+				/*size_t lineSize = matches.size();
+				for (size_t l = k; l < lineSize; ++l)
+				{
+					for (size_t m = i; m > 0; --m)
+					{
+						m_Field[m][l] = m_Field[m - 1][l];
+					}
+					m_Field[0][l] = rand() % m_MaxTypesCount;
+				}*/
+				
+				return matches;
+			}
+		}
+	}
+
+	// Vertical
+	for (int i = 0; i < m_MaxVisibleSize - 2; i++)
+	{
+		for (int j = 0; j < m_MaxVisibleSize; ++j)
+		{
+			if (m_Field[i][j] == m_Field[i + 1][j] && m_Field[i][j] == m_Field[i + 2][j])
+			{
+				int k = i;
+				int currColor = m_Field[i][j];
+
+				while(k < m_MaxVisibleSize &&
+					  currColor == m_Field[k][j])
+				{
+					matches.push_back(CCPointMake(k, j));
+					m_Field[k][j] = -1;
+					++k;
+				}
+				
+				return matches;
+			}
+		}
+	}
+
+	return matches;
+}
+
