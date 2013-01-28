@@ -9,10 +9,10 @@ typedef std::vector<CCPoint> MatchesList_t;
 class MatrixField
 {
 private:
-	static const int	m_MaxFieldSize		= 100;
-	static const int	m_MaxVisibleSize	= 10;
-	static const int	m_MaxTypesCount		= 4;
-	int					m_Field[m_MaxFieldSize][m_MaxFieldSize];
+	static int	m_MaxFieldSize;
+	static int	m_MaxVisibleSize;
+	static int	m_MaxTypesCount;
+	int**		m_Field;
 protected:
 public:
     MatrixField();

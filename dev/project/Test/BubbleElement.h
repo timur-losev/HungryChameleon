@@ -5,7 +5,7 @@ using namespace cocos2d;
 class BubbleElement: public CCSprite
 {
 private:
-	static const int							m_BubbleSize = 35;
+	static int									m_BubbleSize;
 
 	typedef std::map<int, std::vector<CCRect>>	BubbleMap_t;
 	static BubbleMap_t							m_BubblesMap;

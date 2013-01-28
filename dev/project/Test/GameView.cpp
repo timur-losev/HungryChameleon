@@ -34,7 +34,7 @@ void GameView::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 	m_PrevTouch.setTouchInfo(m_PrevTouch.getID(), m_PrevTouch.getLocationInView().x, m_PrevTouch.getLocationInView().y);
 	m_PrevTouch.setTouchInfo(touch->getID(), touch->getLocationInView().x, touch->getLocationInView().y);
 
-	if (!m_TouchesBeginCallback._Empty())
+	if (m_TouchesBeginCallback)
 	{
 		m_TouchesBeginCallback(&m_PrevTouch);
 	}

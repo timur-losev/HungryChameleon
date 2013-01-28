@@ -6,6 +6,12 @@ using namespace cocos2d;
 
 class GameView;
 
+enum EGameStates
+{
+	eIdle = 0,
+	eWaitBoomAnim
+};
+
 class GameScene : public CCScene
 {
 private:
@@ -15,6 +21,7 @@ private:
 	GameView*					m_pGameView;
 	MatrixField					m_MatrixField;
 	std::vector< std::vector<CCSprite*> >   m_BubblesView;
+	EGameStates					m_State;
 
 
 	void OnTouchBegan(CCTouch* touch);

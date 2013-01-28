@@ -2,6 +2,7 @@
 #include "VisibleRect.h"
 #include "MatrixField.h"
 
+int BubbleElement::m_BubbleSize = 40;
 BubbleElement::BubbleMap_t BubbleElement::m_BubblesMap;
 
 BubbleElement::BubbleElement(int type)
@@ -9,10 +10,7 @@ BubbleElement::BubbleElement(int type)
 {
 	if (m_BubblesMap.find(type) != m_BubblesMap.end())
 	{
-		CCRect rect = m_BubblesMap[type][0];
-		this->initWithFile("data/cubes.png");
-		this->setTextureRect(rect);
-		this->setAnchorPoint(CCPointMake(0.0f, 0.0f));
+		SetType(type);
 	}
 }
 
@@ -25,14 +23,19 @@ void BubbleElement::SetType(int type)
 {
 	if (m_BubblesMap.find(type) != m_BubblesMap.end())
 	{
-		CCRect rect = m_BubblesMap[type][0];
-		this->setTextureRect(rect);
+		char strType[64];
+		sprintf(strType, "data/sphere0%d.png", type + 1);
+		this->initWithFile(strType);
+
+		CCRect rect = m_BubblesMap[type][0];		
+		//this->setTextureRect(rect);
+		this->setAnchorPoint(CCPointMake(0.0f, 0.0f));
 
 		m_Type = type;
 	}
 	else
 	{
-		setVisible(false);
+		int j = 0;
 	}
 }
 
