@@ -6,27 +6,24 @@ using namespace cocos2d;
 
 class GameView;
 
-enum EGameStates
-{
-	eIdle = 0,
-	eWaitBoomAnim
-};
-
 class GameScene : public CCScene
 {
 private:
-	static const int			m_BubbleViewDispl		= 40;
-	static const int			m_SpaceBetweenBubbles	= 5;
+	static int			m_BubbleViewDisplacement;
+	static int			m_SpaceBetweenBubbles;
 
 	GameView*					m_pGameView;
 	MatrixField					m_MatrixField;
 	std::vector< std::vector<CCSprite*> >   m_BubblesView;
-	EGameStates					m_State;
+	CCPoint						m_QuickScrollPos;
+	CCPoint						m_QuickScrollDelta;
+	bool						m_QuickScrollVertical;
 
 
-	void OnTouchBegan(CCTouch* touch);
+	void OnTouchEnded(CCTouch* touch);
+	void OnTouchMoved(CCTouch* touch);
 	void onUpdate(float dt);
-	void onUpdateMatrix(float dt);
+	void UpdateMatrix(float dt);
 protected:
 public:
     GameScene();
@@ -34,5 +31,4 @@ public:
 
     virtual void onEnter();
     virtual void createInstance();
-	bool DoScroll(const CCRect region);
 };

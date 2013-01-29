@@ -5,7 +5,8 @@ using namespace cocos2d;
 class BubbleElement: public CCSprite
 {
 private:
-	static int									m_BubbleSize;
+	static int									m_BubbleSize;	//Temp values
+	static float								m_BubbleScale;	//Temp values
 
 	typedef std::map<int, std::vector<CCRect>>	BubbleMap_t;
 	static BubbleMap_t							m_BubblesMap;
@@ -18,7 +19,7 @@ public:
 	void										SetType(int type);
 	inline int									GetType() { return m_Type; }
 
-	static inline int							GetBubbleSize() { return m_BubbleSize; }
+	static inline int							GetBubbleSize() { return m_BubbleSize * m_BubbleScale; }
 
 	static void									FakeBubblesInit();
 

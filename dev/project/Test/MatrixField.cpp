@@ -4,7 +4,7 @@
 #include <time.h>
 
 int MatrixField::m_MaxFieldSize		= 100;
-int MatrixField::m_MaxVisibleSize	= 10;
+int MatrixField::m_MaxVisibleSize	= 7;
 int MatrixField::m_MaxTypesCount	= 4;
 
 MatrixField::MatrixField()
@@ -100,6 +100,63 @@ void MatrixField::Scroll(int direction, int startX, int startY)
 	}
 }
 
+void MatrixField::ScrollDown()
+{
+	// Horizontal
+	for (int row = 0; row < m_MaxVisibleSize; row++)
+	{
+		for (int col = 0; col < m_MaxVisibleSize; ++col)
+		{
+			// if 3 color matches
+			if (m_Field[row][col] == -2)
+			{
+				for (int m = row; m > 0; --m)
+				{
+					m_Field[m][col] = m_Field[m - 1][col];
+				}
+				m_Field[0][col] = rand() % m_MaxTypesCount;
+
+				row = 0;
+			}
+		}
+	}
+
+	// Vertical
+	for (int row = 0; row < m_MaxVisibleSize; row++)
+	{
+		for (int col = 0; col < m_MaxVisibleSize; ++col)
+		{
+			if (m_Field[row][col] == -2)
+			{
+				int beg = row;
+				int currColor = m_Field[row][col];
+				// copy indexes of all matches colors
+				while(beg < m_MaxVisibleSize &&
+					  currColor == m_Field[beg][col])
+				{
+					++beg;
+				}
+
+				// scroll down 
+				size_t lineSize = beg - row;
+				for (int m = row + lineSize - 1; m > 0; --m)
+				{
+					if (m >= lineSize)
+					{
+						m_Field[m][col] = m_Field[m - lineSize][col];
+					}
+					else
+					{
+						m_Field[m][col] = rand() % m_MaxTypesCount;
+					}					
+				}
+
+				row = 0;
+			}
+		}
+	}
+}
+
 MatchesList_t MatrixField::GetFirstMatches()
 {
 	MatchesList_t matches;
@@ -110,7 +167,7 @@ MatchesList_t MatrixField::GetFirstMatches()
 		for (int col = 0; col < m_MaxVisibleSize - 2; ++col)
 		{
 			// if 3 color matches
-			if (m_Field[row][col] == m_Field[row][col + 1] && m_Field[row][col] == m_Field[row][col + 2])
+			if (m_Field[row][col] >= 0 && m_Field[row][col] == m_Field[row][col + 1] && m_Field[row][col] == m_Field[row][col + 2])
 			{
 				int beg = col;
 				int currColor = m_Field[row][col];
@@ -119,18 +176,8 @@ MatchesList_t MatrixField::GetFirstMatches()
 					  currColor == m_Field[row][beg])
 				{
 					matches.push_back(CCPointMake(row, beg));
-					//m_Field[row][beg] = -1;
+					m_Field[row][beg] = -2;
 					++beg;
-				}
-				// scroll down 
-				size_t lineSize = matches.size();
-				for (beg = col; beg < col + lineSize; ++beg)
-				{
-					for (int m = row; m > 0; --m)
-					{
-						m_Field[m][beg] = m_Field[m - 1][beg];
-					}
-					m_Field[0][beg] = rand() % m_MaxTypesCount;
 				}
 				
 				return matches;
@@ -143,7 +190,7 @@ MatchesList_t MatrixField::GetFirstMatches()
 	{
 		for (int col = 0; col < m_MaxVisibleSize; ++col)
 		{
-			if (m_Field[row][col] == m_Field[row + 1][col] && m_Field[row][col] == m_Field[row + 2][col])
+			if (m_Field[row][col] >= 0 && m_Field[row][col] == m_Field[row + 1][col] && m_Field[row][col] == m_Field[row + 2][col])
 			{
 				int beg = row;
 				int currColor = m_Field[row][col];
@@ -152,22 +199,8 @@ MatchesList_t MatrixField::GetFirstMatches()
 					  currColor == m_Field[beg][col])
 				{
 					matches.push_back(CCPointMake(beg, col));
-					m_Field[beg][col] = rand() % m_MaxTypesCount;
+					m_Field[beg][col] = -2;//rand() % m_MaxTypesCount;
 					++beg;
-				}
-
-				// scroll down 
-				size_t lineSize = matches.size();
-				for (int m = row + lineSize - 1; m > 0; --m)
-				{
-					if (m >= lineSize)
-					{
-						m_Field[m][col] = m_Field[m - lineSize][col];
-					}
-					else
-					{
-						m_Field[m][col] = rand() % m_MaxTypesCount;
-					}					
 				}
 								
 				return matches;

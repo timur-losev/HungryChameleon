@@ -77,6 +77,7 @@
   <ItemGroup>
     <ClCompile Include="AppDelegate.cpp" />
     <ClCompile Include="BubbleElement.cpp" />
+    <ClCompile Include="CSystem.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameView.cpp" />
@@ -92,6 +93,7 @@
   <ItemGroup>
     <ClInclude Include="AppDelegate.h" />
     <ClInclude Include="BubbleElement.h" />
+    <ClInclude Include="CSystem.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameView.h" />

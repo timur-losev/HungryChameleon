@@ -20,6 +20,7 @@ public:
 
 	void				GenerateField(bool isRegenerate = false);
 	void				Scroll(int direction, int startX, int startY);
+	void				ScrollDown();
 	inline int			GetVisible(int x, int y) 
 	{
 		if (x >= 0 || x < m_MaxVisibleSize || y >= 0 || y < m_MaxVisibleSize)

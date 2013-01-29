@@ -8,15 +8,18 @@ class GameView: public CCLayer
 {
 private:
 	virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+	virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
 	virtual void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
 
 	std::function<void (CCTouch* touch)> m_TouchesBeginCallback;
+	std::function<void (CCTouch* touch)> m_TouchesMovedCallback;
 	CCTouch m_PrevTouch;
 protected:
 public:
     GameView();
     ~GameView();
 
-	void RegisterTouchCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesBeginCallback = callback; };
+	void RegisterTouchBeganCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesBeginCallback = callback; }
+	void RegisterTouchMovedCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesMovedCallback = callback; }
 };
 

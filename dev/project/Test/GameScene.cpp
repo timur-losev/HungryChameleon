@@ -2,9 +2,12 @@
 #include "GameView.h"
 #include "VisibleRect.h"
 #include "BubbleElement.h"
+#include "CSystem.h"
+
+int GameScene::m_BubbleViewDisplacement		= 40;
+int	GameScene::m_SpaceBetweenBubbles		= 5;
 
 GameScene::GameScene()
-	: m_State(eIdle)
 {
 	BubbleElement::FakeBubblesInit();
 }
@@ -19,6 +22,8 @@ GameScene::~GameScene()
 			delete m_BubblesView[i][j];
 		}
 	}
+
+	m_BubblesView.clear();
 }
 
 void GameScene::onEnter()
@@ -34,8 +39,8 @@ void GameScene::onEnter()
 		for(int j = 0; j < MatrixField::GetMaxVisible(); ++j)
 		{
 			BubbleElement* element;
-			int x = m_BubbleViewDispl + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
-			int y = VisibleRect::top().y - m_BubbleViewDispl - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int x = m_BubbleViewDisplacement + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int y = VisibleRect::top().y - m_BubbleViewDisplacement - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 			
 			element = new BubbleElement( m_MatrixField.GetVisible(i, j) );//rand() % MatrixField::GetMaxTypes() );
 			element->retain();
@@ -48,7 +53,7 @@ void GameScene::onEnter()
 		m_BubblesView.push_back(line);
 	}
 
-	schedule(schedule_selector(GameScene::onUpdate), 0.5f);
+	schedule(schedule_selector(GameScene::onUpdate), 0.1f);
 }
 
 void GameScene::createInstance()
@@ -57,97 +62,121 @@ void GameScene::createInstance()
 
     addChild(m_pGameView);
     m_pGameView->autorelease();
-	m_pGameView->RegisterTouchCallback(std::bind(&GameScene::OnTouchBegan, this, std::placeholders::_1));
+	m_pGameView->RegisterTouchBeganCallback(std::bind(&GameScene::OnTouchEnded, this, std::placeholders::_1));
+	m_pGameView->RegisterTouchMovedCallback(std::bind(&GameScene::OnTouchMoved, this, std::placeholders::_1));
     
     CCDirector::sharedDirector()->replaceScene(this);
 }
 
-void GameScene::OnTouchBegan(CCTouch* touch)
+void GameScene::OnTouchEnded(CCTouch* touch)
+{
+	int direction;
+	if (abs(m_QuickScrollDelta.x) > abs(m_QuickScrollDelta.y))
+	{
+		direction = (m_QuickScrollDelta.x >= 0) ? -2 : -1;
+	}
+	else
+	{
+		direction = (m_QuickScrollDelta.y >= 0) ? 0 : 1;
+	}
+
+	m_MatrixField.Scroll(direction, m_QuickScrollPos.x, m_QuickScrollPos.y);
+	m_QuickScrollPos = CCPointMake(-1, -1);
+}
+
+void GameScene::OnTouchMoved(CCTouch* touch)
 {
 	CCPoint delta = touch->getDelta();
 	CCPoint position = touch->getLocationInView();
-	int fieldSize = m_BubbleViewDispl + MatrixField::GetMaxVisible() * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+	int fieldSize = m_BubbleViewDisplacement + MatrixField::GetMaxVisible() * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 
-	if (position.x < m_BubbleViewDispl || 
-		position.y < m_BubbleViewDispl ||
+	if (position.x < m_BubbleViewDisplacement || 
+		position.y < m_BubbleViewDisplacement ||
 		position.x >= fieldSize || 
-		position.y >= fieldSize)
+		position.y >= fieldSize ||
+		(delta.x == 0 && delta.y == 0))
 	{
 		return;
 	}
 
-	position.x -= m_BubbleViewDispl;
-	position.y -= m_BubbleViewDispl;
+	position.x -= m_BubbleViewDisplacement;
+	position.y -= m_BubbleViewDisplacement;
 
 	int yPos = (int)(position.x / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
 	int xPos = (int)(position.y / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
-	int direction;
 
 	if (abs(delta.x) > abs(delta.y))
 	{
-		direction = (delta.x >= 0) ? -2 : -1;
+		m_QuickScrollVertical = true;
+
+		delta.y = 0;
+		delta.x = (delta.x < BubbleElement::GetBubbleSize()) ? (BubbleElement::GetBubbleSize() * ((delta.x >= 0) ? 1.0f : -1.0f)) / 2.0f : delta.x;
 	}
 	else
 	{
-		direction = (delta.y >= 0) ? 0 : 1;
+		m_QuickScrollVertical = false;
+		delta.x = 0;
+		delta.y = (delta.y < BubbleElement::GetBubbleSize()) ? (BubbleElement::GetBubbleSize() * ((delta.y >= 0) ? 1.0f : -1.0f)) / 2.0f : delta.y;
 	}
 
-	m_MatrixField.Scroll(direction, xPos, yPos);
+	m_QuickScrollPos	= CCPointMake(xPos, yPos);
+	m_QuickScrollDelta	= CCPointMake(delta.x, delta.y);
+}
 
+void GameScene::onUpdate(float dt)
+{
+	UpdateMatrix(dt);
+	
+	static bool needMatrixScroll = false;
+	static unsigned long lastTimeUpdateMatrix = CSystem::GetTickCount();
+	if (CSystem::GetTickCount() - lastTimeUpdateMatrix > 500)
+	{
+		lastTimeUpdateMatrix = CSystem::GetTickCount();
+
+		MatchesList_t matches = m_MatrixField.GetFirstMatches();
+		if (matches.empty() && needMatrixScroll)
+		{
+			m_MatrixField.ScrollDown();
+		}
+		else if (!matches.empty() && !needMatrixScroll)
+		{
+			needMatrixScroll = true;
+		}
+	}
+}
+
+void GameScene::UpdateMatrix(float dt)
+{
 	for(int i = 0; i < MatrixField::GetMaxVisible(); ++i)
 	{
 		for(int j = 0; j < MatrixField::GetMaxVisible(); ++j)
 		{
 			BubbleElement* element = static_cast<BubbleElement*>(m_BubblesView[i][j]);
-			element->SetType(m_MatrixField.GetVisible(i, j));
-		}
-	}
-}
-
-bool GameScene::DoScroll(const CCRect region)
-{
-	return true;
-}
-
-void GameScene::onUpdate(float dt)
-{
-	switch (m_State)
-	{
-	case eWaitBoomAnim:
-	{
-		for(int i = 0; i < MatrixField::GetMaxVisible(); ++i)
-		{
-			for(int j = 0; j < MatrixField::GetMaxVisible(); ++j)
+			
+			int type = m_MatrixField.GetVisible(i, j);
+			if (type >= 0)
 			{
-				BubbleElement* element = static_cast<BubbleElement*>(m_BubblesView[i][j]);
-				element->SetType(m_MatrixField.GetVisible(i, j));
+				element->SetType(type);
 				element->setVisible(true);
+				element->setOpacity(255);
 			}
-		}	
+			else
+			{
+				//element->setVisible(false);
+				element->setOpacity(128);
+			}
 
-		m_State = eIdle;	
-	}
-	break;
-	case eIdle:
-	{
-		MatchesList_t matches = m_MatrixField.GetFirstMatches();
+			// additional shift for row or column
+			int x = m_BubbleViewDisplacement + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int y = VisibleRect::top().y - m_BubbleViewDisplacement - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 
-		while (!matches.empty())
-		{
-			BubbleElement* element = static_cast<BubbleElement*>(m_BubblesView[(int)matches[0].y][(int)matches[0].x]);
-			element->setVisible(false);//SetType(MatrixField::GetMaxTypes() + 1);
-			matches.erase(matches.begin());
+			if ((i == m_QuickScrollPos.y && !m_QuickScrollVertical) || (j == m_QuickScrollPos.x && m_QuickScrollVertical))
+			{
+				x += m_QuickScrollDelta.x;
+				y += m_QuickScrollDelta.y;
+			}
 
-			m_State = eWaitBoomAnim;
+			element->setPosition( ccp( x, y ) );
 		}
-	}
-	break;
-	default:
-		break;
-	};
-}
-
-void GameScene::onUpdateMatrix(float dt)
-{
-	
+	}	
 }

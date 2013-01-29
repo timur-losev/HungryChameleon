@@ -26,6 +26,18 @@ void GameView::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	}
 }
 
+void GameView::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
+{
+	CCSetIterator it = pTouches->begin();
+	if (it != pTouches->end())
+	{
+		if (m_TouchesMovedCallback)
+		{
+			m_TouchesMovedCallback((CCTouch*)(*it));
+		}
+	}
+}
+
 void GameView::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
     CCSetIterator it = pTouches->begin();

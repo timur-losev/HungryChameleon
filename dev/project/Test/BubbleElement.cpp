@@ -3,6 +3,7 @@
 #include "MatrixField.h"
 
 int BubbleElement::m_BubbleSize = 40;
+float BubbleElement::m_BubbleScale = 1.5f;
 BubbleElement::BubbleMap_t BubbleElement::m_BubblesMap;
 
 BubbleElement::BubbleElement(int type)
@@ -30,6 +31,7 @@ void BubbleElement::SetType(int type)
 		CCRect rect = m_BubblesMap[type][0];		
 		//this->setTextureRect(rect);
 		this->setAnchorPoint(CCPointMake(0.0f, 0.0f));
+		this->setScale(m_BubbleScale);
 
 		m_Type = type;
 	}
@@ -44,7 +46,7 @@ void BubbleElement::FakeBubblesInit()
 	for(int j = 0; j < MatrixField::GetMaxTypes() + 1; ++j)
 	{
 		std::vector<CCRect> animFrames;
-		animFrames.push_back(CCRectMake(0, j * 45, m_BubbleSize, m_BubbleSize));
+		animFrames.push_back(CCRectMake(0, j * 45, m_BubbleSize * m_BubbleScale, m_BubbleSize * m_BubbleScale));
 
 		m_BubblesMap[j] = animFrames;
 	}
