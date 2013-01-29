@@ -3,9 +3,8 @@
 class ParallaxBackground : public CCLayer
 {
 private:
-	std::function<void (CCTouch* touch)> m_TouchesBeginCallback;
+	std::function<void (CCTouch* touch)> m_TouchesEndedCallback;
 	std::function<void (CCTouch* touch)> m_TouchesMovedCallback;
-	CCTouch m_PrevTouch;
 protected:
 public:
     ParallaxBackground();
@@ -14,7 +13,7 @@ public:
     bool                        init();
     static ParallaxBackground*  create();
 
-	void RegisterTouchBeganCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesBeginCallback = callback; }
+	void RegisterTouchBeganCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesEndedCallback = callback; }
 	void RegisterTouchMovedCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesMovedCallback = callback; }
 
     virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);

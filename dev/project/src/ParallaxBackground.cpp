@@ -64,7 +64,6 @@ void ParallaxBackground::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	if (it != pTouches->end())
 	{
 		CCTouch* touch = (CCTouch*)(*it);
-		m_PrevTouch.setTouchInfo(touch->getID(), touch->getLocationInView().x, touch->getLocationInView().y);
 	}
 }
 
@@ -75,7 +74,7 @@ void ParallaxBackground::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 
     CCNode* node = getChildByTag(0);
     CCPoint currentPos = node->getPosition();
-    node->setPosition( currentPos.x + diff.x, currentPos.y );
+    //node->setPosition( currentPos.x + diff.x, currentPos.y );
 
 	if (touch)
 	{
@@ -91,11 +90,8 @@ void ParallaxBackground::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
     CCSetIterator it = pTouches->begin();
     CCTouch* touch = (CCTouch*)(*it);
 
-	m_PrevTouch.setTouchInfo(m_PrevTouch.getID(), m_PrevTouch.getLocationInView().x, m_PrevTouch.getLocationInView().y);
-	m_PrevTouch.setTouchInfo(touch->getID(), touch->getLocationInView().x, touch->getLocationInView().y);
-
-	if (m_TouchesBeginCallback)
+	if (m_TouchesEndedCallback)
 	{
-		m_TouchesBeginCallback(&m_PrevTouch);
+		m_TouchesEndedCallback(touch);
 	}
 }
