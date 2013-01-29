@@ -12,7 +12,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
-    eglView->setFrameSize(960, 640);
+    eglView->setFrameSize(1024, 768);
     return CCApplication::sharedApplication()->run();
 
     return 0;

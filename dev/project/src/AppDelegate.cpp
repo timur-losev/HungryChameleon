@@ -11,13 +11,13 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
 
-    CCSize designSize = CCSizeMake(960, 640);
+    CCSize designSize = CCSizeMake(1024, 768);
     
     if (screenSize.height > 640)
     {
         //TODO
-        CCSize resourceSize = CCSizeMake(960, 640);
-        CCFileUtils::sharedFileUtils()->setResourceDirectory("data/hd");
+        CCSize resourceSize = CCSizeMake(7024, 768);
+        CCFileUtils::sharedFileUtils()->setResourceDirectory("data");
         pDirector->setContentScaleFactor(resourceSize.height/designSize.height);
     }
     else
@@ -28,7 +28,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);
 
     // turn on display FPS
-    pDirector->setDisplayStats(true);
+    //pDirector->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
