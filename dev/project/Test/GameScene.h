@@ -9,8 +9,8 @@ class GameView;
 class GameScene : public CCScene
 {
 private:
-	static int			m_BubbleViewDisplacement;
-	static int			m_SpaceBetweenBubbles;
+	static int					m_BubbleViewDisplacement;
+	static int					m_SpaceBetweenBubbles;
 
 	GameView*					m_pGameView;
 	MatrixField					m_MatrixField;

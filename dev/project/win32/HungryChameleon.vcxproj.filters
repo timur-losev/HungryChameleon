@@ -64,6 +64,15 @@
     <ClCompile Include="..\src\ParallaxBackground.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\BubbleElement.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CSystem.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixField.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch.h">
@@ -100,6 +109,15 @@
       <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ParallaxBackground.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BubbleElement.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CSystem.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixField.h">
       <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>

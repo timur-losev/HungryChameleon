@@ -129,7 +129,7 @@ void GameScene::onUpdate(float dt)
 	
 	static bool needMatrixScroll = false;
 	static unsigned long lastTimeUpdateMatrix = CSystem::GetTickCount();
-	if (CSystem::GetTickCount() - lastTimeUpdateMatrix > 500)
+	if (CSystem::GetTickCount() - lastTimeUpdateMatrix > 250)
 	{
 		lastTimeUpdateMatrix = CSystem::GetTickCount();
 

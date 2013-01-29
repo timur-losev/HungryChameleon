@@ -9,12 +9,12 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
 
-    CCSize designSize = CCSizeMake(960, 640);
+    CCSize designSize = CCSizeMake(1024, 768);
     
     if (screenSize.height > 640)
     {
         //TODO
-        CCSize resourceSize = CCSizeMake(960, 640);
+        CCSize resourceSize = CCSizeMake(1024, 768);
         CCFileUtils::sharedFileUtils()->setResourceDirectory("hd");
         pDirector->setContentScaleFactor(resourceSize.height/designSize.height);
     }

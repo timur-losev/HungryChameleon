@@ -1,8 +1,6 @@
 #pragma once
 #include <assert.h>
 #include <vector>
-#include <cocos2d.h>
-using namespace cocos2d;
 
 typedef std::vector<CCPoint> MatchesList_t;
 

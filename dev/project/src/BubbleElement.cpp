@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "BubbleElement.h"
 #include "VisibleRect.h"
 #include "MatrixField.h"

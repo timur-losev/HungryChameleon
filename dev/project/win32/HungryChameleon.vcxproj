@@ -84,6 +84,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\AppDelegate.cpp" />
+    <ClCompile Include="..\src\BubbleElement.cpp" />
+    <ClCompile Include="..\src\CSystem.cpp" />
     <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
     <ClCompile Include="..\src\GameSceneBase.cpp" />
@@ -93,6 +95,7 @@
     <ClCompile Include="..\src\MainMenuScene.cpp" />
     <ClCompile Include="..\src\MainMenuView.cpp" />
     <ClCompile Include="..\src\MainScene.cpp" />
+    <ClCompile Include="..\src\MatrixField.cpp" />
     <ClCompile Include="..\src\ParallaxBackground.cpp" />
     <ClCompile Include="..\src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -102,6 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h" />
+    <ClInclude Include="..\src\BubbleElement.h" />
+    <ClInclude Include="..\src\CSystem.h" />
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameDelegate.h" />
     <ClInclude Include="..\src\GameSceneBase.h" />
@@ -110,6 +115,7 @@
     <ClInclude Include="..\src\MainMenuScene.h" />
     <ClInclude Include="..\src\MainMenuView.h" />
     <ClInclude Include="..\src\MainScene.h" />
+    <ClInclude Include="..\src\MatrixField.h" />
     <ClInclude Include="..\src\ParallaxBackground.h" />
     <ClInclude Include="..\src\pch.h" />
     <ClInclude Include="..\src\VisibleRect.h" />
