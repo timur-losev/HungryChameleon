@@ -11,7 +11,7 @@
 	<Frame name="light_blue" x="280" y="0" w="40" h="40" />
 	<Frame name="yellow" x="320" y="0" w="40" h="40" />
 	<Frame name="black" x="360" y="0" w="40" h="40" />
-	<Anim name="brown_idle" frames="brown" />
+	<Anim name="brown_idle" frames="brown,red,cyan" />
 	<Anim name="red_idle" frames="red" />
 	<Anim name="cyan_idle" frames="cyan" />
 	<Anim name="green_idle" frames="green" />
