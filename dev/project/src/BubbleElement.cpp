@@ -12,8 +12,10 @@ std::string BubbleElement::m_Texture;
 BubbleElement::BubbleMap_t BubbleElement::m_BubblesMap;
 
 BubbleElement::BubbleElement(int type)
-	: m_Type(type)
+	: m_FrameIndx(0)
 {
+	m_LastAnimationTime = CSystem::GetTickCount();
+
 	if (m_BubblesMap.find(type) != m_BubblesMap.end())
 	{
 		this->initWithFile(m_Texture.c_str());
@@ -28,18 +30,21 @@ BubbleElement::~BubbleElement()
 
 void BubbleElement::SetType(int type)
 {
+	if (type == m_Type)
+	{
+		return;
+	}
+
 	if (m_BubblesMap.find(type) != m_BubblesMap.end())
 	{
-		CCRect rect = m_BubblesMap[type][0];		
+		m_FrameIndx = 0;
+
+		CCRect rect = m_BubblesMap[type][m_FrameIndx];		
 		this->setTextureRect(rect);
 		this->setAnchorPoint(CCPointMake(0.0f, 0.0f));
 		this->setScale(m_BubbleScale);
 
 		m_Type = type;
-	}
-	else
-	{
-		int j = 0;
 	}
 }
 
@@ -105,8 +110,8 @@ bool BubbleElement::LoadBubbles()
 		Utils::SplitString(strFrames, ",", strFramesList);
 
 		size_t frameCount = strFramesList.size();
-		framesList.resize(frameCount - 1);
-		for (size_t i = 0; i < frameCount - 1; ++i)
+		framesList.resize(frameCount);
+		for (size_t i = 0; i < frameCount; ++i)
 		{
 			framesList[i] = frames[strFramesList[i]];
 		}
@@ -118,4 +123,24 @@ bool BubbleElement::LoadBubbles()
 	}
 
 	return true;
+}
+
+void BubbleElement::Update(float dt)
+{
+	if (CSystem::GetTickCount() - m_LastAnimationTime > 300)
+	{
+		if (m_FrameIndx < m_BubblesMap[m_Type].size())
+		{
+			CCRect rect = m_BubblesMap[m_Type][m_FrameIndx];		
+			this->setTextureRect(rect);
+
+			++m_FrameIndx;
+			if (m_FrameIndx >= m_BubblesMap[m_Type].size())
+			{
+				m_FrameIndx = 0;
+			}
+
+			m_LastAnimationTime = CSystem::GetTickCount();
+		}
+	}
 }

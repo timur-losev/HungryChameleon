@@ -199,6 +199,8 @@ void MainScene::UpdateMatrix(float dt)
 			}
 
 			element->setPosition( ccp( x, y ) );
+
+			element->Update(dt);
 		}
 	}	
 }

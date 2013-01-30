@@ -20,6 +20,12 @@ namespace Utils
 		std::string::size_type beg = 0;
 		std::string::size_type end = in.find(delim);
 
+		if (end == std::string::npos)
+		{
+			out.push_back(in);
+			return;
+		}
+
 		while (end > beg)
 		{
 			size_t count = end - beg;
