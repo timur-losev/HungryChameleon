@@ -8,7 +8,7 @@
 #include "BubbleElement.h"
 #include "CSystem.h"
 
-int MainScene::m_BubbleViewDisplacement		= 40;
+CCPoint MainScene::m_BubbleViewDisplacement = CCPointMake(40, 120);
 int	MainScene::m_SpaceBetweenBubbles		= 5;
 
 MainScene::MainScene()
@@ -65,8 +65,8 @@ void MainScene::onEnter()
 		for(int j = 0; j < MatrixField::GetMaxVisible(); ++j)
 		{
 			BubbleElement* element;
-			int x = m_BubbleViewDisplacement + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
-			int y = VisibleRect::top().y - m_BubbleViewDisplacement - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int x = m_BubbleViewDisplacement.x + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int y = VisibleRect::top().y - m_BubbleViewDisplacement.y - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 			
 			element = new BubbleElement( m_MatrixField.GetVisible(i, j) );//rand() % MatrixField::GetMaxTypes() );
 			element->retain();
@@ -107,22 +107,22 @@ void MainScene::OnTouchMoved(CCTouch* touch)
 {
 	CCPoint delta = touch->getDelta();
 	CCPoint position = touch->getLocationInView();
-	int fieldSize = m_BubbleViewDisplacement + MatrixField::GetMaxVisible() * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+	int fieldSizeX = m_BubbleViewDisplacement.x + MatrixField::GetMaxVisible() * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+    int fieldSizeY = m_BubbleViewDisplacement.y + MatrixField::GetMaxVisible() * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 
-	if (position.x < m_BubbleViewDisplacement || 
-		position.y < m_BubbleViewDisplacement ||
-		position.x >= fieldSize || 
-		position.y >= fieldSize ||
+	if (position.x < m_BubbleViewDisplacement.x || 
+		position.y < m_BubbleViewDisplacement.y ||
+		position.x >= fieldSizeX || 
+		position.y >= fieldSizeY ||
 		(delta.x == 0 && delta.y == 0))
 	{
+        // Scroll parallax background
+        m_pBackground->Scroll(touch);
 		return;
 	}
 
-	// Scroll parallax background
-	//m_pBackground->Scroll(delta.x);
-
-	position.x -= m_BubbleViewDisplacement;
-	position.y -= m_BubbleViewDisplacement;
+	position.x -= m_BubbleViewDisplacement.x;
+	position.y -= m_BubbleViewDisplacement.y;
 
 	int yPos = (int)(position.x / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
 	int xPos = (int)(position.y / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
@@ -189,8 +189,8 @@ void MainScene::UpdateMatrix(float dt)
 			}
 
 			// additional shift for row or column
-			int x = m_BubbleViewDisplacement + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
-			int y = VisibleRect::top().y - m_BubbleViewDisplacement - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int x = m_BubbleViewDisplacement.x + i * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+			int y = VisibleRect::top().y - m_BubbleViewDisplacement.y - BubbleElement::GetBubbleSize() - j * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
 
 			if ((i == m_QuickScrollPos.y && !m_QuickScrollVertical) || (j == m_QuickScrollPos.x && m_QuickScrollVertical))
 			{

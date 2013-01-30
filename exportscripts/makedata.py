@@ -10,9 +10,13 @@ import shutil
 def main():
     srcDir = os.getcwd() + "/../export/"
     destDir = os.getcwd() + "/../_build_win32/data"
-    if not os.path.exists(destDir):
+    '''if not os.path.exists(destDir):
         os.makedirs(destDir)
     print srcDir
     dirList = os.listdir(srcDir)
     for files in dirList:
-        shutil.copy(srcDir + files, destDir)
+        shutil.copy(srcDir + files, destDir)'''
+    
+    if os.path.exists(destDir):
+        shutil.rmtree(destDir)
+    shutil.copytree(srcDir, destDir)

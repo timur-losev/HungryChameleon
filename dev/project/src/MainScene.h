@@ -10,7 +10,7 @@ class MainScene: public GameSceneBase
 private:
     ParallaxBackground*					m_pBackground;
 
-	static int					m_BubbleViewDisplacement;
+	static CCPoint				m_BubbleViewDisplacement;
 	static int					m_SpaceBetweenBubbles;
 
 	MatrixField					m_MatrixField;

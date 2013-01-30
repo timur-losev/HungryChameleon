@@ -13,7 +13,7 @@ public:
     bool                        init();
     static ParallaxBackground*  create();
 
-	void Scroll(float dx);
+	void Scroll(CCTouch*);
 
 	void RegisterTouchBeganCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesEndedCallback = callback; }
 	void RegisterTouchMovedCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesMovedCallback = callback; }

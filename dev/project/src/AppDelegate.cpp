@@ -13,14 +13,14 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCSize designSize = CCSizeMake(1024, 768);
     
-    if (screenSize.height > 640)
+    /*if (screenSize.height > 640)
     {
         //TODO
         CCSize resourceSize = CCSizeMake(7024, 768);
         CCFileUtils::sharedFileUtils()->setResourceDirectory("data");
         pDirector->setContentScaleFactor(resourceSize.height/designSize.height);
     }
-    else
+    else*/
     {
         CCFileUtils::sharedFileUtils()->setResourceDirectory("data");
     }
