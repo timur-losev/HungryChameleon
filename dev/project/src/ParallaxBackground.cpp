@@ -58,6 +58,11 @@ ParallaxBackground* ParallaxBackground::create()
     }
 }
 
+void ParallaxBackground::Scroll(float dx)
+{
+	setPosition(getPosition().x + dx, getPosition().y);
+}
+
 void ParallaxBackground::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
     CCSetIterator it = pTouches->begin();
@@ -71,10 +76,6 @@ void ParallaxBackground::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
 	CCTouch *touch = (CCTouch*)pTouches->anyObject();
     CCPoint diff = touch->getDelta();
-
-    CCNode* node = getChildByTag(0);
-    CCPoint currentPos = node->getPosition();
-    //node->setPosition( currentPos.x + diff.x, currentPos.y );
 
 	if (touch)
 	{

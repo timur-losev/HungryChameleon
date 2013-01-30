@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Bubbles>
+    <Settings size="40" scale="1.3" texture="bubbles.png"/>
+	<Frame name="brown" x="0" y="0" w="40" h="40" />
+	<Frame name="red" x="40" y="0" w="40" h="40" />
+	<Frame name="cyan" x="80" y="0" w="40" h="40" />
+	<Frame name="green" x="120" y="0" w="40" h="40" />
+	<Frame name="magenta" x="160" y="0" w="40" h="40" />
+	<Frame name="salad" x="200" y="0" w="40" h="40" />
+	<Frame name="blue" x="240" y="0" w="40" h="40" />
+	<Frame name="light_blue" x="280" y="0" w="40" h="40" />
+	<Frame name="yellow" x="320" y="0" w="40" h="40" />
+	<Frame name="black" x="360" y="0" w="40" h="40" />
+	<Anim name="brown_idle" frames="brown" />
+	<Anim name="red_idle" frames="red" />
+	<Anim name="cyan_idle" frames="cyan" />
+	<Anim name="green_idle" frames="green" />
+	<Anim name="magenta_idle" frames="magenta" />
+	<Anim name="salad_idle" frames="salad" />
+	<Anim name="blue_idle" frames="blue" />
+	<Anim name="light_blue_idle" frames="light_blue" />
+	<Anim name="yellow_idle" frames="yellow" />
+	<Anim name="black_idle" frames="black" />
+</Bubbles>

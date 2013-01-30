@@ -14,7 +14,7 @@ int	MainScene::m_SpaceBetweenBubbles		= 5;
 MainScene::MainScene()
 	: m_pBackground(0)
 {
-	BubbleElement::FakeBubblesInit();
+	BubbleElement::LoadBubbles();
 }
 
 MainScene::~MainScene()
@@ -117,6 +117,9 @@ void MainScene::OnTouchMoved(CCTouch* touch)
 	{
 		return;
 	}
+
+	// Scroll parallax background
+	//m_pBackground->Scroll(delta.x);
 
 	position.x -= m_BubbleViewDisplacement;
 	position.y -= m_BubbleViewDisplacement;

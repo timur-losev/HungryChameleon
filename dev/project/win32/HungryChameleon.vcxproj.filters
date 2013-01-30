@@ -73,6 +73,9 @@
     <ClCompile Include="..\src\MatrixField.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Utils.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch.h">
@@ -118,6 +121,9 @@
       <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\MatrixField.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils.h">
       <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>

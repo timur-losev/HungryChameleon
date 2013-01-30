@@ -54,12 +54,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;..\..\..\libs\tinyxml\bin\Debug\tinyxml.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>Debug.win32</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -101,6 +101,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="..\src\Utils.cpp" />
     <ClCompile Include="..\src\VisibleRect.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +119,7 @@
     <ClInclude Include="..\src\MatrixField.h" />
     <ClInclude Include="..\src\ParallaxBackground.h" />
     <ClInclude Include="..\src\pch.h" />
+    <ClInclude Include="..\src\Utils.h" />
     <ClInclude Include="..\src\VisibleRect.h" />
   </ItemGroup>
   <ItemGroup>
