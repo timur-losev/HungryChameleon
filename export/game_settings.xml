@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<GameSettings>
+    <Settings bubble_field_pos_x="40" bubble_field_pos_y="120" space_between_bubbles="5" duration_of_match="120" />
+</GameSettings>

@@ -8,13 +8,15 @@
 #include "BubbleElement.h"
 #include "CSystem.h"
 
-CCPoint MainScene::m_BubbleViewDisplacement = CCPointMake(40, 120);
-int	MainScene::m_SpaceBetweenBubbles		= 5;
-
 MainScene::MainScene()
 	: m_pBackground(0)
+	, m_LabelTimer(0)
+	, m_MatchDuration(0)
 {
+	LoadGameSettings();
+
 	m_QuickScrollPos = CCPointMake(-1, -1);
+	m_MatchStartTime = CSystem::GetTickCount();
 
 	BubbleElement::LoadBubbles();
 }
@@ -43,13 +45,17 @@ bool MainScene::init()
 
     IngameMenuView* igmenu = new IngameMenuView();
     igmenu->init();
-    
-    addChild(m_pBackground);
+	igmenu->getBackToMainMenu()->setTarget(this, menu_selector(MainScene::onMainMenuTap));
+
+	// Counter
+	m_LabelTimer = CCLabelTTF::create("Time: 1:00", "data/brookeshappelldots.ttf", 68);
+	m_LabelTimer->setPosition(CCPointMake(360, VisibleRect::top().y - 50));
+		
+	addChild(m_pBackground);
     addChild(igmenu);
+	addChild(m_LabelTimer);
 
-    igmenu->getBackToMainMenu()->setTarget(this, menu_selector(MainScene::onMainMenuTap));
-
-    igmenu->release();
+	igmenu->release();
 
     return kRet;
 }
@@ -151,6 +157,22 @@ void MainScene::OnTouchMoved(CCTouch* touch)
 
 void MainScene::onUpdate(float dt)
 {
+	unsigned int currentTime = CSystem::GetTickCount() / 1000;
+	if (currentTime < m_MatchStartTime / 1000 + m_MatchDuration)
+	{
+		int timeLeft = (int)(m_MatchStartTime / 1000 + m_MatchDuration - currentTime);
+		int hour = timeLeft / 60;
+		int sec =  (timeLeft - (hour * 60));
+
+		char strTime[64];
+		sprintf(strTime, "Time: %d:%.2d", hour, sec);
+		m_LabelTimer->setString(strTime);
+	}
+	else
+	{
+		// Game Over
+	}
+
 	UpdateMatrix(dt);
 	
 	static bool needMatrixScroll = false;
@@ -207,4 +229,29 @@ void MainScene::UpdateMatrix(float dt)
 			element->Update(dt);
 		}
 	}	
+}
+
+bool MainScene::LoadGameSettings()
+{
+	std::string fullname = CSystem::GetBundlePath() + "data/game_settings.xml";
+
+	TiXmlDocument doc(fullname.c_str());
+    doc.LoadFile();
+    TiXmlElement* root = doc.RootElement();
+	if (!root)
+	{
+		return false;
+	}
+
+	TiXmlElement* xsettings = root->FirstChildElement("Settings");
+	if (!xsettings)
+	{
+		return false;
+	}
+	xsettings->Attribute("bubble_field_pos_x", &m_BubbleViewDisplacement.x);
+	xsettings->Attribute("bubble_field_pos_y", &m_BubbleViewDisplacement.y);
+	xsettings->Attribute("space_between_bubbles", &m_SpaceBetweenBubbles);
+	xsettings->Attribute("duration_of_match", &m_MatchDuration);
+
+	return true;
 }

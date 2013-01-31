@@ -8,10 +8,10 @@ class ParallaxBackground;
 class MainScene: public GameSceneBase
 {
 private:
-    ParallaxBackground*					m_pBackground;
+    ParallaxBackground*			m_pBackground;
 
-	static CCPoint				m_BubbleViewDisplacement;
-	static int					m_SpaceBetweenBubbles;
+	CCPoint						m_BubbleViewDisplacement;
+	int							m_SpaceBetweenBubbles;
 
 	MatrixField					m_MatrixField;
 	std::vector< std::vector<CCSprite*> >   m_BubblesView;
@@ -19,11 +19,16 @@ private:
 	CCPoint						m_QuickScrollDelta;
 	bool						m_QuickScrollVertical;
 
+	int							m_MatchDuration;
+	unsigned long				m_MatchStartTime;
+	CCLabelTTF*					m_LabelTimer;
+
 
 	void OnTouchEnded(CCTouch* touch);
 	void OnTouchMoved(CCTouch* touch);
 	void onUpdate(float dt);
 	void UpdateMatrix(float dt);
+	bool LoadGameSettings();
 
 protected:
 public:
