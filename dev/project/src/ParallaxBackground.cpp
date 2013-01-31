@@ -19,21 +19,27 @@ bool ParallaxBackground::init()
         setTouchEnabled(true);
 
         CCSprite* pBackground = CCSprite::create();
-        pBackground->initWithFile("main_bg.png");
+        pBackground->initWithFile("Background/-1.png");
         pBackground->setPosition(VisibleRect::center());
 
         CCSprite* pMiddleground = CCSprite::create();
-        pMiddleground->initWithFile("main_mg.png");
+        pMiddleground->initWithFile("Background/1.png");
         pMiddleground->setPosition(VisibleRect::center());
 
         CCSprite* pForegraund = CCSprite::create();
-        pForegraund->initWithFile("main_fg.png");
+        pForegraund->initWithFile("Background/2.png");
         pForegraund->setPosition(VisibleRect::center());
 
+        CCSprite* pStatic = CCSprite::create();
+        pStatic->initWithFile("Background/3.png");
+        pStatic->setPosition(VisibleRect::center());
+
         CCParallaxNode* voidNode = CCParallaxNode::create();
-        voidNode->addChild(pBackground, -1, ccp(0.1f, 0.1f), VisibleRect::center());
-        voidNode->addChild(pMiddleground, 1, ccp(1.2f, 1.2f), VisibleRect::center());
-        voidNode->addChild(pForegraund, 2, ccp(2.0f, 2.f), VisibleRect::center());
+        voidNode->addChild(pBackground, -1, ccp(-1.3f, 1.3f), VisibleRect::center());
+        voidNode->addChild(pMiddleground, 1, ccp(-1.0f, 1.0f), VisibleRect::center());
+        voidNode->addChild(pForegraund, 2, ccp(0.1f, 0.5f), VisibleRect::center());
+        voidNode->addChild(pStatic, 3, ccp(0.0f, 0.0f), VisibleRect::center());
+        
 
         addChild(voidNode, 0, 0);
 
@@ -58,9 +64,22 @@ ParallaxBackground* ParallaxBackground::create()
     }
 }
 
-void ParallaxBackground::Scroll(float dx)
+void ParallaxBackground::Scroll(CCTouch* touch)
 {
-	setPosition(getPosition().x + dx, getPosition().y);
+    CCPoint diff = touch->getDelta();
+
+    CCNode* node = getChildByTag(0);
+    CCPoint currentPos = node->getPosition();
+    float xpos = currentPos.x + diff.x;
+    float ypos = currentPos.y/* + diff.y*/;
+
+    ypos = std::max(ypos, -35.f);
+    ypos = std::min(ypos, 35.f);
+
+    xpos = std::max(xpos, -50.f);
+    xpos = std::min(xpos, 50.f);
+
+    node->setPosition(xpos , ypos );
 }
 
 void ParallaxBackground::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
@@ -75,7 +94,6 @@ void ParallaxBackground::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 void ParallaxBackground::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
 	CCTouch *touch = (CCTouch*)pTouches->anyObject();
-    CCPoint diff = touch->getDelta();
 
 	if (touch)
 	{
