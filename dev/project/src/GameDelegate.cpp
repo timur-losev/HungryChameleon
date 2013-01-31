@@ -54,7 +54,7 @@ void GameDelegate::returnToMainMenu()
     MainMenuScene* mmscene = new MainMenuScene();
     mmscene->init(true);
 
-    CCDirector::sharedDirector()->pushScene(CCTransitionFadeBL::create(0.8f, mmscene));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFadeBL::create(0.8f, mmscene));
     mmscene->release();
 }
 

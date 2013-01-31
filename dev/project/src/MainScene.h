@@ -19,9 +19,16 @@ private:
 	CCPoint						m_QuickScrollDelta;
 	bool						m_QuickScrollVertical;
 
+	// Timer
 	int							m_MatchDuration;
 	unsigned long				m_MatchStartTime;
 	CCLabelTTF*					m_LabelTimer;
+	CCPoint						m_LabelTimerPos;
+
+	// Scores
+	int							m_ScoresCount;
+	CCLabelTTF*					m_LabelScores;
+	CCPoint						m_ScoresTimerPos;
 
 
 	void OnTouchEnded(CCTouch* touch);

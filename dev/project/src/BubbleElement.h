@@ -23,7 +23,7 @@ public:
 
 	void										Update(float dt);
 
-	static inline int							GetBubbleSize() { return m_BubbleSize * m_BubbleScale; }
+	static inline int							GetBubbleSize() { return (int)(m_BubbleSize * m_BubbleScale); }
 	static void									FakeBubblesInit();
 	static bool									LoadBubbles();
 

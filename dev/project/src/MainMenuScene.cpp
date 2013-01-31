@@ -34,7 +34,7 @@ bool MainMenuScene::init(bool fromGame)
 
         if (fromGame)
         {
-            m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::returnCallback));
+            m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
         }
         else
         {

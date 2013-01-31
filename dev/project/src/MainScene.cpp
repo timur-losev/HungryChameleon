@@ -49,11 +49,15 @@ bool MainScene::init()
 
 	// Counter
 	m_LabelTimer = CCLabelTTF::create("Time: 1:00", "data/brookeshappelldots.ttf", 68);
-	m_LabelTimer->setPosition(CCPointMake(360, VisibleRect::top().y - 50));
+	m_LabelTimer->setPosition(CCPointMake(m_LabelTimerPos.x, VisibleRect::top().y - m_LabelTimerPos.y));
+
+	m_LabelScores = CCLabelTTF::create("Score: 0000000", "data/brookeshappelldots.ttf", 68);
+	m_LabelScores->setPosition(CCPointMake(m_ScoresTimerPos.x, VisibleRect::top().y - m_ScoresTimerPos.y));
 		
 	addChild(m_pBackground);
     addChild(igmenu);
 	addChild(m_LabelTimer);
+	addChild(m_LabelScores);
 
 	igmenu->release();
 
@@ -63,6 +67,8 @@ bool MainScene::init()
 void MainScene::onEnter()
 {
     GameSceneBase::onEnter();
+
+	m_ScoresCount = 0;
 
 	m_MatrixField.GenerateField();
 	std::vector<CCSprite*> line;
@@ -152,7 +158,7 @@ void MainScene::OnTouchMoved(CCTouch* touch)
 		delta.y = (BubbleElement::GetBubbleSize() * ((delta.y >= 0) ? 1.0f : -1.0f)) / 2.0f;
 	}
 		
-	m_QuickScrollDelta	= CCPointMake(delta.x, delta.y);
+	m_QuickScrollDelta = delta;
 }
 
 void MainScene::onUpdate(float dt)
@@ -171,6 +177,7 @@ void MainScene::onUpdate(float dt)
 	else
 	{
 		// Game Over
+		GameDelegate::sharedGameDelegate()->returnToMainMenu();
 	}
 
 	UpdateMatrix(dt);
@@ -190,6 +197,12 @@ void MainScene::onUpdate(float dt)
 		{
 			needMatrixScroll = true;
 		}
+
+		m_ScoresCount += matches.size() * 50;
+		
+		char strScore[128];
+		sprintf(strScore, "Score: %.7d", m_ScoresCount);
+		m_LabelScores->setString(strScore);
 	}
 }
 
@@ -243,15 +256,25 @@ bool MainScene::LoadGameSettings()
 		return false;
 	}
 
-	TiXmlElement* xsettings = root->FirstChildElement("Settings");
-	if (!xsettings)
+	TiXmlElement* xglobal = root->FirstChildElement("Global");
+	TiXmlElement* xbubbleField = root->FirstChildElement("BubblesField");
+	TiXmlElement* xtimeField = root->FirstChildElement("TimeField");
+	TiXmlElement* xscoresField = root->FirstChildElement("ScoresField");
+	if (!xglobal ||
+		!xbubbleField ||
+		!xtimeField ||
+		!xscoresField)
 	{
 		return false;
 	}
-	xsettings->Attribute("bubble_field_pos_x", &m_BubbleViewDisplacement.x);
-	xsettings->Attribute("bubble_field_pos_y", &m_BubbleViewDisplacement.y);
-	xsettings->Attribute("space_between_bubbles", &m_SpaceBetweenBubbles);
-	xsettings->Attribute("duration_of_match", &m_MatchDuration);
+	xbubbleField->Attribute("x", &m_BubbleViewDisplacement.x);
+	xbubbleField->Attribute("y", &m_BubbleViewDisplacement.y);
+	xbubbleField->Attribute("space_between_bubbles", &m_SpaceBetweenBubbles);
+	xglobal->Attribute("duration_of_match", &m_MatchDuration);
+	xtimeField->Attribute("x", &m_LabelTimerPos.x);
+	xtimeField->Attribute("y", &m_LabelTimerPos.y);
+	xscoresField->Attribute("x", &m_ScoresTimerPos.x);
+	xscoresField->Attribute("y", &m_ScoresTimerPos.y);
 
 	return true;
 }
