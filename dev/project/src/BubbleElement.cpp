@@ -6,8 +6,9 @@
 #include "Utils.h"
 #include <map>
 
-int BubbleElement::m_BubbleSize = 40;
-float BubbleElement::m_BubbleScale = 1.3f;
+int BubbleElement::m_BubbleSize			= 40;
+float BubbleElement::m_BubbleScale		= 1.3f;
+int BubbleElement::m_Duration			= 0;
 std::string BubbleElement::m_Texture;
 BubbleElement::BubbleMap_t BubbleElement::m_BubblesMap;
 
@@ -81,6 +82,7 @@ bool BubbleElement::LoadBubbles()
 	m_Texture = CSystem::GetBundlePath() + std::string("data/") + std::string(xsettings->Attribute("texture"));
 	xsettings->Attribute("size", &m_BubbleSize);
 	xsettings->Attribute("scale", &m_BubbleScale);
+	xsettings->Attribute("duration", &m_Duration);
 
 	std::map<std::string, CCRect> frames;
 	TiXmlElement* xframe = root->FirstChildElement("Frame");
@@ -127,7 +129,7 @@ bool BubbleElement::LoadBubbles()
 
 void BubbleElement::Update(float dt)
 {
-	if (CSystem::GetTickCount() - m_LastAnimationTime > 300)
+	if (CSystem::GetTickCount() - m_LastAnimationTime > m_Duration)
 	{
 		if (m_FrameIndx < m_BubblesMap[m_Type].size())
 		{

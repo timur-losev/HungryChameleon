@@ -6,6 +6,7 @@ private:
 	static int									m_BubbleSize;	//Temp values
 	static float								m_BubbleScale;	//Temp values
 	static std::string							m_Texture;
+	static int									m_Duration;
 
 	typedef std::map<int, std::vector<CCRect>>	BubbleMap_t;
 	static BubbleMap_t							m_BubblesMap;

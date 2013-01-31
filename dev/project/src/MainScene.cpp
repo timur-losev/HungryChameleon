@@ -79,7 +79,7 @@ void MainScene::onEnter()
 		m_BubblesView.push_back(line);
 	}
 
-	schedule(schedule_selector(MainScene::onUpdate), 0.1f);
+	schedule(schedule_selector(MainScene::onUpdate), 0.0f);
 }
 
 void MainScene::onMainMenuTap( CCObject* )
