@@ -64,7 +64,7 @@ void BubbleElement::FakeBubblesInit()
 
 bool BubbleElement::LoadBubbles()
 {
-	std::string fullname = CSystem::GetBundlePath() + "data/bubbles.xml";
+	std::string fullname = CSystem::GetBundlePath() + "data/spiders.xml";
 
 	TiXmlDocument doc(fullname.c_str());
     doc.LoadFile();

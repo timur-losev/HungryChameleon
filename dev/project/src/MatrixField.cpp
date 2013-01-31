@@ -6,7 +6,7 @@
 
 int MatrixField::m_MaxFieldSize		= 100;
 int MatrixField::m_MaxVisibleSize	= 10;
-int MatrixField::m_MaxTypesCount	= 9;
+int MatrixField::m_MaxTypesCount	= 6;
 
 MatrixField::MatrixField()
 {
