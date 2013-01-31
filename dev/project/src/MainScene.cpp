@@ -14,6 +14,8 @@ int	MainScene::m_SpaceBetweenBubbles		= 5;
 MainScene::MainScene()
 	: m_pBackground(0)
 {
+	m_QuickScrollPos = CCPointMake(-1, -1);
+
 	BubbleElement::LoadBubbles();
 }
 
@@ -127,21 +129,23 @@ void MainScene::OnTouchMoved(CCTouch* touch)
 	int yPos = (int)(position.x / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
 	int xPos = (int)(position.y / (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles));
 
-	if (abs(delta.x) > abs(delta.y))
+	if (m_QuickScrollPos.x == -1 && m_QuickScrollPos.y == -1)
 	{
-		m_QuickScrollVertical = true;
+		m_QuickScrollPos	= CCPointMake(xPos, yPos);
+		m_QuickScrollVertical = abs(delta.x) > abs(delta.y);
+	}
 
+	if (m_QuickScrollVertical)
+	{
 		delta.y = 0;
-		delta.x = (delta.x < BubbleElement::GetBubbleSize()) ? (BubbleElement::GetBubbleSize() * ((delta.x >= 0) ? 1.0f : -1.0f)) / 2.0f : delta.x;
+		delta.x = (BubbleElement::GetBubbleSize() * ((delta.x >= 0) ? 1.0f : -1.0f)) / 2.0f;
 	}
 	else
 	{
-		m_QuickScrollVertical = false;
 		delta.x = 0;
-		delta.y = (delta.y < BubbleElement::GetBubbleSize()) ? (BubbleElement::GetBubbleSize() * ((delta.y >= 0) ? 1.0f : -1.0f)) / 2.0f : delta.y;
+		delta.y = (BubbleElement::GetBubbleSize() * ((delta.y >= 0) ? 1.0f : -1.0f)) / 2.0f;
 	}
-
-	m_QuickScrollPos	= CCPointMake(xPos, yPos);
+		
 	m_QuickScrollDelta	= CCPointMake(delta.x, delta.y);
 }
 
