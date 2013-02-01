@@ -189,6 +189,8 @@ void MainScene::onUpdate(float dt)
 		lastTimeUpdateMatrix = CSystem::GetTickCount();
 
 		MatchesList_t matches = m_MatrixField.GetFirstMatches();
+		PushFlyingBubbles(matches);
+
 		if (matches.empty() && needMatrixScroll)
 		{
 			m_MatrixField.ScrollDown();
@@ -260,10 +262,12 @@ bool MainScene::LoadGameSettings()
 	TiXmlElement* xbubbleField = root->FirstChildElement("BubblesField");
 	TiXmlElement* xtimeField = root->FirstChildElement("TimeField");
 	TiXmlElement* xscoresField = root->FirstChildElement("ScoresField");
+	TiXmlElement* xflyingBubbles = root->FirstChildElement("FlyingBubbles");
 	if (!xglobal ||
 		!xbubbleField ||
 		!xtimeField ||
-		!xscoresField)
+		!xscoresField ||
+		!xflyingBubbles)
 	{
 		return false;
 	}
@@ -277,4 +281,38 @@ bool MainScene::LoadGameSettings()
 	xscoresField->Attribute("y", &m_ScoresTimerPos.y);
 
 	return true;
+}
+
+void MainScene::PushFlyingBubbles(const MatchesList_t& bubbles)
+{
+	size_t size = bubbles.size();
+	for (size_t i = 0; i < size; ++i)
+	{
+		CCPointArray *array = CCPointArray::create(20);
+
+		int x = m_BubbleViewDisplacement.x + bubbles[i].y * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+		int y = VisibleRect::top().y - m_BubbleViewDisplacement.y - BubbleElement::GetBubbleSize() - bubbles[i].x * (BubbleElement::GetBubbleSize() + m_SpaceBetweenBubbles);
+
+		array->addControlPoint(ccp(x, y));
+		array->addControlPoint(ccp(x + 30, y + 30));
+		array->addControlPoint(ccp(x + 60, y + 50));
+		array->addControlPoint(ccp(x + 80, y + 70));
+		array->addControlPoint(ccp(750, 400));
+
+		CCCardinalSplineTo *action = CCCardinalSplineTo::create(1.5, array, 0);
+		CCFiniteTimeAction* actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MainScene::RemoveFlyingBubbles));
+		CCFiniteTimeAction *seq = CCSequence::create(action, actionMoveDone, NULL);
+
+		BubbleElement* bubble = new BubbleElement(static_cast<BubbleElement*>(m_BubblesView[bubbles[i].y][bubbles[i].x])->GetType());
+	
+		bubble->setPosition(CCPointMake(x, y));
+		bubble->runAction(seq);
+		addChild(bubble);
+	}
+}
+
+void MainScene::RemoveFlyingBubbles(CCNode* sender)
+{
+	BubbleElement *sprite = (BubbleElement *)sender;
+	removeChild(sprite, true);
 }

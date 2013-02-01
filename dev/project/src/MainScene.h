@@ -45,5 +45,8 @@ public:
     bool                    init();
     virtual void            onEnter();
 
+	void					PushFlyingBubbles(const MatchesList_t& bubbles);
+	void					RemoveFlyingBubbles(CCNode* sender);
+
     void                    onMainMenuTap(CCObject*);
 };
