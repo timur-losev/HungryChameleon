@@ -31,21 +31,19 @@ BubbleElement::~BubbleElement()
 
 void BubbleElement::SetType(int type)
 {
-	if (type == m_Type)
+	this->setAnchorPoint(CCPointMake(0.0f, 0.0f));
+	this->setScale(m_BubbleScale);
+
+	if (type != m_Type)
 	{
-		return;
-	}
+		if (m_BubblesMap.find(type) != m_BubblesMap.end())
+		{
+			m_FrameIndx = 0;
+			m_Type = type;
 
-	if (m_BubblesMap.find(type) != m_BubblesMap.end())
-	{
-		m_FrameIndx = 0;
-
-		CCRect rect = m_BubblesMap[type][m_FrameIndx];		
-		this->setTextureRect(rect);
-		this->setAnchorPoint(CCPointMake(0.0f, 0.0f));
-		this->setScale(m_BubbleScale);
-
-		m_Type = type;
+			CCRect rect = m_BubblesMap[type][m_FrameIndx];		
+			this->setTextureRect(rect);
+		}
 	}
 }
 
