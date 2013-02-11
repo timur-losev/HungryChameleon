@@ -25,10 +25,6 @@ bool MainMenuScene::init(bool fromGame)
 {
     if (GameSceneBase::init())
     {
-        CCSprite* pBackground = CCSprite::create();
-        pBackground->initWithFile("mmbg.png");
-        pBackground->setPosition(VisibleRect::center());
-
         m_pMainMenu = new MainMenuView();
         m_pMainMenu->init(fromGame);
 
@@ -41,7 +37,6 @@ bool MainMenuScene::init(bool fromGame)
             m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
         }
 
-        addChild(pBackground);
         addChild(m_pMainMenu);
         m_pMainMenu->release();
 

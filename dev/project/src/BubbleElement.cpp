@@ -49,7 +49,7 @@ void BubbleElement::SetType(int type)
 
 void BubbleElement::FakeBubblesInit()
 {
-	m_Texture = CSystem::GetBundlePath() + std::string("data/bubbles.png");
+	m_Texture = CSystem::GetResourcesPath() + std::string("bubbles.png");
 
 	for(int j = 0; j < MatrixField::GetMaxTypes() + 1; ++j)
 	{
@@ -62,7 +62,7 @@ void BubbleElement::FakeBubblesInit()
 
 bool BubbleElement::LoadBubbles()
 {
-	std::string fullname = CSystem::GetBundlePath() + "data/spiders.xml";
+	std::string fullname = CSystem::GetResourcesPath() + "spiders2.xml";
 
 	TiXmlDocument doc(fullname.c_str());
     doc.LoadFile();
@@ -77,7 +77,7 @@ bool BubbleElement::LoadBubbles()
 	{
 		return false;
 	}
-	m_Texture = CSystem::GetBundlePath() + std::string("data/") + std::string(xsettings->Attribute("texture"));
+	m_Texture = CSystem::GetResourcesPath() + std::string(xsettings->Attribute("texture"));
 	xsettings->Attribute("size", &m_BubbleSize);
 	xsettings->Attribute("scale", &m_BubbleScale);
 	xsettings->Attribute("duration", &m_Duration);

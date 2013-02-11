@@ -15,6 +15,7 @@ namespace CSystem
     unsigned long GetTickCount();
     
     const std::string& GetBundlePath();
+	const std::string& GetResourcesPath();
 	bool IsFileExists( const std::string& name );
 };
 

@@ -11,13 +11,18 @@ bool MainMenuView::init(bool fromGame)
 {
     CCLayer::init();
 
+	CCSprite* pBackground = CCSprite::create();
+    pBackground->initWithFile("testscenebg.png");
+    pBackground->setPosition(VisibleRect::center());
+	addChild(pBackground);
+
     m_pMainMenu = CCMenu::create();
 
     CCString caption = "Start Game";
     if (fromGame)
         caption = "Resume Game";
 
-    CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "Arial", 24);
+    CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "data/brookeshappelldots.ttf", 68);
     m_pStartButton = CCMenuItemLabel::create(label);
     m_pStartButton->setPosition( ccp( VisibleRect::center().x, VisibleRect::center().y) );
 

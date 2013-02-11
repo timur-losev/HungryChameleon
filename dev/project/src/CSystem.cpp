@@ -46,7 +46,15 @@ const std::string& CSystem::GetBundlePath()
     return bundlePath;
 }
 
-bool CSystem::IsFileExists( const std::string& name ){
+const std::string& CSystem::GetResourcesPath()
+{
+    static std::string resourcesPath = GetBundlePath() + "data/";
+ 
+    return resourcesPath;
+}
+
+bool CSystem::IsFileExists( const std::string& name )
+{
 	return _access( name.c_str(), 0 ) != -1;
 }
 
