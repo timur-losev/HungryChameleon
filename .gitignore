@@ -24,3 +24,11 @@
 /dev/project/win32/Debug/
 /dev/project/win32/ipch/
 /dev/project/win32/Debug.win32/
+/_build_win32_debug
+
+/dev/project/Test/Debug
+/libs/tinyxml/Debug
+
+/exportscripts/*.pyc
+
+/dev/project/win32/bin/Debug
