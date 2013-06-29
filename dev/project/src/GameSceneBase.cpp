@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "Precompiled.h"
 #include "GameSceneBase.h"
 
 GameSceneBase::GameSceneBase()

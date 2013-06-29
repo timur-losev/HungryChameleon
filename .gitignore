@@ -20,6 +20,8 @@
 *.opensdf
 *.sdf
 *.suo
+*.idb
+*.pdb
 /_build_win32/
 /dev/project/win32/Debug/
 /dev/project/win32/ipch/
@@ -29,6 +31,11 @@
 /dev/project/Test/Debug
 /libs/tinyxml/Debug
 
-/exportscripts/*.pyc
+*.pyc
 
 /dev/project/win32/bin/Debug
+
+/dev/project/win32/UpgradeLog.XML
+
+/dev/project/win32/_UpgradeReport_Files
+/libs/loki/lib/loki_D.lib

@@ -9,7 +9,7 @@ import shutil
 
 def main():
     srcDir = os.getcwd() + "/../export/"
-    destDir = os.getcwd() + "/../_build_win32/data"
+    destDir = os.getcwd() + "/../_build_win32_debug/data"
     '''if not os.path.exists(destDir):
         os.makedirs(destDir)
     print srcDir

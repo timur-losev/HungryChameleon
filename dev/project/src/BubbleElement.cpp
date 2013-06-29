@@ -1,8 +1,8 @@
-#include "pch.h"
+#include "Precompiled.h"
 #include "BubbleElement.h"
 #include "VisibleRect.h"
 #include "MatrixField.h"
-#include "CSystem.h"
+#include "System.h"
 #include "Utils.h"
 #include <map>
 
@@ -13,7 +13,9 @@ std::string BubbleElement::m_Texture;
 BubbleElement::BubbleMap_t BubbleElement::m_BubblesMap;
 
 BubbleElement::BubbleElement(int type)
-	: m_FrameIndx(0)
+	: m_FrameIndx(0),
+    m_Type(0),
+    m_LastAnimationTime(0)
 {
 	m_LastAnimationTime = CSystem::GetTickCount();
 

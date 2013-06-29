@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "Precompiled.h"
 
 #include "GameController.h"
 #include "GameDelegate.h"
@@ -32,7 +32,7 @@ bool GameController::init()
 void GameController::showMainMenu()
 {
      setTouchEnabled(true);
-     GameDelegate::sharedGameDelegate()->openMainMenu();
+     SharedGameDelegate::Instance().startGame();
 }
 
 void GameController::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)

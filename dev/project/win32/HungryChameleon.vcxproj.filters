@@ -28,9 +28,6 @@
     <ClCompile Include="..\src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\pch.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\AppDelegate.cpp">
       <Filter>src\Base</Filter>
     </ClCompile>
@@ -67,20 +64,20 @@
     <ClCompile Include="..\src\BubbleElement.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\CSystem.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\MatrixField.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Precompiled.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\System.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\pch.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\AppDelegate.h">
       <Filter>src\Base</Filter>
     </ClInclude>
@@ -117,13 +114,16 @@
     <ClInclude Include="..\src\BubbleElement.h">
       <Filter>src\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\CSystem.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\MatrixField.h">
       <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Precompiled.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\System.h">
       <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>

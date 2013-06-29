@@ -54,8 +54,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;..\..\..\libs\loki\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -74,7 +74,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=0;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -88,7 +88,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\BubbleElement.cpp" />
-    <ClCompile Include="..\src\CSystem.cpp" />
+    <ClCompile Include="..\src\System.cpp" />
     <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
     <ClCompile Include="..\src\GameSceneBase.cpp" />
@@ -100,9 +100,9 @@
     <ClCompile Include="..\src\MainScene.cpp" />
     <ClCompile Include="..\src\MatrixField.cpp" />
     <ClCompile Include="..\src\ParallaxBackground.cpp" />
-    <ClCompile Include="..\src\pch.cpp">
+    <ClCompile Include="..\src\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\Utils.cpp" />
@@ -111,7 +111,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\BubbleElement.h" />
-    <ClInclude Include="..\src\CSystem.h" />
+    <ClInclude Include="..\src\System.h" />
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameDelegate.h" />
     <ClInclude Include="..\src\GameSceneBase.h" />
@@ -122,13 +122,16 @@
     <ClInclude Include="..\src\MainScene.h" />
     <ClInclude Include="..\src\MatrixField.h" />
     <ClInclude Include="..\src\ParallaxBackground.h" />
-    <ClInclude Include="..\src\pch.h" />
+    <ClInclude Include="..\src\Precompiled.h" />
     <ClInclude Include="..\src\Utils.h" />
     <ClInclude Include="..\src\VisibleRect.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\libs\cocos2dx\cocos2dx\proj.win32\cocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\loki\src\Library_MSVC9.vcxproj">
+      <Project>{cbdb8e7a-4286-4ae3-a190-ba33d7c53ff0}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\libs\tinyxml\tinyxml.vcxproj">
       <Project>{0c60dca7-3e32-4567-a651-44738b092b0e}</Project>

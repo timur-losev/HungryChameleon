@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "Precompiled.h"
 #include "MainScene.h"
 #include "VisibleRect.h"
 #include "IngameMenuView.h"
@@ -6,12 +6,12 @@
 #include "Layer3D.h"
 #include "ParallaxBackground.h"
 #include "BubbleElement.h"
-#include "CSystem.h"
+#include "System.h"
 
 MainScene::MainScene()
 	: m_pBackground(0)
 	, m_LabelTimer(0)
-	, m_MatchDuration(0)
+	, m_MatchDuration(60000)
 {
 	LoadGameSettings();
 
@@ -98,7 +98,7 @@ void MainScene::onEnter()
 
 void MainScene::onMainMenuTap( CCObject* )
 {
-    GameDelegate::sharedGameDelegate()->returnToMainMenu();
+    SharedGameDelegate::Instance().returnToMainMenu();
 }
 
 void MainScene::OnTouchEnded(CCTouch* touch)
@@ -177,7 +177,7 @@ void MainScene::onUpdate(float dt)
 	else
 	{
 		// Game Over
-		GameDelegate::sharedGameDelegate()->returnToMainMenu();
+		SharedGameDelegate::Instance().returnToMainMenu();
 	}
 
 	UpdateMatrix(dt);

@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "Precompiled.h"
 #include "MainMenuScene.h"
 #include "MainMenuView.h"
 #include "VisibleRect.h"
@@ -48,11 +48,11 @@ bool MainMenuScene::init(bool fromGame)
 
 void MainMenuScene::startCallback(CCObject * pSender)
 {
-    GameDelegate::sharedGameDelegate()->startGame();
+    SharedGameDelegate::Instance().startGame();
 }
 
 
 void MainMenuScene::returnCallback( CCObject * pSender )
 {
-    GameDelegate::sharedGameDelegate()->returnToGame();
+    SharedGameDelegate::Instance().returnToGame();
 }

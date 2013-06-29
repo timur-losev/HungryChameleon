@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HungryChameleon", "HungryChameleon.vcxproj", "{C50AED02-8D72-43F0-904B-558D9E0358CA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0C60DCA7-3E32-4567-A651-44738B092B0E} = {0C60DCA7-3E32-4567-A651-44738B092B0E}
@@ -10,24 +10,39 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcocos2d", "..\..\..\libs
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "..\..\..\libs\tinyxml\tinyxml.vcxproj", "{0C60DCA7-3E32-4567-A651-44738B092B0E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "loki", "..\..\..\libs\loki\src\Library_MSVC9.vcxproj", "{CBDB8E7A-4286-4AE3-A190-BA33D7C53FF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Release_MultiThreaded|Win32 = Release_MultiThreaded|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C50AED02-8D72-43F0-904B-558D9E0358CA}.Debug|Win32.ActiveCfg = Debug|Win32
 		{C50AED02-8D72-43F0-904B-558D9E0358CA}.Debug|Win32.Build.0 = Debug|Win32
+		{C50AED02-8D72-43F0-904B-558D9E0358CA}.Release_MultiThreaded|Win32.ActiveCfg = Release|Win32
+		{C50AED02-8D72-43F0-904B-558D9E0358CA}.Release_MultiThreaded|Win32.Build.0 = Release|Win32
 		{C50AED02-8D72-43F0-904B-558D9E0358CA}.Release|Win32.ActiveCfg = Release|Win32
 		{C50AED02-8D72-43F0-904B-558D9E0358CA}.Release|Win32.Build.0 = Release|Win32
 		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Debug|Win32.Build.0 = Debug|Win32
+		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Release_MultiThreaded|Win32.ActiveCfg = Release|Win32
+		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Release_MultiThreaded|Win32.Build.0 = Release|Win32
 		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Release|Win32.ActiveCfg = Release|Win32
 		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Release|Win32.Build.0 = Release|Win32
 		{0C60DCA7-3E32-4567-A651-44738B092B0E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{0C60DCA7-3E32-4567-A651-44738B092B0E}.Debug|Win32.Build.0 = Debug|Win32
+		{0C60DCA7-3E32-4567-A651-44738B092B0E}.Release_MultiThreaded|Win32.ActiveCfg = Release|Win32
+		{0C60DCA7-3E32-4567-A651-44738B092B0E}.Release_MultiThreaded|Win32.Build.0 = Release|Win32
 		{0C60DCA7-3E32-4567-A651-44738B092B0E}.Release|Win32.ActiveCfg = Release|Win32
 		{0C60DCA7-3E32-4567-A651-44738B092B0E}.Release|Win32.Build.0 = Release|Win32
+		{CBDB8E7A-4286-4AE3-A190-BA33D7C53FF0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CBDB8E7A-4286-4AE3-A190-BA33D7C53FF0}.Debug|Win32.Build.0 = Debug|Win32
+		{CBDB8E7A-4286-4AE3-A190-BA33D7C53FF0}.Release_MultiThreaded|Win32.ActiveCfg = Release_MultiThreaded|Win32
+		{CBDB8E7A-4286-4AE3-A190-BA33D7C53FF0}.Release_MultiThreaded|Win32.Build.0 = Release_MultiThreaded|Win32
+		{CBDB8E7A-4286-4AE3-A190-BA33D7C53FF0}.Release|Win32.ActiveCfg = Release|Win32
+		{CBDB8E7A-4286-4AE3-A190-BA33D7C53FF0}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
