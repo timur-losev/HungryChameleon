@@ -2,9 +2,11 @@
 
 class ParallaxBackground : public CCLayer
 {
+public:
+    typedef std::function<void (CCTouch* touch)> OnTouchEventSignature_t;
 private:
-	std::function<void (CCTouch* touch)> m_TouchesEndedCallback;
-	std::function<void (CCTouch* touch)> m_TouchesMovedCallback;
+    OnTouchEventSignature_t m_TouchesEndedCallback;
+    OnTouchEventSignature_t m_TouchesMovedCallback;
 protected:
 public:
     ParallaxBackground();
@@ -13,12 +15,12 @@ public:
     bool                        init();
     static ParallaxBackground*  create();
 
-	void Scroll(CCTouch*);
+    void Scroll(CCTouch*);
 
-	void RegisterTouchBeganCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesEndedCallback = callback; }
-	void RegisterTouchMovedCallback(std::function<void (CCTouch* touch)> callback) { m_TouchesMovedCallback = callback; }
+    void RegisterTouchBeganCallback(const OnTouchEventSignature_t& callback);
+    void RegisterTouchMovedCallback(const OnTouchEventSignature_t& callback);
 
     virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
-	virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
-	virtual void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
 };

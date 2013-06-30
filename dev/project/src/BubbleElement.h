@@ -3,32 +3,21 @@
 class BubbleElement: public CCSprite
 {
 private:
-	static int									m_BubbleSize;	//Temp values
-	static float								m_BubbleScale;	//Temp values
-	static std::string							m_Texture;
-	static int									m_Duration;
 
-	typedef std::map<int, std::vector<CCRect>>	BubbleMap_t;
-	static BubbleMap_t							m_BubblesMap;
-	int											m_Type;
-	size_t										m_FrameIndx;
-	unsigned long								m_LastAnimationTime;
+    int                     m_Type;
+    size_t                  m_FrameIndx;
+    unsigned long           m_LastAnimationTime;
 protected:
 public:
-    BubbleElement(int type);
+    BubbleElement();
     ~BubbleElement();
 
-	void										SetType(int type);
-	inline int									GetType() { return m_Type; }
+    void                    setType(int type);
+    inline int              getType() const { return m_Type; }
 
-	void										Update(float dt);
+    unsigned long           getLastAnimationTime() const { return m_LastAnimationTime; }
+    void                    setLastAnimationTime(unsigned long val) { m_LastAnimationTime = val; }
 
-	static inline int							GetBubbleSize() { return (int)(m_BubbleSize * m_BubbleScale); }
-	static void									FakeBubblesInit();
-	static bool									LoadBubbles();
-
-private:
-	BubbleElement();
-	BubbleElement(const BubbleElement& oth);
+    size_t                  getFrameIndex() const { return m_FrameIndx; }
+    void                    setFrameIndex(size_t i) { m_FrameIndx = i; }
 };
-

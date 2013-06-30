@@ -593,6 +593,14 @@ const std::string* TiXmlElement::Attribute( const std::string& name ) const
 }
 #endif
 
+const char* TiXmlElement::Attribute(const char* name, unsigned int* i) const
+{
+    int out = 0;
+    const char* ret = Attribute(name, &out);
+    *i = out;
+
+    return ret;
+}
 
 const char* TiXmlElement::Attribute( const char* name, int* i ) const
 {

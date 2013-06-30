@@ -1,4 +1,4 @@
-﻿Build started 6/29/2013 23:32:49 PM.
+﻿Build started 6/30/2013 16:34:33 PM.
      1>Project "D:\prj\HungryChameleon\libs\loki\src\Library_MSVC9.vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\loki.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.03
+Time Elapsed 00:00:00.08

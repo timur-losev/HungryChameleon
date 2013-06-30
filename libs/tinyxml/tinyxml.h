@@ -968,7 +968,7 @@ public:
 		is non-null.
 	*/
 	const char* Attribute( const char* name, int* i ) const;
-
+    const char* Attribute(const char* name, unsigned int* i) const;
 	/** Given an attribute name, Attribute() returns the value
 		for the attribute of that name, or null if none exists.
 		If the attribute exists and can be converted to an double,

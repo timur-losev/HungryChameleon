@@ -39,7 +39,7 @@ bool ParallaxBackground::init()
         voidNode->addChild(pMiddleground, 1, ccp(-1.0f, 1.0f), VisibleRect::center());
         voidNode->addChild(pForegraund, 2, ccp(0.1f, 0.5f), VisibleRect::center());
         voidNode->addChild(pStatic, 3, ccp(0.0f, 0.0f), VisibleRect::center());
-        
+
 
         addChild(voidNode, 0, 0);
 
@@ -52,7 +52,7 @@ bool ParallaxBackground::init()
 ParallaxBackground* ParallaxBackground::create()
 {
     ParallaxBackground *pRet = new ParallaxBackground();
-    if (pRet && pRet->init())
+    if (pRet->init())
     {
         pRet->autorelease();
         return pRet;
@@ -85,32 +85,42 @@ void ParallaxBackground::Scroll(CCTouch* touch)
 void ParallaxBackground::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
     CCSetIterator it = pTouches->begin();
-	if (it != pTouches->end())
-	{
-		CCTouch* touch = (CCTouch*)(*it);
-	}
+    if (it != pTouches->end())
+    {
+        CCTouch* touch = static_cast<CCTouch*>(*it);
+    }
 }
 
 void ParallaxBackground::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
-	CCTouch *touch = (CCTouch*)pTouches->anyObject();
+    CCTouch *touch = (CCTouch*)pTouches->anyObject();
 
-	if (touch)
-	{
-		if (m_TouchesMovedCallback)
-		{
-			m_TouchesMovedCallback(touch);
-		}
-	}
+    if (touch)
+    {
+        if (m_TouchesMovedCallback)
+        {
+            m_TouchesMovedCallback(touch);
+        }
+    }
 }
 
 void ParallaxBackground::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
     CCSetIterator it = pTouches->begin();
-    CCTouch* touch = (CCTouch*)(*it);
+    CCTouch* touch = static_cast<CCTouch*>(*it);
 
-	if (m_TouchesEndedCallback)
-	{
-		m_TouchesEndedCallback(touch);
-	}
+    if (m_TouchesEndedCallback)
+    {
+        m_TouchesEndedCallback(touch);
+    }
+}
+
+void ParallaxBackground::RegisterTouchBeganCallback( const OnTouchEventSignature_t& callback )
+{
+    m_TouchesEndedCallback = callback;
+}
+
+void ParallaxBackground::RegisterTouchMovedCallback( const OnTouchEventSignature_t& callback )
+{
+    m_TouchesMovedCallback = callback;
 }

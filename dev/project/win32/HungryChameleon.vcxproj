@@ -88,6 +88,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\BubbleElement.cpp" />
+    <ClCompile Include="..\src\BubbleSet.cpp" />
     <ClCompile Include="..\src\System.cpp" />
     <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
@@ -111,6 +112,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\BubbleElement.h" />
+    <ClInclude Include="..\src\BubbleSet.h" />
     <ClInclude Include="..\src\System.h" />
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameDelegate.h" />
