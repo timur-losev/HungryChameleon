@@ -11,18 +11,18 @@
 #include "BubbleSet.h"
 #include "MatrixField.h"
 
+#include "Cell.h"
+
 MainScene::MainScene()
-    : m_pBackground(0)
-    , m_LabelTimer(0)
+    : m_pBackground(nullptr)
+    , m_CellField(nullptr)
+    , m_LabelTimer(nullptr)
     , m_MatchDuration(60000)
 {
     LoadGameSettings();
 
     m_QuickScrollPos = CCPointMake(-1, -1);
     m_MatchStartTime = System::GetTickCount();
-
-    m_BubbleSet.reset(new BubbleSet());
-    m_MatrixField.reset(new MatrixField());
 }
 
 MainScene::~MainScene()
@@ -35,8 +35,9 @@ bool MainScene::init()
     bool kRet = GameSceneBase::init();
 
     m_pBackground = ParallaxBackground::create();
-    m_pBackground->RegisterTouchBeganCallback(std::bind(&MainScene::OnTouchEnded, this, std::placeholders::_1));
+    m_pBackground->RegisterTouchBeganCallback(std::bind(&MainScene::OnTouchBegan, this, std::placeholders::_1));
     m_pBackground->RegisterTouchMovedCallback(std::bind(&MainScene::OnTouchMoved, this, std::placeholders::_1));
+    m_pBackground->RegisterTouchEndCallback(std::bind(&MainScene::OnTouchEnded, this, std::placeholders::_1));
 
     IngameMenuView* igmenu = new IngameMenuView();
     igmenu->init();
@@ -54,6 +55,15 @@ bool MainScene::init()
     addChild(m_LabelTimer);
     addChild(m_LabelScores);
 
+    m_CellField = new CellField();
+    assert(m_CellField->init());
+    addChild(m_CellField);
+    m_CellField->release();
+    m_CellField->setPosition(ccp(100, 100));
+
+    /*m_BubbleSet.reset(new BubbleSet());
+    m_MatrixField.reset(new MatrixField());*/
+
     igmenu->release();
 
     return kRet;
@@ -63,6 +73,7 @@ void MainScene::onEnter()
 {
     GameSceneBase::onEnter();
 
+#if 0
     m_BubbleSet->loadBubbles();
 
     m_ScoresCount = 0;
@@ -93,6 +104,8 @@ void MainScene::onEnter()
         m_BubbleSet->pushElement(line);
     }
 
+#endif
+
     schedule(schedule_selector(MainScene::onUpdate), 0.0f);
 }
 
@@ -103,6 +116,8 @@ void MainScene::onMainMenuTap( CCObject* )
 
 void MainScene::OnTouchEnded(CCTouch* touch)
 {
+    m_CellField->onTouchReleased(touch);
+#if 0
     int direction;
     if (abs(m_QuickScrollDelta.x) > abs(m_QuickScrollDelta.y))
     {
@@ -115,10 +130,15 @@ void MainScene::OnTouchEnded(CCTouch* touch)
 
     m_MatrixField->scroll(direction, m_QuickScrollPos.x, m_QuickScrollPos.y);
     m_QuickScrollPos = CCPointMake(-1, -1);
+#endif
 }
+
 
 void MainScene::OnTouchMoved(CCTouch* touch)
 {
+    m_CellField->onTouchMoved(touch);
+
+#if 0
     CCPoint delta = touch->getDelta();
     CCPoint position = touch->getLocationInView();
 
@@ -164,10 +184,16 @@ void MainScene::OnTouchMoved(CCTouch* touch)
     }
 
     m_QuickScrollDelta = delta;
+
+#else
+    m_pBackground->Scroll(touch);
+#endif
 }
 
 void MainScene::onUpdate(float dt)
 {
+    m_CellField->onUpdate(dt);
+#if 0
     unsigned int currentTime = System::GetTickCount() / 1000;
     if (currentTime < m_MatchStartTime / 1000 + m_MatchDuration)
     {
@@ -211,6 +237,8 @@ void MainScene::onUpdate(float dt)
         sprintf(strScore, "Score: %.7d", m_ScoresCount);
         m_LabelScores->setString(strScore);
     }
+
+#endif
 }
 
 void MainScene::UpdateMatrix(float dt)
@@ -323,4 +351,9 @@ void MainScene::RemoveFlyingBubbles(CCNode* sender)
 {
     BubbleElement *sprite = static_cast<BubbleElement*>(sender);
     removeChild(sprite, true);
+}
+
+void MainScene::OnTouchBegan(CCTouch* touch)
+{
+    m_CellField->onTouchPressed(touch);
 }

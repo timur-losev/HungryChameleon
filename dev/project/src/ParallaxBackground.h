@@ -7,6 +7,7 @@ public:
 private:
     OnTouchEventSignature_t m_TouchesEndedCallback;
     OnTouchEventSignature_t m_TouchesMovedCallback;
+    OnTouchEventSignature_t m_TouchesBeganCallback;
 protected:
 public:
     ParallaxBackground();
@@ -18,6 +19,7 @@ public:
     void Scroll(CCTouch*);
 
     void RegisterTouchBeganCallback(const OnTouchEventSignature_t& callback);
+    void RegisterTouchEndCallback(const OnTouchEventSignature_t& callback);
     void RegisterTouchMovedCallback(const OnTouchEventSignature_t& callback);
 
     virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);

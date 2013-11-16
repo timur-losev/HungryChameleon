@@ -7,6 +7,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 {
     // initialize director
     CCDirector *pDirector = CCDirector::sharedDirector();
+    pDirector->setDisplayStats(true);
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
     CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
@@ -22,7 +23,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
     else*/
     {
-        CCFileUtils::sharedFileUtils()->setResourceDirectory("data");
+        CCFileUtils::sharedFileUtils()->addSearchPath("data");
     }
 
     CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);

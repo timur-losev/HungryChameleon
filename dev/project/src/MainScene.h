@@ -7,10 +7,13 @@ class ParallaxBackground;
 forward_this_u(BubbleSet);
 forward_this_u(MatrixField);
 
+class CellField;
+
 class MainScene: public GameSceneBase
 {
 private:
     ParallaxBackground*			m_pBackground;
+    CellField*                  m_CellField;
 
     CCPoint						m_BubbleViewDisplacement;
     int							m_SpaceBetweenBubbles;
@@ -33,7 +36,7 @@ private:
     CCLabelTTF*					m_LabelScores;
     CCPoint						m_ScoresTimerPos;
 
-
+    void OnTouchBegan(CCTouch* touch);
     void OnTouchEnded(CCTouch* touch);
     void OnTouchMoved(CCTouch* touch);
     void onUpdate(float dt);

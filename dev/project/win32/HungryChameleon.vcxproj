@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,13 +19,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -53,15 +53,15 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;..\..\..\libs\loki\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\..\..\..\cocos2d-x\cocos2dx\include;..\..\..\..\cocos2d-x\cocos2dx\;..\..\..\..\cocos2d-x\cocos2dx\platform\win32;..\..\..\..\cocos2d-x\cocos2dx\platform\third_party\win32;..\..\..\..\cocos2d-x\cocos2dx\platform\third_party\win32\OGLES;..\..\..\..\cocos2d-x\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;..\..\..\libs\loki\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>Debug.win32</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -89,6 +89,7 @@
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\BubbleElement.cpp" />
     <ClCompile Include="..\src\BubbleSet.cpp" />
+    <ClCompile Include="..\src\Cell.cpp" />
     <ClCompile Include="..\src\System.cpp" />
     <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
@@ -113,6 +114,7 @@
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\BubbleElement.h" />
     <ClInclude Include="..\src\BubbleSet.h" />
+    <ClInclude Include="..\src\Cell.h" />
     <ClInclude Include="..\src\System.h" />
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameDelegate.h" />
@@ -129,9 +131,6 @@
     <ClInclude Include="..\src\VisibleRect.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\libs\cocos2dx\cocos2dx\proj.win32\cocos2d.vcxproj">
-      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\libs\loki\src\Library_MSVC9.vcxproj">
       <Project>{cbdb8e7a-4286-4ae3-a190-ba33d7c53ff0}</Project>
     </ProjectReference>

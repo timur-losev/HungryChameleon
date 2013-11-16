@@ -3,14 +3,18 @@
 
 #include "GameDelegate.h"
 
+#if 0
 int APIENTRY WinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
                        LPTSTR    lpCmdLine,
                        int       nCmdShow)
+#else
+int main()
+#endif
 {
 
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
+    /*UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(lpCmdLine);*/
 
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();

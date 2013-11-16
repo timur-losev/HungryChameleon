@@ -22,7 +22,7 @@ void GameDelegate::startGame()
     MainScene* scene = new MainScene();
     scene->init();
 
-    CCDirector::sharedDirector()->runWithScene(scene); //replaceScene( CCTransitionFadeTR::create(0.8f, scene) );
+    CCDirector::sharedDirector()->replaceScene( CCTransitionFadeTR::create(0.8f, scene) );
     scene->release();
 }
 

@@ -32,7 +32,7 @@ bool GameController::init()
 void GameController::showMainMenu()
 {
      setTouchEnabled(true);
-     SharedGameDelegate::Instance().startGame();
+     SharedGameDelegate::Instance().openMainMenu();
 }
 
 void GameController::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)

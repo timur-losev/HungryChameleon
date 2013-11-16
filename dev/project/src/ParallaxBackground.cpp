@@ -88,6 +88,11 @@ void ParallaxBackground::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
     if (it != pTouches->end())
     {
         CCTouch* touch = static_cast<CCTouch*>(*it);
+
+        if (touch && m_TouchesBeganCallback)
+        {
+            m_TouchesBeganCallback(touch);
+        }
     }
 }
 
@@ -115,7 +120,7 @@ void ParallaxBackground::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
     }
 }
 
-void ParallaxBackground::RegisterTouchBeganCallback( const OnTouchEventSignature_t& callback )
+void ParallaxBackground::RegisterTouchEndCallback( const OnTouchEventSignature_t& callback )
 {
     m_TouchesEndedCallback = callback;
 }
@@ -123,4 +128,9 @@ void ParallaxBackground::RegisterTouchBeganCallback( const OnTouchEventSignature
 void ParallaxBackground::RegisterTouchMovedCallback( const OnTouchEventSignature_t& callback )
 {
     m_TouchesMovedCallback = callback;
+}
+
+void ParallaxBackground::RegisterTouchBeganCallback(const OnTouchEventSignature_t& callback)
+{
+    m_TouchesBeganCallback = callback;
 }
