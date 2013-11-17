@@ -51,8 +51,8 @@ bool CellField::init()
 
         srand(static_cast<uint32_t>(time(nullptr)));
 
-        memset(m_movingLine, 0, MatrixLineSize * sizeof(Cell*));
-        memset(m_movingRow, 0, MatrixLineSize * sizeof(Cell*));
+        memset(m_movingData[0], 0, MatrixLineSize * sizeof(Cell*));
+        memset(m_movingData[1], 0, MatrixLineSize * sizeof(Cell*));
 
         //! Build initial matrix
         //! Build a center matrix
@@ -132,18 +132,20 @@ void CellField::_dragCells(const CCPoint& delta)
 
     if (_getState() == MSMoving)
     {
-        if (direction == byX)
+
+        for (uint32_t i = 0; i < MatrixLineSize; ++i)
         {
-            for (Cell* cell : m_movingLine)
+            Cell* cell = m_movingData[m_lockedDirection][i];
+
+            float d = _getPointFieldByDirection(cell->getPosition()) + _getPointFieldByDirection(delta);
+
+            if (direction == byX)
             {
-                cell->setPositionX(cell->getPositionX() + delta.x);
+                cell->setPositionX(d);
             }
-        }
-        else
-        {
-            for (Cell* cell : m_movingRow)
+            else
             {
-                cell->setPositionY(cell->getPositionY() + delta.y);
+                cell->setPositionY(d);
             }
         }
     }
@@ -189,7 +191,11 @@ void CellField::onTouchPressed(CCTouch* touch)
     if (hitCell)
     {
         Cell* target = hitCell->next;
-        m_movingLine[0] = hitCell;
+
+        Cell** movingLine = m_movingData[byX];
+        Cell** movingRow = m_movingData[byY];
+
+        movingLine[0] = hitCell;
 
         //! build cell moving line
         //! TODO:two-dir-cycle must be here
@@ -197,7 +203,7 @@ void CellField::onTouchPressed(CCTouch* touch)
         for (; target; target = target->next, ++i)
         {
             assert(i < MatrixLineSize); //! omit checking this while the loop, but make a fuse
-            m_movingLine[i] = target;
+            movingLine[i] = target;
         }
 
         target = hitCell->prev;
@@ -205,12 +211,12 @@ void CellField::onTouchPressed(CCTouch* touch)
         for (; target; target = target->prev, ++i)
         {
             assert(i < MatrixLineSize); //! omit checking this while the loop, but make a fuse
-            m_movingLine[i] = target;
+            movingLine[i] = target;
         }
 
         //! build cell moving row
         //! TODO:two-dir-cycle must be here
-        m_movingRow[0] = hitCell;
+        movingRow[0] = hitCell;
         i = 1;
 
         target = hitCell->up;
@@ -218,7 +224,7 @@ void CellField::onTouchPressed(CCTouch* touch)
         for (; target; target = target->up, ++i)
         {
             assert(i < MatrixLineSize); //! omit checking this while the loop, but make a fuse
-            m_movingRow[i] = target;
+            movingRow[i] = target;
         }
 
         target = hitCell->down;
@@ -226,7 +232,7 @@ void CellField::onTouchPressed(CCTouch* touch)
         for (; target; target = target->down, ++i)
         {
             assert(i < MatrixLineSize); //! omit checking this while the loop, but make a fuse
-            m_movingRow[i] = target;
+            movingRow[i] = target;
         }
 
         _advanceState(MSMoving);
@@ -235,10 +241,16 @@ void CellField::onTouchPressed(CCTouch* touch)
 
 void CellField::onTouchReleased(CCTouch* touch)
 {
-    _advanceState(MSStucking);
-
-    /*m_movingLine[0] = m_movingRow[0] = nullptr; //! fast invalidate
-    m_lockedDirection = byNone;*/
+    if (m_lockedDirection != byNone
+        && (m_movingData[byX][0] || m_movingData[byY][0])
+        )
+    {
+        _advanceState(MSStucking);
+    }
+    else
+    {
+        _advanceState(MSIdle);
+    }
 }
 
 void CellField::_stabilizationState()
@@ -253,58 +265,42 @@ void CellField::_stabilizationState()
     }
 }
 
+
 void CellField::_stuckMovedCells()
 {
-    Cell* cell = nullptr;
-    if (m_lockedDirection == byX)
+    assert(m_lockedDirection != byNone);
+
+    Cell* cell = *m_movingData[m_lockedDirection];
+
+    CCPoint* point = &m_centerMatrix[0];
+
+    const CCPoint& position = cell->getPosition();
+
+    float diff =  _getPointFieldByDirection(position) - _getPointFieldByDirection(*point);
+
+    for (uint32_t i = 1; i < MatrixSize; i++)
     {
-        cell = m_movingLine[0];
+        CCPoint* curPoint = &m_centerMatrix[i];
 
-        CCPoint* point = &m_centerMatrix[0];
+        float curDiff = _getPointFieldByDirection(position) - _getPointFieldByDirection(*curPoint);
 
-        float dx = cell->getPositionX() - point->x;
-
-        for (uint32_t i = 1; i < MatrixSize; ++i)
+        if (std::abs(curDiff) < std::abs(diff))
         {
-            CCPoint* curPoint = &m_centerMatrix[i];
-            float curDx = cell->getPositionX() - curPoint->x;
-
-            if (std::abs(curDx) < std::abs(dx))
-            {
-                point = curPoint;
-                dx = curDx;
-            }
+            diff = curDiff;
         }
-
-        for (Cell* cl : m_movingLine)
-        {
-            cl->setPositionX(cl->getPositionX() - dx);
-        }
-
     }
-    else
+
+    for (uint32_t i = 0; i < MatrixLineSize; ++i)
     {
-        cell = m_movingRow[0];
+        Cell* cell = m_movingData[m_lockedDirection][i];
 
-        CCPoint* point = &m_centerMatrix[0];
-
-        float dy = cell->getPositionY() - point->y;
-
-        for (uint32_t i = 1; i < MatrixSize; ++i)
+        if (m_lockedDirection == byX)
         {
-            CCPoint* curPoint = &m_centerMatrix[i];
-            float curDy = cell->getPositionY() - curPoint->y;
-
-            if (std::abs(curDy) < std::abs(dy))
-            {
-                point = curPoint;
-                dy = curDy;
-            }
+            cell->setPositionX(cell->getPositionX() - diff);
         }
-
-        for (Cell* cl : m_movingRow)
+        else
         {
-            cl->setPositionY(cl->getPositionY() - dy);
+            cell->setPositionY(cell->getPositionY() - diff);
         }
     }
 }

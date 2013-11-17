@@ -6,6 +6,7 @@
     DO NOT PULL INTO PRODUCTION
 */
 
+
 class Cell : public CCSprite
 {
 public:
@@ -46,17 +47,16 @@ private:
 
     CCPoint m_centerMatrix[MatrixSize];
 
-    Cell* m_movingLine[MatrixLineSize];
-    Cell* m_movingRow[MatrixLineSize];
-
     enum Direction
     {
         byNone = -1,
         byX,
         byY,
 
-        DIRECTION_MAX
+        DirectionsCount
     };
+
+    Cell* m_movingData[DirectionsCount][MatrixLineSize];
 
     enum MatrixState
     {
@@ -82,6 +82,12 @@ private:
     void         _stuckMovedCells();
     void         _stabilizationState();
     void         _advanceState(MatrixState state);
+
+    inline float _getPointFieldByDirection(const CCPoint& p) const
+    {
+        return *(&p.x + m_lockedDirection);
+    }
+
     MatrixState  _getState() const;
 
 public:
