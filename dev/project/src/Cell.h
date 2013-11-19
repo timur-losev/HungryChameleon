@@ -72,10 +72,14 @@ private:
     Direction m_lockedDirection;
 
     CCPoint   m_lastDelta;
-    float     m_inertia;
-    bool      m_inertiaInUse;
+
+    int       m_stepsCount;
+    float     m_spriteDimentsion[DirectionsCount];
+    CCPoint   m_from;
 
 private:
+
+    Cell*        _advanceNode(Cell* node, int count) const;
 
     void         _dragCells(const CCPoint& delta);
     void         _applyInertia(float value);

@@ -25,7 +25,6 @@ static std::pair<CCRect, Cell::Colour> SpriteDefines[] =
 
 CellField::CellField() :
 m_lockedDirection(byNone),
-m_inertia(0.f),
 m_state(MSIdle)
 {
 
@@ -48,6 +47,9 @@ bool CellField::init()
             tex->initWithImage(image);
             image->release();
         }
+
+        m_spriteDimentsion[byX] = SpriteW;
+        m_spriteDimentsion[byY] = SpriteH;
 
         srand(static_cast<uint32_t>(time(nullptr)));
 
@@ -75,6 +77,7 @@ bool CellField::init()
                 if (!cell->initWithTexture(tex, pair.first))
                 {
                     assert("Wrong way" && false);
+                    return false;
                 }
 
                 addChild(cell);
@@ -235,6 +238,8 @@ void CellField::onTouchPressed(CCTouch* touch)
             movingRow[i] = target;
         }
 
+        m_from = hitCell->getPosition();
+
         _advanceState(MSMoving);
     }
 }
@@ -253,15 +258,83 @@ void CellField::onTouchReleased(CCTouch* touch)
     }
 }
 
+Cell* CellField::_advanceNode(Cell* node, int count) const
+{
+    if (count > 0)
+    {
+        for (int i = 0; i < count && node; node = node->next, ++i);
+    }
+    else if (count < 0)
+    {
+        for (int i = count; i < 0 && node; node = node->prev, ++i);
+    }
+
+    return node;
+}
+
 void CellField::_stabilizationState()
 {
-    if (m_lockedDirection == byX)
+    if (m_stepsCount != 0)
     {
+        if (m_lockedDirection == byX)
+        {
+            //if (m_stepsCount > 0)
+            {
+                Cell** cells = m_movingData[m_lockedDirection];
 
-    }
-    else
-    {
+                //! Rebase line
+                 for (uint32_t i = 0; i < MatrixLineSize; ++i)
+                 {
+                     Cell* curCell = cells[i];
 
+                     if (m_stepsCount > 0)
+                     {
+                         if (curCell->up)
+                         {
+                             //curCell->up->down = _advanceNode(curCell->prev, -(m_stepsCount - 1));
+                             curCell->up = _advanceNode(curCell->up->next, m_stepsCount - 1);
+                         }
+                         
+                         if (curCell->down)
+                         {
+                             //curCell->down->up = _advanceNode(curCell->prev, -(m_stepsCount - 1));
+                             curCell->down = _advanceNode(curCell->down->next, m_stepsCount - 1);
+                         }
+                     }
+                     else if (m_stepsCount < 0)
+                     {
+                         if (curCell->up)
+                         {
+                             //curCell->up->down = _advanceNode(curCell->next, m_stepsCount - 1);
+                             curCell->up = _advanceNode(curCell->up->prev, m_stepsCount + 1);
+                         }
+                         
+                         if (curCell->down)
+                         {
+                             //curCell->down->up = _advanceNode(curCell->next, m_stepsCount - 1);
+                             curCell->down = _advanceNode(curCell->down->prev, m_stepsCount + 1);
+                         }
+                     }
+                 }
+
+//                  Cell* curCell = cells[0];
+// 
+//                  if (m_stepsCount > 0)
+//                  {
+//                      curCell->up = _advanceNode(curCell->up->next, m_stepsCount - 1);
+//                      curCell->down = _advanceNode(curCell->down->next, m_stepsCount - 1);
+//                  }
+//                  else if (m_stepsCount < 0)
+//                  {
+//                      curCell->up = _advanceNode(curCell->up->prev, m_stepsCount + 1);
+//                      curCell->down = _advanceNode(curCell->down->prev, m_stepsCount + 1);
+//                  }
+            }
+        }
+        else
+        {
+
+        }
     }
 }
 
@@ -303,12 +376,15 @@ void CellField::_stuckMovedCells()
             cell->setPositionY(cell->getPositionY() - diff);
         }
     }
+
+    float fStepsCount = (_getPointFieldByDirection(position) - _getPointFieldByDirection(m_from)) / m_spriteDimentsion[m_lockedDirection];
+
+    m_stepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
 }
 
 void CellField::_applyInertia(float value)
 {
-    m_inertiaInUse = true;
-    m_inertia = value;
+
 }
 
 void CellField::onUpdate(float dt)
