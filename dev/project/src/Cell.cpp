@@ -212,7 +212,8 @@ void CellField::onTouchPressed(CCTouch* touch)
     {
         m_movingCells[byX] = _rewind(hitCell, byX, ToTheBegin);
         m_movingCells[byY] = _rewind(hitCell, byY, ToTheBegin);
-        m_from = hitCell->getPosition();
+        m_from[byX] = m_movingCells[byX]->getPosition();
+        m_from[byY] = m_movingCells[byY]->getPosition();
 
         _advanceState(MSMoving);
     }
@@ -283,106 +284,50 @@ void CellField::_stabilizationState()
         {
             //if (m_stepsCount > 0)
             {
-                Cell** cells = nullptr;
-                
-                Cell* current = cells[0];
 
-                Cell* up0 = current->up;
-                Cell* down0 = current->down;
-#if 0
-                //! Rebase line
-                 for (uint32_t i = 0; i < MatrixLineSize - 1/*except the last*/; ++i)
-                 {
-                     Cell* curCell = cells[i];
+                Cell* current = m_movingCells[m_lockedDirection];
 
-                     //if (m_stepsCount > 0)
-                     {
-                         Cell* next = _advanceNode(curCell, m_stepsCount);
+                auto rebaseFunc = [this](Cell* curNode, int steps)
+                {
+                    Cell* next = _advanceNode(curNode, steps);
 
-                         if (next && next->up)
-                         {
-                             curCell->up = next->up;
-                         }
-                         else
-                         {
-                             curCell->up = nullptr;
-                         }
+                    if (next && next->up)
+                    {
+                        curNode->up = next->up;
 
-                         if (next && next->down)
-                         {
-                             curCell->down = next->down;
-                         }
-                         else
-                         {
-                             curCell->down = nullptr;
-                         }
-                     }
-                     /*else if (m_stepsCount < 0)
-                     {
-                         Cell* prev = _advanceNode(curCell, m_stepsCount);
+                        curNode->up->down = curNode;
+                    }
+                    else
+                    {
+                        curNode->up = nullptr;
+                    }
 
-                         if (prev && prev->up)
-                         {
-                             curCell->up = prev->up;
-                         }
-                         else
-                         {
-                             curCell->up = nullptr;
-                         }
+                    if (next && next->down)
+                    {
+                        curNode->down = next->down;
+                        curNode->down->up = curNode;
+                    }
+                    else
+                    {
+                        curNode->down = nullptr;
+                    }
+                };
 
-                         if (curCell->prev && curCell->prev->down)
-                         {
-                             curCell->down = curCell->prev->down;
-                         }
-                         else
-                         {
-                             curCell->down = nullptr;
-                         }
-                     }*/
-                 }
-#endif
-
-                 auto rebaseFunc = [this](Cell* curNode, int steps)
-                 {
-                     Cell* next = _advanceNode(curNode, steps);
-
-                     if (next && next->up)
-                     {
-                         curNode->up = next->up;
-                     }
-                     else
-                     {
-                         curNode->up = nullptr;
-                     }
-
-                     if (next && next->down)
-                     {
-                         curNode->down = next->down;
-                     }
-                     else
-                     {
-                         curNode->down = nullptr;
-                     }
-                 };
-
-                 if (m_stepsCount > 0)
-                 {
-                     //! Rewind to the begin
-                     current = _rewind(current, byX, ToTheBegin);
-                     for (; current; current = current->next)
-                     {
-                         rebaseFunc(current, m_stepsCount);
-                     }
-                 }
-                 else
-                 {
-                     //! Rewind to the end
-                     current = _rewind(current, byX, ToTheEnd);
-                     for (; current; current = current->prev)
-                     {
-                         rebaseFunc(current, m_stepsCount);
-                     }
-                 }
+                if (m_stepsCount > 0)
+                {
+                    for (; current; current = current->next)
+                    {
+                        rebaseFunc(current, m_stepsCount);
+                    }
+                }
+                else
+                {
+                    current = _rewind(current, byX, ToTheEnd);
+                    for (; current; current = current->prev)
+                    {
+                        rebaseFunc(current, m_stepsCount);
+                    }
+                }
             }
         }
         else
@@ -429,7 +374,7 @@ void CellField::_stuckMovedCells()
         }
     }
 
-    float fStepsCount = (_getPointFieldByDirection(position) - _getPointFieldByDirection(m_from)) / m_spriteDimentsion[m_lockedDirection];
+    float fStepsCount = (_getPointFieldByDirection(position) - _getPointFieldByDirection(m_from[m_lockedDirection])) / m_spriteDimentsion[m_lockedDirection];
 
     m_stepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
 }
@@ -449,7 +394,7 @@ void CellField::onUpdate(float dt)
     }
     else if (_getState() == MSStabilization)
     {
-        //_stabilizationState();
+        _stabilizationState();
 
         _advanceState(MSIdle);
     }

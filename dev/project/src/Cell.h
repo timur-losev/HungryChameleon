@@ -83,7 +83,7 @@ private:
 
     int       m_stepsCount;
     float     m_spriteDimentsion[DirectionsCount];
-    CCPoint   m_from;
+    CCPoint   m_from[DirectionsCount];
 
 private:
 
