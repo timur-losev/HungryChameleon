@@ -36,6 +36,25 @@ CellField::~CellField()
 
 }
 
+Cell* CellField::_createRandomCell()
+{
+    int id = rand() % 5;
+
+    auto& pair = SpriteDefines[id];
+
+    Cell* cell = new Cell(pair.second);
+
+    if (!cell->initWithTexture(tex, pair.first))
+    {
+        assert("Wrong way" && false);
+        return nullptr;
+    }
+
+    cell->setAnchorPoint(ccp(0, 0));
+
+    return cell;
+}
+
 bool CellField::init()
 {
     if (CCLayer::init())
@@ -68,20 +87,11 @@ bool CellField::init()
         {
             for (uint32_t j = 0; j < MatrixLineSize; ++j)
             {
-                int id = rand() % 5;
+                Cell* cell = _createRandomCell();
 
-                auto& pair = SpriteDefines[id];
-
-                Cell* cell = new Cell(pair.second);
-
-                if (!cell->initWithTexture(tex, pair.first))
-                {
-                    assert("Wrong way" && false);
-                    return false;
-                }
+                assert(cell);
 
                 addChild(cell);
-
                 cell->setPosition(ccp(j * SpriteW, a));
 
                 if (prevCell == nullptr)
@@ -108,7 +118,7 @@ bool CellField::init()
                     upCell = cell;
                 }
 
-                cell->setAnchorPoint(ccp(0, 0));
+                
 
                 //! The first chunk will emplace at the left of the bubble matrix
                 m_centerMatrix[i * MatrixLineSize + j] = ccp(cell->getPositionX() - MatrixLineSize * SpriteW,
@@ -155,7 +165,8 @@ void CellField::_dragCells(const CCPoint& delta)
 
     if (_getState() == MSMoving)
     {
-        for (Cell* cell = m_movingCells[m_lockedDirection]; cell; cell = _next(cell, m_lockedDirection))
+        Cell* baseCell = m_movingCells[m_lockedDirection];
+        for (Cell* cell = baseCell; cell; cell = _next(cell, m_lockedDirection))
         {
             float d = _getPointFieldByDirection(cell->getPosition()) + _getPointFieldByDirection(delta);
 
@@ -166,6 +177,32 @@ void CellField::_dragCells(const CCPoint& delta)
             else
             {
                 cell->setPositionY(d);
+            }
+        }
+
+        float fStepsCount = (_getPointFieldByDirection(baseCell->getPosition()) - _getPointFieldByDirection(m_from[m_lockedDirection])) / m_spriteDimentsion[m_lockedDirection];
+
+        int iStepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
+
+
+        if (m_lockedDirection == byX)
+        {
+            if (iStepsCount == 1)
+            {
+                Cell* newCell = _createRandomCell();
+                newCell->setPositionY(baseCell->getPositionY());
+                newCell->setPositionX(baseCell->getPositionX() - SpriteW);
+                addChild(newCell);
+
+                newCell->next = baseCell;
+                baseCell->prev = newCell;
+                m_movingCells[m_lockedDirection] = newCell;
+                newCell->dirty = true;
+                //CCLog("N");
+            }
+            else if (iStepsCount == -1)
+            {
+
             }
         }
     }
@@ -282,57 +319,49 @@ void CellField::_stabilizationState()
     {
         if (m_lockedDirection == byX)
         {
-            //if (m_stepsCount > 0)
+            Cell* current = m_movingCells[m_lockedDirection];
+
+            auto rebaseFunc = [this](Cell* curNode, int steps)
             {
+                Cell* next = _advanceNode(curNode, steps);
 
-                Cell* current = m_movingCells[m_lockedDirection];
-
-                auto rebaseFunc = [this](Cell* curNode, int steps)
+                if (next && next->up)
                 {
-                    Cell* next = _advanceNode(curNode, steps);
+                    curNode->up = next->up;
 
-                    if (next && next->up)
-                    {
-                        curNode->up = next->up;
-
-                        curNode->up->down = curNode;
-                    }
-                    else
-                    {
-                        curNode->up = nullptr;
-                    }
-
-                    if (next && next->down)
-                    {
-                        curNode->down = next->down;
-                        curNode->down->up = curNode;
-                    }
-                    else
-                    {
-                        curNode->down = nullptr;
-                    }
-                };
-
-                if (m_stepsCount > 0)
-                {
-                    for (; current; current = current->next)
-                    {
-                        rebaseFunc(current, m_stepsCount);
-                    }
+                    curNode->up->down = curNode;
                 }
                 else
                 {
-                    current = _rewind(current, byX, ToTheEnd);
-                    for (; current; current = current->prev)
-                    {
-                        rebaseFunc(current, m_stepsCount);
-                    }
+                    curNode->up = nullptr;
+                }
+
+                if (next && next->down)
+                {
+                    curNode->down = next->down;
+                    curNode->down->up = curNode;
+                }
+                else
+                {
+                    curNode->down = nullptr;
+                }
+            };
+
+            if (m_stepsCount > 0)
+            {
+                for (; current; current = current->next)
+                {
+                    rebaseFunc(current, m_stepsCount);
                 }
             }
-        }
-        else
-        {
-
+            else
+            {
+                current = _rewind(current, byX, ToTheEnd);
+                for (; current; current = current->prev)
+                {
+                    rebaseFunc(current, m_stepsCount);
+                }
+            }
         }
     }
 }

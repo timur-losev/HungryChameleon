@@ -33,6 +33,8 @@ public:
 
     Colour color = Undefined;
 
+    bool   dirty = false; //! recently added but has no linkage with up/down
+
     Cell(Colour c) : color(c)
     {
     }
@@ -96,6 +98,8 @@ private:
     void         _stabilizationState();
     void         _advanceState(MatrixState state);
     Cell*        _next(Cell* cur, Direction dir);
+
+    Cell*        _createRandomCell();
 
     inline float _getPointFieldByDirection(const CCPoint& p) const
     {
