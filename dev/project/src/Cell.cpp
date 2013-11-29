@@ -2,6 +2,9 @@
 #include "Cell.h"
 
 
+// partile system test
+#include "particle_nodes/CCParticleSystem.h"
+
 /*
     ###################CONCEPT#########################
     DO NOT PULL INTO PRODUCTION
@@ -28,7 +31,8 @@ CellField::CellField() :
 m_lockedDirection(byNone),
 m_state(MSIdle)
 {
-
+	m_ps = CCParticleSun::create();
+	this->addChild(m_ps);
 }
 
 CellField::~CellField()
@@ -219,11 +223,16 @@ void CellField::onTouchMoved(CCTouch* touch)
 
 void CellField::onTouchPressed(CCTouch* touch)
 {
+
     m_lockedDirection = byNone;
 
     CCPoint to = touch->getLocation();
 
     CCPoint position = to - getPosition();
+
+	m_ps->resetSystem();
+	m_ps->setPosition(touch->getLocation());
+	//m_ps->setSourcePosition(ccp(0,0));
 
     uint32_t i = 0;
 
@@ -258,6 +267,7 @@ void CellField::onTouchPressed(CCTouch* touch)
 
 void CellField::onTouchReleased(CCTouch* touch)
 {
+
     if (m_lockedDirection != byNone
         && (m_movingCells[byX] || m_movingCells[byY])
         )
@@ -415,6 +425,8 @@ void CellField::_applyInertia(float value)
 
 void CellField::onUpdate(float dt)
 {
+	m_ps->update(dt);
+
     if (_getState() == MSStucking)
     {
         _stuckMovedCells();
