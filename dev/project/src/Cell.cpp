@@ -33,8 +33,7 @@ m_state(MSIdle),
 m_hitCell(nullptr),
 m_prevStep(0)
 {
-    m_ps = CCParticleSun::create();
-    this->addChild(m_ps);
+
 }
 
 CellField::~CellField()
@@ -214,10 +213,6 @@ void CellField::onTouchPressed(CCTouch* touch)
 
     CCPoint position = to - getPosition();
 
-    m_ps->resetSystem();
-    m_ps->setPosition(touch->getLocation());
-    //m_ps->setSourcePosition(ccp(0,0));
-
     uint32_t i = 0;
 
     uint32_t cellCount = getChildrenCount();
@@ -245,6 +240,9 @@ void CellField::onTouchPressed(CCTouch* touch)
         m_hitCell = hitCell;
 
         _advanceState(MSMoving);
+
+
+		_onCellRemoved(hitCell);
     }
 }
 
@@ -302,8 +300,6 @@ void CellField::_stuckMovedCells()
 
 void CellField::onUpdate(float dt)
 {
-    m_ps->update(dt);
-
     if (_getState() == MSStucking)
     {
         _stuckMovedCells();
@@ -492,4 +488,12 @@ void CellField::_removeCellIfPossible(Cell* cell)
     {
         m_hitCell->markedForRemove = true;
     }
+}
+
+void CellField::_onCellRemoved(Cell* cell)
+{
+	CCParticleSystem* ps = CCParticleExplosion::createWithTotalParticles(100);
+	ps->autorelease();
+	ps->setPosition(cell->convertToNodeSpace(cell->getPosition()));
+	cell->addChild(ps);
 }

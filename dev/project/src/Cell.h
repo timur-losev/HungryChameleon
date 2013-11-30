@@ -42,7 +42,6 @@ public:
 class CellField : public CCLayer
 {
 public:
-	CCParticleSystem* m_ps;
     static const uint32_t MatrixVisibleLineSize = 10;
     static const uint32_t MatrixSize = MatrixVisibleLineSize * MatrixVisibleLineSize;
     static const uint32_t CenterMatrixSize = MatrixSize * 5;
@@ -118,7 +117,8 @@ private:
     }
 
     MatrixState  _getState() const;
-
+	
+	void		_onCellRemoved(Cell* cell);
 public:
 
     CellField();
