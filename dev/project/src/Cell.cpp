@@ -11,7 +11,7 @@ static CCTexture2D* tex = nullptr;
 
 static const float SpriteW = 55.f;
 static const float SpriteH = 60.f;
-static const CCPoint MatrixDimension = CCPoint(SpriteW * CellField::MatrixLineSize, SpriteH * CellField::MatrixLineSize);
+static const CCPoint MatrixDimension = CCPoint(SpriteW * CellField::MatrixVisibleLineSize, SpriteH * CellField::MatrixVisibleLineSize);
 
 static std::pair<CCRect, Cell::Colour> SpriteDefines[] =
 {
@@ -26,7 +26,8 @@ static std::pair<CCRect, Cell::Colour> SpriteDefines[] =
 
 CellField::CellField() :
 m_lockedDirection(byNone),
-m_state(MSIdle)
+m_state(MSIdle),
+m_hitCell(nullptr)
 {
 
 }
@@ -73,19 +74,17 @@ bool CellField::init()
 
         srand(static_cast<uint32_t>(time(nullptr)));
 
-        m_movingCells[byX] = m_movingCells[byY] = nullptr;
-
         //! Build initial matrix
         //! Build a center matrix
 
         uint32_t a = 0;
 
         Cell* prevCell = nullptr;
-        Cell* prevLine[MatrixLineSize]{nullptr};
+        Cell* prevLine[MatrixVisibleLineSize]{nullptr};
 
-        for (uint32_t i = 0; i < MatrixLineSize; ++i)
+        for (uint32_t i = 0; i < MatrixVisibleLineSize; ++i)
         {
-            for (uint32_t j = 0; j < MatrixLineSize; ++j)
+            for (uint32_t j = 0; j < MatrixVisibleLineSize; ++j)
             {
                 Cell* cell = _createRandomCell();
 
@@ -94,53 +93,31 @@ bool CellField::init()
                 addChild(cell);
                 cell->setPosition(ccp(j * SpriteW, a));
 
-                if (prevCell == nullptr)
-                {
-                    prevCell = cell;
-                }
-                else
-                {
-                    cell->prev = prevCell;
-                    prevCell->next = cell;
-                    prevCell = cell;
-                }
+                cell->rowId = i;
+                cell->colId = j;
 
-                Cell*& upCell = prevLine[j];
-
-                if (upCell == nullptr)
-                {
-                    upCell = cell;
-                }
-                else
-                {
-                    upCell->down = cell;
-                    cell->up = upCell;
-                    upCell = cell;
-                }
-
-                
+                m_rows[i].push_back(cell);
+                m_cols[j].push_back(cell);
 
                 //! The first chunk will emplace at the left of the bubble matrix
-                m_centerMatrix[i * MatrixLineSize + j] = ccp(cell->getPositionX() - MatrixLineSize * SpriteW,
+                m_centerMatrix[i * MatrixVisibleLineSize + j] = ccp(cell->getPositionX() - MatrixVisibleLineSize * SpriteW,
                     cell->getPositionY());
 
                 //! The second chunk will emplace at the origin of the bubble matrix
-                m_centerMatrix[MatrixSize + (i * MatrixLineSize + j)] = cell->getPosition();
+                m_centerMatrix[MatrixSize + (i * MatrixVisibleLineSize + j)] = cell->getPosition();
 
                 //! The third chunk will emplace at the up of the bubble matrix
-                m_centerMatrix[MatrixSize * 2 + (i * MatrixLineSize + j)] = ccp(cell->getPositionX(),
-                    cell->getPositionY() + MatrixLineSize * SpriteH);
+                m_centerMatrix[MatrixSize * 2 + (i * MatrixVisibleLineSize + j)] = ccp(cell->getPositionX(),
+                    cell->getPositionY() + MatrixVisibleLineSize * SpriteH);
 
                 //! The fourth chunk will emplace at the right of the bubble matrix
-                m_centerMatrix[MatrixSize * 3 + (i * MatrixLineSize + j)] = ccp(cell->getPositionX() + MatrixLineSize * SpriteW,
+                m_centerMatrix[MatrixSize * 3 + (i * MatrixVisibleLineSize + j)] = ccp(cell->getPositionX() + MatrixVisibleLineSize * SpriteW,
                     cell->getPositionY());
 
                 //! The fifth chunk will emplace at the bottom of the bubble matrix
-                m_centerMatrix[MatrixSize * 4 + (i * MatrixLineSize + j)] = ccp(cell->getPositionX(),
-                    cell->getPositionY() - MatrixLineSize * SpriteH);
+                m_centerMatrix[MatrixSize * 4 + (i * MatrixVisibleLineSize + j)] = ccp(cell->getPositionX(),
+                    cell->getPositionY() - MatrixVisibleLineSize * SpriteH);
             }
-
-            prevCell = nullptr;
 
             a += static_cast<uint32_t>(SpriteH);
         }
@@ -151,6 +128,17 @@ bool CellField::init()
     return false;
 }
 
+CellField::Line_t& CellField::_getLineByDirection(Cell* hitcell, Direction dir)
+{
+    if (dir == byX)
+    {
+        return m_rows[hitcell->rowId];
+    }
+    else
+    {
+        return m_cols[hitcell->colId];
+    }
+}
 
 void CellField::_dragCells(const CCPoint& delta)
 {
@@ -165,8 +153,12 @@ void CellField::_dragCells(const CCPoint& delta)
 
     if (_getState() == MSMoving)
     {
-        Cell* baseCell = m_movingCells[m_lockedDirection];
-        for (Cell* cell = baseCell; cell; cell = _next(cell, m_lockedDirection))
+        //Cell* baseCell = m_movingCells[m_lockedDirection];
+        //for (Cell* cell = baseCell; cell; cell = _next(cell, m_lockedDirection))
+
+        Line_t& line = _getLineByDirection(m_hitCell, m_lockedDirection);
+
+        for (Cell* cell : line)
         {
             float d = _getPointFieldByDirection(cell->getPosition()) + _getPointFieldByDirection(delta);
 
@@ -180,27 +172,17 @@ void CellField::_dragCells(const CCPoint& delta)
             }
         }
 
-        float fStepsCount = (_getPointFieldByDirection(baseCell->getPosition()) - _getPointFieldByDirection(m_from[m_lockedDirection])) / m_spriteDimentsion[m_lockedDirection];
+        float fStepsCount = (_getPointFieldByDirection(m_hitCell->getPosition()) - _getPointFieldByDirection(m_from)) / m_spriteDimentsion[m_lockedDirection];
 
-        int iStepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
-
+        m_stepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
 
         if (m_lockedDirection == byX)
         {
-            if (iStepsCount == 1)
+            //if (iStepsCount == 1)
             {
-                Cell* newCell = _createRandomCell();
-                newCell->setPositionY(baseCell->getPositionY());
-                newCell->setPositionX(baseCell->getPositionX() - SpriteW);
-                addChild(newCell);
-
-                newCell->next = baseCell;
-                baseCell->prev = newCell;
-                m_movingCells[m_lockedDirection] = newCell;
-                newCell->dirty = true;
-                //CCLog("N");
+                CCLog("%d %f", m_stepsCount, m_hitCell->getPositionX());
             }
-            else if (iStepsCount == -1)
+            //else if (iStepsCount == -1)
             {
 
             }
@@ -247,10 +229,14 @@ void CellField::onTouchPressed(CCTouch* touch)
 
     if (hitCell)
     {
-        m_movingCells[byX] = _rewind(hitCell, byX, ToTheBegin);
+        /*m_movingCells[byX] = _rewind(hitCell, byX, ToTheBegin);
         m_movingCells[byY] = _rewind(hitCell, byY, ToTheBegin);
         m_from[byX] = m_movingCells[byX]->getPosition();
-        m_from[byY] = m_movingCells[byY]->getPosition();
+        m_from[byY] = m_movingCells[byY]->getPosition();*/
+
+        m_from = hitCell->getPosition();
+
+        m_hitCell = hitCell;
 
         _advanceState(MSMoving);
     }
@@ -258,15 +244,13 @@ void CellField::onTouchPressed(CCTouch* touch)
 
 void CellField::onTouchReleased(CCTouch* touch)
 {
-    if (m_lockedDirection != byNone
-        && (m_movingCells[byX] || m_movingCells[byY])
-        )
+    if (m_lockedDirection != byNone && m_hitCell)
     {
         _advanceState(MSStucking);
     }
     else
     {
-        m_movingCells[byX] = m_movingCells[byY] = nullptr;
+        m_hitCell = nullptr;
         _advanceState(MSIdle);
     }
 }
@@ -371,11 +355,9 @@ void CellField::_stuckMovedCells()
 {
     assert(m_lockedDirection != byNone);
 
-    Cell* cell = m_movingCells[m_lockedDirection];
-
     CCPoint* point = &m_centerMatrix[0];
 
-    const CCPoint& position = cell->getPosition();
+    const CCPoint& position = m_hitCell->getPosition();
 
     float diff =  _getPointFieldByDirection(position) - _getPointFieldByDirection(*point);
 
@@ -391,7 +373,9 @@ void CellField::_stuckMovedCells()
         }
     }
 
-    for (; cell; cell = _next(cell, m_lockedDirection))
+    Line_t& line = _getLineByDirection(m_hitCell, m_lockedDirection);
+
+    for (Cell* cell : line)
     {
         if (m_lockedDirection == byX)
         {
@@ -403,9 +387,11 @@ void CellField::_stuckMovedCells()
         }
     }
 
-    float fStepsCount = (_getPointFieldByDirection(position) - _getPointFieldByDirection(m_from[m_lockedDirection])) / m_spriteDimentsion[m_lockedDirection];
+    float fStepsCount = (_getPointFieldByDirection(position) - _getPointFieldByDirection(m_from)) / m_spriteDimentsion[m_lockedDirection];
 
-    m_stepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
+    int iSc = static_cast<int>(std::floor(fStepsCount + 0.5f));
+
+    assert(iSc == m_stepsCount);
 }
 
 void CellField::_applyInertia(float value)
@@ -423,39 +409,10 @@ void CellField::onUpdate(float dt)
     }
     else if (_getState() == MSStabilization)
     {
-        _stabilizationState();
+        //_stabilizationState();
 
         _advanceState(MSIdle);
     }
-
-//     if (m_inertiaInUse)
-//     {
-//         if (m_lockedDirection == byX && m_movingLine[0] != nullptr)
-//         {
-//             for (Cell *cell : m_movingLine)
-//             {
-//                 float x = cell->getPositionX();
-// 
-//                 x += m_lastDelta.x * m_inertia;
-// 
-//                 cell->setPositionX(x);
-//             }
-//         }
-//         else
-//         {
-// 
-//         }
-// 
-//         m_inertia -= dt;
-//         m_inertia = std::max(0.f, m_inertia);
-// 
-//         if (m_inertia == 0.f)
-//         {
-//             m_inertiaInUse = false;
-//             m_movingLine[0] = m_movingRow[0] = nullptr; //! fast invalidate
-//             m_lockedDirection = byNone;
-//         }
-//     }
 }
 
 void CellField::_advanceState(MatrixState state)

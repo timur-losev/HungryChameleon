@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <math.h>
 #include <numeric>
+#include <deque>
 
 #include <stdlib.h>
 

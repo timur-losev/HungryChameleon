@@ -33,7 +33,8 @@ public:
 
     Colour color = Undefined;
 
-    bool   dirty = false; //! recently added but has no linkage with up/down
+    int colId = -1;
+    int rowId = -1;
 
     Cell(Colour c) : color(c)
     {
@@ -44,12 +45,17 @@ public:
 class CellField : public CCLayer
 {
 public:
-    static const uint32_t MatrixLineSize = 10;
-    static const uint32_t MatrixSize = MatrixLineSize * MatrixLineSize;
+    static const uint32_t MatrixVisibleLineSize = 10;
+    static const uint32_t MatrixSize = MatrixVisibleLineSize * MatrixVisibleLineSize;
     static const uint32_t CenterMatrixSize = MatrixSize * 5;
 
 private:
     CCPoint m_centerMatrix[CenterMatrixSize];
+
+    typedef std::deque<Cell*> Line_t;
+
+    Line_t m_rows[MatrixVisibleLineSize];
+    Line_t m_cols[MatrixVisibleLineSize];
 
     enum Direction
     {
@@ -68,6 +74,8 @@ private:
 
     Cell* m_movingCells[DirectionsCount];
 
+    Cell* m_hitCell;
+
     enum MatrixState
     {
         MSIdle,
@@ -85,7 +93,7 @@ private:
 
     int       m_stepsCount;
     float     m_spriteDimentsion[DirectionsCount];
-    CCPoint   m_from[DirectionsCount];
+    CCPoint   m_from;
 
 private:
 
@@ -100,6 +108,8 @@ private:
     Cell*        _next(Cell* cur, Direction dir);
 
     Cell*        _createRandomCell();
+
+    Line_t&      _getLineByDirection(Cell* hitcell, Direction dir);
 
     inline float _getPointFieldByDirection(const CCPoint& p) const
     {
