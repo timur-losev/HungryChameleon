@@ -122,28 +122,28 @@
     <ClInclude Include="..\include\loki\Visitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\allocatorstringstorage.h">
+    <ClInclude Include="..\include\loki\flex\allocatorstringstorage.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\cowstringopt.h">
+    <ClInclude Include="..\include\loki\flex\cowstringopt.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\flex_string.h">
+    <ClInclude Include="..\include\loki\flex\flex_string.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\flex_string_details.h">
+    <ClInclude Include="..\include\loki\flex\flex_string_details.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\flex_string_shell.h">
+    <ClInclude Include="..\include\loki\flex\flex_string_shell.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\simplestringstorage.h">
+    <ClInclude Include="..\include\loki\flex\simplestringstorage.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\smallstringopt.h">
+    <ClInclude Include="..\include\loki\flex\smallstringopt.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
-    <ClInclude Include="..\loki\include\loki\flex\vectorstringstorage.h">
+    <ClInclude Include="..\include\loki\flex\vectorstringstorage.h">
       <Filter>Header Files\flexstring</Filter>
     </ClInclude>
   </ItemGroup>

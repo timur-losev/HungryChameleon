@@ -2,10 +2,13 @@
 #include "Cell.h"
 
 
+// particle system test
+#include "particle_nodes/CCParticleSystem.h"
+
 /*
     ###################CONCEPT#########################
     DO NOT PULL INTO PRODUCTION
-*/
+    */
 
 static CCTexture2D* tex = nullptr;
 
@@ -27,9 +30,11 @@ static std::pair<CCRect, Cell::Colour> SpriteDefines[] =
 CellField::CellField() :
 m_lockedDirection(byNone),
 m_state(MSIdle),
-m_hitCell(nullptr)
+m_hitCell(nullptr),
+m_prevStep(0)
 {
-
+    m_ps = CCParticleSun::create();
+    this->addChild(m_ps);
 }
 
 CellField::~CellField()
@@ -153,10 +158,17 @@ void CellField::_dragCells(const CCPoint& delta)
 
     if (_getState() == MSMoving)
     {
-        //Cell* baseCell = m_movingCells[m_lockedDirection];
-        //for (Cell* cell = baseCell; cell; cell = _next(cell, m_lockedDirection))
-
         Line_t& line = _getLineByDirection(m_hitCell, m_lockedDirection);
+
+        if (m_hitCell->markedForRemove)
+        {
+            Cell* next = _next(m_hitCell, m_lockedDirection, line);
+            _removeCell(m_hitCell);
+            m_hitCell = next;
+            m_prevStep = 0;
+            _advanceState(MSStucking);
+            return;
+        }
 
         for (Cell* cell : line)
         {
@@ -176,17 +188,7 @@ void CellField::_dragCells(const CCPoint& delta)
 
         m_stepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
 
-        if (m_lockedDirection == byX)
-        {
-            //if (iStepsCount == 1)
-            {
-                CCLog("%d %f", m_stepsCount, m_hitCell->getPositionX());
-            }
-            //else if (iStepsCount == -1)
-            {
-
-            }
-        }
+        _stabilizeMatrix(line);
     }
 
     m_lastDelta = delta;
@@ -201,11 +203,20 @@ void CellField::onTouchMoved(CCTouch* touch)
 
 void CellField::onTouchPressed(CCTouch* touch)
 {
+    if (_getState() != MSIdle)
+    {
+        return;
+    }
+
     m_lockedDirection = byNone;
 
     CCPoint to = touch->getLocation();
 
     CCPoint position = to - getPosition();
+
+    m_ps->resetSystem();
+    m_ps->setPosition(touch->getLocation());
+    //m_ps->setSourcePosition(ccp(0,0));
 
     uint32_t i = 0;
 
@@ -229,11 +240,6 @@ void CellField::onTouchPressed(CCTouch* touch)
 
     if (hitCell)
     {
-        /*m_movingCells[byX] = _rewind(hitCell, byX, ToTheBegin);
-        m_movingCells[byY] = _rewind(hitCell, byY, ToTheBegin);
-        m_from[byX] = m_movingCells[byX]->getPosition();
-        m_from[byY] = m_movingCells[byY]->getPosition();*/
-
         m_from = hitCell->getPosition();
 
         m_hitCell = hitCell;
@@ -246,6 +252,7 @@ void CellField::onTouchReleased(CCTouch* touch)
 {
     if (m_lockedDirection != byNone && m_hitCell)
     {
+        m_prevStep = 0;
         _advanceState(MSStucking);
     }
     else
@@ -255,102 +262,6 @@ void CellField::onTouchReleased(CCTouch* touch)
     }
 }
 
-Cell* CellField::_rewind(Cell* current, Direction dir, Rewind rew)
-{
-    if (dir == byX)
-    {
-        if (rew == ToTheEnd)
-        {
-            for (; current->next; current = current->next);
-        }
-        else
-        {
-            for (; current->prev; current = current->prev);
-        }
-    }
-    else
-    {
-        if (rew == ToTheEnd)
-        {
-            for (; current->down; current = current->down);
-        }
-        else
-        {
-            for (; current->up; current = current->up);
-        }
-    }
-
-    return current;
-}
-
-Cell* CellField::_advanceNode(Cell* node, int count) const
-{
-    if (count > 0)
-    {
-        for (int i = 0; i < count && node; node = node->next, ++i);
-    }
-    else if (count < 0)
-    {
-        for (int i = count; i < 0 && node; node = node->prev, ++i);
-    }
-
-    return node;
-}
-
-void CellField::_stabilizationState()
-{
-    if (m_stepsCount != 0)
-    {
-        if (m_lockedDirection == byX)
-        {
-            Cell* current = m_movingCells[m_lockedDirection];
-
-            auto rebaseFunc = [this](Cell* curNode, int steps)
-            {
-                Cell* next = _advanceNode(curNode, steps);
-
-                if (next && next->up)
-                {
-                    curNode->up = next->up;
-
-                    curNode->up->down = curNode;
-                }
-                else
-                {
-                    curNode->up = nullptr;
-                }
-
-                if (next && next->down)
-                {
-                    curNode->down = next->down;
-                    curNode->down->up = curNode;
-                }
-                else
-                {
-                    curNode->down = nullptr;
-                }
-            };
-
-            if (m_stepsCount > 0)
-            {
-                for (; current; current = current->next)
-                {
-                    rebaseFunc(current, m_stepsCount);
-                }
-            }
-            else
-            {
-                current = _rewind(current, byX, ToTheEnd);
-                for (; current; current = current->prev)
-                {
-                    rebaseFunc(current, m_stepsCount);
-                }
-            }
-        }
-    }
-}
-
-
 void CellField::_stuckMovedCells()
 {
     assert(m_lockedDirection != byNone);
@@ -359,7 +270,7 @@ void CellField::_stuckMovedCells()
 
     const CCPoint& position = m_hitCell->getPosition();
 
-    float diff =  _getPointFieldByDirection(position) - _getPointFieldByDirection(*point);
+    float diff = _getPointFieldByDirection(position) - _getPointFieldByDirection(*point);
 
     for (uint32_t i = 1; i < CenterMatrixSize; i++)
     {
@@ -387,29 +298,15 @@ void CellField::_stuckMovedCells()
         }
     }
 
-    float fStepsCount = (_getPointFieldByDirection(position) - _getPointFieldByDirection(m_from)) / m_spriteDimentsion[m_lockedDirection];
-
-    int iSc = static_cast<int>(std::floor(fStepsCount + 0.5f));
-
-    assert(iSc == m_stepsCount);
-}
-
-void CellField::_applyInertia(float value)
-{
-
 }
 
 void CellField::onUpdate(float dt)
 {
+    m_ps->update(dt);
+
     if (_getState() == MSStucking)
     {
         _stuckMovedCells();
-
-        _advanceState(MSStabilization);
-    }
-    else if (_getState() == MSStabilization)
-    {
-        //_stabilizationState();
 
         _advanceState(MSIdle);
     }
@@ -425,16 +322,174 @@ CellField::MatrixState CellField::_getState() const
     return m_state;
 }
 
-Cell* CellField::_next(Cell* cur, Direction dir)
+Cell* CellField::_next(Cell* cur, Direction dir, const Line_t& line)
 {
     assert(cur);
 
     if (dir == byX)
     {
-        return cur->next;
+        if (cur->colId < (int)line.size() - 1)
+        {
+            return line[cur->colId + 1];
+        }
+        else
+        {
+            return line[cur->colId - 1];
+        }
     }
     else
     {
-        return cur->down;
+        if (cur->rowId < (int)line.size() - 1)
+        {
+            return line[cur->rowId + 1];
+        }
+        else
+        {
+            return line[cur->rowId - 1];
+        }
+    }
+
+    return nullptr;
+}
+
+void CellField::_stabilizeMatrix(Line_t &line)
+{
+    int delta = m_stepsCount - m_prevStep;
+
+    if (m_lockedDirection == byX)
+    {
+        if (delta == 1)
+        {
+            m_prevStep = m_stepsCount;
+
+            Cell* zeroCell = line.front();
+            Cell* newCell = _createRandomCell();
+            newCell->setPositionY(zeroCell->getPositionY());
+            newCell->setPositionX(zeroCell->getPositionX() - SpriteW);
+            addChild(newCell);
+
+            line.push_front(newCell);
+            Cell* toRemove = line.back();
+            line.pop_back();
+
+            _rebaseByX(zeroCell, line);
+
+            _removeCellIfPossible(toRemove);
+        }
+        else if (delta == -1)
+        {
+            m_prevStep = m_stepsCount;
+
+            Cell* zeroCell = line.back();
+            Cell* newCell = _createRandomCell();
+            newCell->setPositionY(zeroCell->getPositionY());
+            newCell->setPositionX(zeroCell->getPositionX() + SpriteW);
+            addChild(newCell);
+
+            line.push_back(newCell);
+            Cell* toRemove = line.front();
+            line.pop_front();
+
+            _rebaseByX(zeroCell, line);
+
+            _removeCellIfPossible(toRemove);
+        }
+    }
+    else
+    {
+        if (delta == 1)
+        {
+            m_prevStep = m_stepsCount;
+
+            Cell* zeroCell = line.front();
+            Cell* newCell = _createRandomCell();
+
+            newCell->setPositionY(zeroCell->getPositionY() - SpriteH);
+            newCell->setPositionX(zeroCell->getPositionX());
+
+            addChild(newCell);
+
+            line.push_front(newCell);
+            Cell* toRemove = line.back();
+            line.pop_back();
+
+            _rebaseByY(zeroCell, line);
+
+            _removeCellIfPossible(toRemove);
+        }
+        else if (delta == -1)
+        {
+            m_prevStep = m_stepsCount;
+
+            Cell* zeroCell = line.back();
+            Cell* newCell = _createRandomCell();
+
+            newCell->setPositionY(zeroCell->getPositionY() + SpriteH);
+            newCell->setPositionX(zeroCell->getPositionX());
+
+            addChild(newCell);
+
+            line.push_back(newCell);
+            Cell* toRemove = line.front();
+            line.pop_front();
+
+            _rebaseByY(zeroCell, line);
+
+            _removeCellIfPossible(toRemove);
+        }
+    }
+}
+
+void CellField::_rebaseByX(Cell* sampleCell, Line_t& row)
+{
+    uint32_t j = 0;
+    for (size_t i = 0; i < MatrixVisibleLineSize; ++i)
+    {
+        Line_t& col = m_cols[i];
+
+        Cell* exchangeCell = row[j];
+
+        exchangeCell->rowId = sampleCell->rowId;
+        exchangeCell->colId = i;
+
+        col[sampleCell->rowId] = exchangeCell;
+
+        ++j;
+    }
+}
+
+void CellField::_rebaseByY(Cell* sampleCell, Line_t& col)
+{
+    uint32_t j = 0;
+    for (size_t i = 0; i < MatrixVisibleLineSize; ++i)
+    {
+        Line_t& row = m_rows[i];
+
+        Cell* exchangeCell = col[j];
+
+        exchangeCell->colId = sampleCell->colId;
+        exchangeCell->rowId = i;
+
+        row[sampleCell->colId] = exchangeCell;
+
+        ++j;
+    }
+}
+
+void CellField::_removeCell(Cell* cell)
+{
+    removeChild(static_cast<CCNode*>(cell), true);
+    cell->release();
+}
+
+void CellField::_removeCellIfPossible(Cell* cell)
+{
+    if (m_hitCell != cell)
+    {
+        _removeCell(cell);
+    }
+    else if (m_hitCell)
+    {
+        m_hitCell->markedForRemove = true;
     }
 }

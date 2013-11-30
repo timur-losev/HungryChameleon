@@ -11,11 +11,6 @@ class Cell : public CCSprite
 {
 public:
 
-    Cell* up = nullptr;
-    Cell* down = nullptr;
-    Cell* next = nullptr;
-    Cell* prev = nullptr;
-
     enum Colour
     {
         Undefined,
@@ -36,6 +31,8 @@ public:
     int colId = -1;
     int rowId = -1;
 
+    bool markedForRemove = false;
+
     Cell(Colour c) : color(c)
     {
     }
@@ -45,6 +42,7 @@ public:
 class CellField : public CCLayer
 {
 public:
+	CCParticleSystem* m_ps;
     static const uint32_t MatrixVisibleLineSize = 10;
     static const uint32_t MatrixSize = MatrixVisibleLineSize * MatrixVisibleLineSize;
     static const uint32_t CenterMatrixSize = MatrixSize * 5;
@@ -81,7 +79,6 @@ private:
         MSIdle,
         MSMoving,
         MSStucking,
-        MSStabilization,
         MSMatching,
 
         STATES_MAX
@@ -91,21 +88,25 @@ private:
 
     CCPoint   m_lastDelta;
 
-    int       m_stepsCount;
+    int       m_stepsCount, m_prevStep;
     float     m_spriteDimentsion[DirectionsCount];
     CCPoint   m_from;
 
 private:
 
-    Cell*        _advanceNode(Cell* node, int count) const;
-    Cell*        _rewind(Cell* current, Direction, Rewind);
-
     void         _dragCells(const CCPoint& delta);
-    void         _applyInertia(float value);
+
+    void         _stabilizeMatrix(Line_t &line);
+
     void         _stuckMovedCells();
-    void         _stabilizationState();
     void         _advanceState(MatrixState state);
-    Cell*        _next(Cell* cur, Direction dir);
+    Cell*        _next(Cell* cur, Direction dir, const Line_t& line);
+
+    void         _rebaseByX(Cell* sampleCell, Line_t& row);
+    void         _rebaseByY(Cell* sampleCell, Line_t& col);
+
+    void         _removeCellIfPossible(Cell* cell);
+    void         _removeCell(Cell* cell);
 
     Cell*        _createRandomCell();
 
