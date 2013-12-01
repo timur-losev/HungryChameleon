@@ -9,4 +9,6 @@ public:
 	static const float			FontSizeMedium;
 	static const float			FontSizeBig;
 
+
+	static const std::string	languageFile(const std::string& lang);
 };

@@ -2,6 +2,7 @@
 #include "LoadingScene.h"
 
 #include "SceneController.h"
+#include "TextManager.h"
 
 LoadingScene::LoadingScene()
 	:GameSceneBase(ESMLoading)
@@ -20,7 +21,7 @@ bool LoadingScene::init()
 void LoadingScene::onEnter()
 {
     GameSceneBase::onEnter();
-
+	SharedTextManager::Instance().loadLanguage(TextManager::s_English);
 
 	schedule(schedule_selector(LoadingScene::onUpdate), 0.0f);
 }
