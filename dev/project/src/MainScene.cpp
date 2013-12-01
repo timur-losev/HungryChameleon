@@ -8,9 +8,6 @@
 #include "BubbleElement.h"
 #include "System.h"
 
-#include "BubbleSet.h"
-#include "MatrixField.h"
-
 #include "Cell.h"
 
 MainScene::MainScene()
@@ -244,41 +241,44 @@ void MainScene::onUpdate(float dt)
 
 void MainScene::UpdateMatrix(float dt)
 {
-    for(int i = 0; i < MatrixField::k_MaxVisibleSize; ++i)
-    {
-        for(int j = 0; j < MatrixField::k_MaxVisibleSize; ++j)
-        {
-            BubbleElement* element = m_BubbleSet->getElementAt(i, j);
+#if 0
+	for (int i = 0; i < MatrixField::k_MaxVisibleSize; ++i)
+	{
+		for (int j = 0; j < MatrixField::k_MaxVisibleSize; ++j)
+		{
+			BubbleElement* element = m_BubbleSet->getElementAt(i, j);
 
-            int type = m_MatrixField->getVisible(i, j);
-            if (type >= 0)
-            {
-                element->setType(type);
-                element->setVisible(true);
-                element->setOpacity(255);
-            }
-            else
-            {
-                //element->setVisible(false);
-                element->setOpacity(128);
-            }
+			int type = m_MatrixField->getVisible(i, j);
+			if (type >= 0)
+			{
+				element->setType(type);
+				element->setVisible(true);
+				element->setOpacity(255);
+			}
+			else
+			{
+				//element->setVisible(false);
+				element->setOpacity(128);
+			}
 
-            // additional shift for row or column
-            const uint32_t bubbleSize = m_BubbleSet->getBubbleSize();
-            int x = m_BubbleViewDisplacement.x + i * (bubbleSize + m_SpaceBetweenBubbles);
-            int y = VisibleRect::top().y - m_BubbleViewDisplacement.y - bubbleSize - j * (bubbleSize + m_SpaceBetweenBubbles);
+			// additional shift for row or column
+			const uint32_t bubbleSize = m_BubbleSet->getBubbleSize();
+			int x = m_BubbleViewDisplacement.x + i * (bubbleSize + m_SpaceBetweenBubbles);
+			int y = VisibleRect::top().y - m_BubbleViewDisplacement.y - bubbleSize - j * (bubbleSize + m_SpaceBetweenBubbles);
 
-            if ((i == m_QuickScrollPos.y && !m_QuickScrollVertical) || (j == m_QuickScrollPos.x && m_QuickScrollVertical))
-            {
-                x += m_QuickScrollDelta.x;
-                y += m_QuickScrollDelta.y;
-            }
+			if ((i == m_QuickScrollPos.y && !m_QuickScrollVertical) || (j == m_QuickScrollPos.x && m_QuickScrollVertical))
+			{
+				x += m_QuickScrollDelta.x;
+				y += m_QuickScrollDelta.y;
+			}
 
-            element->setPosition( ccp( x, y ) );
+			element->setPosition(ccp(x, y));
 
-            m_BubbleSet->updateBubble(dt, element);
-        }
-    }
+			m_BubbleSet->updateBubble(dt, element);
+		}
+	}
+#endif // 0
+
 }
 
 bool MainScene::LoadGameSettings()
@@ -316,36 +316,6 @@ bool MainScene::LoadGameSettings()
     xscoresField->Attribute("y", &m_ScoresTimerPos.y);
 
     return true;
-}
-
-void MainScene::PushFlyingBubbles(const MatrixField::MatchesList_t& bubbles)
-{
-    size_t size = bubbles.size();
-    for (size_t i = 0; i < size; ++i)
-    {
-        CCPointArray *array = CCPointArray::create(20);
-
-        const uint32_t bubbleSize = m_BubbleSet->getBubbleSize();
-
-        int x = m_BubbleViewDisplacement.x + bubbles[i].y * (bubbleSize + m_SpaceBetweenBubbles);
-        int y = VisibleRect::top().y - m_BubbleViewDisplacement.y - bubbleSize - bubbles[i].x * (bubbleSize + m_SpaceBetweenBubbles);
-
-        array->addControlPoint(ccp(x, y));
-        array->addControlPoint(ccp(x + 30, y + 30));
-        array->addControlPoint(ccp(x + 60, y + 50));
-        array->addControlPoint(ccp(x + 80, y + 70));
-        array->addControlPoint(ccp(750, 400));
-
-        CCCardinalSplineTo *action = CCCardinalSplineTo::create(1.5, array, 0);
-        CCFiniteTimeAction* actionMoveDone = CCCallFuncN::create( this, callfuncN_selector(MainScene::RemoveFlyingBubbles));
-        CCFiniteTimeAction *seq = CCSequence::create(action, actionMoveDone, NULL);
-
-        BubbleElement* bubble = m_BubbleSet->createBubble(m_BubbleSet->getElementAt(bubbles[i])->getType());
-
-        bubble->setPosition(CCPointMake(x, y));
-        bubble->runAction(seq);
-        addChild(bubble);
-    }
 }
 
 void MainScene::RemoveFlyingBubbles(CCNode* sender)

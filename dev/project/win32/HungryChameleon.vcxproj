@@ -87,8 +87,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\AppDelegate.cpp" />
-    <ClCompile Include="..\src\BubbleElement.cpp" />
-    <ClCompile Include="..\src\BubbleSet.cpp" />
     <ClCompile Include="..\src\Cell.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
     <ClCompile Include="..\src\MenuView.cpp" />
@@ -104,20 +102,18 @@
     <ClCompile Include="..\src\MainMenuScene.cpp" />
     <ClCompile Include="..\src\MainMenuView.cpp" />
     <ClCompile Include="..\src\MainScene.cpp" />
-    <ClCompile Include="..\src\MatrixField.cpp" />
     <ClCompile Include="..\src\ParallaxBackground.cpp" />
     <ClCompile Include="..\src\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\TextManager.cpp" />
     <ClCompile Include="..\src\Utils.cpp" />
     <ClCompile Include="..\src\VisibleRect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h" />
-    <ClInclude Include="..\src\BubbleElement.h" />
-    <ClInclude Include="..\src\BubbleSet.h" />
     <ClInclude Include="..\src\Cell.h" />
     <ClInclude Include="..\src\LoadingScene.h" />
     <ClInclude Include="..\src\MenuView.h" />
@@ -134,9 +130,9 @@
     <ClInclude Include="..\src\MainMenuScene.h" />
     <ClInclude Include="..\src\MainMenuView.h" />
     <ClInclude Include="..\src\MainScene.h" />
-    <ClInclude Include="..\src\MatrixField.h" />
     <ClInclude Include="..\src\ParallaxBackground.h" />
     <ClInclude Include="..\src\Precompiled.h" />
+    <ClInclude Include="..\src\TextManager.h" />
     <ClInclude Include="..\src\Utils.h" />
     <ClInclude Include="..\src\VisibleRect.h" />
   </ItemGroup>

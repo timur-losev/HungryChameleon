@@ -11,17 +11,17 @@
     <Filter Include="src\GUI">
       <UniqueIdentifier>{20fe3abc-0279-487f-9258-d99113b69eaa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\GUI\MainMenu">
+      <UniqueIdentifier>{a8d0d7f9-55a8-42bf-bb60-e452494f986b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Resources">
+      <UniqueIdentifier>{729f8c98-fe1d-4504-9918-fef5d3e17dd1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Game">
       <UniqueIdentifier>{a57a3422-1c7a-4de4-b4e2-4b3320008314}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\GameScene">
       <UniqueIdentifier>{f9a01f53-f9bf-4285-97d5-fffa8e617191}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\GUI\MainMenu">
-      <UniqueIdentifier>{a8d0d7f9-55a8-42bf-bb60-e452494f986b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Bubble">
-      <UniqueIdentifier>{332e0869-1a5d-431c-896a-7b48240a517a}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\GameScene\Scenes">
       <UniqueIdentifier>{7b717ad9-ef45-4c4d-8eea-24178baa1325}</UniqueIdentifier>
@@ -32,8 +32,8 @@
     <Filter Include="src\Game\GameScene\Scenes\View">
       <UniqueIdentifier>{9f29749b-fe90-4421-9d32-5a32fe9b646f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Resources">
-      <UniqueIdentifier>{729f8c98-fe1d-4504-9918-fef5d3e17dd1}</UniqueIdentifier>
+    <Filter Include="src\Game\Bubble">
+      <UniqueIdentifier>{332e0869-1a5d-431c-896a-7b48240a517a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,15 +73,6 @@
     <ClCompile Include="..\src\MainScene.cpp">
       <Filter>src\Game\GameScene\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\BubbleElement.cpp">
-      <Filter>src\Game\Bubble</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\BubbleSet.cpp">
-      <Filter>src\Game\Bubble</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MatrixField.cpp">
-      <Filter>src\Game\Bubble</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Cell.cpp">
       <Filter>src\Game\Bubble</Filter>
     </ClCompile>
@@ -104,6 +95,9 @@
       <Filter>src\Game\GameScene\Scenes\View</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Resources.cpp">
+      <Filter>src\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TextManager.cpp">
       <Filter>src\Resources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -141,15 +135,6 @@
     <ClInclude Include="..\src\MainScene.h">
       <Filter>src\Game\GameScene\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\BubbleElement.h">
-      <Filter>src\Game\Bubble</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\BubbleSet.h">
-      <Filter>src\Game\Bubble</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\MatrixField.h">
-      <Filter>src\Game\Bubble</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Cell.h">
       <Filter>src\Game\Bubble</Filter>
     </ClInclude>
@@ -176,6 +161,9 @@
       <Filter>src\Game\GameScene\Scenes\View</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Resources.h">
+      <Filter>src\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TextManager.h">
       <Filter>src\Resources</Filter>
     </ClInclude>
   </ItemGroup>

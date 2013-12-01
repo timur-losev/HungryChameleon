@@ -4,8 +4,6 @@
 
 class ParallaxBackground;
 
-forward_this_u(BubbleSet);
-forward_this_u(MatrixField);
 
 class CellField;
 
@@ -18,8 +16,6 @@ private:
     CCPoint						m_BubbleViewDisplacement;
     int							m_SpaceBetweenBubbles;
 
-    MatrixFieldPtr              m_MatrixField;
-    BubbleSetPtr                m_BubbleSet;
 
     CCPoint						m_QuickScrollPos;
     CCPoint						m_QuickScrollDelta;
