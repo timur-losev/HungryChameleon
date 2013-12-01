@@ -35,7 +35,7 @@ void TextManager::loadLanguage(const std::string& lang)
 	m_stringsDict->retain();
 }
 
-const CCString TextManager::_getString(const std::string& key)
+CCString TextManager::_getString(const std::string& key)
 {	
 #ifdef _DEBUG
 	const CCString* str = m_stringsDict->valueForKey(key);

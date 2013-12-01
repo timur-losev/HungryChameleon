@@ -100,6 +100,9 @@
     <ClCompile Include="..\src\TextManager.cpp">
       <Filter>src\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\SaveController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -165,6 +168,9 @@
     </ClInclude>
     <ClInclude Include="..\src\TextManager.h">
       <Filter>src\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SaveController.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

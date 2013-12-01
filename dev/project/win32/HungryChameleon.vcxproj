@@ -91,6 +91,7 @@
     <ClCompile Include="..\src\LoadingScene.cpp" />
     <ClCompile Include="..\src\MenuView.cpp" />
     <ClCompile Include="..\src\Resources.cpp" />
+    <ClCompile Include="..\src\SaveController.cpp" />
     <ClCompile Include="..\src\SceneController.cpp" />
     <ClCompile Include="..\src\System.cpp" />
     <ClCompile Include="..\src\GameController.cpp" />
@@ -118,6 +119,7 @@
     <ClInclude Include="..\src\LoadingScene.h" />
     <ClInclude Include="..\src\MenuView.h" />
     <ClInclude Include="..\src\Resources.h" />
+    <ClInclude Include="..\src\SaveController.h" />
     <ClInclude Include="..\src\SceneController.h" />
     <ClInclude Include="..\src\SceneModes.h" />
     <ClInclude Include="..\src\sigslot.h" />

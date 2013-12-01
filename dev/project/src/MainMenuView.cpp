@@ -2,6 +2,7 @@
 #include "MainMenuView.h"
 #include "VisibleRect.h"
 #include "TextManager.h"
+#include "Resources.h"
 
 MainMenuView::MainMenuView()
 {
@@ -19,11 +20,7 @@ bool MainMenuView::init(bool fromGame)
 
     m_pMainMenu = CCMenu::create();
 
-	CCString caption = TextManager::getString("STR_MAIN_MENU"); // "Start Game";
-    if (fromGame)
-        caption = "Resume Game";
-
-    CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "data/brookeshappelldots.ttf", 68);
+    CCLabelTTF* label = CCLabelTTF::create(TextManager::getString("STR_START_GAME").getCString(), Resources::FontShapleDots, Resources::FontSizeBig);
     m_pStartButton = CCMenuItemLabel::create(label);
     m_pStartButton->setPosition( ccp( VisibleRect::center().x, VisibleRect::center().y) );
 
