@@ -29,10 +29,10 @@ bool GameController::init()
     return bRet;
 }
 
-void GameController::showMainMenu()
+void GameController::start()
 {
      setTouchEnabled(true);
-     SharedGameDelegate::Instance().openMainMenu();
+     SharedGameDelegate::Instance().startGame();
 }
 
 void GameController::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)

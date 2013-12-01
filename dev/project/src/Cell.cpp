@@ -492,8 +492,11 @@ void CellField::_removeCellIfPossible(Cell* cell)
 
 void CellField::_onCellRemoved(Cell* cell)
 {
+#if 0
 	CCParticleSystem* ps = CCParticleExplosion::createWithTotalParticles(100);
 	ps->autorelease();
 	ps->setPosition(cell->convertToNodeSpace(cell->getPosition()));
 	cell->addChild(ps);
+#endif // 0
+
 }

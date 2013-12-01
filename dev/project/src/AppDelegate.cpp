@@ -38,7 +38,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     m_pGameController->autorelease();
     if (!m_pGameController->init())
         return false;
-    m_pGameController->showMainMenu();
+    m_pGameController->start();
 
     return true;
 }

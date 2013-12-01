@@ -18,6 +18,7 @@ MainScene::MainScene()
     , m_CellField(nullptr)
     , m_LabelTimer(nullptr)
     , m_MatchDuration(60000)
+	, GameSceneBase(ESMAction)
 {
     LoadGameSettings();
 
@@ -111,7 +112,7 @@ void MainScene::onEnter()
 
 void MainScene::onMainMenuTap( CCObject* )
 {
-    SharedGameDelegate::Instance().returnToMainMenu();
+	_AdvanceToScene(ESMMainMenu);
 }
 
 void MainScene::OnTouchEnded(CCTouch* touch)

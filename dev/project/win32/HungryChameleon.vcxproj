@@ -90,6 +90,8 @@
     <ClCompile Include="..\src\BubbleElement.cpp" />
     <ClCompile Include="..\src\BubbleSet.cpp" />
     <ClCompile Include="..\src\Cell.cpp" />
+    <ClCompile Include="..\src\LoadingScene.cpp" />
+    <ClCompile Include="..\src\SceneController.cpp" />
     <ClCompile Include="..\src\System.cpp" />
     <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
@@ -115,6 +117,10 @@
     <ClInclude Include="..\src\BubbleElement.h" />
     <ClInclude Include="..\src\BubbleSet.h" />
     <ClInclude Include="..\src\Cell.h" />
+    <ClInclude Include="..\src\LoadingScene.h" />
+    <ClInclude Include="..\src\SceneController.h" />
+    <ClInclude Include="..\src\SceneModes.h" />
+    <ClInclude Include="..\src\sigslot.h" />
     <ClInclude Include="..\src\System.h" />
     <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameDelegate.h" />

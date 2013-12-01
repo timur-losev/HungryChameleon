@@ -5,9 +5,11 @@
 #include "GameDelegate.h"
 
 //------------------------------------------------------------------//
-MainMenuScene::MainMenuScene(): m_pMainMenu(nullptr)
-{
+MainMenuScene::MainMenuScene()
+	:GameSceneBase(ESMMainMenu),
+	m_pMainMenu(nullptr)
 
+{
 }
 
 MainMenuScene::~MainMenuScene()
@@ -18,7 +20,7 @@ MainMenuScene::~MainMenuScene()
 void MainMenuScene::onEnter()
 {
     GameSceneBase::onEnter();
-
+	init(false);
 }
 
 bool MainMenuScene::init(bool fromGame)
@@ -48,11 +50,11 @@ bool MainMenuScene::init(bool fromGame)
 
 void MainMenuScene::startCallback(CCObject * pSender)
 {
-    SharedGameDelegate::Instance().startGame();
+	_AdvanceToScene(ESMAction);
 }
 
 
 void MainMenuScene::returnCallback( CCObject * pSender )
 {
-    SharedGameDelegate::Instance().returnToGame();
+//	SharedGameDelegate::Instance().returnToGame();
 }

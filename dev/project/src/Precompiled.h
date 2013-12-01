@@ -26,6 +26,8 @@
 
 #include <loki/Singleton.h> // Contains required system headers as well
 
+#include "sigslot.h"
+
 using namespace cocos2d;
 
 #define forward_this_u(__class__)\
