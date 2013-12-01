@@ -21,7 +21,8 @@ bool LoadingScene::init()
 void LoadingScene::onEnter()
 {
     GameSceneBase::onEnter();
-	SharedTextManager::Instance().loadLanguage(TextManager::s_English);
+	//SharedTextManager::Instance().loadLanguage(TextManager::s_English);
+	SharedTextManager::Instance().loadLanguage(TextManager::s_Russian);
 
 	schedule(schedule_selector(LoadingScene::onUpdate), 0.0f);
 }

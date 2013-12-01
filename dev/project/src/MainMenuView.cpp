@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "MainMenuView.h"
 #include "VisibleRect.h"
+#include "TextManager.h"
 
 MainMenuView::MainMenuView()
 {
@@ -18,7 +19,7 @@ bool MainMenuView::init(bool fromGame)
 
     m_pMainMenu = CCMenu::create();
 
-    CCString caption = "Start Game";
+	CCString caption = TextManager::getString("STR_MAIN_MENU"); // "Start Game";
     if (fromGame)
         caption = "Resume Game";
 

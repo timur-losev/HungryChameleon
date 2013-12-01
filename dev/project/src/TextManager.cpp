@@ -32,10 +32,10 @@ void TextManager::loadLanguage(const std::string& lang)
 	}
 
 	m_stringsDict = CCDictionary::createWithContentsOfFile(file.c_str());
+	m_stringsDict->retain();
 }
 
-const std::string& TextManager::_getString(const std::string& key)
-{
-	CCObject* text = m_stringsDict->objectForKey(key);
-	return "";
+const CCString TextManager::_getString(const std::string& key)
+{	
+	return *(m_stringsDict->valueForKey(key));
 }
