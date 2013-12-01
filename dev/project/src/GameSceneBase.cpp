@@ -20,5 +20,5 @@ void GameSceneBase::onEnter()
 
 void GameSceneBase::AddSceneSlots(SceneController* scene)
 {
-	m_signalChangeScene.connect(scene, &SceneController::AdvanceToMode);
+	_AdvanceToScene.connect(scene, &SceneController::AdvanceToMode);
 }

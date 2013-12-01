@@ -29,6 +29,12 @@
     <Filter Include="src\Game\GameScene\Scenes\Base">
       <UniqueIdentifier>{0060f2ec-9a08-489d-bcc3-11f29fa9b3a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\GameScene\Scenes\View">
+      <UniqueIdentifier>{9f29749b-fe90-4421-9d32-5a32fe9b646f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Resources">
+      <UniqueIdentifier>{729f8c98-fe1d-4504-9918-fef5d3e17dd1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -48,12 +54,6 @@
     </ClCompile>
     <ClCompile Include="..\src\GameSceneBase.cpp">
       <Filter>src\Game\GameScene\Scenes\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\IngameMenuView.cpp">
-      <Filter>src\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MainMenuView.cpp">
-      <Filter>src\GUI\MainMenu</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Layer3D.cpp">
       <Filter>src\Game</Filter>
@@ -94,6 +94,18 @@
     <ClCompile Include="..\src\MainMenuScene.cpp">
       <Filter>src\Game\GameScene\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\MainMenuView.cpp">
+      <Filter>src\Game\GameScene\Scenes\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\IngameMenuView.cpp">
+      <Filter>src\Game\GameScene\Scenes\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MenuView.cpp">
+      <Filter>src\Game\GameScene\Scenes\View</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Resources.cpp">
+      <Filter>src\Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -110,12 +122,6 @@
     </ClInclude>
     <ClInclude Include="..\src\GameSceneBase.h">
       <Filter>src\Game\GameScene\Scenes\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\IngameMenuView.h">
-      <Filter>src\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\MainMenuView.h">
-      <Filter>src\GUI\MainMenu</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Layer3D.h">
       <Filter>src\Game</Filter>
@@ -159,6 +165,18 @@
     </ClInclude>
     <ClInclude Include="..\src\SceneModes.h">
       <Filter>src\Game\GameScene\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MainMenuView.h">
+      <Filter>src\Game\GameScene\Scenes\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\IngameMenuView.h">
+      <Filter>src\Game\GameScene\Scenes\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MenuView.h">
+      <Filter>src\Game\GameScene\Scenes\View</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Resources.h">
+      <Filter>src\Resources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

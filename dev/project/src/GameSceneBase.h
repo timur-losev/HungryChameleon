@@ -8,10 +8,9 @@ class GameSceneBase : public CCScene
 {
 private:
 	ESceneModes m_baseSceneMode;
-	sigslot::signal1<ESceneModes> m_signalChangeScene;
 
 protected:
-	inline void				_AdvanceToScene(ESceneModes mode) { m_signalChangeScene(mode); }
+	sigslot::signal1<ESceneModes> _AdvanceToScene;
 
 public:
     GameSceneBase(ESceneModes);
