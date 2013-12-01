@@ -5,7 +5,6 @@
 #include "GameDelegate.h"
 #include "Layer3D.h"
 #include "ParallaxBackground.h"
-#include "BubbleElement.h"
 #include "System.h"
 
 #include "Cell.h"
@@ -320,8 +319,7 @@ bool MainScene::LoadGameSettings()
 
 void MainScene::RemoveFlyingBubbles(CCNode* sender)
 {
-    BubbleElement *sprite = static_cast<BubbleElement*>(sender);
-    removeChild(sprite, true);
+
 }
 
 void MainScene::OnTouchBegan(CCTouch* touch)
