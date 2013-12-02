@@ -137,6 +137,12 @@
     <ClInclude Include="..\src\VisibleRect.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\cocos2dx\cocos2dx\proj.win32\cocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\cocos2dx\extensions\proj.win32\libExtensions.vcxproj">
+      <Project>{21b2c324-891f-48ea-ad1a-5ae13de12e28}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\libs\loki\src\Library_MSVC9.vcxproj">
       <Project>{cbdb8e7a-4286-4ae3-a190-ba33d7c53ff0}</Project>
     </ProjectReference>
