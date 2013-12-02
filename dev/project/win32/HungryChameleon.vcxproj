@@ -53,9 +53,9 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=0;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;..\..\..\libs\loki\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\..\..\libs\cocos2dx\cocos2dx\include;..\..\..\libs\cocos2dx\cocos2dx\;..\..\..\libs\cocos2dx\cocos2dx\platform\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32;..\..\..\libs\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;..\..\..\libs\cocos2dx\cocos2dx\kazmath\include;..\..\..\libs\tinyxml;..\..\..\libs\loki\include;..\..\..\libs\cocos2dx\extensions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
