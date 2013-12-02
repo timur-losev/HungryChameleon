@@ -8,7 +8,9 @@
   },
   "designHeight": 768,
   "designWidth": 1024,
-  "textures": [],
+  "textures": [
+    "MainMenu0.plist"
+  ],
   "version": "1.1.0.0",
   "widgetTree": {
     "classname": "Panel",
@@ -313,7 +315,7 @@
             "layoutParentHorizontal": 0,
             "layoutParentVertical": 0,
             "marginDown": 0,
-            "marginLeft": 371,
+            "marginLeft": 372,
             "marginRight": 0,
             "marginTop": 457,
             "relativeName": "MenuLayer",
@@ -321,7 +323,7 @@
             "type": 1
           },
           "opacity": 255,
-          "positionPercentX": 0.3623047,
+          "positionPercentX": 0.36328125,
           "positionPercentY": 0.14453125,
           "positionType": 0,
           "rotation": 0,
@@ -335,7 +337,7 @@
           "useMergedTexture": false,
           "visible": true,
           "width": 200,
-          "x": 371,
+          "x": 372,
           "y": 111,
           "backGroundImage": null,
           "backGroundImageData": null,

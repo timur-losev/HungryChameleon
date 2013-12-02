@@ -10,7 +10,9 @@
   <JsonList>
     <string>MainMenu_1.json</string>
   </JsonList>
-  <imageFileList />
+  <imageFileList>
+    <string>MainMenu0.plist</string>
+  </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
   <CurrentUIJson>MainMenu_1.json</CurrentUIJson>
   <CanvasSize>
