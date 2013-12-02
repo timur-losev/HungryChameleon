@@ -32,11 +32,11 @@ bool MainMenuScene::init(bool fromGame)
 
         if (fromGame)
         {
-            m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
+			m_pMainMenu->getStartButton()->addTouchEventListener(this, toucheventselector(MainMenuScene::startCallback));
         }
         else
         {
-            m_pMainMenu->getStartButton()->setTarget(this, menu_selector(MainMenuScene::startCallback));
+			m_pMainMenu->getStartButton()->addTouchEventListener(this, toucheventselector(MainMenuScene::startCallback));
         }
 
         addChild(m_pMainMenu);
@@ -48,13 +48,13 @@ bool MainMenuScene::init(bool fromGame)
     return false;
 }
 
-void MainMenuScene::startCallback(CCObject * pSender)
+void MainMenuScene::startCallback(CCObject * pSender, extension::TouchEventType)
 {
 	_AdvanceToScene(ESMAction);
 }
 
 
-void MainMenuScene::returnCallback( CCObject * pSender )
+void MainMenuScene::returnCallback(CCObject * pSender, extension::TouchEventType)
 {
 //	SharedGameDelegate::Instance().returnToGame();
 }

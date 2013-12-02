@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>STR_MAIN_MENU</key>
+	<string>Главное Меню</string>
+	<key>STR_OPTIONS</key>
+	<string>Настройки</string>
+	<key>STR_PAUSE</key>
+	<string>Пауза</string>
+	<key>STR_RESUME</key>
+	<string>Возобновить</string>
+	<key>STR_SCORE</key>
+	<string>Счёт</string>
+	<key>STR_START_GAME</key>
+	<string>Старт</string>
+</dict>
+</plist>

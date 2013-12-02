@@ -4,7 +4,7 @@ class MainMenuView: public CCLayer
 {
 private:
     CCMenu*                 m_pMainMenu;
-    CCMenuItemLabel*        m_pStartButton;
+	extension::UIWidget*	m_pStartButton;
 protected:
 public:
     MainMenuView();
@@ -12,5 +12,5 @@ public:
 
     bool                    init(bool fromGame = false);
 
-    CCMenuItemLabel*        getStartButton() const;
+	extension::UIWidget*	getStartButton() const;
 };
