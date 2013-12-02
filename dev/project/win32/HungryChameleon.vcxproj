@@ -61,7 +61,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;libpng.lib;libjpeg.lib;libzlib.lib;libwebp.lib;libtiff.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>Debug.win32</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
