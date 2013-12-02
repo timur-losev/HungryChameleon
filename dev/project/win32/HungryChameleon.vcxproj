@@ -89,7 +89,6 @@
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\Cell.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
-    <ClCompile Include="..\src\MenuView.cpp" />
     <ClCompile Include="..\src\Resources.cpp" />
     <ClCompile Include="..\src\SaveController.cpp" />
     <ClCompile Include="..\src\SceneController.cpp" />
@@ -117,7 +116,6 @@
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\Cell.h" />
     <ClInclude Include="..\src\LoadingScene.h" />
-    <ClInclude Include="..\src\MenuView.h" />
     <ClInclude Include="..\src\Resources.h" />
     <ClInclude Include="..\src\SaveController.h" />
     <ClInclude Include="..\src\SceneController.h" />

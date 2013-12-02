@@ -91,9 +91,6 @@
     <ClCompile Include="..\src\IngameMenuView.cpp">
       <Filter>src\Game\GameScene\Scenes\View</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MenuView.cpp">
-      <Filter>src\Game\GameScene\Scenes\View</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Resources.cpp">
       <Filter>src\Resources</Filter>
     </ClCompile>
@@ -158,9 +155,6 @@
       <Filter>src\Game\GameScene\Scenes\View</Filter>
     </ClInclude>
     <ClInclude Include="..\src\IngameMenuView.h">
-      <Filter>src\Game\GameScene\Scenes\View</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\MenuView.h">
       <Filter>src\Game\GameScene\Scenes\View</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Resources.h">
