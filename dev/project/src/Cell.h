@@ -27,16 +27,15 @@ public:
         DarkBlue
     };
 
-    Colour color = Undefined;
+    Colour colour = Undefined;
 
     int colId = -1;
     int rowId = -1;
 
     bool markedForRemove = false;
+    bool travelsed = false;
 
-	Cell(Colour c);// : color(c)
-    //{
-    //}
+    Cell(Colour c);
 };
 
 
@@ -62,12 +61,6 @@ private:
         byY,
 
         DirectionsCount
-    };
-
-    enum Rewind
-    {
-        ToTheEnd,
-        ToTheBegin
     };
 
     Cell* m_movingCells[DirectionsCount];
@@ -98,6 +91,8 @@ private:
 
     void         _stabilizeMatrix(Line_t &line);
 
+    void         _matchingState();
+
     void         _stuckMovedCells();
     void         _advanceState(MatrixState state);
     Cell*        _next(Cell* cur, Direction dir, const Line_t& line);
@@ -118,7 +113,8 @@ private:
     }
 
     MatrixState  _getState() const;
-	
+    void         _floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell*>& matchingList);
+
 	void		_onCellRemoved(Cell* cell);
 public:
 

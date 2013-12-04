@@ -13,7 +13,7 @@ AnimatedCell::AnimatedCell(Colour c) : Cell(c)
 		removeAllChildren();
 		extension::CCArmature *armature = extension::CCArmature::create("spider");
 		armature->setScale(0.1f);
-		float speed = rand() % 10;
+		float speed = static_cast<float>(rand() % 10);
 		speed /= 20;
 		speed += 0.75;
 		armature->getAnimation()->setSpeedScale(speed);

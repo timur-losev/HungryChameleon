@@ -28,7 +28,7 @@ static std::pair<CCRect, Cell::Colour> SpriteDefines[] =
 };
 
 Cell::Cell(Colour c)
-: color(c)
+: colour(c)
 {
 	auto& pair = SpriteDefines[c];
 
@@ -259,8 +259,8 @@ void CellField::onTouchReleased(CCTouch* touch)
     }
     else
     {
-        m_hitCell = nullptr;
         _advanceState(MSIdle);
+        m_hitCell = nullptr;
     }
 }
 
@@ -299,7 +299,6 @@ void CellField::_stuckMovedCells()
             cell->setPositionY(cell->getPositionY() - diff);
         }
     }
-
 }
 
 void CellField::onUpdate(float dt)
@@ -308,6 +307,11 @@ void CellField::onUpdate(float dt)
     {
         _stuckMovedCells();
 
+        _advanceState(MSMatching);
+    }
+    else if (_getState() == MSMatching)
+    {
+        _matchingState();
         _advanceState(MSIdle);
     }
 }
@@ -440,6 +444,67 @@ void CellField::_stabilizeMatrix(Line_t &line)
     }
 }
 
+void CellField::_floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell*>& matchingList)
+{
+    if (cell->colour != targetColour || cell->travelsed)
+        return;
+
+    cell->travelsed = true;
+
+    matchingList.push_back(cell);
+
+    if (cell->colId > 0)
+        _floodFill(m_cols[cell->colId - 1][cell->rowId], targetColour, matchingList); //! West
+
+    if (cell->colId < MatrixVisibleLineSize - 1)
+        _floodFill(m_cols[cell->colId + 1][cell->rowId], targetColour, matchingList); //! East
+
+    if (cell->rowId < MatrixVisibleLineSize - 1)
+        _floodFill(m_rows[cell->rowId + 1][cell->colId], targetColour, matchingList); //! North
+
+    if (cell->rowId > 0)
+        _floodFill(m_rows[cell->rowId - 1][cell->colId], targetColour, matchingList); //! South
+}
+
+void CellField::_matchingState()
+{
+    typedef std::list<Cell*> CellList_t;
+    std::list<CellList_t> matchings;
+
+    for (Line_t& line : m_rows)
+    {
+        for (Cell* cell : line)
+        {
+            std::list<Cell*> matchingList;
+
+            _floodFill(cell, cell->colour, matchingList);
+
+            matchings.push_back(std::move(matchingList));
+        }
+    }
+
+    for (CellList_t& clist : matchings)
+    {
+        if (clist.size() >= 3)
+        {
+            CCLOG("-----------------------------");
+            for (Cell* cell : clist)
+            {
+                CCLOG("Matched cell by x[%d] y[%d]", cell->colId, cell->rowId);
+            }
+        }
+    }
+
+    //! Clean up
+    for (CellList_t& clist : matchings)
+    {
+        for (Cell* cell : clist)
+        {
+            cell->travelsed = false;
+        }
+    }
+}
+
 void CellField::_rebaseByX(Cell* sampleCell, Line_t& row)
 {
     uint32_t j = 0;
@@ -504,3 +569,4 @@ void CellField::_onCellRemoved(Cell* cell)
 #endif // 0
 
 }
+
