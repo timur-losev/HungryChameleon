@@ -13,6 +13,10 @@ AnimatedCell::AnimatedCell(Colour c) : Cell(c)
 		removeAllChildren();
 		extension::CCArmature *armature = extension::CCArmature::create("spider");
 		armature->setScale(0.1f);
+		float speed = rand() % 10;
+		speed /= 20;
+		speed += 0.75;
+		armature->getAnimation()->setSpeedScale(speed);
 		armature->getAnimation()->playByIndex(0);
 		armature->setAnchorPoint(ccp(0, 0));
 		armature->setPosition(-25, -12);
