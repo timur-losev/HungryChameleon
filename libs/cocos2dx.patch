@@ -1,7 +1,7 @@
-diff --git a/cocos2dx/cocos2dx/platform/CCPlatformConfig.h b/cocos2dx/platform/CCPlatformConfig.h
+diff --git a/cocos2dx/platform/CCPlatformConfig.h b/cocos2dx/platform/CCPlatformConfig.h
 index 8ae9f6d..2636298 100644
---- a/cocos2dx/cocos2dx/platform/CCPlatformConfig.h
-+++ b/cocos2dx/cocos2dx/platform/CCPlatformConfig.h
+--- a/cocos2dx/platform/CCPlatformConfig.h
++++ b/cocos2dx/platform/CCPlatformConfig.h
 @@ -84,7 +84,7 @@ Config of cocos2d-x project, per target platform.
  #endif
  
@@ -11,10 +11,10 @@ index 8ae9f6d..2636298 100644
      #undef  CC_TARGET_PLATFORM
      #define CC_TARGET_PLATFORM         CC_PLATFORM_WIN32
  #endif
-diff --git a/cocos2dx/cocos2dx/cocos2dx/platform/win32/CCPlatformDefine.h b/cocos2dx/platform/win32/CCPlatformDefine.h
+diff --git a/cocos2dx/platform/win32/CCPlatformDefine.h b/cocos2dx/platform/win32/CCPlatformDefine.h
 index 4422101..03a2181 100644
---- a/cocos2dx/cocos2dx/platform/win32/CCPlatformDefine.h
-+++ b/cocos2dx/cocos2dx/platform/win32/CCPlatformDefine.h
+--- a/cocos2dx/platform/win32/CCPlatformDefine.h
++++ b/cocos2dx/platform/win32/CCPlatformDefine.h
 @@ -11,6 +11,9 @@
      #define CC_DLL     __declspec(dllimport)
  #endif
@@ -25,11 +25,11 @@ index 4422101..03a2181 100644
  #include <assert.h>
  
  #if CC_DISABLE_ASSERT > 0
-diff --git a/cocos2dx/cocos2dx/proj.win32/cocos2d.vcxproj b/cocos2dx/proj.win32/cocos2d.vcxproj
-index c4c0cba..96f5adc 100644
---- a/cocos2dx/cocos2dx/proj.win32/cocos2d.vcxproj
-+++ b/cocos2dx/cocos2dx/proj.win32/cocos2d.vcxproj
-@@ -27,7 +27,7 @@
+diff --git a/cocos2dx/proj.win32/cocos2d.vcxproj b/cocos2dx/proj.win32/cocos2d.vcxproj
+index c4c0cba..fcd4d42 100644
+--- a/cocos2dx/proj.win32/cocos2d.vcxproj
++++ b/cocos2dx/proj.win32/cocos2d.vcxproj
+@@ -27,13 +27,13 @@
      <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
    </PropertyGroup>
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -38,10 +38,37 @@ index c4c0cba..96f5adc 100644
      <CharacterSet>Unicode</CharacterSet>
      <PlatformToolset Condition="'$(VisualStudioVersion)' == '10.0'">v100</PlatformToolset>
      <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0'">v110</PlatformToolset>
-diff --git a/cocos2dx/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp b/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v110_xp</PlatformToolset>
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+-    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
++    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120</PlatformToolset>
+   </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+   <ImportGroup Label="ExtensionSettings">
+@@ -73,9 +73,9 @@
+     </PreBuildEvent>
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(ProjectDir)..;$(ProjectDir)..\platform\win32;$(ProjectDir)..\platform\third_party\win32\iconv;$(ProjectDir)..\platform\third_party\win32\zlib;$(ProjectDir)..\platform\third_party\win32\libpng;$(ProjectDir)..\platform\third_party\win32\libjpeg;$(ProjectDir)..\platform\third_party\win32\libtiff;$(ProjectDir)..\platform\third_party\win32\libwebp;$(ProjectDir)..\platform\third_party\win32\pthread;$(ProjectDir)..\platform\third_party\win32\OGLES;..\include;$(ProjectDir)..\kazmath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
++      <AdditionalIncludeDirectories>$(ProjectDir)..;$(ProjectDir)..\platform\win32;$(ProjectDir)..\platform\third_party\win32\iconv;$(ProjectDir)..\platform\third_party\win32\zlib;$(ProjectDir)..\platform\third_party\win32\libpng;$(ProjectDir)..\platform\third_party\win32\libjpeg;$(ProjectDir)..\platform\third_party\win32\libtiff;$(ProjectDir)..\platform\third_party\win32\libwebp;$(ProjectDir)..\platform\third_party\win32\pthread;$(ProjectDir)..\platform\third_party\win32\OGLES;..\include;$(ProjectDir)..\kazmath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+-      <MinimalRebuild>true</MinimalRebuild>
++      <MinimalRebuild>false</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+       <PrecompiledHeader>
+@@ -83,6 +83,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
++      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+     </ClCompile>
+     <PreLinkEvent>
+       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+diff --git a/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp b/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp
 index 54b8451..d6c2eb0 100644
---- a/cocos2dx/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp
-+++ b/cocos2dx/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp
+--- a/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp
++++ b/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.cpp
 @@ -25,6 +25,7 @@
  
  NS_CC_EXT_BEGIN
@@ -50,10 +77,10 @@ index 54b8451..d6c2eb0 100644
  
  UIMargin::UIMargin(void) : left(0), top(0), right(0), bottom(0)
  {
-diff --git a/cocos2dx/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h b/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h
+diff --git a/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h b/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h
 index c10de5f..9013651 100644
---- a/cocos2dx/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h
-+++ b/cocos2dx/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h
+--- a/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h
++++ b/extensions/CocoStudio/GUI/Layouts/UILayoutDefine.h
 @@ -50,7 +50,7 @@ public:
      bool equals(const UIMargin& target) const;
  };
@@ -63,3 +90,58 @@ index c10de5f..9013651 100644
  
  typedef enum
  {
+diff --git a/extensions/proj.win32/libExtensions.vcxproj b/extensions/proj.win32/libExtensions.vcxproj
+index 6db6482..1ccd0ec 100644
+--- a/extensions/proj.win32/libExtensions.vcxproj
++++ b/extensions/proj.win32/libExtensions.vcxproj
+@@ -33,7 +33,7 @@
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0'">v110</PlatformToolset>
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v110_xp</PlatformToolset>
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+-    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
++    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120</PlatformToolset>
+   </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+   <ImportGroup Label="ExtensionSettings">
+@@ -67,9 +67,9 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(ProjectDir)..\..\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\external\sqlite3\include;$(ProjectDir)..\..\external;$(ProjectDir)..\..\external\libwebsockets\win32\include;$(ProjectDir)..\..\cocos2dx;$(ProjectDir)..\..\cocos2dx\include;$(ProjectDir)..\..\cocos2dx\kazmath\include;$(ProjectDir)..\..\cocos2dx\platform\win32;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32\pthread;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32\zlib;$(ProjectDir)..\..\CocosDenshion\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
++      <AdditionalIncludeDirectories>$(ProjectDir)..\..\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\external\sqlite3\include;$(ProjectDir)..\..\external;$(ProjectDir)..\..\external\libwebsockets\win32\include;$(ProjectDir)..\..\cocos2dx;$(ProjectDir)..\..\cocos2dx\include;$(ProjectDir)..\..\cocos2dx\kazmath\include;$(ProjectDir)..\..\cocos2dx\platform\win32;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32\pthread;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\cocos2dx\platform\third_party\win32\zlib;$(ProjectDir)..\..\CocosDenshion\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_LIB;COCOS2D_DEBUG=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+-      <MinimalRebuild>true</MinimalRebuild>
++      <MinimalRebuild>false</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+       <PrecompiledHeader>
+@@ -77,6 +77,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
++      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+     </ClCompile>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+diff --git a/external/chipmunk/proj.win32/chipmunk.vcxproj b/external/chipmunk/proj.win32/chipmunk.vcxproj
+index 426edbc..4abb35b 100644
+--- a/external/chipmunk/proj.win32/chipmunk.vcxproj
++++ b/external/chipmunk/proj.win32/chipmunk.vcxproj
+@@ -32,7 +32,7 @@
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0'">v110</PlatformToolset>
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v110_xp</PlatformToolset>
+     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+-    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
++    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120</PlatformToolset>
+   </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+   <ImportGroup Label="ExtensionSettings">
+@@ -66,7 +66,7 @@
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+     <ClCompile>
+       <Optimization>Disabled</Optimization>
+-      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;..\include\chipmunk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
++      <AdditionalIncludeDirectories>..\include\chipmunk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <MinimalRebuild>true</MinimalRebuild>
+       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
