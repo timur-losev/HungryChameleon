@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\Programming\HungryChameleon\hungrychameleon_\data\cocosStudio\animation\spider\spider.xml.animation</filePath>
+  <Version>0.0.0.0</Version>
+  <Name>spider</Name>
+  <ProjectDir>D:\Programming\HungryChameleon\hungrychameleon_\data\cocosStudio\animation\spider</ProjectDir>
+  <JsonFileName>spider.json</JsonFileName>
+  <Resources>D:\Programming\HungryChameleon\hungrychameleon_\data\cocosStudio\animation\spider\Resources</Resources>
+  <JsonFolder>D:\Programming\HungryChameleon\hungrychameleon_\data\cocosStudio\animation\spider\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>spider0.plist</string>
+    <string>spider1.plist</string>
+    <string>spider2.plist</string>
+    <string>spider3.plist</string>
+    <string>spider4.plist</string>
+    <string>spider5.plist</string>
+    <string>spider6.plist</string>
+    <string>spider7.plist</string>
+    <string>spider8.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>true</bBatchImage>
+</AnimationProject>

@@ -1,0 +1,1311 @@
+{
+  "content_scale": 1.0,
+  "armature_data": [
+    {
+      "strVersion": "1.1.0.0",
+      "version": 1.1,
+      "name": "spider",
+      "bone_data": [
+        {
+          "name": "belly",
+          "parent": "",
+          "x": -2.047182559967041,
+          "y": -1.9650243520736694,
+          "z": 15,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 1.56424427,
+          "kY": -1.56424427,
+          "arrow_x": 225.01390075683594,
+          "arrow_y": 8.1861999206012115E-06,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/belly.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 2.67242432,
+                  "y": 4.7229805,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -1.57079637,
+                  "kY": 1.57079637
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "belly",
+          "x": 224.56521606445313,
+          "y": -0.32607653737068176,
+          "z": 16,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 0.0,
+          "kY": 0.0,
+          "arrow_x": 85.0091323852539,
+          "arrow_y": -5.0657221436267719E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/head.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.624914169,
+                  "y": -0.009191513,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -1.57079637,
+                  "kY": 1.57079637
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lleg1-1",
+          "parent": "belly",
+          "x": 241.0,
+          "y": -90.0,
+          "z": 14,
+          "cX": 1.0,
+          "cY": -1.0,
+          "kX": 1.519855,
+          "kY": -1.519855,
+          "arrow_x": 70.84405517578125,
+          "arrow_y": 3.0062992664170451E-06,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg1-1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.06981317,
+                  "kY": -0.06981317
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lleg1-2",
+          "parent": "lleg1-1",
+          "x": 72.982917785644531,
+          "y": 0.12970215082168579,
+          "z": 13,
+          "cX": -1.0,
+          "cY": -1.0,
+          "kX": 1.48719168,
+          "kY": -1.48719168,
+          "arrow_x": 92.8818359375,
+          "arrow_y": 5.0134287448599935E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg1-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -1.46607661,
+                  "kY": 1.46607661
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lleg2-1",
+          "parent": "belly",
+          "x": 218.00003051757813,
+          "y": -85.0,
+          "z": 12,
+          "cX": 1.0,
+          "cY": -1.0,
+          "kX": 1.95581579,
+          "kY": -1.95581579,
+          "arrow_x": 89.39990234375,
+          "arrow_y": 2.0147423128946684E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg2-1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.279252678,
+                  "kY": -0.279252678
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lleg2-2",
+          "parent": "lleg2-1",
+          "x": 89.024261474609375,
+          "y": -1.4339308108901605E-05,
+          "z": 11,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.30899692,
+          "kY": 1.30899692,
+          "arrow_x": 179.00088500976563,
+          "arrow_y": 1.7617840057937428E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg2-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -1.140124,
+                  "y": 0.860811,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.9250245,
+                  "kY": 0.9250245
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lleg3-1",
+          "parent": "belly",
+          "x": 127.99998474121094,
+          "y": -125.0,
+          "z": 9,
+          "cX": 1.0,
+          "cY": -1.0,
+          "kX": 1.39643812,
+          "kY": -1.39643812,
+          "arrow_x": 105.01868438720703,
+          "arrow_y": 5.7161538279615343E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg3-1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.139626339,
+                  "kY": 0.139626339
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lleg3-2",
+          "parent": "lleg3-1",
+          "x": 104.90379333496094,
+          "y": -1.8629504442214966,
+          "z": 10,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -4.65341663,
+          "kY": 4.65341663,
+          "arrow_x": 375.37966918945312,
+          "arrow_y": -3.5015422326978296E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg3-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.4486233,
+                  "kY": -1.4486233
+                }
+              ]
+            },
+            {
+              "name": "spider_anim/leg3-1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lleg4",
+          "parent": "belly",
+          "x": -49.0,
+          "y": -140.00003051757813,
+          "z": 8,
+          "cX": 1.0,
+          "cY": -1.0,
+          "kX": 2.98172045,
+          "kY": -2.98172045,
+          "arrow_x": 199.82225036621094,
+          "arrow_y": -3.95622628275305E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg4-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.4486233,
+                  "kY": -1.4486233
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leg4",
+          "parent": "belly",
+          "x": -49.303817749023438,
+          "y": 140.25013732910156,
+          "z": 7,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -2.98167944,
+          "kY": 2.98167944,
+          "arrow_x": 199.82225036621094,
+          "arrow_y": -3.95622628275305E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg4-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.4486233,
+                  "kY": -1.4486233
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leg3-1",
+          "parent": "belly",
+          "x": 128.87797546386719,
+          "y": 125.70470428466797,
+          "z": 5,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.39642334,
+          "kY": 1.39642334,
+          "arrow_x": 105.01868438720703,
+          "arrow_y": 5.7161538279615343E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg3-1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.139626339,
+                  "kY": 0.139626339
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leg3-2",
+          "parent": "leg3-1",
+          "x": 107.06078338623047,
+          "y": -5.1402597427368164,
+          "z": 6,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.62622118,
+          "kY": 1.62622118,
+          "arrow_x": 375.37966918945312,
+          "arrow_y": -3.5015422326978296E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg3-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.4486233,
+                  "kY": -1.4486233
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leg2-1",
+          "parent": "belly",
+          "x": 218.44419860839844,
+          "y": 85.554824829101562,
+          "z": 3,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.9557538,
+          "kY": 1.9557538,
+          "arrow_x": 89.39990234375,
+          "arrow_y": 2.0147423128946684E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg2-1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.279252678,
+                  "kY": -0.279252678
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leg2-2",
+          "parent": "leg2-1",
+          "x": 89.39990234375,
+          "y": 4.3800595449283719E-05,
+          "z": 4,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 1.30906034,
+          "kY": -1.30906034,
+          "arrow_x": 179.00088500976563,
+          "arrow_y": 1.7617840057937428E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg2-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -1.140124,
+                  "y": 0.860811,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.9250245,
+                  "kY": 0.9250245
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leg1-1",
+          "parent": "belly",
+          "x": 241.30133056640625,
+          "y": 90.5548095703125,
+          "z": 1,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.5102644,
+          "kY": 1.5102644,
+          "arrow_x": 70.84405517578125,
+          "arrow_y": 3.0062992664170451E-06,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg1-1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.06981317,
+                  "kY": -0.06981317
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leg1-2",
+          "parent": "leg1-1",
+          "x": 72.98297119140625,
+          "y": 0.12965275347232819,
+          "z": 2,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 1.48719156,
+          "kY": -1.48719156,
+          "arrow_x": 92.8818359375,
+          "arrow_y": 5.0134287448599935E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "spider_anim/leg1-2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -1.46607661,
+                  "kY": 1.46607661
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "animation_data": [
+    {
+      "name": "spider",
+      "mov_data": [
+        {
+          "name": "Animation1",
+          "dr": 61,
+          "lp": true,
+          "to": 0,
+          "drTW": 0,
+          "twE": 0,
+          "sc": 1.0,
+          "mov_bone_data": [
+            {
+              "name": "head",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "belly",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0451834574,
+                  "kY": -0.0451834574,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                }
+              ]
+            },
+            {
+              "name": "lleg1-1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.26979816,
+                  "kY": -0.26979816,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "lleg1-2",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.3797835,
+                  "kY": 0.3797835,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "lleg2-1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.08260796,
+                  "kY": 0.08260796,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "lleg2-2",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.189648241,
+                  "kY": 0.189648241,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "lleg3-2",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.163932189,
+                  "kY": -0.163932189,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "lleg3-1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.216292724,
+                  "kY": 0.216292724,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "lleg4",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0254488755,
+                  "kY": -0.0254488755,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.227477714,
+                  "kY": -0.227477714,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0254488755,
+                  "kY": -0.0254488755,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "leg4",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.265811622,
+                  "kY": 0.265811622,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "leg3-2",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.105065718,
+                  "kY": 0.105065718,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "leg3-1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.149811149,
+                  "kY": -0.149811149,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "leg2-2",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.136707962,
+                  "kY": -0.136707962,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "leg2-1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.110907309,
+                  "kY": -0.110907309,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "leg1-2",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.706761658,
+                  "kY": -0.706761658,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "leg1-1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.3366561,
+                  "kY": 0.3366561,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "texture_data": [
+    {
+      "name": "spider_anim/head",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.4084507,
+      "pY": 0.2882353,
+      "plistFile": ""
+    },
+    {
+      "name": "spider_anim/belly",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.387323946,
+      "pY": 0.6220588,
+      "plistFile": ""
+    },
+    {
+      "name": "spider_anim/leg1-1",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.5295775,
+      "pY": 0.2602941,
+      "plistFile": "",
+      "contour_data": [
+        {
+          "vertex": [
+            {
+              "x": 1.5,
+              "y": 5.50262833
+            },
+            {
+              "x": 1.5,
+              "y": 5.5026283264160156
+            },
+            {
+              "x": 2.5,
+              "y": 5.5026283264160156
+            },
+            {
+              "x": 2.5,
+              "y": 5.50262833
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "spider_anim/leg1-2",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.6239437,
+      "pY": 0.2720588,
+      "plistFile": ""
+    },
+    {
+      "name": "spider_anim/leg2-1",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.490140855,
+      "pY": 0.31764707,
+      "plistFile": ""
+    },
+    {
+      "name": "spider_anim/leg2-2",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.6112676,
+      "pY": 0.357352942,
+      "plistFile": ""
+    },
+    {
+      "name": "spider_anim/leg3-1",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.571831,
+      "pY": 0.430882365,
+      "plistFile": ""
+    },
+    {
+      "name": "spider_anim/leg3-2",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.7056338,
+      "pY": 0.404411763,
+      "plistFile": ""
+    },
+    {
+      "name": "spider_anim/leg4-2",
+      "width": 710.0,
+      "height": 680.0,
+      "pX": 0.6,
+      "pY": 0.695588231,
+      "plistFile": ""
+    }
+  ],
+  "config_file_path": [
+    "spider0.plist",
+    "spider1.plist",
+    "spider2.plist",
+    "spider3.plist",
+    "spider4.plist",
+    "spider5.plist",
+    "spider6.plist",
+    "spider7.plist",
+    "spider8.plist"
+  ]
+}

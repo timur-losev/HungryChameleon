@@ -2,6 +2,8 @@
 #include "IngameMenuView.h"
 #include "VisibleRect.h"
 
+using namespace extension;
+
 IngameMenuView::IngameMenuView():
     m_pIngameMenu(nullptr),
     m_pBackToMainMenu(nullptr)
@@ -30,6 +32,13 @@ bool IngameMenuView::init()
     addChild(m_pIngameMenu);
 
     setTouchEnabled(true);
+
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("data/anim/spider.ExportJson");
+	CCArmature *armature = CCArmature::create("spider");
+	armature->setScale(0.1f);
+	armature->setPosition(ccp(50, 200));
+	armature->getAnimation()->playByIndex(0);
+	this->addChild(armature, 2);
 
     return kRet;
 }
