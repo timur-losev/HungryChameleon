@@ -100,6 +100,9 @@
     <ClCompile Include="..\src\SaveController.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\AnimatedCell.cpp">
+      <Filter>src\Game\Bubble</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -165,6 +168,9 @@
     </ClInclude>
     <ClInclude Include="..\src\SaveController.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AnimatedCell.h">
+      <Filter>src\Game\Bubble</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

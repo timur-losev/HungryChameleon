@@ -5,7 +5,8 @@
 #include "TextManager.h"
 
 LoadingScene::LoadingScene()
-	:GameSceneBase(ESMLoading)
+	: GameSceneBase(ESMLoading)
+	, m_step(ELoadingAnimations)
 {
 }
 
@@ -24,27 +25,45 @@ void LoadingScene::onEnter()
 	//SharedTextManager::Instance().loadLanguage(TextManager::s_English);
 	SharedTextManager::Instance().loadLanguage(TextManager::s_Russian);
 
-	schedule(schedule_selector(LoadingScene::onUpdate), 0.0f);
+	schedule(schedule_selector(LoadingScene::_onUpdate), 0.0f);
 }
 
 void LoadingScene::onMainMenuTap(CCObject*)
 {
 }
 
-void LoadingScene::OnTouchEnded(CCTouch* touch)
+void LoadingScene::_onTouchEnded(CCTouch* touch)
 {
 }
 
 
-void LoadingScene::OnTouchMoved(CCTouch* touch)
+void LoadingScene::_onTouchMoved(CCTouch* touch)
 {
 }
 
-void LoadingScene::onUpdate(float dt)
+void LoadingScene::_onUpdate(float dt)
 {
-	_AdvanceToScene(ESMMainMenu);
+	if (_loadResources())
+	{
+		_AdvanceToScene(ESMMainMenu);
+	}
 }
 
-void LoadingScene::OnTouchBegan(CCTouch* touch)
+void LoadingScene::_onTouchBegan(CCTouch* touch)
 {
+}
+
+bool LoadingScene::_loadResources()
+{
+	switch (m_step)
+	{
+	case 0:
+		extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("data/anim/spider.ExportJson");
+		break;
+	default:
+		break;
+	}
+	m_step = ELoadingStep(((int)m_step)+1);
+
+	return (m_step >= ETotalSteps);
 }

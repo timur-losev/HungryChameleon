@@ -1,5 +1,6 @@
 #pragma once
 
+class AnimatedCell;
 
 /*
     ###################CONCEPT#########################
@@ -7,7 +8,7 @@
 */
 
 
-class Cell : public CCSprite
+class Cell : public CCNode
 {
 public:
 
@@ -33,9 +34,9 @@ public:
 
     bool markedForRemove = false;
 
-    Cell(Colour c) : color(c)
-    {
-    }
+	Cell(Colour c);// : color(c)
+    //{
+    //}
 };
 
 

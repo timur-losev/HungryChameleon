@@ -33,13 +33,6 @@ bool IngameMenuView::init()
 
     setTouchEnabled(true);
 
-	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("data/anim/spider.ExportJson");
-	CCArmature *armature = CCArmature::create("spider");
-	armature->setScale(0.1f);
-	armature->setPosition(ccp(50, 200));
-	armature->getAnimation()->playByIndex(0);
-	this->addChild(armature, 2);
-
     return kRet;
 }
 

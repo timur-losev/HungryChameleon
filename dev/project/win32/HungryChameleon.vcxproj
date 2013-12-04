@@ -87,6 +87,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\AnimatedCell.cpp" />
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\Cell.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
@@ -114,6 +115,7 @@
     <ClCompile Include="..\src\VisibleRect.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\AnimatedCell.h" />
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\Cell.h" />
     <ClInclude Include="..\src\LoadingScene.h" />

@@ -1,6 +1,6 @@
 #include "Precompiled.h"
 #include "Cell.h"
-
+#include "AnimatedCell.h"
 
 // particle system test
 #include "particle_nodes/CCParticleSystem.h"
@@ -27,6 +27,21 @@ static std::pair<CCRect, Cell::Colour> SpriteDefines[] =
     std::make_pair(CCRectMake(0, 0, 0, 0), Cell::Undefined) //! Roadblock
 };
 
+Cell::Cell(Colour c)
+: color(c)
+{
+	auto& pair = SpriteDefines[c];
+
+	CCSprite* a = CCSprite::create();
+	if (!a->initWithTexture(tex, pair.first))
+	{
+		assert("Wrong way" && false);
+	}
+
+	a->setAnchorPoint(ccp(0, 0));
+	addChild(a);
+}
+
 CellField::CellField() :
 m_lockedDirection(byNone),
 m_state(MSIdle),
@@ -43,19 +58,11 @@ CellField::~CellField()
 
 Cell* CellField::_createRandomCell()
 {
-    int id = rand() % 5;
+    int id = rand() % 4;
 
     auto& pair = SpriteDefines[id];
 
-    Cell* cell = new Cell(pair.second);
-
-    if (!cell->initWithTexture(tex, pair.first))
-    {
-        assert("Wrong way" && false);
-        return nullptr;
-    }
-
-    cell->setAnchorPoint(ccp(0, 0));
+	Cell* cell = new AnimatedCell(pair.second);
 
     return cell;
 }

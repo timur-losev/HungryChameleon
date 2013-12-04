@@ -9,12 +9,20 @@ class LoadingScene : public GameSceneBase
 {
 private:
 
-    void OnTouchBegan(CCTouch* touch);
-    void OnTouchEnded(CCTouch* touch);
-    void OnTouchMoved(CCTouch* touch);
-    void onUpdate(float dt);
-    void UpdateMatrix(float dt);
-    bool LoadGameSettings();
+    void _onTouchBegan(CCTouch* touch);
+    void _onTouchEnded(CCTouch* touch);
+    void _onTouchMoved(CCTouch* touch);
+    void _onUpdate(float dt);
+    void _updateMatrix(float dt);
+    bool _loadGameSettings();
+	bool _loadResources();
+
+	enum ELoadingStep
+	{
+		ELoadingAnimations = 0,
+
+		ETotalSteps
+	}	m_step;
 
 protected:
 public:
