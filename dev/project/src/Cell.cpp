@@ -90,9 +90,6 @@ bool CellField::init()
 
         uint32_t a = 0;
 
-        Cell* prevCell = nullptr;
-        Cell* prevLine[MatrixVisibleLineSize]{nullptr};
-
         for (uint32_t i = 0; i < MatrixVisibleLineSize; ++i)
         {
             for (uint32_t j = 0; j < MatrixVisibleLineSize; ++j)
