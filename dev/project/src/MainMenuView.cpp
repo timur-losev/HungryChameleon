@@ -37,8 +37,8 @@ bool MainMenuView::init(bool fromGame)
 	extension::UILayer* ul = extension::UILayer::create();
 	extension::GUIReader reader;
 
-	ul->addWidget(reader.widgetFromJsonFile("MainMenu_1/MainMenu_1.ExportJson"));
-	m_pStartButton = ul->getWidgetByTag(1)->getChildByTag(3);
+	ul->addWidget(reader.widgetFromJsonFile("MainMenu/MainMenu.ExportJson"));
+	m_pStartButton = ul->getWidgetByTag(1)->getChildByName("btn_start");
 	addChild(ul);
 
 

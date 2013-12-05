@@ -8,15 +8,16 @@
   <Resources>D:\Programming\HungryChameleon\hungrychameleon_\data\cocosStudio\MainMenu\Resources</Resources>
   <JsonFolder>D:\Programming\HungryChameleon\hungrychameleon_\data\cocosStudio\MainMenu\Json</JsonFolder>
   <JsonList>
-    <string>MainMenu_1.json</string>
+    <string>MainMenu.json</string>
+    <string>ActionPhase.json</string>
   </JsonList>
   <imageFileList>
     <string>MainMenu0.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>MainMenu_1.json</CurrentUIJson>
+  <CurrentUIJson>MainMenu.json</CurrentUIJson>
   <CanvasSize>
-    <Width>1024</Width>
-    <Height>768</Height>
+    <Width>720</Width>
+    <Height>1280</Height>
   </CanvasSize>
 </UIProject>

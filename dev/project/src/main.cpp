@@ -18,7 +18,7 @@ int main()
 
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
-    eglView->setFrameSize(1024, 768);
+    eglView->setFrameSize(540, 960);
 
     SharedGameDelegate::Instance().init();
 

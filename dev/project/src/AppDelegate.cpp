@@ -12,7 +12,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
 
-    CCSize designSize = CCSizeMake(1024, 768);
+    CCSize designSize = CCSizeMake(720, 1280);
     
     /*if (screenSize.height > 640)
     {
