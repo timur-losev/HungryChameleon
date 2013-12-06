@@ -70,7 +70,7 @@
               "sizeType": 0,
               "tag": 47,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 800,
               "x": 360,
@@ -83,7 +83,7 @@
               "fileNameData": {
                 "path": "action_phase_v1.psd_Psd.Dir/Background 0.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 1280,
@@ -140,7 +140,7 @@
               "sizeType": 0,
               "tag": 49,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 450,
               "x": 740,
@@ -153,7 +153,7 @@
               "fileNameData": {
                 "path": "action_phase_v1.psd_Psd.Dir/background 1.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 698,
@@ -210,7 +210,7 @@
               "sizeType": 0,
               "tag": 43,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 424,
               "x": 532,
@@ -223,7 +223,7 @@
               "fileNameData": {
                 "path": "action_phase_v1.psd_Psd.Dir/backgorund 1 left.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 1136,
@@ -280,7 +280,7 @@
               "sizeType": 0,
               "tag": 44,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 448,
               "x": 724,
@@ -293,7 +293,7 @@
               "fileNameData": {
                 "path": "action_phase_v1.psd_Psd.Dir/Chameleon.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 316,
@@ -347,7 +347,7 @@
           "sizeType": 0,
           "tag": 48,
           "touchAble": false,
-          "useMergedTexture": false,
+          "useMergedTexture": true,
           "visible": true,
           "width": 720,
           "x": 0,
@@ -413,7 +413,7 @@
               "sizeType": 0,
               "tag": 30,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 140,
               "x": 130,
@@ -465,7 +465,7 @@
                   "sizeType": 0,
                   "tag": 32,
                   "touchAble": false,
-                  "useMergedTexture": false,
+                  "useMergedTexture": true,
                   "visible": true,
                   "width": 40,
                   "x": 0,
@@ -510,7 +510,7 @@
               "sizeType": 0,
               "tag": 31,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 40,
               "x": 28,
@@ -523,19 +523,19 @@
               "disabledData": {
                 "path": "btn_inactive.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "normal": null,
               "normalData": {
                 "path": "btn_idle.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
                 "path": "btn_sel.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 40,
@@ -589,7 +589,7 @@
           "sizeType": 0,
           "tag": 29,
           "touchAble": false,
-          "useMergedTexture": false,
+          "useMergedTexture": true,
           "visible": true,
           "width": 200,
           "x": 0,
@@ -655,7 +655,7 @@
               "sizeType": 0,
               "tag": 26,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 140,
               "x": 130,
@@ -707,7 +707,7 @@
                   "sizeType": 0,
                   "tag": 28,
                   "touchAble": false,
-                  "useMergedTexture": false,
+                  "useMergedTexture": true,
                   "visible": true,
                   "width": 40,
                   "x": 0,
@@ -752,7 +752,7 @@
               "sizeType": 0,
               "tag": 27,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 40,
               "x": 28,
@@ -765,19 +765,19 @@
               "disabledData": {
                 "path": "btn_inactive.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "normal": null,
               "normalData": {
                 "path": "btn_idle.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
                 "path": "btn_sel.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 40,
@@ -831,7 +831,7 @@
           "sizeType": 0,
           "tag": 25,
           "touchAble": false,
-          "useMergedTexture": false,
+          "useMergedTexture": true,
           "visible": true,
           "width": 200,
           "x": 0,
@@ -897,7 +897,7 @@
               "sizeType": 0,
               "tag": 22,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 140,
               "x": 130,
@@ -949,7 +949,7 @@
                   "sizeType": 0,
                   "tag": 24,
                   "touchAble": false,
-                  "useMergedTexture": false,
+                  "useMergedTexture": true,
                   "visible": true,
                   "width": 40,
                   "x": 0,
@@ -994,7 +994,7 @@
               "sizeType": 0,
               "tag": 23,
               "touchAble": false,
-              "useMergedTexture": false,
+              "useMergedTexture": true,
               "visible": true,
               "width": 40,
               "x": 28,
@@ -1007,19 +1007,19 @@
               "disabledData": {
                 "path": "btn_inactive.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "normal": null,
               "normalData": {
                 "path": "btn_idle.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "pressed": null,
               "pressedData": {
                 "path": "btn_sel.png",
                 "plistFile": null,
-                "resourceType": 0
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 40,
@@ -1073,7 +1073,7 @@
           "sizeType": 0,
           "tag": 18,
           "touchAble": false,
-          "useMergedTexture": false,
+          "useMergedTexture": true,
           "visible": true,
           "width": 200,
           "x": 0,
@@ -1152,7 +1152,7 @@
           "sizeType": 1,
           "tag": 34,
           "touchAble": false,
-          "useMergedTexture": false,
+          "useMergedTexture": true,
           "visible": true,
           "width": 550,
           "x": 20,
@@ -1211,7 +1211,7 @@
       "sizeType": 0,
       "tag": 1,
       "touchAble": false,
-      "useMergedTexture": false,
+      "useMergedTexture": true,
       "visible": true,
       "width": 720,
       "x": 0,

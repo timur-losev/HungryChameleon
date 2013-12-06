@@ -15,7 +15,7 @@
     <string>MainMenu0.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>MainMenu.json</CurrentUIJson>
+  <CurrentUIJson>ActionPhase.json</CurrentUIJson>
   <CanvasSize>
     <Width>720</Width>
     <Height>1280</Height>

@@ -38,7 +38,7 @@ bool MainMenuView::init(bool fromGame)
 	extension::GUIReader reader;
 
 	ul->addWidget(reader.widgetFromJsonFile("MainMenu/MainMenu.ExportJson"));
-	m_pStartButton = ul->getWidgetByTag(1)->getChildByName("btn_start");
+	m_pStartButton = ul->getWidgetByName("btn_start");
 	addChild(ul);
 
 

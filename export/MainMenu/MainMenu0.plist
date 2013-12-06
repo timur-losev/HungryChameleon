@@ -61,6 +61,82 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
+			<key>action_phase_v1.psd_Psd.Dir/Background 0.png</key>
+			<dict>
+				<key>width</key>
+				<integer>800</integer>
+				<key>height</key>
+				<integer>1280</integer>
+				<key>originalWidth</key>
+				<integer>800</integer>
+				<key>originalHeight</key>
+				<integer>1280</integer>
+				<key>x</key>
+				<integer>246</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>action_phase_v1.psd_Psd.Dir/background 1.png</key>
+			<dict>
+				<key>width</key>
+				<integer>450</integer>
+				<key>height</key>
+				<integer>698</integer>
+				<key>originalWidth</key>
+				<integer>450</integer>
+				<key>originalHeight</key>
+				<integer>698</integer>
+				<key>x</key>
+				<integer>1048</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>action_phase_v1.psd_Psd.Dir/backgorund 1 left.png</key>
+			<dict>
+				<key>width</key>
+				<integer>424</integer>
+				<key>height</key>
+				<integer>1136</integer>
+				<key>originalWidth</key>
+				<integer>424</integer>
+				<key>originalHeight</key>
+				<integer>1136</integer>
+				<key>x</key>
+				<integer>1500</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>action_phase_v1.psd_Psd.Dir/Chameleon.png</key>
+			<dict>
+				<key>width</key>
+				<integer>448</integer>
+				<key>height</key>
+				<integer>316</integer>
+				<key>originalWidth</key>
+				<integer>448</integer>
+				<key>originalHeight</key>
+				<integer>316</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>1282</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
 		</dict>
 		<key>metadata</key>
 		<dict>
@@ -71,14 +147,14 @@
 			<key>realTextureFileName</key>
 			<string>MainMenu0.png</string>
 			<key>size</key>
-			<string>{1024,1024}</string>
+			<string>{2048,2048}</string>
 		</dict>
 		<key>texture</key>
 		<dict>
 			<key>width</key>
-			<integer>1024</integer>
+			<integer>2048</integer>
 			<key>height</key>
-			<integer>1024</integer>
+			<integer>2048</integer>
 		</dict>
 	</dict>
 </plist>
