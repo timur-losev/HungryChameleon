@@ -50,6 +50,7 @@ private:
     CCPoint m_centerMatrix[CenterMatrixSize];
 
     typedef std::deque<Cell*> Line_t;
+	typedef std::list<Cell*> CellList_t;
 
     Line_t m_rows[MatrixVisibleLineSize];
     Line_t m_cols[MatrixVisibleLineSize];
@@ -92,6 +93,7 @@ private:
     void         _stabilizeMatrix(Line_t &line);
 
     void         _matchingState();
+	void		 _fallDownState(const std::list<CellList_t>& matchedCells);
 
     void         _stuckMovedCells();
     void         _advanceState(MatrixState state);
@@ -113,7 +115,7 @@ private:
     }
 
     MatrixState  _getState() const;
-    void         _floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell*>& matchingList);
+	void         _floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell*>& matchingList) const;
 
 	void		_onCellRemoved(Cell* cell);
 public:

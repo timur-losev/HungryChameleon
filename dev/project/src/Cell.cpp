@@ -245,8 +245,6 @@ void CellField::onTouchPressed(CCTouch* touch)
 
         _advanceState(MSMoving);
 
-
-		_onCellRemoved(hitCell);
     }
 }
 
@@ -444,7 +442,7 @@ void CellField::_stabilizeMatrix(Line_t &line)
     }
 }
 
-void CellField::_floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell*>& matchingList)
+void CellField::_floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell*>& matchingList) const
 {
     if (cell->colour != targetColour || cell->travelsed)
         return;
@@ -468,7 +466,6 @@ void CellField::_floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell
 
 void CellField::_matchingState()
 {
-    typedef std::list<Cell*> CellList_t;
     std::list<CellList_t> matchings;
 
     for (Line_t& line : m_rows)
@@ -479,30 +476,30 @@ void CellField::_matchingState()
 
             _floodFill(cell, cell->colour, matchingList);
 
-            matchings.push_back(std::move(matchingList));
+			if (matchingList.size() >= 3)
+			{
+				matchings.push_back(std::move(matchingList));
+			}
         }
     }
 
-    for (CellList_t& clist : matchings)
-    {
-        if (clist.size() >= 3)
-        {
-            CCLOG("-----------------------------");
-            for (Cell* cell : clist)
-            {
-                CCLOG("Matched cell by x[%d] y[%d]", cell->colId, cell->rowId);
-            }
-        }
-    }
+	_fallDownState(matchings);
+}
 
-    //! Clean up
-    for (CellList_t& clist : matchings)
-    {
-        for (Cell* cell : clist)
-        {
-            cell->travelsed = false;
-        }
-    }
+void CellField::_fallDownState(const std::list<CellList_t>& matchedCells)
+{
+	//! Clean up
+	for (const CellList_t& clist : matchedCells)
+	{
+		for (Cell* cell : clist)
+		{
+			m_rows[cell->rowId][cell->colId] = nullptr;
+			m_cols[cell->colId][cell->rowId] = nullptr;
+
+			_removeCell(cell);
+		}
+	}
+
 }
 
 void CellField::_rebaseByX(Cell* sampleCell, Line_t& row)
@@ -561,7 +558,7 @@ void CellField::_removeCellIfPossible(Cell* cell)
 
 void CellField::_onCellRemoved(Cell* cell)
 {
-#if 0
+#if 1
 	CCParticleSystem* ps = CCParticleExplosion::createWithTotalParticles(100);
 	ps->autorelease();
 	ps->setPosition(cell->convertToNodeSpace(cell->getPosition()));
