@@ -36,6 +36,7 @@ public:
     bool travelsed = false;
 
     Cell(Colour c);
+	virtual ~Cell() {};
 };
 
 

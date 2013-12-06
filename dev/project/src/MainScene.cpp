@@ -1,17 +1,14 @@
 #include "Precompiled.h"
 #include "MainScene.h"
 #include "VisibleRect.h"
-#include "IngameMenuView.h"
 #include "GameDelegate.h"
 #include "Layer3D.h"
-#include "ParallaxBackground.h"
 #include "System.h"
 
 #include "Cell.h"
 
 MainScene::MainScene()
-    : m_pBackground(nullptr)
-    , m_CellField(nullptr)
+    : m_CellField(nullptr)
     , m_LabelTimer(nullptr)
     , m_MatchDuration(60000)
 	, GameSceneBase(ESMAction)
@@ -24,23 +21,11 @@ MainScene::MainScene()
 
 MainScene::~MainScene()
 {
-    m_pBackground->removeAllChildrenWithCleanup(true);
 }
 
 bool MainScene::init()
 {
     bool kRet = GameSceneBase::init();
-
-    m_pBackground = ParallaxBackground::create();
-    m_pBackground->RegisterTouchBeganCallback(std::bind(&MainScene::OnTouchBegan, this, std::placeholders::_1));
-    m_pBackground->RegisterTouchMovedCallback(std::bind(&MainScene::OnTouchMoved, this, std::placeholders::_1));
-    m_pBackground->RegisterTouchEndCallback(std::bind(&MainScene::OnTouchEnded, this, std::placeholders::_1));
-	addChild(m_pBackground);
-
-	IngameMenuView* igmenu = new IngameMenuView();
-	igmenu->init();
-	igmenu->getBackToMainMenu()->setTarget(this, menu_selector(MainScene::onMainMenuTap));
-	addChild(igmenu);
 
 #if 0
 	// Counter
@@ -94,8 +79,6 @@ void MainScene::OnTouchEnded(CCTouch* touch)
 void MainScene::OnTouchMoved(CCTouch* touch)
 {
     m_CellField->onTouchMoved(touch);
-
-    m_pBackground->Scroll(touch);
 }
 
 void MainScene::onUpdate(float dt)

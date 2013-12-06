@@ -2,15 +2,11 @@
 
 #include "GameSceneBase.h"
 
-class ParallaxBackground;
-
-
 class CellField;
 
 class MainScene: public GameSceneBase
 {
 private:
-    ParallaxBackground*			m_pBackground;
     CellField*                  m_CellField;
 
     CCPoint						m_BubbleViewDisplacement;

@@ -6,9 +6,7 @@
 
 //------------------------------------------------------------------//
 MainMenuScene::MainMenuScene()
-	:GameSceneBase(ESMMainMenu),
-	m_pMainMenu(nullptr)
-
+	:GameSceneBase(ESMMainMenu)
 {
 }
 
@@ -27,20 +25,16 @@ bool MainMenuScene::init(bool fromGame)
 {
     if (GameSceneBase::init())
     {
-        m_pMainMenu = new MainMenuView();
-        m_pMainMenu->init(fromGame);
 
-        if (fromGame)
-        {
-			m_pMainMenu->getStartButton()->addTouchEventListener(this, toucheventselector(MainMenuScene::startCallback));
-        }
-        else
-        {
-			m_pMainMenu->getStartButton()->addTouchEventListener(this, toucheventselector(MainMenuScene::startCallback));
-        }
+		//setTouchEnabled(true);
 
-        addChild(m_pMainMenu);
-        m_pMainMenu->release();
+		extension::UILayer* ul = extension::UILayer::create();
+		extension::GUIReader reader;
+
+		ul->addWidget(reader.widgetFromJsonFile("MainMenu/MainMenu.ExportJson"));
+		m_pStartButton = ul->getWidgetByName("btn_start");
+		m_pStartButton->addTouchEventListener(this, toucheventselector(MainMenuScene::startCallback));
+		addChild(ul);
 
         return true;
     }

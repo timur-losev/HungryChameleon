@@ -2,15 +2,10 @@
 
 #include "GameSceneBase.h"
 
-class MainMenuView;
-
 class MainMenuScene : public GameSceneBase
 {
-private:
-    MainMenuView    *m_pMainMenu;
-protected:
+	extension::UIWidget*	m_pStartButton;
 public:
-
     MainMenuScene();
     ~MainMenuScene();
 
