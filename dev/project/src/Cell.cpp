@@ -197,18 +197,18 @@ void CellField::_dragCells(const CCPoint& delta)
     m_lastDelta = delta;
 }
 
-void CellField::onTouchMoved(CCTouch* touch)
+void CellField::ccTouchMoved(CCTouch *touch, CCEvent *pEvent)
 {
     CCPoint delta = touch->getDelta();
 
     _dragCells(delta);
 }
 
-void CellField::onTouchPressed(CCTouch* touch)
+bool CellField::ccTouchBegan(CCTouch *touch, CCEvent *pEvent)
 {
     if (_getState() != MSIdle)
     {
-        return;
+        return true;
     }
 
     m_lockedDirection = byNone;
@@ -246,9 +246,10 @@ void CellField::onTouchPressed(CCTouch* touch)
         _advanceState(MSMoving);
 
     }
+	return true;
 }
 
-void CellField::onTouchReleased(CCTouch* touch)
+void CellField::ccTouchEnded(CCTouch *touch, CCEvent *pEvent)
 {
     if (m_lockedDirection != byNone && m_hitCell)
     {
@@ -566,4 +567,3 @@ void CellField::_onCellRemoved(Cell* cell)
 #endif // 0
 
 }
-

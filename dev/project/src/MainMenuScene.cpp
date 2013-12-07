@@ -31,6 +31,7 @@ bool MainMenuScene::init(bool fromGame)
 		extension::UILayer* ul = extension::UILayer::create();
 		extension::GUIReader reader;
 
+		ul->addWidget(reader.widgetFromJsonFile("MainMenu/Background.ExportJson"));
 		ul->addWidget(reader.widgetFromJsonFile("MainMenu/MainMenu.ExportJson"));
 		m_pStartButton = ul->getWidgetByName("btn_start");
 		m_pStartButton->addTouchEventListener(this, toucheventselector(MainMenuScene::startCallback));

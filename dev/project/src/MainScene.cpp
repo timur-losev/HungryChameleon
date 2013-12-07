@@ -41,21 +41,26 @@ bool MainScene::init()
 
 	extension::UILayer* w = extension::UILayer::create();
 	extension::GUIReader r;
-	w->addWidget(r.widgetFromJsonFile("MainMenu/ActionPhase.ExportJson"));
+	w->addWidget(r.widgetFromJsonFile("MainMenu/Background.ExportJson"));
+	w->addWidget(r.widgetFromJsonFile("MainMenu/TopBar.ExportJson"));
 	addChild(w);
 
 
     m_CellField = new CellField();
     assert(m_CellField->init());
     addChild(m_CellField);
-    m_CellField->release();
+	m_CellField->setTouchEnabled(true);
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(m_CellField, 0, true);
     m_CellField->setPosition(ccp(100, 100));
+    m_CellField->release();
 
     /*m_BubbleSet.reset(new BubbleSet());
     m_MatrixField.reset(new MatrixField());*/
 
    // igmenu->release();
 
+	
+//	m_CellField->ccTouchBegan RegisterTouc
     return kRet;
 }
 
@@ -69,16 +74,6 @@ void MainScene::onEnter()
 void MainScene::onMainMenuTap( CCObject* )
 {
 	_AdvanceToScene(ESMMainMenu);
-}
-
-void MainScene::OnTouchEnded(CCTouch* touch)
-{
-	m_CellField->onTouchReleased(touch);
-}
-
-void MainScene::OnTouchMoved(CCTouch* touch)
-{
-    m_CellField->onTouchMoved(touch);
 }
 
 void MainScene::onUpdate(float dt)
@@ -131,9 +126,4 @@ bool MainScene::LoadGameSettings()
 void MainScene::RemoveFlyingBubbles(CCNode* sender)
 {
 
-}
-
-void MainScene::OnTouchBegan(CCTouch* touch)
-{
-    m_CellField->onTouchPressed(touch);
 }

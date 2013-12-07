@@ -126,9 +126,9 @@ public:
 
     virtual bool init();
 
-    void         onTouchReleased(CCTouch* touch);
-    void         onTouchPressed(CCTouch* touch);
-    void         onTouchMoved(CCTouch* touch);
+	bool		 ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+	void		 ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+	void		 ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 
     void         onUpdate(float dt);
 };
