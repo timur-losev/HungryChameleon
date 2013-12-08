@@ -1,7 +1,7 @@
 #include "Precompiled.h"
 
 #include "AppDelegate.h"
-#include "GameController.h"
+#include "GameDelegate.h"
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
@@ -34,11 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
-    m_pGameController = new GameController();
-    m_pGameController->autorelease();
-    if (!m_pGameController->init())
-        return false;
-    m_pGameController->start();
+	SharedGameDelegate::Instance().startGame();
 
     return true;
 }

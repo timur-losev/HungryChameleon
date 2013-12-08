@@ -1,6 +1,7 @@
 #pragma once
 
 class SceneController;
+class SaveController;
 
 class GameDelegate
 {
@@ -12,12 +13,15 @@ public:
     void                    init();
 
     void                    startGame();
-//    void                    openMainMenu();
-//    void                    returnToMainMenu();
-//    void                    returnToGame();
+
+////////////////////////////////////////////////////////////
+//// Save
+	SaveController*			getSaveController();
+	void					saveNow();
 
 private:
-	SceneController* m_sceneController = nullptr;
+	SceneController*		m_sceneController = nullptr;
+	SaveController*			m_saveController = nullptr;
 };
 
 typedef Loki::SingletonHolder<GameDelegate, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedGameDelegate;

@@ -3,6 +3,8 @@
 
 #include "SceneController.h"
 #include "TextManager.h"
+#include "GameDelegate.h"
+#include "SaveController.h"
 
 LoadingScene::LoadingScene()
 	: GameSceneBase(ESMLoading)
@@ -57,8 +59,11 @@ bool LoadingScene::_loadResources()
 {
 	switch (m_step)
 	{
-	case 0:
+	case ELoadingAnimations:
 		extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("data/anim/spider.ExportJson");
+		break;
+	case ELoadingSave:
+		SharedGameDelegate::Instance().getSaveController()->load();
 		break;
 	default:
 		break;

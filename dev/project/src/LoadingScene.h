@@ -20,6 +20,7 @@ private:
 	enum ELoadingStep
 	{
 		ELoadingAnimations = 0,
+		ELoadingSave,
 
 		ETotalSteps
 	}	m_step;

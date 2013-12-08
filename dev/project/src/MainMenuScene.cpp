@@ -1,6 +1,5 @@
 #include "Precompiled.h"
 #include "MainMenuScene.h"
-#include "MainMenuView.h"
 #include "VisibleRect.h"
 #include "GameDelegate.h"
 

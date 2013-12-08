@@ -40,9 +40,6 @@
     <ClCompile Include="..\src\AppDelegate.cpp">
       <Filter>src\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\GameController.cpp">
-      <Filter>src\Base</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\VisibleRect.cpp">
       <Filter>src\Base</Filter>
     </ClCompile>
@@ -94,9 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
-      <Filter>src\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\GameController.h">
       <Filter>src\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\VisibleRect.h">
