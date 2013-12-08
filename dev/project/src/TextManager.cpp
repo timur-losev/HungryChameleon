@@ -2,6 +2,11 @@
 #include "TextManager.h"
 #include "Resources.h"
 
+std::string getLocalizationString(const std::string& key)
+{
+	return TextManager::getString(key).m_sString;
+}
+
 const std::string TextManager::s_English = "en";
 const std::string TextManager::s_Russian = "ru";
 
