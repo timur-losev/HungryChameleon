@@ -24,9 +24,6 @@ bool LoadingScene::init()
 void LoadingScene::onEnter()
 {
     GameSceneBase::onEnter();
-	//SharedTextManager::Instance().loadLanguage(TextManager::s_English);
-	SharedTextManager::Instance().loadLanguage(TextManager::s_Russian);
-
 	schedule(schedule_selector(LoadingScene::_onUpdate), 0.0f);
 }
 
@@ -37,7 +34,6 @@ void LoadingScene::onMainMenuTap(CCObject*)
 void LoadingScene::_onTouchEnded(CCTouch* touch)
 {
 }
-
 
 void LoadingScene::_onTouchMoved(CCTouch* touch)
 {
@@ -64,6 +60,9 @@ bool LoadingScene::_loadResources()
 		break;
 	case ELoadingSave:
 		SharedGameDelegate::Instance().getSaveController()->load();
+		break;
+	case ELoadingTexts:
+		SharedTextManager::Instance().loadLanguage(SharedGameDelegate::Instance().getSaveController()->getLanguage());
 		break;
 	default:
 		break;

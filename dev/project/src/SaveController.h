@@ -1,10 +1,11 @@
 #pragma once
 
-class SaveController : public CCDictionary
+class SaveController : public CCObject
 {
 	static const char* s_saveFile;
+	static const float s_autosaveInterval;
+	static const char* s_saveVersion;
 
-	const unsigned int m_autosaveInterval = 300; // seconds
 public:
 	SaveController();
 	virtual ~SaveController();
@@ -13,7 +14,15 @@ public:
     bool					load();
     void					save();
 
-	inline const unsigned int getAutosaveInterval() const { return m_autosaveInterval; }
+	std::string				getLanguage();
+	void					setLanguage(const std::string&);
+
+	CCDictionary*			getDIct();
+
 private:
-	CCDictionary* m_saveData;
+	void					_autosave(float);
+	CCDictionary*			_createNewSave();
+
+private:
+	CCDictionary*			m_saveData = nullptr;
 };

@@ -20,7 +20,6 @@ const std::string Resources::languageFile(const std::string& lang)
 	}
 	else
 	{
-		assert("Wrong Language" && false);
 		return "";
 	}
 }

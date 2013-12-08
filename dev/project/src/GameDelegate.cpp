@@ -8,6 +8,7 @@ GameDelegate::GameDelegate()
 {
 	m_sceneController = new SceneController();
 	m_saveController = SaveController::createController();
+	m_saveController->retain();
 }
 
 GameDelegate::~GameDelegate()

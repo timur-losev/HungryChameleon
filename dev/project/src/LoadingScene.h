@@ -21,6 +21,7 @@ private:
 	{
 		ELoadingAnimations = 0,
 		ELoadingSave,
+		ELoadingTexts,
 
 		ETotalSteps
 	}	m_step;
