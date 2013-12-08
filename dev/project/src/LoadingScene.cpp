@@ -2,14 +2,16 @@
 #include "LoadingScene.h"
 
 #include "SceneController.h"
-#include "TextManager.h"
 #include "GameDelegate.h"
 #include "SaveController.h"
+#include "EventController.h"
+#include "TextManager.h"
 
 LoadingScene::LoadingScene()
 	: GameSceneBase(ESMLoading)
 	, m_step(ELoadingAnimations)
 {
+	SharedTextManager::Instance();
 }
 
 LoadingScene::~LoadingScene()
@@ -62,7 +64,7 @@ bool LoadingScene::_loadResources()
 		SharedGameDelegate::Instance().getSaveController()->load();
 		break;
 	case ELoadingTexts:
-		SharedTextManager::Instance().loadLanguage(SharedGameDelegate::Instance().getSaveController()->getLanguage());
+		SharedEventController::Instance().ChangeLanguage(SharedGameDelegate::Instance().getSaveController()->getLanguage());
 		break;
 	default:
 		break;

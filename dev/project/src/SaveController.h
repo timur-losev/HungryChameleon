@@ -1,6 +1,6 @@
 #pragma once
 
-class SaveController : public CCObject
+class SaveController : public CCObject, public has_slots<>
 {
 	static const char* s_saveFile;
 	static const float s_autosaveInterval;

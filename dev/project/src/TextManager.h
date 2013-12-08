@@ -4,7 +4,7 @@ class TextManager;
 
 typedef Loki::SingletonHolder<TextManager, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedTextManager;
 
-class TextManager
+class TextManager : public has_slots<>
 {
 	CCString						_getString(const std::string& key);
 public:

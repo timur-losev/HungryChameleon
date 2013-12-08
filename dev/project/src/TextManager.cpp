@@ -2,8 +2,7 @@
 #include "TextManager.h"
 #include "Resources.h"
 
-#include "GameDelegate.h"
-#include "SaveController.h"
+#include "EventController.h"
 
 std::string getLocalizationString(const std::string& key)
 {
@@ -15,8 +14,8 @@ const std::string TextManager::s_Russian = "ru";
 
 TextManager::TextManager()
 {
+	SharedEventController::Instance().ChangeLanguage.connect(this, &TextManager::loadLanguage);
 }
-
 
 TextManager::~TextManager()
 {
@@ -38,7 +37,6 @@ void TextManager::loadLanguage(const std::string& lang)
 		m_currentLang = s_English;
 		file = Resources::languageFile(m_currentLang);
 	}
-	SharedGameDelegate::Instance().getSaveController()->setLanguage(m_currentLang);
 
 	m_stringsDict = CCDictionary::createWithContentsOfFile(file.c_str());
 	m_stringsDict->retain();

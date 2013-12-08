@@ -8,12 +8,6 @@
     <Filter Include="src\Base">
       <UniqueIdentifier>{89380021-3bb8-402f-b159-3b2154e9c47c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\GUI">
-      <UniqueIdentifier>{20fe3abc-0279-487f-9258-d99113b69eaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\GUI\MainMenu">
-      <UniqueIdentifier>{a8d0d7f9-55a8-42bf-bb60-e452494f986b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Resources">
       <UniqueIdentifier>{729f8c98-fe1d-4504-9918-fef5d3e17dd1}</UniqueIdentifier>
     </Filter>
@@ -22,12 +16,6 @@
     </Filter>
     <Filter Include="src\Game\GameScene">
       <UniqueIdentifier>{f9a01f53-f9bf-4285-97d5-fffa8e617191}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameScene\Scenes">
-      <UniqueIdentifier>{7b717ad9-ef45-4c4d-8eea-24178baa1325}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameScene\Scenes\Base">
-      <UniqueIdentifier>{0060f2ec-9a08-489d-bcc3-11f29fa9b3a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\Bubble">
       <UniqueIdentifier>{332e0869-1a5d-431c-896a-7b48240a517a}</UniqueIdentifier>
@@ -46,9 +34,6 @@
     <ClCompile Include="..\src\GameDelegate.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\GameSceneBase.cpp">
-      <Filter>src\Game\GameScene\Scenes\Base</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Layer3D.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
@@ -61,20 +46,11 @@
     <ClCompile Include="..\src\System.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MainScene.cpp">
-      <Filter>src\Game\GameScene\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Cell.cpp">
       <Filter>src\Game\Bubble</Filter>
     </ClCompile>
     <ClCompile Include="..\src\SceneController.cpp">
       <Filter>src\Game\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\LoadingScene.cpp">
-      <Filter>src\Game\GameScene\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\MainMenuScene.cpp">
-      <Filter>src\Game\GameScene\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Resources.cpp">
       <Filter>src\Resources</Filter>
@@ -82,11 +58,26 @@
     <ClCompile Include="..\src\TextManager.cpp">
       <Filter>src\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\SaveController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\AnimatedCell.cpp">
       <Filter>src\Game\Bubble</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GameSceneBase.cpp">
+      <Filter>src\Game\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\LoadingScene.cpp">
+      <Filter>src\Game\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MainMenuScene.cpp">
+      <Filter>src\Game\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MainScene.cpp">
+      <Filter>src\Game\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SaveController.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EventController.cpp">
+      <Filter>src\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +89,6 @@
     </ClInclude>
     <ClInclude Include="..\src\GameDelegate.h">
       <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\GameSceneBase.h">
-      <Filter>src\Game\GameScene\Scenes\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Layer3D.h">
       <Filter>src\Game</Filter>
@@ -114,9 +102,6 @@
     <ClInclude Include="..\src\System.h">
       <Filter>src\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MainScene.h">
-      <Filter>src\Game\GameScene\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Cell.h">
       <Filter>src\Game\Bubble</Filter>
     </ClInclude>
@@ -124,26 +109,35 @@
     <ClInclude Include="..\src\SceneController.h">
       <Filter>src\Game\GameScene</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\LoadingScene.h">
-      <Filter>src\Game\GameScene\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\MainMenuScene.h">
-      <Filter>src\Game\GameScene\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SceneModes.h">
-      <Filter>src\Game\GameScene\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Resources.h">
       <Filter>src\Resources</Filter>
     </ClInclude>
     <ClInclude Include="..\src\TextManager.h">
       <Filter>src\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SaveController.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\AnimatedCell.h">
       <Filter>src\Game\Bubble</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameSceneBase.h">
+      <Filter>src\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\LoadingScene.h">
+      <Filter>src\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MainMenuScene.h">
+      <Filter>src\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MainScene.h">
+      <Filter>src\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SceneModes.h">
+      <Filter>src\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SaveController.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EventController.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

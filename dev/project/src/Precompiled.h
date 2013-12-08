@@ -30,6 +30,7 @@
 
 #include "sigslot.h"
 
+using namespace sigslot;
 using namespace cocos2d;
 
 #define forward_this_u(__class__)\

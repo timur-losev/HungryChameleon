@@ -1,9 +1,11 @@
 #include "Precompiled.h"
 
 #include "SaveController.h"
+#include "EventController.h"
+#include "TextManager.h"
 
 const char* SaveController::s_saveFile = "save.dat";
-const float SaveController::s_autosaveInterval = 10; // seconds
+const float SaveController::s_autosaveInterval = 300; // seconds
 const char* SaveController::s_saveVersion = "0.0.1";
 
 namespace SaveKeys
@@ -14,6 +16,7 @@ namespace SaveKeys
 
 SaveController::SaveController()
 {
+	SharedEventController::Instance().ChangeLanguage.connect(this, &SaveController::setLanguage);
 }
 
 SaveController::~SaveController()
@@ -67,6 +70,8 @@ CCDictionary* SaveController::_createNewSave()
 	CCDictionary* dict = CCDictionary::create();
 	CCString* version = CCString::create(s_saveVersion);
 	dict->setObject(version, SaveKeys::Version);
+	CCString* lang = CCString::create(TextManager::s_English);
+	dict->setObject(lang, SaveKeys::Language);
 	return dict;
 }
 
@@ -80,6 +85,10 @@ std::string SaveController::getLanguage()
 
 void SaveController::setLanguage(const std::string& lang)
 {
+	if (getLanguage() == lang && !lang.empty())
+		return;
+
 	CCString* str = CCString::create(lang);
 	m_saveData->setObject(str, SaveKeys::Language);
+	save();
 }
