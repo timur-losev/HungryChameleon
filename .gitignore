@@ -44,3 +44,12 @@
 /data/cocosStudio/MainMenu/Resources/resources
 /data/cocosStudio/animation/spider/Backup
 /data/cocosStudio/animation/spider/Export
+
+*.lib
+
+*.dll
+
+*.log
+*.pch
+
+*.cache
