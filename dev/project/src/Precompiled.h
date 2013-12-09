@@ -1,10 +1,11 @@
 #pragma once
 
+#ifdef __cplus
 #include <iostream>
+#endif
 
 #include <assert.h>
 
-#include <tinyxml.h>
 #include <cocos2d.h>
 #include <cocos-ext.h>
 

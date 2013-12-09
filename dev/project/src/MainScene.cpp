@@ -92,6 +92,7 @@ void MainScene::UpdateMatrix(float dt)
 
 bool MainScene::LoadGameSettings()
 {
+#if 0
     std::string fullname = System::GetBundlePath() + "data/game_settings.xml";
 
     TiXmlDocument doc(fullname.c_str());
@@ -123,6 +124,7 @@ bool MainScene::LoadGameSettings()
     xtimeField->Attribute("y", &m_LabelTimerPos.y);
     xscoresField->Attribute("x", &m_ScoresTimerPos.x);
     xscoresField->Attribute("y", &m_ScoresTimerPos.y);
+#endif
 
     return true;
 }
