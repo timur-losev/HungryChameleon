@@ -41,8 +41,8 @@ void Player::setScore(int value)
 {
 	if (value > getHighScore())
 	{
+		SharedEventController::Instance().playerHighScoreChanged(getHighScore(), value);
 		_setHighScore(value);
-		SharedEventController::Instance().playerHighScoreChanged(value);
 	}
 	m_score = value;
 }

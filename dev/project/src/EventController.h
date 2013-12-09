@@ -9,9 +9,9 @@ public:
 	signal1<const std::string&>		changeLanguage;
 
 	signal1<int>					gameFinishedWithScore;
-	signal1<int>					playerHighScoreChanged;
-	signal1<int>					playerCashChanged;
-	signal1<int>					playerScoreChanged;
+	signal2<int, int>				playerHighScoreChanged;	// old score, new score
+	signal2<int, int>				playerCashChanged;		// old value, new value
+	signal2<int, int>				playerScoreChanged;		// old score, new score
 };
 
 typedef Loki::SingletonHolder<EventController, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedEventController;
