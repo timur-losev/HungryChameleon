@@ -164,7 +164,7 @@ index 8727c16..28852d6 100644
 + // object is Integer
 + if (CCInteger *real = dynamic_cast<CCInteger *>(object))
 + {
-+   tinyxml2::XMLElement* node = pDoc->NewElement("real");
++   tinyxml2::XMLElement* node = pDoc->NewElement("integer");
 +   char buffer[40];
 +   _itoa(real->getValue(), buffer, 10);
 +   tinyxml2::XMLText* content = pDoc->NewText(buffer);
