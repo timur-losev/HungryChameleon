@@ -14,7 +14,7 @@ const std::string TextManager::s_Russian = "ru";
 
 TextManager::TextManager()
 {
-	SharedEventController::Instance().ChangeLanguage.connect(this, &TextManager::loadLanguage);
+	SharedEventController::Instance().changeLanguage.connect(this, &TextManager::loadLanguage);
 }
 
 TextManager::~TextManager()

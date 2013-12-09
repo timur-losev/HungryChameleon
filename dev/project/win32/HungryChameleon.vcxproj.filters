@@ -34,9 +34,6 @@
     <ClCompile Include="..\src\GameDelegate.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Layer3D.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Utils.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
@@ -79,6 +76,9 @@
     <ClCompile Include="..\src\EventController.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Player.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -88,9 +88,6 @@
       <Filter>src\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GameDelegate.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Layer3D.h">
       <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils.h">
@@ -137,6 +134,9 @@
       <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\EventController.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Player.h">
       <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,17 +3,20 @@
 #include "MainScene.h"
 #include "SceneController.h"
 #include "SaveController.h"
+#include "Player.h"
 
 GameDelegate::GameDelegate()
 {
 	m_sceneController = new SceneController();
 	m_saveController = SaveController::createController();
 	m_saveController->retain();
+	m_player = new Player();
 }
 
 GameDelegate::~GameDelegate()
 {
 	delete m_sceneController;
+	delete m_player;
 }
 
 void GameDelegate::init()
@@ -28,10 +31,21 @@ void GameDelegate::startGame()
 
 SaveController* GameDelegate::getSaveController()
 {
-	return m_saveController;
+	return SharedGameDelegate::Instance().m_saveController;
 }
 
 void GameDelegate::saveNow()
 {
 	m_saveController->save();
 }
+
+SceneController* GameDelegate::getSceneController()
+{
+	return SharedGameDelegate::Instance().m_sceneController;
+}
+
+Player* GameDelegate::getPlayer()
+{
+	return SharedGameDelegate::Instance().m_player;
+}
+

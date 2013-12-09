@@ -35,6 +35,12 @@ private:
     void UpdateMatrix(float dt);
     bool LoadGameSettings();
 
+	extension::UIWidget*		m_topBar = nullptr;
+
+	void _setScore(int value);
+	void _setCash(int value);
+	void _setHighScore(int value);
+
 protected:
 public:
     MainScene();

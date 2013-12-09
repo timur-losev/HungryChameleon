@@ -4,7 +4,7 @@
 
 class SceneController;
 
-class GameSceneBase : public CCScene
+class GameSceneBase : public CCScene, public has_slots<>
 {
 private:
 	ESceneModes m_baseSceneMode;

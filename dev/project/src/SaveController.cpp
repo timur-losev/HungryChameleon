@@ -3,20 +3,16 @@
 #include "SaveController.h"
 #include "EventController.h"
 #include "TextManager.h"
+#include "Player.h"
+#include "GameDelegate.h"
 
 const char* SaveController::s_saveFile = "save.dat";
 const float SaveController::s_autosaveInterval = 300; // seconds
 const char* SaveController::s_saveVersion = "0.0.1";
 
-namespace SaveKeys
-{
-	const char* Language	= "language";
-	const char* Version		= "version";
-};
-
 SaveController::SaveController()
 {
-	SharedEventController::Instance().ChangeLanguage.connect(this, &SaveController::setLanguage);
+	SharedEventController::Instance().changeLanguage.connect(this, &SaveController::setLanguage);
 }
 
 SaveController::~SaveController()
@@ -47,6 +43,7 @@ bool SaveController::load()
 	else
 	{
 		m_saveData = _createNewSave();
+		save();
 	}
 	m_saveData->retain();
 	
@@ -57,6 +54,7 @@ bool SaveController::load()
 
 void SaveController::_autosave(float)
 {
+	GameDelegate::getPlayer()->dumpSave();
 	save();
 }
 
@@ -72,6 +70,11 @@ CCDictionary* SaveController::_createNewSave()
 	dict->setObject(version, SaveKeys::Version);
 	CCString* lang = CCString::create(TextManager::s_English);
 	dict->setObject(lang, SaveKeys::Language);
+	CCInteger* highScore = CCInteger::create(0);
+	dict->setObject(highScore, SaveKeys::HighScore);
+	CCInteger* cash = CCInteger::create(1);
+	dict->setObject(cash, SaveKeys::Cash);
+
 	return dict;
 }
 
@@ -80,7 +83,7 @@ std::string SaveController::getLanguage()
 	if (m_saveData->objectForKey(SaveKeys::Language) == NULL)
 		return std::string();
 
-	return m_saveData->valueForKey(SaveKeys::Language)->m_sString;
+	return m_saveData->valueForKey(SaveKeys::Language)->getCString();
 }
 
 void SaveController::setLanguage(const std::string& lang)
@@ -91,4 +94,17 @@ void SaveController::setLanguage(const std::string& lang)
 	CCString* str = CCString::create(lang);
 	m_saveData->setObject(str, SaveKeys::Language);
 	save();
+}
+
+int SaveController::GetIntValue(const char* key)
+{
+	if (m_saveData->objectForKey(key) == NULL)
+		return 0;
+	return m_saveData->valueForKey(key)->intValue();
+}
+
+void SaveController::SetIntValue(const char* key, int value)
+{
+	CCInteger* i = CCInteger::create(value);
+	m_saveData->setObject(i, key);
 }

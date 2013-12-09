@@ -1,5 +1,13 @@
 #pragma once
 
+namespace SaveKeys
+{
+	static const char* Language = "language";
+	static const char* Version = "version";
+	static const char* HighScore = "high_score";
+	static const char* Cash = "cash";
+};
+
 class SaveController : public CCObject, public has_slots<>
 {
 	static const char* s_saveFile;
@@ -16,6 +24,9 @@ public:
 
 	std::string				getLanguage();
 	void					setLanguage(const std::string&);
+
+	int						GetIntValue(const char* key);
+	void					SetIntValue(const char* key, int value);
 
 	CCDictionary*			getDIct();
 

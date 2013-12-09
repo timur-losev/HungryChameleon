@@ -6,6 +6,7 @@
 #include "SaveController.h"
 #include "EventController.h"
 #include "TextManager.h"
+#include "Player.h"
 
 LoadingScene::LoadingScene()
 	: GameSceneBase(ESMLoading)
@@ -61,10 +62,11 @@ bool LoadingScene::_loadResources()
 		extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("data/anim/spider.ExportJson");
 		break;
 	case ELoadingSave:
-		SharedGameDelegate::Instance().getSaveController()->load();
+		GameDelegate::getSaveController()->load();
+		GameDelegate::getPlayer()->readSave();
 		break;
 	case ELoadingTexts:
-		SharedEventController::Instance().ChangeLanguage(SharedGameDelegate::Instance().getSaveController()->getLanguage());
+		SharedEventController::Instance().changeLanguage(GameDelegate::getSaveController()->getLanguage());
 		break;
 	default:
 		break;

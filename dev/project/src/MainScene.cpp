@@ -6,6 +6,7 @@
 #include "System.h"
 
 #include "Cell.h"
+#include "Player.h"
 
 MainScene::MainScene()
     : m_CellField(nullptr)
@@ -42,9 +43,10 @@ bool MainScene::init()
 	extension::UILayer* w = extension::UILayer::create();
 	extension::GUIReader r;
 	w->addWidget(r.widgetFromJsonFile("MainMenu/Background.ExportJson"));
-	w->addWidget(r.widgetFromJsonFile("MainMenu/TopBar.ExportJson"));
+	w->addWidget(m_topBar = r.widgetFromJsonFile("MainMenu/TopBar.ExportJson"));
 	addChild(w);
 
+	_setScore(GameDelegate::getPlayer()->getHighScore());
 
     m_CellField = new CellField();
     assert(m_CellField->init());
@@ -53,6 +55,8 @@ bool MainScene::init()
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(m_CellField, 0, true);
     m_CellField->setPosition(ccp(100, 100));
     m_CellField->release();
+
+
 
     /*m_BubbleSet.reset(new BubbleSet());
     m_MatrixField.reset(new MatrixField());*/
@@ -124,6 +128,30 @@ bool MainScene::LoadGameSettings()
 }
 
 void MainScene::RemoveFlyingBubbles(CCNode* sender)
+{
+
+}
+
+void MainScene::_setScore(int value)
+{
+	if (!m_topBar)
+		return;
+
+	extension::UILabel* textField = dynamic_cast<extension::UILabel*>(m_topBar->getChildByName("txt_score_0"));
+	if (!textField)
+		return;
+	
+	std::stringstream ss;
+	ss << value;
+	textField->setText(ss.str().c_str());
+}
+
+void MainScene::_setCash(int value)
+{
+
+}
+
+void MainScene::_setHighScore(int value)
 {
 
 }
