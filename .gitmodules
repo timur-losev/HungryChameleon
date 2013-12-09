@@ -1,3 +1,6 @@
 [submodule "libs/cocos2dx"]
 	path = libs/cocos2dx
 	url = https://github.com/cocos2d/cocos2d-x.git
+[submodule "libs/facebook-ios"]
+	path = libs/facebook-ios
+	url = https://github.com/facebook/facebook-ios-sdk
