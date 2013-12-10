@@ -4,7 +4,7 @@
 
 #include "EventController.h"
 
-std::string getLocalizationString(const std::string& key)
+extern std::string getLocalizationString(const std::string& key)
 {
 	return TextManager::getString(key).m_sString;
 }

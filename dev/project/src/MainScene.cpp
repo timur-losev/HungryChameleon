@@ -2,8 +2,7 @@
 #include "MainScene.h"
 #include "VisibleRect.h"
 #include "GameDelegate.h"
-#include "Layer3D.h"
-#include "System.h"
+//#include "System.h"
 
 #include "Cell.h"
 #include "Player.h"
@@ -17,7 +16,7 @@ MainScene::MainScene()
     LoadGameSettings();
 
     m_QuickScrollPos = CCPointMake(-1, -1);
-    m_MatchStartTime = System::GetTickCount();
+    //m_MatchStartTime = System::GetTickCount();
 }
 
 MainScene::~MainScene()
@@ -92,6 +91,7 @@ void MainScene::UpdateMatrix(float dt)
 
 bool MainScene::LoadGameSettings()
 {
+#if 0
     std::string fullname = System::GetBundlePath() + "data/game_settings.xml";
 
     TiXmlDocument doc(fullname.c_str());
@@ -123,6 +123,7 @@ bool MainScene::LoadGameSettings()
     xtimeField->Attribute("y", &m_LabelTimerPos.y);
     xscoresField->Attribute("x", &m_ScoresTimerPos.x);
     xscoresField->Attribute("y", &m_ScoresTimerPos.y);
+#endif
 
     return true;
 }

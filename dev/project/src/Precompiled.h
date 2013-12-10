@@ -1,10 +1,11 @@
 #pragma once
 
+#ifdef __cplus
 #include <iostream>
+#endif
 
 #include <assert.h>
 
-#include <tinyxml.h>
 #include <cocos2d.h>
 #include <cocos-ext.h>
 
@@ -24,7 +25,7 @@
 
 #include <stdlib.h>
 
-#include <unordered_map> 
+//#include <unordered_map>
 
 #include <loki/Singleton.h> // Contains required system headers as well
 
