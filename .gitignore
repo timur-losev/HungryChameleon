@@ -44,3 +44,7 @@
 /data/cocosStudio/MainMenu/Resources/resources
 /data/cocosStudio/animation/spider/Backup
 /data/cocosStudio/animation/spider/Export
+/dev/project/ios/HungryChameleon.xcodeproj/project.xcworkspace
+/dev/project/ios/HungryChameleon.xcodeproj/xcuserdata
+
+*.DS_Store
