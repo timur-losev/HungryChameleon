@@ -16,10 +16,10 @@ warning: LF will be replaced by CRLF in extensions/proj.ios/extensions-Prefix.pc
 The file will have its original line endings in your working directory.
 diff --git a/extensions/proj.ios/extensions.xcodeproj/project.pbxproj b/extensions/proj.ios/extensions.xcodeproj/project.pbxproj
 new file mode 100644
-index 0000000..27b4f09
+index 0000000..f62e8a5
 --- /dev/null
 +++ b/extensions/proj.ios/extensions.xcodeproj/project.pbxproj
-@@ -0,0 +1,1123 @@
+@@ -0,0 +1,1127 @@
 +// !$*UTF8*$!
 +{
 +	archiveVersion = 1;
@@ -1046,7 +1046,9 @@ index 0000000..27b4f09
 +		1A0C0A891777F79700838530 /* Debug */ = {
 +			isa = XCBuildConfiguration;
 +			buildSettings = {
-+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
++				ARCHS = "$(ARCHS_STANDARD)";
++				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
++				CLANG_CXX_LIBRARY = "libc++";
 +				DSTROOT = /tmp/extensions.dst;
 +				GCC_C_LANGUAGE_STANDARD = c99;
 +				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1067,7 +1069,7 @@ index 0000000..27b4f09
 +					"\"$(SRCROOT)/../../external\"",
 +					"\"$(SRCROOT)/../../extensions\"",
 +				);
-+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
++				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 +				LIBRARY_SEARCH_PATHS = (
 +					"$(inherited)",
 +					"\"$(SRCROOT)/../../external/libwebsockets/ios/lib\"",
@@ -1084,7 +1086,9 @@ index 0000000..27b4f09
 +		1A0C0A8A1777F79700838530 /* Release */ = {
 +			isa = XCBuildConfiguration;
 +			buildSettings = {
-+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
++				ARCHS = "$(ARCHS_STANDARD)";
++				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
++				CLANG_CXX_LIBRARY = "libc++";
 +				DSTROOT = /tmp/extensions.dst;
 +				GCC_C_LANGUAGE_STANDARD = c99;
 +				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1104,7 +1108,7 @@ index 0000000..27b4f09
 +					"\"$(SRCROOT)/../../external\"",
 +					"\"$(SRCROOT)/../../extensions\"",
 +				);
-+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
++				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 +				LIBRARY_SEARCH_PATHS = (
 +					"$(inherited)",
 +					"\"$(SRCROOT)/../../external/libwebsockets/ios/lib\"",
@@ -1145,4 +1149,29 @@ index 0000000..27b4f09
 +}
 
 warning: LF will be replaced by CRLF in extensions/proj.ios/extensions.xcodeproj/project.pbxproj.
+The file will have its original line endings in your working directory.
+diff --git a/cocos2dx/proj.ios/cocos2dx.xcodeproj/project.pbxproj b/cocos2dx/proj.ios/cocos2dx.xcodeproj/project.pbxproj
+index 8e9597b..725b24f 100644
+--- a/cocos2dx/proj.ios/cocos2dx.xcodeproj/project.pbxproj
++++ b/cocos2dx/proj.ios/cocos2dx.xcodeproj/project.pbxproj
+@@ -1724,6 +1724,8 @@
+ 		1551A34D158F2AB200E66CFE /* Debug */ = {
+ 			isa = XCBuildConfiguration;
+ 			buildSettings = {
++				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
++				CLANG_CXX_LIBRARY = "libc++";
+ 				DSTROOT = /tmp/cocos2dx.dst;
+ 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+ 				GCC_PREFIX_HEADER = "cocos2dx-Prefix.pch";
+@@ -1751,6 +1753,8 @@
+ 		1551A34E158F2AB200E66CFE /* Release */ = {
+ 			isa = XCBuildConfiguration;
+ 			buildSettings = {
++				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
++				CLANG_CXX_LIBRARY = "libc++";
+ 				DSTROOT = /tmp/cocos2dx.dst;
+ 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+ 				GCC_PREFIX_HEADER = "cocos2dx-Prefix.pch";
+
+warning: LF will be replaced by CRLF in cocos2dx/proj.ios/cocos2dx.xcodeproj/project.pbxproj.
 The file will have its original line endings in your working directory.
