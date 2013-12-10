@@ -50,7 +50,7 @@ public:
     bool equals(const UIMargin& target) const;
 };
 
-const UIMargin UIMarginZero = UIMargin();
+extern const UIMargin UIMarginZero;// = UIMargin();
 
 typedef enum
 {

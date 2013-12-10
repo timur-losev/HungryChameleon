@@ -11,6 +11,9 @@
     #define CC_DLL     __declspec(dllimport)
 #endif
 
+#undef CC_DLL
+#define CC_DLL
+
 #include <assert.h>
 
 #if CC_DISABLE_ASSERT > 0

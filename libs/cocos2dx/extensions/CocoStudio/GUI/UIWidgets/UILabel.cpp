@@ -23,6 +23,11 @@
  ****************************************************************************/
 
 #include "UILabel.h"
+ 
+#define USE_GAME_LOCALIZATION
+#ifdef USE_GAME_LOCALIZATION
+extern std::string getLocalizationString(const std::string& key);
+#endif
 
 NS_CC_EXT_BEGIN
 
@@ -76,8 +81,16 @@ void UILabel::setText(const char* text)
 	{
 		return;
 	}
-    std::string strText(text);
+	std::string strText(text);
+#ifdef USE_GAME_LOCALIZATION
+	std::string key("STR_");
+	if (0 == strText.compare(0, key.length(), key))
+		m_pLabelRenderer->setString(getLocalizationString(strText).c_str());
+	else
+		m_pLabelRenderer->setString(strText.c_str());
+#else
     m_pLabelRenderer->setString(strText.c_str());
+#endif
     labelScaleChangedWithSize();
 }
 

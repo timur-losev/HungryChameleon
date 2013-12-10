@@ -26,6 +26,7 @@ THE SOFTWARE.
 #include "CCDirector.h"
 #include "cocoa/CCDictionary.h"
 #include "cocoa/CCString.h"
+#include "cocoa/CCInteger.h"
 #include "CCSAXParser.h"
 #include "support/tinyxml2/tinyxml2.h"
 #include "support/zip_support/unzip.h"
@@ -400,6 +401,17 @@ static tinyxml2::XMLElement* generateElementForObject(cocos2d::CCObject *object,
     if (CCDictionary *innerDict = dynamic_cast<CCDictionary *>(object))
         return generateElementForDict(innerDict, pDoc);
     
+ // object is Integer
+ if (CCInteger *real = dynamic_cast<CCInteger *>(object))
+ {
+   tinyxml2::XMLElement* node = pDoc->NewElement("integer");
+   char buffer[40];
+   _itoa(real->getValue(), buffer, 10);
+   tinyxml2::XMLText* content = pDoc->NewText(buffer);
+   node->LinkEndChild(content);
+   return node;
+ }
+
     CCLOG("This type cannot appear in property list");
     return NULL;
 }
