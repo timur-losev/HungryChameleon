@@ -3,7 +3,7 @@
 #include "VisibleRect.h"
 #include "GameDelegate.h"
 #include "Layer3D.h"
-#include "System.h"
+//#include "System.h"
 
 #include "Cell.h"
 #include "Player.h"
@@ -17,7 +17,7 @@ MainScene::MainScene()
     LoadGameSettings();
 
     m_QuickScrollPos = CCPointMake(-1, -1);
-    m_MatchStartTime = System::GetTickCount();
+    //m_MatchStartTime = System::GetTickCount();
 }
 
 MainScene::~MainScene()

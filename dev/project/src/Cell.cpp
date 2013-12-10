@@ -155,7 +155,7 @@ void CellField::_dragCells(const CCPoint& delta)
     //! Lock the direction until a touch ends
     if (direction == byNone)
     {
-        direction = std::abs(delta.x) > std::abs(delta.y) ? byX : byY;
+        direction = abs(delta.x) > abs(delta.y) ? byX : byY;
         m_lockedDirection = direction;
     }
 
@@ -189,7 +189,7 @@ void CellField::_dragCells(const CCPoint& delta)
 
         float fStepsCount = (_getPointFieldByDirection(m_hitCell->getPosition()) - _getPointFieldByDirection(m_from)) / m_spriteDimentsion[m_lockedDirection];
 
-        m_stepsCount = static_cast<int>(std::floor(fStepsCount + 0.5f));
+        m_stepsCount = static_cast<int>(floor(fStepsCount + 0.5f));
 
         _stabilizeMatrix(line);
     }
@@ -279,7 +279,7 @@ void CellField::_stuckMovedCells()
 
         float curDiff = _getPointFieldByDirection(position) - _getPointFieldByDirection(*curPoint);
 
-        if (std::abs(curDiff) < std::abs(diff))
+        if (abs(curDiff) < abs(diff))
         {
             diff = curDiff;
         }
@@ -479,7 +479,7 @@ void CellField::_matchingState()
 
 			if (matchingList.size() >= 3)
 			{
-				matchings.push_back(std::move(matchingList));
+				matchings.push_back(matchingList);
 			}
         }
     }

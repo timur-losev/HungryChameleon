@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0DF01F1857366F00ED0911 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0DF01E1857366F00ED0911 /* libz.dylib */; };
+		9A0DF0231857377500ED0911 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0DF0221857377500ED0911 /* OpenGLES.framework */; };
+		9A0DF0241857384F00ED0911 /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8384318561F0F0062F3E7 /* libcocos2dx.a */; };
+		9A0DF0251857384F00ED0911 /* libextensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8388C185638300062F3E7 /* libextensions.a */; };
+		9A0DF0261857384F00ED0911 /* libLoki.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A94699F18572A900020FDF0 /* libLoki.a */; };
 		9AA8380F185618E60062F3E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8380E185618E60062F3E7 /* Foundation.framework */; };
 		9AA83811185618E60062F3E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA83810185618E60062F3E7 /* CoreGraphics.framework */; };
 		9AA83813185618E60062F3E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA83812185618E60062F3E7 /* UIKit.framework */; };
@@ -14,9 +19,6 @@
 		9AA8381B185618E60062F3E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8381A185618E60062F3E7 /* main.m */; };
 		9AA8381F185618E60062F3E7 /* AppDelegateIos.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8381E185618E60062F3E7 /* AppDelegateIos.m */; };
 		9AA83821185618E60062F3E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA83820185618E60062F3E7 /* Images.xcassets */; };
-		9AA83828185618E60062F3E7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA83827185618E60062F3E7 /* XCTest.framework */; };
-		9AA83829185618E60062F3E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8380E185618E60062F3E7 /* Foundation.framework */; };
-		9AA8382A185618E60062F3E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA83812185618E60062F3E7 /* UIKit.framework */; };
 		9AA83871185626190062F3E7 /* AnimatedCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83844185626190062F3E7 /* AnimatedCell.cpp */; };
 		9AA83872185626190062F3E7 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83846185626190062F3E7 /* AppDelegate.cpp */; };
 		9AA83873185626190062F3E7 /* Cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83848185626190062F3E7 /* Cell.cpp */; };
@@ -26,7 +28,6 @@
 		9AA83879185626190062F3E7 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83854185626190062F3E7 /* LoadingScene.cpp */; };
 		9AA8387B185626190062F3E7 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83857185626190062F3E7 /* MainMenuScene.cpp */; };
 		9AA8387C185626190062F3E7 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83859185626190062F3E7 /* MainScene.cpp */; };
-		9AA8387D185626190062F3E7 /* ParallaxBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8385B185626190062F3E7 /* ParallaxBackground.cpp */; };
 		9AA8387E185626190062F3E7 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8385D185626190062F3E7 /* Player.cpp */; };
 		9AA8387F185626190062F3E7 /* Precompiled.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8385F185626190062F3E7 /* Precompiled.cpp */; };
 		9AA83880185626190062F3E7 /* Resources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83861185626190062F3E7 /* Resources.cpp */; };
@@ -35,15 +36,16 @@
 		9AA83884185626190062F3E7 /* TextManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8386B185626190062F3E7 /* TextManager.cpp */; };
 		9AA83885185626190062F3E7 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8386D185626190062F3E7 /* Utils.cpp */; };
 		9AA83886185626190062F3E7 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8386F185626190062F3E7 /* VisibleRect.cpp */; };
+		9AA8389618563BD50062F3E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8389518563BD50062F3E7 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9AA8382B185618E60062F3E7 /* PBXContainerItemProxy */ = {
+		9A94699E18572A900020FDF0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9AA83803185618E60062F3E7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9AA8380A185618E60062F3E7;
-			remoteInfo = HungryChameleon;
+			containerPortal = 9A94699A18572A900020FDF0 /* Loki.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AA8394918565B750062F3E7;
+			remoteInfo = Loki;
 		};
 		9AA8384218561F0F0062F3E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,9 +54,20 @@
 			remoteGlobalIDString = 1551A33F158F2AB200E66CFE;
 			remoteInfo = cocos2dx;
 		};
+		9AA8388B185638300062F3E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AA838871856382F0062F3E7 /* extensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A0C0A7A1777F79700838530;
+			remoteInfo = extensions;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A0DF01E1857366F00ED0911 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9A0DF020185736B600ED0911 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		9A0DF0221857377500ED0911 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9A94699A18572A900020FDF0 /* Loki.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Loki.xcodeproj; path = ../../../libs/loki/ios/Loki.xcodeproj; sourceTree = "<group>"; };
 		9AA8380B185618E60062F3E7 /* HungryChameleon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungryChameleon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA8380E185618E60062F3E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9AA83810185618E60062F3E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,7 +79,6 @@
 		9AA8381D185618E60062F3E7 /* AppDelegateIos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegateIos.h; sourceTree = "<group>"; };
 		9AA8381E185618E60062F3E7 /* AppDelegateIos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegateIos.m; sourceTree = "<group>"; };
 		9AA83820185618E60062F3E7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9AA83826185618E60062F3E7 /* HungryChameleonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HungryChameleonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA83827185618E60062F3E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9AA8383E18561F0F0062F3E7 /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../libs/cocos2dx/cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		9AA83844185626190062F3E7 /* AnimatedCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AnimatedCell.cpp; path = ../../src/AnimatedCell.cpp; sourceTree = "<group>"; };
@@ -87,8 +99,6 @@
 		9AA83858185626190062F3E7 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = ../../src/MainMenuScene.h; sourceTree = "<group>"; };
 		9AA83859185626190062F3E7 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = ../../src/MainScene.cpp; sourceTree = "<group>"; };
 		9AA8385A185626190062F3E7 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../../src/MainScene.h; sourceTree = "<group>"; };
-		9AA8385B185626190062F3E7 /* ParallaxBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParallaxBackground.cpp; path = ../../src/ParallaxBackground.cpp; sourceTree = "<group>"; };
-		9AA8385C185626190062F3E7 /* ParallaxBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParallaxBackground.h; path = ../../src/ParallaxBackground.h; sourceTree = "<group>"; };
 		9AA8385D185626190062F3E7 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../../src/Player.cpp; sourceTree = "<group>"; };
 		9AA8385E185626190062F3E7 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../../src/Player.h; sourceTree = "<group>"; };
 		9AA8385F185626190062F3E7 /* Precompiled.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Precompiled.cpp; path = ../../src/Precompiled.cpp; sourceTree = "<group>"; };
@@ -107,6 +117,8 @@
 		9AA8386E185626190062F3E7 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ../../src/Utils.h; sourceTree = "<group>"; };
 		9AA8386F185626190062F3E7 /* VisibleRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VisibleRect.cpp; path = ../../src/VisibleRect.cpp; sourceTree = "<group>"; };
 		9AA83870185626190062F3E7 /* VisibleRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisibleRect.h; path = ../../src/VisibleRect.h; sourceTree = "<group>"; };
+		9AA838871856382F0062F3E7 /* extensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extensions.xcodeproj; path = ../../../libs/cocos2dx/extensions/proj.ios/extensions.xcodeproj; sourceTree = "<group>"; };
+		9AA8389518563BD50062F3E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,28 +126,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0DF0241857384F00ED0911 /* libcocos2dx.a in Frameworks */,
+				9A0DF0251857384F00ED0911 /* libextensions.a in Frameworks */,
+				9A0DF0261857384F00ED0911 /* libLoki.a in Frameworks */,
+				9A0DF0231857377500ED0911 /* OpenGLES.framework in Frameworks */,
+				9A0DF01F1857366F00ED0911 /* libz.dylib in Frameworks */,
+				9AA8389618563BD50062F3E7 /* QuartzCore.framework in Frameworks */,
 				9AA83811185618E60062F3E7 /* CoreGraphics.framework in Frameworks */,
 				9AA83813185618E60062F3E7 /* UIKit.framework in Frameworks */,
 				9AA8380F185618E60062F3E7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9AA83823185618E60062F3E7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AA83828185618E60062F3E7 /* XCTest.framework in Frameworks */,
-				9AA8382A185618E60062F3E7 /* UIKit.framework in Frameworks */,
-				9AA83829185618E60062F3E7 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A94699B18572A900020FDF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A94699F18572A900020FDF0 /* libLoki.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9AA83802185618E60062F3E7 = {
 			isa = PBXGroup;
 			children = (
+				9A94699A18572A900020FDF0 /* Loki.xcodeproj */,
+				9AA838871856382F0062F3E7 /* extensions.xcodeproj */,
 				9AA8383E18561F0F0062F3E7 /* cocos2dx.xcodeproj */,
 				9AA83814185618E60062F3E7 /* HungryChameleon */,
 				9AA8380D185618E60062F3E7 /* Frameworks */,
@@ -147,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				9AA8380B185618E60062F3E7 /* HungryChameleon.app */,
-				9AA83826185618E60062F3E7 /* HungryChameleonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +172,10 @@
 		9AA8380D185618E60062F3E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A0DF0221857377500ED0911 /* OpenGLES.framework */,
+				9A0DF020185736B600ED0911 /* GLKit.framework */,
+				9A0DF01E1857366F00ED0911 /* libz.dylib */,
+				9AA8389518563BD50062F3E7 /* QuartzCore.framework */,
 				9AA8380E185618E60062F3E7 /* Foundation.framework */,
 				9AA83810185618E60062F3E7 /* CoreGraphics.framework */,
 				9AA83812185618E60062F3E7 /* UIKit.framework */,
@@ -207,8 +228,6 @@
 				9AA83858185626190062F3E7 /* MainMenuScene.h */,
 				9AA83859185626190062F3E7 /* MainScene.cpp */,
 				9AA8385A185626190062F3E7 /* MainScene.h */,
-				9AA8385B185626190062F3E7 /* ParallaxBackground.cpp */,
-				9AA8385C185626190062F3E7 /* ParallaxBackground.h */,
 				9AA8385D185626190062F3E7 /* Player.cpp */,
 				9AA8385E185626190062F3E7 /* Player.h */,
 				9AA8385F185626190062F3E7 /* Precompiled.cpp */,
@@ -239,6 +258,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9AA838881856382F0062F3E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AA8388C185638300062F3E7 /* libextensions.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,24 +286,6 @@
 			productReference = 9AA8380B185618E60062F3E7 /* HungryChameleon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9AA83825185618E60062F3E7 /* HungryChameleonTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AA8383A185618E60062F3E7 /* Build configuration list for PBXNativeTarget "HungryChameleonTests" */;
-			buildPhases = (
-				9AA83822185618E60062F3E7 /* Sources */,
-				9AA83823185618E60062F3E7 /* Frameworks */,
-				9AA83824185618E60062F3E7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9AA8382C185618E60062F3E7 /* PBXTargetDependency */,
-			);
-			name = HungryChameleonTests;
-			productName = HungryChameleonTests;
-			productReference = 9AA83826185618E60062F3E7 /* HungryChameleonTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -285,11 +294,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Alexander Kuznietsov";
-				TargetAttributes = {
-					9AA83825185618E60062F3E7 = {
-						TestTargetID = 9AA8380A185618E60062F3E7;
-					};
-				};
 			};
 			buildConfigurationList = 9AA83806185618E60062F3E7 /* Build configuration list for PBXProject "HungryChameleon" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -306,21 +310,42 @@
 					ProductGroup = 9AA8383F18561F0F0062F3E7 /* Products */;
 					ProjectRef = 9AA8383E18561F0F0062F3E7 /* cocos2dx.xcodeproj */;
 				},
+				{
+					ProductGroup = 9AA838881856382F0062F3E7 /* Products */;
+					ProjectRef = 9AA838871856382F0062F3E7 /* extensions.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A94699B18572A900020FDF0 /* Products */;
+					ProjectRef = 9A94699A18572A900020FDF0 /* Loki.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
 				9AA8380A185618E60062F3E7 /* HungryChameleon */,
-				9AA83825185618E60062F3E7 /* HungryChameleonTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		9A94699F18572A900020FDF0 /* libLoki.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libLoki.a;
+			remoteRef = 9A94699E18572A900020FDF0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9AA8384318561F0F0062F3E7 /* libcocos2dx.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libcocos2dx.a;
 			remoteRef = 9AA8384218561F0F0062F3E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AA8388C185638300062F3E7 /* libextensions.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libextensions.a;
+			remoteRef = 9AA8388B185638300062F3E7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -332,13 +357,6 @@
 			files = (
 				9AA83819185618E60062F3E7 /* InfoPlist.strings in Resources */,
 				9AA83821185618E60062F3E7 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AA83824185618E60062F3E7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,26 +386,10 @@
 				9AA8387C185626190062F3E7 /* MainScene.cpp in Sources */,
 				9AA83886185626190062F3E7 /* VisibleRect.cpp in Sources */,
 				9AA83873185626190062F3E7 /* Cell.cpp in Sources */,
-				9AA8387D185626190062F3E7 /* ParallaxBackground.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AA83822185618E60062F3E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9AA8382C185618E60062F3E7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9AA8380A185618E60062F3E7 /* HungryChameleon */;
-			targetProxy = 9AA8382B185618E60062F3E7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9AA83817185618E60062F3E7 /* InfoPlist.strings */ = {
@@ -476,10 +478,18 @@
 		9AA83838185618E60062F3E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COCOS2D_DEBUG = 1;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug",
+				);
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HungryChameleon/HungryChameleon-Prefix.pch";
@@ -488,6 +498,7 @@
 					"$(inherited)",
 					"$(USER_DEFINED_MACRO)",
 				);
+				GL_GLEXT_PROTOTYPES = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode51-DP.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
@@ -500,23 +511,40 @@
 					"\"$(SRCROOT)/../../../libs/loki/include\"",
 				);
 				INFOPLIST_FILE = "HungryChameleon/HungryChameleon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug-iphoneos\"";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lextensions",
+					"-lcocos2dx",
+					"-lLoki",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_DEFINED_MACRO = CC_TARGET_OS_IPHONE;
+				USER_DEFINED_MACRO = "CC_TARGET_OS_IPHONE GL_GLEXT_PROTOTYPES _USE_MATH_DEFINES";
 				WRAPPER_EXTENSION = app;
+				_USE_MATH_DEFINES = "";
 			};
 			name = Debug;
 		};
 		9AA83839185618E60062F3E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COCOS2D_DEBUG = 0;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug",
+				);
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HungryChameleon/HungryChameleon-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(USER_DEFINED_MACRO)";
+				GL_GLEXT_PROTOTYPES = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode51-DP.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
@@ -529,51 +557,18 @@
 					"\"$(SRCROOT)/../../../libs/loki/include\"",
 				);
 				INFOPLIST_FILE = "HungryChameleon/HungryChameleon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug-iphoneos\"";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lextensions",
+					"-lcocos2dx",
+					"-lLoki",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_DEFINED_MACRO = CC_TARGET_OS_IPHONE;
+				USER_DEFINED_MACRO = "CC_TARGET_OS_IPHONE GL_GLEXT_PROTOTYPES _USE_MATH_DEFINES";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		9AA8383B185618E60062F3E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HungryChameleon.app/HungryChameleon";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HungryChameleon/HungryChameleon-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "HungryChameleonTests/HungryChameleonTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		9AA8383C185618E60062F3E7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HungryChameleon.app/HungryChameleon";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HungryChameleon/HungryChameleon-Prefix.pch";
-				INFOPLIST_FILE = "HungryChameleonTests/HungryChameleonTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				_USE_MATH_DEFINES = "";
 			};
 			name = Release;
 		};
@@ -594,15 +589,6 @@
 			buildConfigurations = (
 				9AA83838185618E60062F3E7 /* Debug */,
 				9AA83839185618E60062F3E7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AA8383A185618E60062F3E7 /* Build configuration list for PBXNativeTarget "HungryChameleonTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AA8383B185618E60062F3E7 /* Debug */,
-				9AA8383C185618E60062F3E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
