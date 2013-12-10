@@ -141,9 +141,9 @@ void MainScene::_setScore(int value)
 	if (!textField)
 		return;
 	
-	std::stringstream ss;
-	ss << value;
-	textField->setText(ss.str().c_str());
+	char buffer[10];
+	sprintf(buffer, "%05d", value);
+	textField->setText(buffer);
 }
 
 void MainScene::_setCash(int value)
