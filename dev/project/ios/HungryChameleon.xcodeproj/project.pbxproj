@@ -37,6 +37,14 @@
 		9AA83885185626190062F3E7 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8386D185626190062F3E7 /* Utils.cpp */; };
 		9AA83886185626190062F3E7 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8386F185626190062F3E7 /* VisibleRect.cpp */; };
 		9AA8389618563BD50062F3E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8389518563BD50062F3E7 /* QuartzCore.framework */; };
+		9AC1FDE8185766D100ED96A8 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1FDE7185766D100ED96A8 /* RootViewController.mm */; };
+		9AC1FDEB18576A5900ED96A8 /* en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FDEA18576A5900ED96A8 /* en.plist */; };
+		9AC1FE0018576CFD00ED96A8 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1FDF918576CFD00ED96A8 /* libcurl.a */; };
+		9AC1FE0418576DA700ED96A8 /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1FE0318576DA700ED96A8 /* libwebp.a */; };
+		9AC1FE8A185777E100ED96A8 /* MainMenu in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FE89185777E100ED96A8 /* MainMenu */; };
+		9AC1FE8D18577A7000ED96A8 /* spiders2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FE8B18577A7000ED96A8 /* spiders2.png */; };
+		9AC1FF341857811F00ED96A8 /* libchipmunk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1FEC718577F4000ED96A8 /* libchipmunk.a */; };
+		9AC1FF36185781B300ED96A8 /* anim in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FF35185781B300ED96A8 /* anim */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1A0C0A7A1777F79700838530;
 			remoteInfo = extensions;
+		};
+		9AC1FEC618577F4000ED96A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC1FEC118577F3F00ED96A8 /* chipmunk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9AC1FE9818577F3F00ED96A8;
+			remoteInfo = chipmunk;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -119,6 +134,17 @@
 		9AA83870185626190062F3E7 /* VisibleRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisibleRect.h; path = ../../src/VisibleRect.h; sourceTree = "<group>"; };
 		9AA838871856382F0062F3E7 /* extensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extensions.xcodeproj; path = ../../../libs/cocos2dx/extensions/proj.ios/extensions.xcodeproj; sourceTree = "<group>"; };
 		9AA8389518563BD50062F3E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9AC1FDE6185766D100ED96A8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		9AC1FDE7185766D100ED96A8 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
+		9AC1FDEA18576A5900ED96A8 /* en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = en.plist; path = ../../../export/en.plist; sourceTree = "<group>"; };
+		9AC1FDF918576CFD00ED96A8 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = /Users/alexander.kuznietsov/Documents/Projects/HungryChameleon/libs/cocos2dx/extensions/proj.ios/../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<absolute>"; };
+		9AC1FDFA18576CFD00ED96A8 /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = libwebsockets.h; sourceTree = "<group>"; };
+		9AC1FDFC18576CFD00ED96A8 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = file; path = libwebsockets.a; sourceTree = "<group>"; };
+		9AC1FE0318576DA700ED96A8 /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = /Users/alexander.kuznietsov/Documents/Projects/HungryChameleon/libs/cocos2dx/cocos2dx/proj.ios/../platform/third_party/ios/libraries/libwebp.a; sourceTree = "<absolute>"; };
+		9AC1FE89185777E100ED96A8 /* MainMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MainMenu; path = ../../../export/MainMenu; sourceTree = "<group>"; };
+		9AC1FE8B18577A7000ED96A8 /* spiders2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spiders2.png; path = ../../../export/spiders2.png; sourceTree = "<group>"; };
+		9AC1FEC118577F3F00ED96A8 /* chipmunk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = chipmunk.xcodeproj; path = ../../../libs/cocos2dx/external/chipmunk/proj.ios/chipmunk/chipmunk.xcodeproj; sourceTree = "<group>"; };
+		9AC1FF35185781B300ED96A8 /* anim */ = {isa = PBXFileReference; lastKnownFileType = folder; name = anim; path = ../../../export/anim; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,11 +152,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AC1FF341857811F00ED96A8 /* libchipmunk.a in Frameworks */,
 				9A0DF0241857384F00ED0911 /* libcocos2dx.a in Frameworks */,
 				9A0DF0251857384F00ED0911 /* libextensions.a in Frameworks */,
 				9A0DF0261857384F00ED0911 /* libLoki.a in Frameworks */,
 				9A0DF0231857377500ED0911 /* OpenGLES.framework in Frameworks */,
 				9A0DF01F1857366F00ED0911 /* libz.dylib in Frameworks */,
+				9AC1FE0018576CFD00ED96A8 /* libcurl.a in Frameworks */,
+				9AC1FE0418576DA700ED96A8 /* libwebp.a in Frameworks */,
 				9AA8389618563BD50062F3E7 /* QuartzCore.framework in Frameworks */,
 				9AA83811185618E60062F3E7 /* CoreGraphics.framework in Frameworks */,
 				9AA83813185618E60062F3E7 /* UIKit.framework in Frameworks */,
@@ -152,12 +181,14 @@
 		9AA83802185618E60062F3E7 = {
 			isa = PBXGroup;
 			children = (
+				9AC1FEC118577F3F00ED96A8 /* chipmunk.xcodeproj */,
+				9AA8380C185618E60062F3E7 /* Products */,
+				9AC1FDE918576A3000ED96A8 /* Resources */,
+				9AA83814185618E60062F3E7 /* HungryChameleon */,
 				9A94699A18572A900020FDF0 /* Loki.xcodeproj */,
 				9AA838871856382F0062F3E7 /* extensions.xcodeproj */,
 				9AA8383E18561F0F0062F3E7 /* cocos2dx.xcodeproj */,
-				9AA83814185618E60062F3E7 /* HungryChameleon */,
 				9AA8380D185618E60062F3E7 /* Frameworks */,
-				9AA8380C185618E60062F3E7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +203,9 @@
 		9AA8380D185618E60062F3E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AC1FE0318576DA700ED96A8 /* libwebp.a */,
+				9AC1FDF918576CFD00ED96A8 /* libcurl.a */,
+				9AC1FDFF18576CFD00ED96A8 /* libwebsockets */,
 				9A0DF0221857377500ED0911 /* OpenGLES.framework */,
 				9A0DF020185736B600ED0911 /* GLKit.framework */,
 				9A0DF01E1857366F00ED0911 /* libz.dylib */,
@@ -188,8 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				9AA8383D18561AEE0062F3E7 /* src */,
-				9AA8381D185618E60062F3E7 /* AppDelegateIos.h */,
-				9AA8381E185618E60062F3E7 /* AppDelegateIos.m */,
 				9AA83820185618E60062F3E7 /* Images.xcassets */,
 				9AA83815185618E60062F3E7 /* Supporting Files */,
 			);
@@ -199,6 +231,10 @@
 		9AA83815185618E60062F3E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9AA8381D185618E60062F3E7 /* AppDelegateIos.h */,
+				9AA8381E185618E60062F3E7 /* AppDelegateIos.m */,
+				9AC1FDE6185766D100ED96A8 /* RootViewController.h */,
+				9AC1FDE7185766D100ED96A8 /* RootViewController.mm */,
 				9AA83816185618E60062F3E7 /* HungryChameleon-Info.plist */,
 				9AA83817185618E60062F3E7 /* InfoPlist.strings */,
 				9AA8381A185618E60062F3E7 /* main.m */,
@@ -266,6 +302,59 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9AC1FDE918576A3000ED96A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9AC1FF35185781B300ED96A8 /* anim */,
+				9AC1FE8B18577A7000ED96A8 /* spiders2.png */,
+				9AC1FE89185777E100ED96A8 /* MainMenu */,
+				9AC1FDEA18576A5900ED96A8 /* en.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9AC1FDFB18576CFD00ED96A8 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9AC1FDFA18576CFD00ED96A8 /* libwebsockets.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		9AC1FDFD18576CFD00ED96A8 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				9AC1FDFC18576CFD00ED96A8 /* libwebsockets.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		9AC1FDFE18576CFD00ED96A8 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				9AC1FDFB18576CFD00ED96A8 /* include */,
+				9AC1FDFD18576CFD00ED96A8 /* lib */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		9AC1FDFF18576CFD00ED96A8 /* libwebsockets */ = {
+			isa = PBXGroup;
+			children = (
+				9AC1FDFE18576CFD00ED96A8 /* ios */,
+			);
+			name = libwebsockets;
+			path = /Users/alexander.kuznietsov/Documents/Projects/HungryChameleon/libs/cocos2dx/extensions/proj.ios/../../external/libwebsockets;
+			sourceTree = "<absolute>";
+		};
+		9AC1FEC218577F3F00ED96A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AC1FEC718577F4000ED96A8 /* libchipmunk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,6 +395,10 @@
 			productRefGroup = 9AA8380C185618E60062F3E7 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9AC1FEC218577F3F00ED96A8 /* Products */;
+					ProjectRef = 9AC1FEC118577F3F00ED96A8 /* chipmunk.xcodeproj */;
+				},
 				{
 					ProductGroup = 9AA8383F18561F0F0062F3E7 /* Products */;
 					ProjectRef = 9AA8383E18561F0F0062F3E7 /* cocos2dx.xcodeproj */;
@@ -348,6 +441,13 @@
 			remoteRef = 9AA8388B185638300062F3E7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9AC1FEC718577F4000ED96A8 /* libchipmunk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libchipmunk.a;
+			remoteRef = 9AC1FEC618577F4000ED96A8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -355,8 +455,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AC1FE8A185777E100ED96A8 /* MainMenu in Resources */,
+				9AC1FF36185781B300ED96A8 /* anim in Resources */,
+				9AC1FDEB18576A5900ED96A8 /* en.plist in Resources */,
 				9AA83819185618E60062F3E7 /* InfoPlist.strings in Resources */,
 				9AA83821185618E60062F3E7 /* Images.xcassets in Resources */,
+				9AC1FE8D18577A7000ED96A8 /* spiders2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +487,7 @@
 				9AA83879185626190062F3E7 /* LoadingScene.cpp in Sources */,
 				9AA83882185626190062F3E7 /* SceneController.cpp in Sources */,
 				9AA8381B185618E60062F3E7 /* main.m in Sources */,
+				9AC1FDE8185766D100ED96A8 /* RootViewController.mm in Sources */,
 				9AA8387C185626190062F3E7 /* MainScene.cpp in Sources */,
 				9AA83886185626190062F3E7 /* VisibleRect.cpp in Sources */,
 				9AA83873185626190062F3E7 /* Cell.cpp in Sources */,
@@ -484,8 +589,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COCOS2D_DEBUG = 1;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Valeri Vuchov (WDTMDP2J2J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug",
@@ -512,14 +616,20 @@
 				);
 				INFOPLIST_FILE = "HungryChameleon/HungryChameleon-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug-iphoneos\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\\\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug-iphoneos\\\"",
+					/Users/alexander.kuznietsov/Documents/Projects/HungryChameleon/libs/cocos2dx/extensions/proj.ios/../../cocos2dx/platform/third_party/ios/libraries,
+					/Users/alexander.kuznietsov/Documents/Projects/HungryChameleon/libs/cocos2dx/cocos2dx/proj.ios/../platform/third_party/ios/libraries,
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lextensions",
 					"-lcocos2dx",
 					"-lLoki",
+					"-lchipmunk",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
 				USER_DEFINED_MACRO = "CC_TARGET_OS_IPHONE GL_GLEXT_PROTOTYPES _USE_MATH_DEFINES";
 				WRAPPER_EXTENSION = app;
 				_USE_MATH_DEFINES = "";
@@ -535,7 +645,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COCOS2D_DEBUG = 0;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Valeri Vuchov (WDTMDP2J2J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug",
@@ -558,14 +668,20 @@
 				);
 				INFOPLIST_FILE = "HungryChameleon/HungryChameleon-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug-iphoneos\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\\\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/HungryChameleon-fpiuvxfwqhghzigqtsuefwdkbzvk/Build/Products/Debug-iphoneos\\\"",
+					/Users/alexander.kuznietsov/Documents/Projects/HungryChameleon/libs/cocos2dx/extensions/proj.ios/../../cocos2dx/platform/third_party/ios/libraries,
+					/Users/alexander.kuznietsov/Documents/Projects/HungryChameleon/libs/cocos2dx/cocos2dx/proj.ios/../platform/third_party/ios/libraries,
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lextensions",
 					"-lcocos2dx",
 					"-lLoki",
+					"-lchipmunk",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5BBE2F54-4A6B-4F02-95B6-9DF30288A1F0";
 				USER_DEFINED_MACRO = "CC_TARGET_OS_IPHONE GL_GLEXT_PROTOTYPES _USE_MATH_DEFINES";
 				WRAPPER_EXTENSION = app;
 				_USE_MATH_DEFINES = "";

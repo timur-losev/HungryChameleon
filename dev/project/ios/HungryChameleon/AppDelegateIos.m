@@ -7,15 +7,38 @@
 //
 
 #import "AppDelegateIos.h"
+#import <EAGLView.h>
+#import "RootViewController.h"
+#import "AppDelegate.h"
+
+static AppDelegate s_sharedApplication;
 
 @implementation AppDelegateIos
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    EAGLView* __glView = [EAGLView viewWithFrame:[window bounds]
+                          pixelFormat: kEAGLColorFormatRGBA8
+                          depthFormat:GL_DEPTH_COMPONENT16
+                          preserveBackbuffer:NO
+                                      sharegroup:Nil
+                                   multiSampling:NO
+                                 numberOfSamples:0];
+    
+    viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.wantsFullScreenLayout = YES;
+    viewController.view = __glView;
+    
+    [window addSubview:viewController.view];
+    
+    [window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    CCApplication::sharedApplication()->run();
+    
     return YES;
 }
 

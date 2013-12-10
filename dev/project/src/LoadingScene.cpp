@@ -59,7 +59,7 @@ bool LoadingScene::_loadResources()
 	switch (m_step)
 	{
 	case ELoadingAnimations:
-		extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("data/anim/spider.ExportJson");
+		extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("anim/spider.ExportJson");
 		break;
 	case ELoadingSave:
 		GameDelegate::getSaveController()->load();
