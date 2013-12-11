@@ -20,4 +20,5 @@ private:
 	GameSceneBase*			_createScene(ESceneModes);
 	GameSceneBase*			_currentScene();
 	void					_onPopupClosed();
+	void					_onLanguageChanged(const std::string&);
 };

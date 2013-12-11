@@ -295,7 +295,7 @@
       "classname": "Panel",
       "name": "popup_screen",
       "ZOrder": 0,
-      "actiontag": 230,
+      "actiontag": -1,
       "anchorPointX": 0,
       "anchorPointY": 0,
       "classType": null,

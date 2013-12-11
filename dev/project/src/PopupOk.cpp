@@ -6,6 +6,11 @@ PopupOk::PopupOk()
 
 }
 
+PopupOk::PopupOk(const std::string& str)
+{
+	init(str);
+}
+
 PopupOk::~PopupOk()
 {
 

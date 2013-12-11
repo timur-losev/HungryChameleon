@@ -7,6 +7,7 @@ class PopupOk : public PopupBase
 public:
 	PopupOk();
 	~PopupOk();
+	PopupOk(const std::string&);
 
 	bool			init(const std::string& text);
 

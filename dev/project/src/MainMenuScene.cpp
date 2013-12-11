@@ -5,6 +5,7 @@
 
 #include "PopupOk.h"
 #include "PopupController.h"
+#include "PopupLanguage.h"
 
 //------------------------------------------------------------------//
 MainMenuScene::MainMenuScene()
@@ -27,21 +28,32 @@ bool MainMenuScene::init(bool fromGame)
 {
     if (GameSceneBase::init())
     {
-
-		//setTouchEnabled(true);
-
 		extension::UILayer* ul = extension::UILayer::create();
 		extension::GUIReader reader;
 
 		ul->addWidget(reader.widgetFromJsonFile("MainMenu/Background.ExportJson"));
 		ul->addWidget(reader.widgetFromJsonFile("MainMenu/MainMenu.ExportJson"));
-		m_pStartButton = ul->getWidgetByName("btn_start");
-		m_pStartButton->addTouchEventListener(this, toucheventselector(MainMenuScene::_startCallback));
+
+		extension::UIWidget* button;
+
+		button = ul->getWidgetByName("btn_start");
+		if (button)
+		{
+			button->addTouchEventListener(this, toucheventselector(MainMenuScene::_startCallback));
+		}
+
+		button = ul->getWidgetByName("btn_options");
+		if (button)
+		{
+			button->addTouchEventListener(this, toucheventselector(MainMenuScene::_optionsCallback));
+		}
+
+		button = ul->getWidgetByName("btn_shop");
+		if (button)
+		{
+			button->addTouchEventListener(this, toucheventselector(MainMenuScene::_shopCallback));
+		}
 		addChild(ul);
-
-		m_pStartButton = ul->getWidgetByName("btn_options");
-		m_pStartButton->addTouchEventListener(this, toucheventselector(MainMenuScene::_optionsCallback));
-
 
         return true;
     }
@@ -70,8 +82,16 @@ void MainMenuScene::_optionsCallback(CCObject * pSender, extension::TouchEventTy
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
-		PopupOk* p = new PopupOk();
-		p->init("Well, Hello There!");
+		PopupLanguage* p = new PopupLanguage();
+		GameDelegate::getPopupController()->queuePopup(p);
+	}
+}
+
+void MainMenuScene::_shopCallback(CCObject * pSender, extension::TouchEventType ev)
+{
+	if (ev == extension::TOUCH_EVENT_ENDED)
+	{
+		PopupOk* p = new PopupOk("Well, Hello There!");
 		GameDelegate::getPopupController()->queuePopup(p);
 	}
 }

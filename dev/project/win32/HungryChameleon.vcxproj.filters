@@ -94,6 +94,9 @@
     <ClCompile Include="..\src\PopupBase.cpp">
       <Filter>src\Game\GameScene\Popup</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\PopupLanguage.cpp">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -164,6 +167,9 @@
       <Filter>src\Game\GameScene\Popup</Filter>
     </ClInclude>
     <ClInclude Include="..\src\PopupBase.h">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PopupLanguage.h">
       <Filter>src\Game\GameScene\Popup</Filter>
     </ClInclude>
   </ItemGroup>

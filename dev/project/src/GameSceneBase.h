@@ -29,4 +29,5 @@ public:
 
 	void					setPaused(bool value);
 	bool					isPaused() const;
+	void					reloadLanguage();
 };

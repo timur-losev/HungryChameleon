@@ -97,6 +97,7 @@
     <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\PopupBase.cpp" />
     <ClCompile Include="..\src\PopupController.cpp" />
+    <ClCompile Include="..\src\PopupLanguage.cpp" />
     <ClCompile Include="..\src\PopupOk.cpp" />
     <ClCompile Include="..\src\PopupOkCancel.cpp" />
     <ClCompile Include="..\src\Resources.cpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\PopupBase.h" />
     <ClInclude Include="..\src\PopupController.h" />
+    <ClInclude Include="..\src\PopupLanguage.h" />
     <ClInclude Include="..\src\PopupOk.h" />
     <ClInclude Include="..\src\PopupOkCancel.h" />
     <ClInclude Include="..\src\Resources.h" />

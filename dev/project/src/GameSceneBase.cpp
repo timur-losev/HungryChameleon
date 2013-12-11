@@ -39,3 +39,17 @@ bool GameSceneBase::isPaused() const
 {
 	return m_baseIsPaused;
 }
+
+void GameSceneBase::reloadLanguage()
+{
+	CCArray* children = getChildren();
+	CCObject* child;
+	CCARRAY_FOREACH(children, child)
+	{
+		extension::UILabel* pText = dynamic_cast<extension::UILabel*>(child);
+		if (pText)
+		{
+			pText->setText("changed");
+		}
+	}
+}

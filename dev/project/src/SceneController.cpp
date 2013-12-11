@@ -12,6 +12,7 @@
 SceneController::SceneController()
 {
 	SharedEventController::Instance().popupClosed.connect(this, &SceneController::_onPopupClosed);
+	SharedEventController::Instance().changeLanguage.connect(this, &SceneController::_onLanguageChanged);
 }
 
 SceneController::~SceneController()
@@ -82,4 +83,9 @@ bool SceneController::canShowPopup()
 void SceneController::_onPopupClosed()
 {
 	_currentScene()->setPaused(false);
+}
+
+void SceneController::_onLanguageChanged(const std::string&)
+{
+	_currentScene()->reloadLanguage();
 }
