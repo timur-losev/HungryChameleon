@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>STR_CANCEL</key>
+	<string>Cancel</string>
 	<key>STR_MAIN_MENU</key>
 	<string>Main Menu</string>
+	<key>STR_OK</key>
+	<string>OK</string>
 	<key>STR_OPTIONS</key>
 	<string>Options</string>
 	<key>STR_PAUSE</key>
@@ -12,6 +16,8 @@
 	<string>Resume Game</string>
 	<key>STR_SCORE</key>
 	<string>Score</string>
+	<key>STR_SHOP</key>
+	<string>Shop</string>
 	<key>STR_START_GAME</key>
 	<string>Start Game</string>
 </dict>

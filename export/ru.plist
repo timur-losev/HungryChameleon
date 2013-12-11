@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>STR_CANCEL</key>
+	<string>Отмена</string>
 	<key>STR_MAIN_MENU</key>
 	<string>Главное Меню</string>
+	<key>STR_OK</key>
+	<string>Ладно</string>
 	<key>STR_OPTIONS</key>
 	<string>Настройки</string>
 	<key>STR_PAUSE</key>
@@ -12,6 +16,8 @@
 	<string>Возобновить</string>
 	<key>STR_SCORE</key>
 	<string>Счёт</string>
+	<key>STR_SHOP</key>
+	<string>Магазин</string>
 	<key>STR_START_GAME</key>
 	<string>Старт</string>
 </dict>
