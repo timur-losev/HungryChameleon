@@ -11,12 +11,13 @@
     <string>MainMenu.json</string>
     <string>Background.json</string>
     <string>TopBar.json</string>
+    <string>PopupOk.json</string>
   </JsonList>
   <imageFileList>
     <string>MainMenu0.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>MainMenu.json</CurrentUIJson>
+  <CurrentUIJson>TopBar.json</CurrentUIJson>
   <CanvasSize>
     <Width>720</Width>
     <Height>1280</Height>
