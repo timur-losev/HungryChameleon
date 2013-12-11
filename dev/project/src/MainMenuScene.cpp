@@ -3,6 +3,9 @@
 #include "VisibleRect.h"
 #include "GameDelegate.h"
 
+#include "PopupOk.h"
+#include "PopupController.h"
+
 //------------------------------------------------------------------//
 MainMenuScene::MainMenuScene()
 	:GameSceneBase(ESMMainMenu)
@@ -33,8 +36,12 @@ bool MainMenuScene::init(bool fromGame)
 		ul->addWidget(reader.widgetFromJsonFile("MainMenu/Background.ExportJson"));
 		ul->addWidget(reader.widgetFromJsonFile("MainMenu/MainMenu.ExportJson"));
 		m_pStartButton = ul->getWidgetByName("btn_start");
-		m_pStartButton->addTouchEventListener(this, toucheventselector(MainMenuScene::startCallback));
+		m_pStartButton->addTouchEventListener(this, toucheventselector(MainMenuScene::_startCallback));
 		addChild(ul);
+
+		m_pStartButton = ul->getWidgetByName("btn_options");
+		m_pStartButton->addTouchEventListener(this, toucheventselector(MainMenuScene::_optionsCallback));
+
 
         return true;
     }
@@ -42,14 +49,29 @@ bool MainMenuScene::init(bool fromGame)
     return false;
 }
 
-void MainMenuScene::startCallback(CCObject * pSender, extension::TouchEventType ev)
+void MainMenuScene::_startCallback(CCObject * pSender, extension::TouchEventType ev)
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
-		_AdvanceToScene(ESMAction);
+		_advanceToScene(ESMAction);
 }
 
 
 void MainMenuScene::returnCallback(CCObject * pSender, extension::TouchEventType)
 {
 //	SharedGameDelegate::Instance().returnToGame();
+}
+
+void MainMenuScene::_onUpdate(float dt)
+{
+
+}
+
+void MainMenuScene::_optionsCallback(CCObject * pSender, extension::TouchEventType ev)
+{
+	if (ev == extension::TOUCH_EVENT_ENDED)
+	{
+		PopupOk* p = new PopupOk();
+		p->init("Well, Hello There!");
+		GameDelegate::getPopupController()->queuePopup(p);
+	}
 }

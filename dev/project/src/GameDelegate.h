@@ -3,6 +3,7 @@
 class SceneController;
 class SaveController;
 class Player;
+class PopupController;
 
 class GameDelegate
 {
@@ -28,10 +29,13 @@ public:
 //// Player
 	static Player*			getPlayer();
 
+	static PopupController* getPopupController();
+
 private:
 	SceneController*		m_sceneController = nullptr;
 	SaveController*			m_saveController = nullptr;
 	Player*					m_player = nullptr;
+	PopupController*		m_popupController = nullptr;
 };
 
 typedef Loki::SingletonHolder<GameDelegate, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedGameDelegate;

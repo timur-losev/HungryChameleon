@@ -95,6 +95,10 @@
     <ClCompile Include="..\src\EventController.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
+    <ClCompile Include="..\src\PopupBase.cpp" />
+    <ClCompile Include="..\src\PopupController.cpp" />
+    <ClCompile Include="..\src\PopupOk.cpp" />
+    <ClCompile Include="..\src\PopupOkCancel.cpp" />
     <ClCompile Include="..\src\Resources.cpp" />
     <ClCompile Include="..\src\SaveController.cpp" />
     <ClCompile Include="..\src\SceneController.cpp" />
@@ -120,6 +124,10 @@
     <ClInclude Include="..\src\EventController.h" />
     <ClInclude Include="..\src\LoadingScene.h" />
     <ClInclude Include="..\src\Player.h" />
+    <ClInclude Include="..\src\PopupBase.h" />
+    <ClInclude Include="..\src\PopupController.h" />
+    <ClInclude Include="..\src\PopupOk.h" />
+    <ClInclude Include="..\src\PopupOkCancel.h" />
     <ClInclude Include="..\src\Resources.h" />
     <ClInclude Include="..\src\SaveController.h" />
     <ClInclude Include="..\src\SceneController.h" />

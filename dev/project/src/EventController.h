@@ -12,6 +12,8 @@ public:
 	signal2<int, int>				playerHighScoreChanged;	// old score, new score
 	signal2<int, int>				playerCashChanged;		// old value, new value
 	signal2<int, int>				playerScoreChanged;		// old score, new score
+
+	signal0<>						popupClosed;
 };
 
 typedef Loki::SingletonHolder<EventController, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedEventController;

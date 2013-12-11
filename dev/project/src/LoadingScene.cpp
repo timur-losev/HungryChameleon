@@ -27,7 +27,6 @@ bool LoadingScene::init()
 void LoadingScene::onEnter()
 {
     GameSceneBase::onEnter();
-	schedule(schedule_selector(LoadingScene::_onUpdate), 0.0f);
 }
 
 void LoadingScene::onMainMenuTap(CCObject*)
@@ -46,7 +45,7 @@ void LoadingScene::_onUpdate(float dt)
 {
 	if (_loadResources())
 	{
-		_AdvanceToScene(ESMMainMenu);
+		_advanceToScene(ESMMainMenu);
 	}
 }
 

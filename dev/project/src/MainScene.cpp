@@ -70,16 +70,14 @@ bool MainScene::init()
 void MainScene::onEnter()
 {
     GameSceneBase::onEnter();
-
-    schedule(schedule_selector(MainScene::onUpdate), 0.0f);
 }
 
 void MainScene::onMainMenuTap( CCObject* )
 {
-	_AdvanceToScene(ESMMainMenu);
+	_advanceToScene(ESMMainMenu);
 }
 
-void MainScene::onUpdate(float dt)
+void MainScene::_onUpdate(float dt)
 {
     m_CellField->onUpdate(dt);
 }

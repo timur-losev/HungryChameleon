@@ -22,7 +22,7 @@ SaveController::~SaveController()
 SaveController* SaveController::createController()
 {
 	SaveController* pRet = new SaveController();
-	if (pRet != NULL)
+	if (pRet)
 	{
 		pRet->autorelease();
 	}

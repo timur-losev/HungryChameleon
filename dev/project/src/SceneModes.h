@@ -6,10 +6,3 @@ enum ESceneModes
 	ESMMainMenu,
 	ESMAction,
 };
-
-enum ESceneSubmodes
-{
-	ESSMNone = 0,
-	ESSMShop,
-	ESSMOptions,
-};

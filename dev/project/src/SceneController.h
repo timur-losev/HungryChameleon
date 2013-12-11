@@ -2,6 +2,7 @@
 #include "SceneModes.h"
 
 class GameSceneBase;
+class PopupBase;
 
 class SceneController : public sigslot::has_slots<>
 {
@@ -9,14 +10,14 @@ public:
 	SceneController();
 	~SceneController();
 
-	void Launch();
-	void AdvanceToMode(ESceneModes);
-	void EnterSubMode(ESceneSubmodes);
-	void ExitSubmode();
+	void					launch();
+	void					advanceToMode(ESceneModes);
+	void					addPopup(PopupBase*);
+
+	bool					canShowPopup();
 
 private:
-	GameSceneBase* m_sceneMode = nullptr;
-	GameSceneBase* m_sceneSubmode = nullptr;
-
-	GameSceneBase* _CreateScene(ESceneModes);
+	GameSceneBase*			_createScene(ESceneModes);
+	GameSceneBase*			_currentScene();
+	void					_onPopupClosed();
 };

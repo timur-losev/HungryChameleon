@@ -5,11 +5,17 @@
 class MainMenuScene : public GameSceneBase
 {
 	extension::UIWidget*	m_pStartButton;
+
+	void                    _startCallback(CCObject * pSender, extension::TouchEventType);
+	void                    _optionsCallback(CCObject * pSender, extension::TouchEventType);
+
+protected:
+
+	void					_onUpdate(float dt);
 public:
     MainMenuScene();
     ~MainMenuScene();
 
-	void                    startCallback(CCObject * pSender, extension::TouchEventType);
 	void                    returnCallback(CCObject * pSender, extension::TouchEventType);
 
     virtual void            onEnter();

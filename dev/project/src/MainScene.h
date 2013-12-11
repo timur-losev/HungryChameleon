@@ -28,10 +28,6 @@ private:
     CCLabelTTF*					m_LabelScores;
     CCPoint						m_ScoresTimerPos;
 
-    void OnTouchBegan(CCTouch* touch);
-    void OnTouchEnded(CCTouch* touch);
-    void OnTouchMoved(CCTouch* touch);
-    void onUpdate(float dt);
     void UpdateMatrix(float dt);
     bool LoadGameSettings();
 
@@ -42,6 +38,7 @@ private:
 	void _setHighScore(int value);
 
 protected:
+	void					_onUpdate(float dt);
 public:
     MainScene();
     ~MainScene();

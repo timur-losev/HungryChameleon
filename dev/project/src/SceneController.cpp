@@ -6,43 +6,47 @@
 #include "MainMenuScene.h"
 #include "MainScene.h"
 
+#include "PopupBase.h"
+#include "EventController.h"
+
 SceneController::SceneController()
 {
-
+	SharedEventController::Instance().popupClosed.connect(this, &SceneController::_onPopupClosed);
 }
 
 SceneController::~SceneController()
 {
-
 }
 
-void SceneController::AdvanceToMode(ESceneModes mode)
+void SceneController::advanceToMode(ESceneModes mode)
 {
-	m_sceneMode = _CreateScene(mode);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionFadeTR::create(0.5f, m_sceneMode));
+	GameSceneBase* sceneMode = _createScene(mode);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionFadeTR::create(0.5f, sceneMode));
 }
 
-void SceneController::EnterSubMode(ESceneSubmodes submode)
+GameSceneBase* SceneController::_currentScene()
 {
-
+	return dynamic_cast<GameSceneBase*>(CCDirector::sharedDirector()->getRunningScene());
 }
 
-void SceneController::ExitSubmode()
+void SceneController::addPopup(PopupBase* popup)
 {
-
+	GameSceneBase* sceneMode = _currentScene();
+	sceneMode->setPaused(true);
+	sceneMode->addChild(popup);
 }
 
-void SceneController::Launch()
+void SceneController::launch()
 {
-	if (m_sceneMode)
+	if (_currentScene())
 		return;
 
-	m_sceneMode = _CreateScene(ESMLoading);
-	CCDirector::sharedDirector()->runWithScene(m_sceneMode);
-	m_sceneMode->release();
+	GameSceneBase* sceneMode = _createScene(ESMLoading);
+	sceneMode->release();
+	CCDirector::sharedDirector()->runWithScene(sceneMode);
 }
 
-GameSceneBase* SceneController::_CreateScene(ESceneModes mode)
+GameSceneBase* SceneController::_createScene(ESceneModes mode)
 {
 	GameSceneBase* ret = nullptr;
 	switch (mode)
@@ -62,8 +66,20 @@ GameSceneBase* SceneController::_CreateScene(ESceneModes mode)
 	
 	if (ret && ret->init())
 	{
-		//ret->init();
-		ret->AddSceneSlots(this);
+		ret->addSceneSlots(this);
+		return ret;
 	}
-	return ret;
+	return nullptr;
+}
+
+bool SceneController::canShowPopup()
+{
+	if (!_currentScene())
+		return false;
+	return _currentScene()->canShowPopup();
+}
+
+void SceneController::_onPopupClosed()
+{
+	_currentScene()->setPaused(false);
 }

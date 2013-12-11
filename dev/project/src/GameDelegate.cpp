@@ -4,19 +4,25 @@
 #include "SceneController.h"
 #include "SaveController.h"
 #include "Player.h"
+#include "PopupController.h"
 
 GameDelegate::GameDelegate()
 {
-	m_sceneController = new SceneController();
+	m_sceneController = new SceneController;
+
 	m_saveController = SaveController::createController();
 	m_saveController->retain();
-	m_player = new Player();
+
+	m_player = new Player;
+
+	m_popupController = new PopupController;
 }
 
 GameDelegate::~GameDelegate()
 {
-	delete m_sceneController;
 	delete m_player;
+	delete m_popupController;
+	delete m_sceneController;
 }
 
 void GameDelegate::init()
@@ -26,7 +32,7 @@ void GameDelegate::init()
 
 void GameDelegate::startGame()
 {
-	m_sceneController->Launch();
+	m_sceneController->launch();
 }
 
 SaveController* GameDelegate::getSaveController()
@@ -47,5 +53,10 @@ SceneController* GameDelegate::getSceneController()
 Player* GameDelegate::getPlayer()
 {
 	return SharedGameDelegate::Instance().m_player;
+}
+
+PopupController* GameDelegate::getPopupController()
+{
+	return SharedGameDelegate::Instance().m_popupController;
 }
 

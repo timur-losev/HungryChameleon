@@ -12,7 +12,6 @@ private:
     void _onTouchBegan(CCTouch* touch);
     void _onTouchEnded(CCTouch* touch);
     void _onTouchMoved(CCTouch* touch);
-    void _onUpdate(float dt);
     void _updateMatrix(float dt);
     bool _loadGameSettings();
 	bool _loadResources();
@@ -27,6 +26,8 @@ private:
 	}	m_step;
 
 protected:
+	void					_onUpdate(float dt);
+
 public:
 	LoadingScene();
 	~LoadingScene();

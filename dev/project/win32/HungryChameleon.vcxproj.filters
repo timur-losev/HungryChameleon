@@ -20,6 +20,9 @@
     <Filter Include="src\Game\Bubble">
       <UniqueIdentifier>{332e0869-1a5d-431c-896a-7b48240a517a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\GameScene\Popup">
+      <UniqueIdentifier>{98cb50f8-8607-4241-85b5-dca0458abf98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -78,6 +81,18 @@
     </ClCompile>
     <ClCompile Include="..\src\Player.cpp">
       <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PopupOkCancel.cpp">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PopupOk.cpp">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PopupController.cpp">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PopupBase.cpp">
+      <Filter>src\Game\GameScene\Popup</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +153,18 @@
     </ClInclude>
     <ClInclude Include="..\src\Player.h">
       <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PopupOkCancel.h">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PopupOk.h">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PopupController.h">
+      <Filter>src\Game\GameScene\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PopupBase.h">
+      <Filter>src\Game\GameScene\Popup</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
