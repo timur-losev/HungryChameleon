@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK.h>
 
 @class RootViewController;
 
@@ -14,6 +15,7 @@
 {
     UIWindow *window;
     RootViewController* viewController;
+    
 }
-
+@property (strong, nonatomic) FBSession* session;
 @end
