@@ -36,6 +36,8 @@ bool PopupOk::init(const std::string& text)
 	{
 		textField->setText(text.c_str());
 	}
+    
+    facebook();
 
 	return ret;
 }
@@ -44,4 +46,28 @@ void PopupOk::_onOkButtonPressed(CCObject * pSender, extension::TouchEventType e
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 		_closePopup();
+}
+
+void PopupOk::facebook()
+{
+#ifndef _WIN32
+    
+    AppDelegateIos *appDelegate = [[UIApplication sharedApplication]delegate];
+    
+    NSArray* permissions = [[NSArray alloc] initWithObjects:@"basic_info", nil];
+    
+    appDelegate.session = [[FBSession alloc] initWithAppID:@"1424232437809185"
+                                               permissions:permissions
+                                           defaultAudience:FBSessionDefaultAudienceOnlyMe
+                                           urlSchemeSuffix:nil
+                                        tokenCacheStrategy:nil];
+    
+    [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                     FBSessionState status,
+                                                     NSError* error)
+    {
+     int a = 0;
+    }];
+    
+#endif
 }
