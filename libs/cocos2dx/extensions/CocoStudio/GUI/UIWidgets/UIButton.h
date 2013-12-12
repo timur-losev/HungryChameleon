@@ -195,6 +195,8 @@ public:
     void setScale9Size(const CCSize& size){setScale9Enabled(true);setSize(size);};
     /************/
 
+	void setButtonDisabled();
+
 protected:
     virtual bool init();
     virtual void initRenderer();

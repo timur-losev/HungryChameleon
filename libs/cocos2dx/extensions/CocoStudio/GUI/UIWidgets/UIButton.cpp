@@ -643,5 +643,10 @@ void UIButton::copySpecialProperties(UIWidget *widget)
     }
 }
 
+void UIButton::setButtonDisabled()
+{
+	onPressStateChangedToDisabled();
+	setTouchEnable(false);
+}
 
 NS_CC_EXT_END
