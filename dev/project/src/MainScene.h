@@ -8,34 +8,14 @@ class MainScene: public GameSceneBase
 {
 private:
     CellField*                  m_CellField;
-
-    CCPoint						m_BubbleViewDisplacement;
-    int							m_SpaceBetweenBubbles;
-
-
-    CCPoint						m_QuickScrollPos;
-    CCPoint						m_QuickScrollDelta;
-    bool						m_QuickScrollVertical;
-
-    // Timer
-    int							m_MatchDuration;
-    unsigned long				m_MatchStartTime;
-    CCLabelTTF*					m_LabelTimer;
-    CCPoint						m_LabelTimerPos;
-
-    // Scores
-    int							m_ScoresCount;
-    CCLabelTTF*					m_LabelScores;
-    CCPoint						m_ScoresTimerPos;
-
-    void UpdateMatrix(float dt);
-    bool LoadGameSettings();
-
+	
 	extension::UIWidget*		m_topBar = nullptr;
 
-	void _setScore(int value);
-	void _setCash(int value);
-	void _setHighScore(int value);
+	void					_setScore(int value);
+	void					_setCash(int value);
+	void					_setHighScore(int value);
+
+	void					_onCheatFinishGame(CCObject * pSender, extension::TouchEventType ev);
 
 protected:
 	void					_onUpdate(float dt);

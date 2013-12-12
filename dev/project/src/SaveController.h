@@ -6,6 +6,8 @@ namespace SaveKeys
 	static const char* Version = "version";
 	static const char* HighScore = "high_score";
 	static const char* Cash = "cash";
+	static const char* TokenPosition = "token_map_position";
+	static const char* MapProgress = "map_progress";
 };
 
 class SaveController : public CCObject, public has_slots<>
@@ -25,8 +27,14 @@ public:
 	std::string				getLanguage();
 	void					setLanguage(const std::string&);
 
-	int						GetIntValue(const char* key);
-	void					SetIntValue(const char* key, int value);
+	int						getIntValue(const char* key);
+	void					setIntValue(const char* key, int value);
+
+	std::string				getStringValue(const char* key);
+	void					setStringValue(const char* key, const std::string& value);
+
+	CCDictionary*			getDictValue(const char* key);
+	void					setDictValue(const char* key, CCDictionary* value);
 
 	CCDictionary*			getDIct();
 

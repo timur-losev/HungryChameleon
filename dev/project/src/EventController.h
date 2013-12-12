@@ -14,6 +14,8 @@ public:
 	signal2<int, int>				playerScoreChanged;		// old score, new score
 
 	signal0<>						popupClosed;
+
+	signal1<const std::string&>		gameStartedWithLevel;	// level name
 };
 
 typedef Loki::SingletonHolder<EventController, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedEventController;
