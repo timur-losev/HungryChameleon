@@ -119,8 +119,8 @@
               "useMergedTexture": false,
               "visible": true,
               "width": 280,
-              "x": 397,
-              "y": 167,
+              "x": 310,
+              "y": 0,
               "capInsetsHeight": 0,
               "capInsetsWidth": 0,
               "capInsetsX": 0,
@@ -133,13 +133,13 @@
               },
               "normal": null,
               "normalData": {
-                "path": "button1.png",
+                "path": "btn_idle.png",
                 "plistFile": null,
                 "resourceType": 0
               },
               "pressed": null,
               "pressedData": {
-                "path": "button1_s.png",
+                "path": "btn_sel.png",
                 "plistFile": null,
                 "resourceType": 0
               },

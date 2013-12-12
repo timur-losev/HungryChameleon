@@ -137,44 +137,6 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>button1.png</key>
-			<dict>
-				<key>width</key>
-				<integer>80</integer>
-				<key>height</key>
-				<integer>80</integer>
-				<key>originalWidth</key>
-				<integer>80</integer>
-				<key>originalHeight</key>
-				<integer>80</integer>
-				<key>x</key>
-				<integer>450</integer>
-				<key>y</key>
-				<integer>1282</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>button1_s.png</key>
-			<dict>
-				<key>width</key>
-				<integer>80</integer>
-				<key>height</key>
-				<integer>80</integer>
-				<key>originalWidth</key>
-				<integer>80</integer>
-				<key>originalHeight</key>
-				<integer>80</integer>
-				<key>x</key>
-				<integer>532</integer>
-				<key>y</key>
-				<integer>1282</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
 			<key>flag_usa.png</key>
 			<dict>
 				<key>width</key>
@@ -186,7 +148,7 @@
 				<key>originalHeight</key>
 				<integer>105</integer>
 				<key>x</key>
-				<integer>614</integer>
+				<integer>450</integer>
 				<key>y</key>
 				<integer>1282</integer>
 				<key>offsetX</key>
@@ -205,7 +167,7 @@
 				<key>originalHeight</key>
 				<integer>105</integer>
 				<key>x</key>
-				<integer>773</integer>
+				<integer>609</integer>
 				<key>y</key>
 				<integer>1282</integer>
 				<key>offsetX</key>
@@ -224,7 +186,7 @@
 				<key>originalHeight</key>
 				<integer>104</integer>
 				<key>x</key>
-				<integer>932</integer>
+				<integer>768</integer>
 				<key>y</key>
 				<integer>1282</integer>
 				<key>offsetX</key>
@@ -243,9 +205,85 @@
 				<key>originalHeight</key>
 				<integer>104</integer>
 				<key>x</key>
-				<integer>1091</integer>
+				<integer>927</integer>
 				<key>y</key>
 				<integer>1282</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>story_map_position.png</key>
+			<dict>
+				<key>width</key>
+				<integer>150</integer>
+				<key>height</key>
+				<integer>150</integer>
+				<key>originalWidth</key>
+				<integer>150</integer>
+				<key>originalHeight</key>
+				<integer>150</integer>
+				<key>x</key>
+				<integer>1086</integer>
+				<key>y</key>
+				<integer>1282</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>chameleon_on_map.png</key>
+			<dict>
+				<key>width</key>
+				<integer>100</integer>
+				<key>height</key>
+				<integer>73</integer>
+				<key>originalWidth</key>
+				<integer>100</integer>
+				<key>originalHeight</key>
+				<integer>73</integer>
+				<key>x</key>
+				<integer>1238</integer>
+				<key>y</key>
+				<integer>1282</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>story_map_position_s.png</key>
+			<dict>
+				<key>width</key>
+				<integer>150</integer>
+				<key>height</key>
+				<integer>150</integer>
+				<key>originalWidth</key>
+				<integer>150</integer>
+				<key>originalHeight</key>
+				<integer>150</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>1600</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>story_map_position_closed.png</key>
+			<dict>
+				<key>width</key>
+				<integer>150</integer>
+				<key>height</key>
+				<integer>150</integer>
+				<key>originalWidth</key>
+				<integer>150</integer>
+				<key>originalHeight</key>
+				<integer>150</integer>
+				<key>x</key>
+				<integer>152</integer>
+				<key>y</key>
+				<integer>1600</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>

@@ -103,6 +103,7 @@
     <ClCompile Include="..\src\Resources.cpp" />
     <ClCompile Include="..\src\SaveController.cpp" />
     <ClCompile Include="..\src\SceneController.cpp" />
+    <ClCompile Include="..\src\StoryMapScene.cpp" />
     <ClCompile Include="..\src\System.cpp" />
     <ClCompile Include="..\src\GameDelegate.cpp" />
     <ClCompile Include="..\src\GameSceneBase.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="..\src\SceneController.h" />
     <ClInclude Include="..\src\SceneModes.h" />
     <ClInclude Include="..\src\sigslot.h" />
+    <ClInclude Include="..\src\StoryMapScene.h" />
     <ClInclude Include="..\src\System.h" />
     <ClInclude Include="..\src\GameDelegate.h" />
     <ClInclude Include="..\src\GameSceneBase.h" />

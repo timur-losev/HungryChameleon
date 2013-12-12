@@ -5,6 +5,7 @@
 #include "LoadingScene.h"
 #include "MainMenuScene.h"
 #include "MainScene.h"
+#include "StoryMapScene.h"
 
 #include "PopupBase.h"
 #include "EventController.h"
@@ -60,6 +61,9 @@ GameSceneBase* SceneController::_createScene(ESceneModes mode)
 		break;
 	case ESMAction:
 		ret = new MainScene;
+		break;
+	case ESMStoryMap:
+		ret = new StoryMapScene;
 		break;
 	default:
 		break;

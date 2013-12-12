@@ -45,7 +45,8 @@ void LoadingScene::_onUpdate(float dt)
 {
 	if (_loadResources())
 	{
-		_advanceToScene(ESMMainMenu);
+		_advanceToScene(ESMStoryMap);
+		setPaused(true);
 	}
 }
 

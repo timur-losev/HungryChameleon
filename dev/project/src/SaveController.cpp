@@ -96,15 +96,44 @@ void SaveController::setLanguage(const std::string& lang)
 	save();
 }
 
-int SaveController::GetIntValue(const char* key)
+int SaveController::getIntValue(const char* key)
 {
 	if (m_saveData->objectForKey(key) == NULL)
 		return 0;
 	return m_saveData->valueForKey(key)->intValue();
 }
 
-void SaveController::SetIntValue(const char* key, int value)
+void SaveController::setIntValue(const char* key, int value)
 {
-	CCInteger* i = CCInteger::create(value);
+	std::stringstream ss;
+	ss << value;
+	CCString* i = CCString::create(ss.str());
 	m_saveData->setObject(i, key);
+}
+
+std::string SaveController::getStringValue(const char* key)
+{
+	return m_saveData->valueForKey(key)->getCString();
+}
+
+void SaveController::setStringValue(const char* key, const std::string& value)
+{
+	CCString* str = CCString::create(value);
+	m_saveData->setObject(str, key);
+}
+
+CCDictionary* SaveController::getDictValue(const char* key)
+{
+	CCObject* dictObject = m_saveData->objectForKey(key);
+	CCDictionary* dict = dynamic_cast<CCDictionary*>(dictObject);
+	if (!dict)
+	{
+		dict = CCDictionary::create();
+	}
+	return dict;
+}
+
+void SaveController::setDictValue(const char* key, CCDictionary* value)
+{
+	m_saveData->setObject(value, key);
 }
