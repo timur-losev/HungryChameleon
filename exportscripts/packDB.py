@@ -4,27 +4,28 @@ from optparse import OptionParser
 
 TABLE_NAME = "files"
 
-def store_to_db(db, path, ignore):
+def store_to_db(db, path, key, ignore):
 	for i in ignore:
 		if i in path:
 			#print("ignoring file: {0}".format(path))
 			return
-	print(path)
+	print(path + " as '" + key + "'")
 	blob = open(path, 'rb')
 	data = blob.read();
 	blob.close()
-	cmd = "INSERT INTO {0} (path, data) VALUES('{1}', ?);".format(TABLE_NAME, path, data)
+	cmd = "INSERT INTO {0} (path, data) VALUES('{1}', ?);".format(TABLE_NAME, key, data)
 	#print(cmd)
 	#print((lite.Binary(data)))
 	db.execute(cmd, [lite.Binary(data)])
 
-def walk_all_files(db, path, fun, ignore):
-	for f in os.listdir(path):
-		target = os.path.join(path, f)
-		if(os.path.isdir(target)):
-			walk_all_files(db, target, fun, ignore)
+def walk_all_files(db, path_global, path_local, fun, ignore):
+	for f in os.listdir(os.path.join(path_global, path_local)):
+		target_local = os.path.join(path_local, f)
+		target_global = os.path.join(path_global, target_local)
+		if(os.path.isdir(target_global)):
+			walk_all_files(db, path_global, target_local, fun, ignore)
 		else:
-			fun(db, target, ignore);
+			fun(db, target_global, target_local, ignore);
 
 con = None
 
@@ -59,7 +60,7 @@ def main(a):
 	con = lite.connect(arguments.database)
 	cur = con.cursor()
 	cur.execute("CREATE TABLE files(path TEXT, data BLOB, PRIMARY KEY(path)) ;")
-	walk_all_files(cur, arguments.folder, store_to_db, ignore_mask)
+	walk_all_files(cur, arguments.folder, "", store_to_db, ignore_mask)
 	con.commit()
 	con.close()
 	print("\n******************************************")
