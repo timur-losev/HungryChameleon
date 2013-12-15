@@ -474,9 +474,6 @@
     <ClCompile Include="..\support\component\CCComponentContainer.cpp">
       <Filter>support\component</Filter>
     </ClCompile>
-    <ClCompile Include="..\platform\CCVirtualFiles.cpp">
-      <Filter>platform</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base_nodes\CCAtlasNode.h">
@@ -954,9 +951,6 @@
     </ClInclude>
     <ClInclude Include="..\support\component\CCComponentContainer.h">
       <Filter>support\component</Filter>
-    </ClInclude>
-    <ClInclude Include="..\platform\CCVirtualFiles.h">
-      <Filter>platform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
