@@ -100,6 +100,12 @@
     <ClCompile Include="..\src\StoryMapScene.cpp">
       <Filter>src\Game\GameScene</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\VirtualFiles.cpp">
+      <Filter>src\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FileUtils.cpp">
+      <Filter>src\Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -177,6 +183,12 @@
     </ClInclude>
     <ClInclude Include="..\src\StoryMapScene.h">
       <Filter>src\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\VirtualFiles.h">
+      <Filter>src\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\FileUtils.h">
+      <Filter>src\Resources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@
 #include "SaveController.h"
 #include "Player.h"
 #include "PopupController.h"
+#include "FileUtils.h"
 
 GameDelegate::GameDelegate()
 {
@@ -16,7 +17,7 @@ GameDelegate::GameDelegate()
 	m_player = new Player;
 
 	m_popupController = new PopupController;
-	CCVirtualFiles::init();
+	FileUtils::sharedFileUtils();
 }
 
 GameDelegate::~GameDelegate()
@@ -24,7 +25,7 @@ GameDelegate::~GameDelegate()
 	delete m_player;
 	delete m_popupController;
 	delete m_sceneController;
-	CCVirtualFiles::close();
+	delete FileUtils::sharedFileUtils();
 }
 
 void GameDelegate::init()

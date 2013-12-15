@@ -5,6 +5,7 @@
 #include "TextManager.h"
 #include "Player.h"
 #include "GameDelegate.h"
+#include "LocalStorage/LocalStorage.h"
 
 const char* SaveController::s_saveFile = "save.dat";
 const float SaveController::s_autosaveInterval = 300; // seconds
@@ -13,10 +14,12 @@ const char* SaveController::s_saveVersion = "0.0.1";
 SaveController::SaveController()
 {
 	SharedEventController::Instance().changeLanguage.connect(this, &SaveController::setLanguage);
+	localStorageInit(nullptr);
 }
 
 SaveController::~SaveController()
 {
+	localStorageFree();
 }
 
 SaveController* SaveController::createController()
@@ -37,8 +40,9 @@ void SaveController::save()
 bool SaveController::load()
 {
 	if (CCFileUtils::sharedFileUtils()->isFileExist(s_saveFile))
-	{
-		//m_saveData = CCDictionary::createWithContentsOfFile(s_saveFile);
+	{		
+
+		//m_saveData = CCDictionary::createWithData();
 		m_saveData = _createNewSave();
 
 	}
