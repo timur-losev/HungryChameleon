@@ -67,6 +67,10 @@
       <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;libpng.lib;libjpeg.lib;libzlib.lib;libwebp.lib;libtiff.lib;libchipmunk.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>Debug.win32;$(ProjectDir)../../../libs/cocos2dx/external/sqlite3/libraries/win32</AdditionalLibraryDirectories>
     </Link>
+    <PreLinkEvent>
+      <Command>xcopy /Y /Q "$(ProjectDir)..\..\..\libs\cocos2dx\external\sqlite3\libraries\win32\sqlite3.dll" "$(SolutionDir)$(Configuration).win32\"
+</Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
