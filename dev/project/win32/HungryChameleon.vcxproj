@@ -64,8 +64,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;libpng.lib;libjpeg.lib;libzlib.lib;libwebp.lib;libtiff.lib;libchipmunk.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>Debug.win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;libpng.lib;libjpeg.lib;libzlib.lib;libwebp.lib;libtiff.lib;libchipmunk.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Debug.win32;$(ProjectDir)../../../libs/cocos2dx/external/sqlite3/libraries/win32</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

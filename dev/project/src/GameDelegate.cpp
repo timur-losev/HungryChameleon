@@ -16,6 +16,7 @@ GameDelegate::GameDelegate()
 	m_player = new Player;
 
 	m_popupController = new PopupController;
+	CCVirtualFiles::init();
 }
 
 GameDelegate::~GameDelegate()
@@ -23,6 +24,7 @@ GameDelegate::~GameDelegate()
 	delete m_player;
 	delete m_popupController;
 	delete m_sceneController;
+	CCVirtualFiles::close();
 }
 
 void GameDelegate::init()

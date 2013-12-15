@@ -33,6 +33,12 @@ THE SOFTWARE.
 #include <stack>
 #include <algorithm>
 
+#define USE_SQL_ASSET
+
+#ifdef USE_SQL_ASSET
+#include "platform/CCVirtualFiles.h"
+#endif
+
 using namespace std;
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
@@ -499,6 +505,11 @@ void CCFileUtils::purgeCachedEntries()
 
 unsigned char* CCFileUtils::getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize)
 {
+#ifdef USE_SQL_ASSET
+	void* ret;
+	CCVirtualFiles::getBlob(pszFileName, &ret, pSize);
+	return (unsigned char*)ret;
+#else
     unsigned char * pBuffer = NULL;
     CCAssert(pszFileName != NULL && pSize != NULL && pszMode != NULL, "Invalid parameters.");
     *pSize = 0;
@@ -525,6 +536,7 @@ unsigned char* CCFileUtils::getFileData(const char* pszFileName, const char* psz
         CCLOG("%s", msg.c_str());
     }
     return pBuffer;
+#endif
 }
 
 unsigned char* CCFileUtils::getFileDataFromZip(const char* pszZipFilePath, const char* pszFileName, unsigned long * pSize)
@@ -608,6 +620,9 @@ std::string CCFileUtils::getPathForFilename(const std::string& filename, const s
 
 std::string CCFileUtils::fullPathForFilename(const char* pszFileName)
 {
+#ifdef USE_SQL_ASSET
+	return pszFileName;
+#else
     CCAssert(pszFileName != NULL, "CCFileUtils: Invalid path");
     
     std::string strFileName = pszFileName;
@@ -653,6 +668,7 @@ std::string CCFileUtils::fullPathForFilename(const char* pszFileName)
 
     // The file wasn't found, return the file name passed in.
     return pszFileName;
+#endif
 }
 
 const char* CCFileUtils::fullPathFromRelativeFile(const char *pszFilename, const char *pszRelativeFile)

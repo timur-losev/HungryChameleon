@@ -31,14 +31,16 @@ SaveController* SaveController::createController()
 
 void SaveController::save()
 {
-	m_saveData->writeToFile(s_saveFile);
+	//m_saveData->writeToFile(s_saveFile);
 }
 
 bool SaveController::load()
 {
 	if (CCFileUtils::sharedFileUtils()->isFileExist(s_saveFile))
 	{
-		m_saveData = CCDictionary::createWithContentsOfFile(s_saveFile);
+		//m_saveData = CCDictionary::createWithContentsOfFile(s_saveFile);
+		m_saveData = _createNewSave();
+
 	}
 	else
 	{

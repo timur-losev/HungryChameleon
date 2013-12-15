@@ -23,7 +23,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
     else*/
     {
-        CCFileUtils::sharedFileUtils()->addSearchPath("data");
     }
 
     CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);

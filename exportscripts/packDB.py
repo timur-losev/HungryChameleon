@@ -9,6 +9,7 @@ def store_to_db(db, path, key, ignore):
 		if i in path:
 			#print("ignoring file: {0}".format(path))
 			return
+	key = key.replace("\\", "/")
 	print(path + " as '" + key + "'")
 	blob = open(path, 'rb')
 	data = blob.read();
