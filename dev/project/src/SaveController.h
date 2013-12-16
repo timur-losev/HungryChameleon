@@ -6,42 +6,46 @@ namespace SaveKeys
 	static const char* Version = "version";
 	static const char* HighScore = "high_score";
 	static const char* Cash = "cash";
-	static const char* TokenPosition = "token_map_position";
+	static const char* ChipPosition = "chip_map_position";
 	static const char* MapProgress = "map_progress";
+
+	static const char* FacebookToken = "facebook_token";
 };
 
 class SaveController : public CCObject, public has_slots<>
 {
 	static const char* s_saveFile;
-	static const float s_autosaveInterval;
 	static const char* s_saveVersion;
 
 public:
 	SaveController();
 	virtual ~SaveController();
 
-	static SaveController*	createController();
-    bool					load();
-    void					save();
-
+// Savable variables interface
 	std::string				getLanguage();
 	void					setLanguage(const std::string&);
 
-	int						getIntValue(const char* key);
-	void					setIntValue(const char* key, int value);
+	std::string				getVersion();
+	void					setVersion(const std::string&);
 
-	std::string				getStringValue(const char* key);
-	void					setStringValue(const char* key, const std::string& value);
+	int						getHighScore();
+	void					setHighScore(int);
 
-	CCDictionary*			getDictValue(const char* key);
-	void					setDictValue(const char* key, CCDictionary* value);
+	int						getCash();
+	void					setCash(int);
 
-	CCDictionary*			getDIct();
+	std::string				getChipPosition();
+	void					setChipPosition(const std::string&);
+
+	CCDictionary*			getMapProgress();
+	void					setMapProgress(CCDictionary*);
 
 private:
-	void					_autosave(float);
-	CCDictionary*			_createNewSave();
+	void					_getValue(const char* key, int& out);
+	void					_getValue(const char* key, std::string& out);
+	void					_getValue(const char* key, CCDictionary**);
 
-private:
-	CCDictionary*			m_saveData = nullptr;
+	void					_setValue(const char* key, int);
+	void					_setValue(const char* key, const std::string&);
+	void					_setValue(const char* key, CCDictionary*);
 };

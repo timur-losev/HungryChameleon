@@ -65,11 +65,17 @@ bool LoadingScene::_loadResources()
 		break;
 	}
 	case ELoadingSave:
-		GameDelegate::getSaveController()->load();
 		GameDelegate::getPlayer()->readSave();
 		break;
 	case ELoadingTexts:
-		SharedEventController::Instance().changeLanguage(GameDelegate::getSaveController()->getLanguage());
+	{
+		std::string lang = GameDelegate::getSaveController()->getLanguage();
+		if (lang.empty())
+		{
+			lang = TextManager::s_English;
+		}
+		SharedEventController::Instance().changeLanguage(lang);
+	}
 		break;
 	default:
 		break;

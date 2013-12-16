@@ -19,24 +19,20 @@ Player::~Player()
 void Player::dumpSave(bool saveToFile /*= false*/)
 {
 	SaveController& sc = *GameDelegate::getSaveController();
-	sc.setIntValue(SaveKeys::HighScore, getHighScore());
-	sc.setIntValue(SaveKeys::Cash, getCash());
-	sc.setDictValue(SaveKeys::MapProgress, m_storyProgress);
-	sc.setStringValue(SaveKeys::TokenPosition, m_tokenMapPosition);
-	if (saveToFile)
-	{
-		GameDelegate::getSaveController()->save();
-	}
+	sc.setHighScore(getHighScore());
+	sc.setCash(getCash());
+	sc.setMapProgress(m_storyProgress);
+	sc.setChipPosition(m_tokenMapPosition);
 }
 
 void Player::readSave()
 {
 	SaveController& sc = *GameDelegate::getSaveController();
-	_setHighScore(sc.getIntValue(SaveKeys::HighScore));
-	setCash(sc.getIntValue(SaveKeys::Cash));
+	_setHighScore(sc.getHighScore());
+	setCash(sc.getCash());
 
-	m_tokenMapPosition = sc.getStringValue(SaveKeys::TokenPosition);
-	m_storyProgress = sc.getDictValue(SaveKeys::MapProgress);
+	m_tokenMapPosition = sc.getChipPosition();
+	m_storyProgress = sc.getMapProgress();
 	m_storyProgress->retain();
 	if (m_storyProgress->count() == 0 || m_tokenMapPosition.empty())
 	{

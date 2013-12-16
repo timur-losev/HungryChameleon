@@ -7,14 +7,14 @@
 #include "GameDelegate.h"
 #include "LocalStorage/LocalStorage.h"
 
-const char* SaveController::s_saveFile = "save.dat";
-const float SaveController::s_autosaveInterval = 300; // seconds
+//const float SaveController::s_autosaveInterval = 300; // seconds
 const char* SaveController::s_saveVersion = "0.0.1";
+const char* SaveController::s_saveFile = "save.dat";
 
 SaveController::SaveController()
 {
 	SharedEventController::Instance().changeLanguage.connect(this, &SaveController::setLanguage);
-	localStorageInit(nullptr);
+	localStorageInit(s_saveFile);
 }
 
 SaveController::~SaveController()
@@ -22,124 +22,138 @@ SaveController::~SaveController()
 	localStorageFree();
 }
 
-SaveController* SaveController::createController()
+/************************************************************/
+/************************************************************/
+
+void SaveController::_getValue(const char* key, int& out)
 {
-	SaveController* pRet = new SaveController();
-	if (pRet)
+	out = 0;
+	const char* value = localStorageGetItem(key);
+	if (value)
 	{
-		pRet->autorelease();
+		out = atoi(value);
 	}
-	return pRet;
 }
 
-void SaveController::save()
+void SaveController::_getValue(const char* key, std::string& out)
 {
-	//m_saveData->writeToFile(s_saveFile);
+	out = "";
+	const char* value = localStorageGetItem(key);
+	if (value)
+	{
+		out = value;
+	}
 }
 
-bool SaveController::load()
+void SaveController::_getValue(const char* key, CCDictionary** out)
 {
-	if (CCFileUtils::sharedFileUtils()->isFileExist(s_saveFile))
-	{		
-
-		//m_saveData = CCDictionary::createWithData();
-		m_saveData = _createNewSave();
-
+	const char* value = localStorageGetItem(key);
+	if (value)
+	{
+		*out = CCFileUtils::sharedFileUtils()->createCCDictionaryWithData(value, strlen(value));
 	}
 	else
 	{
-		m_saveData = _createNewSave();
-		save();
+		*out = CCDictionary::create();
 	}
-	m_saveData->retain();
-	
-	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(SEL_SCHEDULE(&SaveController::_autosave), this, s_autosaveInterval, false);
-
-	return true;
 }
 
-void SaveController::_autosave(float)
+void SaveController::_setValue(const char* key, int value)
 {
-	GameDelegate::getPlayer()->dumpSave();
-	save();
+	std::stringstream ss;
+	ss << value;
+	localStorageSetItem(key, ss.str().c_str());
 }
 
-CCDictionary* SaveController::getDIct()
+void SaveController::_setValue(const char* key, const std::string& value)
 {
-	return m_saveData;
+	localStorageSetItem(key, value.c_str());
 }
 
-CCDictionary* SaveController::_createNewSave()
+void SaveController::_setValue(const char* key, CCDictionary* value)
 {
-	CCDictionary* dict = CCDictionary::create();
-	CCString* version = CCString::create(s_saveVersion);
-	dict->setObject(version, SaveKeys::Version);
-	CCString* lang = CCString::create(TextManager::s_English);
-	dict->setObject(lang, SaveKeys::Language);
-	CCInteger* highScore = CCInteger::create(0);
-	dict->setObject(highScore, SaveKeys::HighScore);
-	CCInteger* cash = CCInteger::create(1);
-	dict->setObject(cash, SaveKeys::Cash);
+	const char* plist = CCFileUtils::sharedFileUtils()->dumpCCDictionaryToData(value);
+	if (plist)
+	{
+		localStorageSetItem(key, plist);
+		delete[] plist;
+	}
+}
 
-	return dict;
+/************************************************************/
+/************************************************************/
+
+std::string SaveController::getVersion()
+{
+	std::string ret;
+	_getValue(SaveKeys::Version, ret);
+	return ret;
+}
+
+void SaveController::setVersion(const std::string& value)
+{
+	_setValue(SaveKeys::Version, value);
+}
+
+int SaveController::getHighScore()
+{
+	int ret = 0;
+	_getValue(SaveKeys::HighScore, ret);
+	return ret;
+}
+
+void SaveController::setHighScore(int value)
+{
+	_setValue(SaveKeys::HighScore, value);
+}
+
+int SaveController::getCash()
+{
+	int ret = 0;
+	_getValue(SaveKeys::HighScore, ret);
+	return ret;
+}
+
+void SaveController::setCash(int value)
+{
+	_setValue(SaveKeys::Cash, value);
+}
+
+std::string SaveController::getChipPosition()
+{
+	std::string ret;
+	_getValue(SaveKeys::ChipPosition, ret);
+	return ret;
+}
+
+void SaveController::setChipPosition(const std::string& value)
+{
+	_setValue(SaveKeys::ChipPosition, value);
+}
+
+CCDictionary* SaveController::getMapProgress()
+{
+	CCDictionary* ret;
+	_getValue(SaveKeys::MapProgress, &ret);
+	return ret;
+}
+
+void SaveController::setMapProgress(CCDictionary* value)
+{
+	_setValue(SaveKeys::MapProgress, value);
 }
 
 std::string SaveController::getLanguage()
 {
-	if (m_saveData->objectForKey(SaveKeys::Language) == NULL)
-		return std::string();
-
-	return m_saveData->valueForKey(SaveKeys::Language)->getCString();
+	std::string ret;
+	_getValue(SaveKeys::Language, ret);
+	return ret;
 }
 
 void SaveController::setLanguage(const std::string& lang)
 {
-	if (getLanguage() == lang && !lang.empty())
-		return;
-
-	CCString* str = CCString::create(lang);
-	m_saveData->setObject(str, SaveKeys::Language);
-	save();
+	_setValue(SaveKeys::Language, lang);
 }
 
-int SaveController::getIntValue(const char* key)
-{
-	if (m_saveData->objectForKey(key) == NULL)
-		return 0;
-	return m_saveData->valueForKey(key)->intValue();
-}
-
-void SaveController::setIntValue(const char* key, int value)
-{
-	std::stringstream ss;
-	ss << value;
-	CCString* i = CCString::create(ss.str());
-	m_saveData->setObject(i, key);
-}
-
-std::string SaveController::getStringValue(const char* key)
-{
-	return m_saveData->valueForKey(key)->getCString();
-}
-
-void SaveController::setStringValue(const char* key, const std::string& value)
-{
-	CCString* str = CCString::create(value);
-	m_saveData->setObject(str, key);
-}
-
-CCDictionary* SaveController::getDictValue(const char* key)
-{
-	CCObject* dictObject = m_saveData->objectForKey(key);
-	CCDictionary* dict = dynamic_cast<CCDictionary*>(dictObject);
-	if (!dict)
-	{
-		dict = CCDictionary::create();
-	}
-	return dict;
-}
-
-void SaveController::setDictValue(const char* key, CCDictionary* value)
-{
-	m_saveData->setObject(value, key);
-}
+/************************************************************/
+/************************************************************/

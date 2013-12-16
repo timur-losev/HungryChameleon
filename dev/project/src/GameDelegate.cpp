@@ -9,15 +9,12 @@
 
 GameDelegate::GameDelegate()
 {
-	m_sceneController = new SceneController;
-
-	m_saveController = SaveController::createController();
-	m_saveController->retain();
-
-	m_player = new Player;
-
-	m_popupController = new PopupController;
+	// Create the appropriate instance of file utils
 	FileUtils::sharedFileUtils();
+	m_sceneController = new SceneController;
+	m_saveController = new SaveController;
+	m_player = new Player;
+	m_popupController = new PopupController;
 }
 
 GameDelegate::~GameDelegate()
@@ -25,6 +22,7 @@ GameDelegate::~GameDelegate()
 	delete m_player;
 	delete m_popupController;
 	delete m_sceneController;
+	delete m_saveController;
 	delete FileUtils::sharedFileUtils();
 }
 
@@ -45,7 +43,6 @@ SaveController* GameDelegate::getSaveController()
 
 void GameDelegate::saveNow()
 {
-	m_saveController->save();
 }
 
 SceneController* GameDelegate::getSceneController()
