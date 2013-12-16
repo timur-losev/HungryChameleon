@@ -101,7 +101,22 @@ public:
 
         parser.parse(pFileName);
         return m_pRootDict;
-    }
+	}
+
+	CCDictionary* dictionaryWithData(const char *pData, unsigned int len)
+	{
+		m_eResultType = SAX_RESULT_DICT;
+		CCSAXParser parser;
+
+		if (false == parser.init("UTF-8"))
+		{
+			return NULL;
+		}
+		parser.setDelegator(this);
+
+		parser.parse(pData, len);
+		return m_pRootDict;
+	}
 
     CCArray* arrayWithContentsOfFile(const char* pFileName)
     {
@@ -315,6 +330,12 @@ public:
     }
 };
 
+CCDictionary* CCFileUtils::createCCDictionaryWithData(const char* pData, unsigned int len)
+{
+	CCDictMaker tMaker;
+	return tMaker.dictionaryWithData(pData, len);
+}
+
 CCDictionary* CCFileUtils::createCCDictionaryWithContentsOfFile(const std::string& filename)
 {
     std::string fullPath = fullPathForFilename(filename.c_str());
@@ -329,6 +350,22 @@ CCArray* CCFileUtils::createCCArrayWithContentsOfFile(const std::string& filenam
     return tMaker.arrayWithContentsOfFile(fullPath.c_str());
 }
 
+const char* CCFileUtils::dumpCCDictionaryToData(CCDictionary* dict)
+{
+	tinyxml2::XMLDocument *pDoc;
+	bool ret = writeToDocument(dict, &pDoc);
+	if (ret)
+	{
+		tinyxml2::XMLPrinter printer;
+		pDoc->Print(&printer);
+		printer.CStr();
+		char* buffer = new char[printer.CStrSize()];
+		strcpy(buffer, printer.CStr());
+		return buffer;
+	}
+	return nullptr;
+}
+
 /*
  * forward statement
  */
@@ -339,6 +376,18 @@ static tinyxml2::XMLElement* generateElementForDict(cocos2d::CCDictionary *dict,
  * Use tinyxml2 to write plist files
  */
 bool CCFileUtils::writeToFile(cocos2d::CCDictionary *dict, const std::string &fullPath)
+{
+	tinyxml2::XMLDocument *pDoc;
+	bool ret = writeToDocument(dict, &pDoc);
+	if (ret)
+	{
+		ret = tinyxml2::XML_SUCCESS == pDoc->SaveFile(fullPath.c_str());
+		delete pDoc;
+	}
+	return ret;
+}
+
+bool CCFileUtils::writeToDocument(CCDictionary *dict, tinyxml2::XMLDocument** ppDoc)
 {
     //CCLOG("tinyxml2 CCDictionary %d writeToFile %s", dict->m_uID, fullPath.c_str());
     tinyxml2::XMLDocument *pDoc = new tinyxml2::XMLDocument();
@@ -373,10 +422,8 @@ bool CCFileUtils::writeToFile(cocos2d::CCDictionary *dict, const std::string &fu
     }
     pRootEle->LinkEndChild(innerDict);
     
-    bool bRet = tinyxml2::XML_SUCCESS == pDoc->SaveFile(fullPath.c_str());
-    
-    delete pDoc;
-    return bRet;
+	*ppDoc = pDoc;
+    return true;
 }
 
 /*

@@ -31,6 +31,11 @@ THE SOFTWARE.
 #include "ccTypes.h"
 #include "ccTypeInfo.h"
 
+namespace tinyxml2
+{
+	class XMLDocument;
+}
+
 NS_CC_BEGIN
 
 class CCDictionary;
@@ -330,6 +335,9 @@ public:
     virtual void setPopupNotify(bool bNotify);
     virtual bool isPopupNotify();
 
+	CCDictionary* createCCDictionaryWithData(const char* pData, unsigned int len);
+	const char* dumpCCDictionaryToData(CCDictionary*);
+
 protected:
     /**
      *  The default constructor.
@@ -386,7 +394,13 @@ protected:
      *  Write a dictionary to a plist file.
      *  @note This method is used internally.
      */
-    virtual bool writeToFile(CCDictionary *dict, const std::string& fullPath);
+	virtual bool writeToFile(CCDictionary *dict, const std::string& fullPath);
+
+	/**
+	*  Write a dictionary to a plist xml.
+	*  @note This method is used internally.
+	*/
+	virtual bool writeToDocument(CCDictionary *dict, tinyxml2::XMLDocument** pDoc);
     
     /**
      *  Creates an array by the contents of a file.
