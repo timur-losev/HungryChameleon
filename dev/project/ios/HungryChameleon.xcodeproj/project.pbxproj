@@ -38,11 +38,7 @@
 		9AA83886185626190062F3E7 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8386F185626190062F3E7 /* VisibleRect.cpp */; };
 		9AA8389618563BD50062F3E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA8389518563BD50062F3E7 /* QuartzCore.framework */; };
 		9AC1FDE8185766D100ED96A8 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1FDE7185766D100ED96A8 /* RootViewController.mm */; };
-		9AC1FDEB18576A5900ED96A8 /* en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FDEA18576A5900ED96A8 /* en.plist */; };
-		9AC1FE8A185777E100ED96A8 /* MainMenu in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FE89185777E100ED96A8 /* MainMenu */; };
-		9AC1FE8D18577A7000ED96A8 /* spiders2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FE8B18577A7000ED96A8 /* spiders2.png */; };
 		9AC1FF341857811F00ED96A8 /* libchipmunk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1FEC718577F4000ED96A8 /* libchipmunk.a */; };
-		9AC1FF36185781B300ED96A8 /* anim in Resources */ = {isa = PBXBuildFile; fileRef = 9AC1FF35185781B300ED96A8 /* anim */; };
 		9AE685B11858E69B002E70D8 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE685AF1858E69B002E70D8 /* libcurl.a */; };
 		9AE685B21858E69B002E70D8 /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE685B01858E69B002E70D8 /* libwebp.a */; };
 		9AE685BD1858E6D3002E70D8 /* PopupBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE685B31858E6D3002E70D8 /* PopupBase.cpp */; };
@@ -50,7 +46,11 @@
 		9AE685BF1858E6D3002E70D8 /* PopupLanguage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE685B71858E6D3002E70D8 /* PopupLanguage.cpp */; };
 		9AE685C01858E6D3002E70D8 /* PopupOk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE685B91858E6D3002E70D8 /* PopupOk.cpp */; };
 		9AE685C11858E6D3002E70D8 /* PopupOkCancel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE685BB1858E6D3002E70D8 /* PopupOkCancel.cpp */; };
-		9AE685D11858E894002E70D8 /* ru.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AE685D01858E894002E70D8 /* ru.plist */; };
+		9AE685DB185A1D9B002E70D8 /* StoryMapScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE685D9185A1D9B002E70D8 /* StoryMapScene.cpp */; };
+		9AE685FB185F7D7D002E70D8 /* asset.db in Resources */ = {isa = PBXBuildFile; fileRef = 9AE685FA185F7D7D002E70D8 /* asset.db */; };
+		9AE685FE185F7D94002E70D8 /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE685FC185F7D94002E70D8 /* FileUtils.cpp */; };
+		9AE68601185F7DA5002E70D8 /* VirtualFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AE685FF185F7DA5002E70D8 /* VirtualFiles.cpp */; };
+		9AE68603185F7E48002E70D8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE68602185F7E48002E70D8 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,13 +163,9 @@
 		9AA8389518563BD50062F3E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9AC1FDE6185766D100ED96A8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9AC1FDE7185766D100ED96A8 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
-		9AC1FDEA18576A5900ED96A8 /* en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = en.plist; path = ../../../export/en.plist; sourceTree = "<group>"; };
 		9AC1FDFA18576CFD00ED96A8 /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libwebsockets.h; sourceTree = "<group>"; };
 		9AC1FDFC18576CFD00ED96A8 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebsockets.a; sourceTree = "<group>"; };
-		9AC1FE89185777E100ED96A8 /* MainMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MainMenu; path = ../../../export/MainMenu; sourceTree = "<group>"; };
-		9AC1FE8B18577A7000ED96A8 /* spiders2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spiders2.png; path = ../../../export/spiders2.png; sourceTree = "<group>"; };
 		9AC1FEC118577F3F00ED96A8 /* chipmunk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = chipmunk.xcodeproj; path = ../../../libs/cocos2dx/external/chipmunk/proj.ios/chipmunk/chipmunk.xcodeproj; sourceTree = "<group>"; };
-		9AC1FF35185781B300ED96A8 /* anim */ = {isa = PBXFileReference; lastKnownFileType = folder; name = anim; path = ../../../export/anim; sourceTree = "<group>"; };
 		9AE685AF1858E69B002E70D8 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../../libs/cocos2dx/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		9AE685B01858E69B002E70D8 /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = ../../../libs/cocos2dx/cocos2dx/platform/third_party/ios/libraries/libwebp.a; sourceTree = "<group>"; };
 		9AE685B31858E6D3002E70D8 /* PopupBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PopupBase.cpp; path = ../../src/PopupBase.cpp; sourceTree = "<group>"; };
@@ -183,7 +179,14 @@
 		9AE685BB1858E6D3002E70D8 /* PopupOkCancel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PopupOkCancel.cpp; path = ../../src/PopupOkCancel.cpp; sourceTree = "<group>"; };
 		9AE685BC1858E6D3002E70D8 /* PopupOkCancel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupOkCancel.h; path = ../../src/PopupOkCancel.h; sourceTree = "<group>"; };
 		9AE685C21858E761002E70D8 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "../../../libs/facebook-sdk-ios/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
-		9AE685D01858E894002E70D8 /* ru.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ru.plist; path = ../../../export/ru.plist; sourceTree = "<group>"; };
+		9AE685D9185A1D9B002E70D8 /* StoryMapScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StoryMapScene.cpp; path = ../../src/StoryMapScene.cpp; sourceTree = "<group>"; };
+		9AE685DA185A1D9B002E70D8 /* StoryMapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryMapScene.h; path = ../../src/StoryMapScene.h; sourceTree = "<group>"; };
+		9AE685FA185F7D7D002E70D8 /* asset.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = asset.db; path = ../../../resources/asset.db; sourceTree = "<group>"; };
+		9AE685FC185F7D94002E70D8 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileUtils.cpp; path = ../../src/FileUtils.cpp; sourceTree = "<group>"; };
+		9AE685FD185F7D94002E70D8 /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUtils.h; path = ../../src/FileUtils.h; sourceTree = "<group>"; };
+		9AE685FF185F7DA5002E70D8 /* VirtualFiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualFiles.cpp; path = ../../src/VirtualFiles.cpp; sourceTree = "<group>"; };
+		9AE68600185F7DA5002E70D8 /* VirtualFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirtualFiles.h; path = ../../src/VirtualFiles.h; sourceTree = "<group>"; };
+		9AE68602185F7E48002E70D8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE68603185F7E48002E70D8 /* libsqlite3.dylib in Frameworks */,
 				9AE685B11858E69B002E70D8 /* libcurl.a in Frameworks */,
 				9AE685B21858E69B002E70D8 /* libwebp.a in Frameworks */,
 				9AC1FF341857811F00ED96A8 /* libchipmunk.a in Frameworks */,
@@ -240,6 +244,7 @@
 		9AA8380D185618E60062F3E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AE68602185F7E48002E70D8 /* libsqlite3.dylib */,
 				9AE685AF1858E69B002E70D8 /* libcurl.a */,
 				9AE685B01858E69B002E70D8 /* libwebp.a */,
 				9AC1FDFF18576CFD00ED96A8 /* libwebsockets */,
@@ -274,6 +279,12 @@
 		9AA8383D18561AEE0062F3E7 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				9AE685FF185F7DA5002E70D8 /* VirtualFiles.cpp */,
+				9AE68600185F7DA5002E70D8 /* VirtualFiles.h */,
+				9AE685FC185F7D94002E70D8 /* FileUtils.cpp */,
+				9AE685FD185F7D94002E70D8 /* FileUtils.h */,
+				9AE685D9185A1D9B002E70D8 /* StoryMapScene.cpp */,
+				9AE685DA185A1D9B002E70D8 /* StoryMapScene.h */,
 				9AE685D81858F05A002E70D8 /* Popup */,
 				9AA83844185626190062F3E7 /* AnimatedCell.cpp */,
 				9AA83845185626190062F3E7 /* AnimatedCell.h */,
@@ -335,12 +346,8 @@
 		9AC1FDE918576A3000ED96A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9AE685FA185F7D7D002E70D8 /* asset.db */,
 				9AA83820185618E60062F3E7 /* Images.xcassets */,
-				9AE685D01858E894002E70D8 /* ru.plist */,
-				9AC1FF35185781B300ED96A8 /* anim */,
-				9AC1FE8B18577A7000ED96A8 /* spiders2.png */,
-				9AC1FE89185777E100ED96A8 /* MainMenu */,
-				9AC1FDEA18576A5900ED96A8 /* en.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -551,13 +558,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC1FE8A185777E100ED96A8 /* MainMenu in Resources */,
-				9AC1FF36185781B300ED96A8 /* anim in Resources */,
-				9AC1FDEB18576A5900ED96A8 /* en.plist in Resources */,
-				9AE685D11858E894002E70D8 /* ru.plist in Resources */,
 				9AA83819185618E60062F3E7 /* InfoPlist.strings in Resources */,
+				9AE685FB185F7D7D002E70D8 /* asset.db in Resources */,
 				9AA83821185618E60062F3E7 /* Images.xcassets in Resources */,
-				9AC1FE8D18577A7000ED96A8 /* spiders2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,11 +582,14 @@
 				9AA83871185626190062F3E7 /* AnimatedCell.cpp in Sources */,
 				9AA83885185626190062F3E7 /* Utils.cpp in Sources */,
 				9AA8381F185618E60062F3E7 /* AppDelegateIos.m in Sources */,
+				9AE68601185F7DA5002E70D8 /* VirtualFiles.cpp in Sources */,
 				9AA83884185626190062F3E7 /* TextManager.cpp in Sources */,
 				9AA83876185626190062F3E7 /* GameSceneBase.cpp in Sources */,
+				9AE685DB185A1D9B002E70D8 /* StoryMapScene.cpp in Sources */,
 				9AE685BD1858E6D3002E70D8 /* PopupBase.cpp in Sources */,
 				9AE685C11858E6D3002E70D8 /* PopupOkCancel.cpp in Sources */,
 				9AA8387E185626190062F3E7 /* Player.cpp in Sources */,
+				9AE685FE185F7D94002E70D8 /* FileUtils.cpp in Sources */,
 				9AA83881185626190062F3E7 /* SaveController.cpp in Sources */,
 				9AA83879185626190062F3E7 /* LoadingScene.cpp in Sources */,
 				9AA83882185626190062F3E7 /* SceneController.cpp in Sources */,
@@ -716,6 +722,7 @@
 					"\"$(SRCROOT)/../../../libs/cocos2dx/extensions\"",
 					"\"$(SRCROOT)/../../../libs/loki/include\"",
 					"\"$(SRCROOT)/../../../libs/facebook-sdk-ios/src\"",
+					"\"$(SRCROOT)/../../../libs/cocos2dx/external/sqlite3/include\"",
 				);
 				INFOPLIST_FILE = "HungryChameleon/HungryChameleon-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -771,6 +778,7 @@
 					"\"$(SRCROOT)/../../../libs/cocos2dx/extensions\"",
 					"\"$(SRCROOT)/../../../libs/loki/include\"",
 					"\"$(SRCROOT)/../../../libs/facebook-sdk-ios/src\"",
+					"\"$(SRCROOT)/../../../libs/cocos2dx/external/sqlite3/include\"",
 				);
 				INFOPLIST_FILE = "HungryChameleon/HungryChameleon-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;

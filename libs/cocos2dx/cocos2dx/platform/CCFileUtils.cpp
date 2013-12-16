@@ -36,7 +36,7 @@ THE SOFTWARE.
 using namespace std;
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
-
+#endif
 NS_CC_BEGIN
 
 typedef enum 
@@ -372,6 +372,8 @@ const char* CCFileUtils::dumpCCDictionaryToData(CCDictionary* dict)
 static tinyxml2::XMLElement* generateElementForArray(cocos2d::CCArray *array, tinyxml2::XMLDocument *pDoc);
 static tinyxml2::XMLElement* generateElementForDict(cocos2d::CCDictionary *dict, tinyxml2::XMLDocument *pDoc);
 
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
+
 /*
  * Use tinyxml2 to write plist files
  */
@@ -386,6 +388,8 @@ bool CCFileUtils::writeToFile(cocos2d::CCDictionary *dict, const std::string &fu
 	}
 	return ret;
 }
+
+#endif
 
 bool CCFileUtils::writeToDocument(CCDictionary *dict, tinyxml2::XMLDocument** ppDoc)
 {
@@ -453,7 +457,11 @@ static tinyxml2::XMLElement* generateElementForObject(cocos2d::CCObject *object,
  {
    tinyxml2::XMLElement* node = pDoc->NewElement("integer");
    char buffer[40];
-   _itoa(real->getValue(), buffer, 10);
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
+     _itoa(real->getValue(), buffer, 10);
+#else
+     snprintf(buffer, 10, "%d", real->getValue());
+#endif
    tinyxml2::XMLText* content = pDoc->NewText(buffer);
    node->LinkEndChild(content);
    return node;
@@ -462,6 +470,9 @@ static tinyxml2::XMLElement* generateElementForObject(cocos2d::CCObject *object,
     CCLOG("This type cannot appear in property list");
     return NULL;
 }
+
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
+#else
 
 /*
  * Generate tinyxml2::XMLElement for CCDictionary through a tinyxml2::XMLDocument
@@ -504,13 +515,9 @@ static tinyxml2::XMLElement* generateElementForArray(cocos2d::CCArray *array, ti
 }
 
 
-#else
-NS_CC_BEGIN
 
 /* The subclass CCFileUtilsIOS and CCFileUtilsMac should override these two method. */
-CCDictionary* CCFileUtils::createCCDictionaryWithContentsOfFile(const std::string& filename) {return NULL;}
 bool CCFileUtils::writeToFile(cocos2d::CCDictionary *dict, const std::string &fullPath) {return NULL;}
-CCArray* CCFileUtils::createCCArrayWithContentsOfFile(const std::string& filename) {return NULL;}
 
 #endif /* (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC) */
 

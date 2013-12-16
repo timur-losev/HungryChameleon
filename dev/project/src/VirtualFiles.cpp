@@ -73,12 +73,18 @@ void VirtualFiles::init(const char *fullpath)
 	if(!s_initialized)
 	{
 		int ret = 0;
-		
+        std::string file;
+        
 		if (!fullpath)
-			ret = sqlite3_open("asset.db", &s_db);
-		else
-			ret = sqlite3_open(fullpath, &s_db);
-
+			file = "asset.db";
+        else
+            file = fullpath;
+			
+#ifndef _WIN32
+        NSURL* url = [[NSBundle mainBundle] URLForResource:@"asset" withExtension:@"db"];
+        file = [[url absoluteString] UTF8String];
+#endif
+        ret = sqlite3_open(file.c_str(), &s_db);
 		// SELECT
 		const char *sql_select = "SELECT data FROM files WHERE path=?;";
 		ret |= sqlite3_prepare_v2(s_db, sql_select, -1, &s_stmt_select, NULL);

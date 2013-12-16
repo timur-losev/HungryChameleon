@@ -14,7 +14,16 @@ const char* SaveController::s_saveFile = "save.dat";
 SaveController::SaveController()
 {
 	SharedEventController::Instance().changeLanguage.connect(this, &SaveController::setLanguage);
-	localStorageInit(s_saveFile);
+    std::string file(s_saveFile);
+#ifndef _WIN32
+    NSString* docsDir;
+    NSArray* dirPaths;
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    docsDir = dirPaths[0];
+    NSString* databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:[NSString stringWithUTF8String:s_saveFile]]];
+    file = [databasePath UTF8String];
+#endif
+	localStorageInit(file.c_str());
 }
 
 SaveController::~SaveController()
