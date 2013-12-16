@@ -471,8 +471,6 @@ static tinyxml2::XMLElement* generateElementForObject(cocos2d::CCObject *object,
     return NULL;
 }
 
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
-#else
 
 /*
  * Generate tinyxml2::XMLElement for CCDictionary through a tinyxml2::XMLDocument
@@ -515,6 +513,8 @@ static tinyxml2::XMLElement* generateElementForArray(cocos2d::CCArray *array, ti
 }
 
 
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
+#else
 
 /* The subclass CCFileUtilsIOS and CCFileUtilsMac should override these two method. */
 bool CCFileUtils::writeToFile(cocos2d::CCDictionary *dict, const std::string &fullPath) {return NULL;}
