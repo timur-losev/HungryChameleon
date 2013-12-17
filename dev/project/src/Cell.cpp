@@ -15,13 +15,15 @@
 
 static std::pair<const char*, Cell::Colour> SpriteDefines[] =
 {
+    std::make_pair("red.png", Cell::Undefined),
+
     std::make_pair("red.png", Cell::Red),
     std::make_pair("brown.png", Cell::Brown),
     std::make_pair("green.png", Cell::Green),
     std::make_pair("purple.png", Cell::Purple),
     std::make_pair("aqua.png", Cell::Aqua),
-
-    std::make_pair("yellow.png", Cell::Undefined) //! Roadblock
+    std::make_pair("blue.png", Cell::Blue),
+    std::make_pair("yellow.png", Cell::Yellow)
 };
 
 Cell::Cell(Colour c)
@@ -29,6 +31,7 @@ Cell::Cell(Colour c)
 {
 	auto& pair = SpriteDefines[c];
 
+    
     CCSprite* a = CCSprite::createWithSpriteFrameName(pair.first);
 	a->setAnchorPoint(ccp(0, 0));
 	addChild(a);
@@ -36,7 +39,7 @@ Cell::Cell(Colour c)
 
 Cell* Cell::createRandom()
 {
-    int id = rand() % 4;
+    int id = rand() % 7 + 1;
 
     auto& pair = SpriteDefines[id];
 
