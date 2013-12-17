@@ -16,6 +16,7 @@ private:
 	void					_setHighScore(int value);
 
 	void					_onCheatFinishGame(CCObject * pSender, extension::TouchEventType ev);
+	void					_onPauseButtonPressed(CCObject* pSender, extension::TouchEventType ev);
 
 protected:
 	void					_onUpdate(float dt);

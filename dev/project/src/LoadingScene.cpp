@@ -59,8 +59,7 @@ bool LoadingScene::_loadResources()
 	switch (m_step)
 	{
 	case ELoadingAnimations:
-	{
-		CCFileUtils::sharedFileUtils()->addSearchPath("data");
+	{;
 		extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("anim/spider.ExportJson");
 		break;
 	}

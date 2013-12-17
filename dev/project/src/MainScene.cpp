@@ -6,6 +6,8 @@
 #include "Cell.h"
 #include "Player.h"
 #include "EventController.h"
+#include "PopupController.h"
+#include "PopupLanguage.h"
 
 MainScene::MainScene()
     : m_CellField(nullptr)
@@ -37,6 +39,11 @@ bool MainScene::init()
 	if (button)
 	{
 		button->addTouchEventListener(this, toucheventselector(MainScene::_onCheatFinishGame));
+	}
+	button = w->getWidgetByName("btn_cash_0");
+	if (button)
+	{
+		button->addTouchEventListener(this, toucheventselector(MainScene::_onPauseButtonPressed));
 	}
 
     m_CellField = new CellField();
@@ -101,5 +108,14 @@ void MainScene::_onCheatFinishGame(CCObject * pSender, extension::TouchEventType
 	{
 		SharedEventController::Instance().gameFinishedWithScore(100);
 		_advanceToScene(ESMStoryMap);
+	}
+}
+
+void MainScene::_onPauseButtonPressed(CCObject* pSender, extension::TouchEventType ev)
+{
+	if (ev == extension::TOUCH_EVENT_ENDED)
+	{
+		PopupLanguage* p = new PopupLanguage;
+		SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
 	}
 }
