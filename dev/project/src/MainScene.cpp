@@ -4,6 +4,7 @@
 #include "GameDelegate.h"
 
 #include "Cell.h"
+#include "CellField.h"
 #include "Player.h"
 #include "EventController.h"
 #include "PopupController.h"
@@ -22,8 +23,8 @@ MainScene::~MainScene()
 bool MainScene::init()
 {
     bool kRet = GameSceneBase::init();
-
-
+    
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Atlas/Atlas0.plist");
 
 	extension::UILayer* w = extension::UILayer::create();
 	extension::GUIReader r;
