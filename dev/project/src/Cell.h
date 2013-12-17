@@ -39,4 +39,5 @@ public:
 	virtual ~Cell() {};
 
     static Cell* createRandom();
+    void SetDebugInfo(int, int);
 };

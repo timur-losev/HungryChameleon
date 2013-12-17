@@ -109,6 +109,12 @@
     <ClCompile Include="..\src\CellField.cpp">
       <Filter>src\Game\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\CellFieldStateIdle.cpp">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CellFieldBaseState.cpp">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -194,6 +200,12 @@
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="..\src\CellField.h">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CellFieldStateIdle.h">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CellFieldBaseState.h">
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>

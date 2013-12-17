@@ -59,6 +59,8 @@ bool CellField::init()
                 cell->rowId = i;
                 cell->colId = j;
 
+                cell->SetDebugInfo(cell->rowId, cell->colId);
+
                 m_rows[i].push_back(cell);
                 m_cols[j].push_back(cell);
 
@@ -401,8 +403,9 @@ void CellField::_stabilizeMatrix(Line_t &line)
 void CellField::_floodFill(Cell* cell, Cell::Colour targetColour, std::list<Cell*>& matchingList) const
 {
     if (cell->colour != targetColour || cell->travelsed)
+    {
         return;
-
+    }
     cell->travelsed = true;
 
     matchingList.push_back(cell);
@@ -428,8 +431,12 @@ void CellField::_matchingState()
     {
         for (Cell* cell : line)
         {
-            std::list<Cell*> matchingList;
 
+            cell->SetDebugInfo(cell->rowId, cell->colId);
+            std::list<Cell*> matchingList;
+            
+            if (!cell)
+                continue;
             _floodFill(cell, cell->colour, matchingList);
 
 			if (matchingList.size() >= 3)
@@ -454,8 +461,76 @@ void CellField::_fallDownState(const std::list<CellList_t>& matchedCells)
 
 			_removeCell(cell);
 		}
-	}
+    }
 
+    // Fill
+    for (uint32_t i = 0; i < MatrixVisibleLineSize; ++i)
+    {
+        for (uint32_t j = 0; j < MatrixVisibleLineSize; ++j)
+        {
+            Cell* cell = m_cols[i][j];
+            while (cell == nullptr)
+            {
+                cell = m_cols[i][j];
+                _moveColumnFragmenDown(i, j, 1);
+            }
+        }
+    }
+
+}
+
+void CellField::_moveColumnFragmenDown(uint32_t columnIndex, uint32_t startingFromRow, uint32_t numberOfPositions)
+{
+    int toPosition = startingFromRow;
+
+    for (int i = startingFromRow; i < MatrixVisibleLineSize; ++i)
+    {
+        toPosition = i;
+        if (m_cols[columnIndex][i])
+        {
+            break;
+        }
+    }
+    if (!m_cols[columnIndex][toPosition] && toPosition == MatrixVisibleLineSize-1)
+    {
+        toPosition = MatrixVisibleLineSize;
+    }
+    
+    Line_t fromLine = m_cols[columnIndex];
+    uint32_t newInd = toPosition;
+    uint32_t oldInd = startingFromRow;
+
+    CCPoint pos = ccp(columnIndex * SpriteW, 0);
+    for (; oldInd < MatrixVisibleLineSize && newInd < MatrixVisibleLineSize; ++oldInd, ++newInd)
+    {
+        Cell* cell = fromLine[oldInd];
+        m_cols[columnIndex][newInd] = cell;
+        m_rows[newInd][columnIndex] = cell;
+        if (cell)
+        {
+            cell->setPosition(pos);
+            cell->rowId = newInd;
+        }
+        pos.y += static_cast<uint32_t>(SpriteH);
+    }
+
+    return;
+    for (; newInd < MatrixVisibleLineSize; ++newInd)
+    {
+        Cell* cell = Cell::createRandom();
+
+        assert(cell);
+
+        addChild(cell);
+        cell->setPosition(pos);
+
+        cell->rowId = newInd;
+        cell->colId = columnIndex;
+        m_rows[cell->rowId][cell->colId] = cell;
+        m_cols[cell->colId][cell->rowId] = cell;
+
+        pos.y += static_cast<uint32_t>(SpriteH);
+    }
 }
 
 void CellField::_rebaseByX(Cell* sampleCell, Line_t& row)

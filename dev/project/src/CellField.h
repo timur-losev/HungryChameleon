@@ -74,6 +74,8 @@ private:
     void         _removeCellIfPossible(Cell* cell);
     void         _removeCell(Cell* cell);
 
+    void         _moveColumnFragmenDown(uint32_t columnIndex, uint32_t startingFromRow, uint32_t numberOfPositions);
+
     Cell*        _createRandomCell();
 
     Line_t&      _getLineByDirection(Cell* hitcell, Direction dir);

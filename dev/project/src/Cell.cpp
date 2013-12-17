@@ -47,3 +47,19 @@ Cell* Cell::createRandom()
 
     return cell;
 }
+
+void Cell::SetDebugInfo(int a, int b)
+{
+    removeAllChildrenWithCleanup(true);
+    std::stringstream ss;
+    ss << a << ":" << b;
+    CCLabelTTF* l = CCLabelTTF::create();
+    l->initWithString(ss.str().c_str(), "brookeshappelldots.ttf", 25);
+    addChild(l);
+    ccColor3B col;
+    col.r = 1;
+    col.g = 1;
+    col.b = 0;
+    l->setColor(col);
+    l->setPosition(ccp(20, 20));
+}
