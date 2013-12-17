@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\Programming\HungryChameleon\hungrychameleon\data\cocosStudio\Atlas\Atlas.xml.ui</filePath>
+  <Version>1.1.0.0</Version>
+  <Name>Atlas</Name>
+  <ProjectDir>D:\Programming\HungryChameleon\hungrychameleon\data\cocosStudio\Atlas</ProjectDir>
+  <JsonFileName>Atlas.json</JsonFileName>
+  <Resources>D:\Programming\HungryChameleon\hungrychameleon\data\cocosStudio\Atlas\Resources</Resources>
+  <JsonFolder>D:\Programming\HungryChameleon\hungrychameleon\data\cocosStudio\Atlas\Json</JsonFolder>
+  <JsonList>
+    <string>Atlas_1.json</string>
+  </JsonList>
+  <imageFileList>
+    <string>Atlas0.plist</string>
+  </imageFileList>
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>Atlas_1.json</CurrentUIJson>
+  <CanvasSize>
+    <Width>480</Width>
+    <Height>320</Height>
+  </CanvasSize>
+</UIProject>
