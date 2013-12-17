@@ -17,11 +17,11 @@
     <Filter Include="src\Game\GameScene">
       <UniqueIdentifier>{f9a01f53-f9bf-4285-97d5-fffa8e617191}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game\Bubble">
-      <UniqueIdentifier>{332e0869-1a5d-431c-896a-7b48240a517a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Game\GameScene\Popup">
       <UniqueIdentifier>{98cb50f8-8607-4241-85b5-dca0458abf98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Gameplay">
+      <UniqueIdentifier>{f0dd620b-7d2c-4ba4-828a-8f84937a1c25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,9 +46,6 @@
     <ClCompile Include="..\src\System.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Cell.cpp">
-      <Filter>src\Game\Bubble</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\SceneController.cpp">
       <Filter>src\Game\GameScene</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
     </ClCompile>
     <ClCompile Include="..\src\TextManager.cpp">
       <Filter>src\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\AnimatedCell.cpp">
-      <Filter>src\Game\Bubble</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GameSceneBase.cpp">
       <Filter>src\Game\GameScene</Filter>
@@ -106,6 +100,15 @@
     <ClCompile Include="..\src\FileUtils.cpp">
       <Filter>src\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\AnimatedCell.cpp">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Cell.cpp">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CellField.cpp">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -126,9 +129,6 @@
     <ClInclude Include="..\src\System.h">
       <Filter>src\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Cell.h">
-      <Filter>src\Game\Bubble</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\sigslot.h" />
     <ClInclude Include="..\src\SceneController.h">
       <Filter>src\Game\GameScene</Filter>
@@ -138,9 +138,6 @@
     </ClInclude>
     <ClInclude Include="..\src\TextManager.h">
       <Filter>src\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\AnimatedCell.h">
-      <Filter>src\Game\Bubble</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GameSceneBase.h">
       <Filter>src\Game\GameScene</Filter>
@@ -189,6 +186,15 @@
     </ClInclude>
     <ClInclude Include="..\src\FileUtils.h">
       <Filter>src\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AnimatedCell.h">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Cell.h">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CellField.h">
+      <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

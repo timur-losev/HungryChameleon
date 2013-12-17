@@ -96,6 +96,7 @@
     <ClCompile Include="..\src\AnimatedCell.cpp" />
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\Cell.cpp" />
+    <ClCompile Include="..\src\CellField.cpp" />
     <ClCompile Include="..\src\EventController.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
@@ -129,6 +130,7 @@
     <ClInclude Include="..\src\AnimatedCell.h" />
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\Cell.h" />
+    <ClInclude Include="..\src\CellField.h" />
     <ClInclude Include="..\src\EventController.h" />
     <ClInclude Include="..\src\LoadingScene.h" />
     <ClInclude Include="..\src\Player.h" />
