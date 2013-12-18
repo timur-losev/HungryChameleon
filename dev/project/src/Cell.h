@@ -35,9 +35,10 @@ public:
     bool markedForRemove = false;
     bool travelsed = false;
 
-    Cell(Colour c);
+    Cell(Colour c, CCPoint size);
 	virtual ~Cell() {};
 
-    static Cell* createRandom();
+	static Cell* createRandom(CCPoint size);
+
     void SetDebugInfo(int, int);
 };

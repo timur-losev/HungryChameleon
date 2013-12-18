@@ -13,15 +13,17 @@
 
 //extern CCTexture2D* tex;
 
-static const float SpriteW = 55.f;
-static const float SpriteH = 60.f;
-static const CCPoint MatrixDimension = CCPoint(SpriteW * CellField::MatrixVisibleLineSize, SpriteH * CellField::MatrixVisibleLineSize);
+//static const float m_cellWidth = 55.f;
+//static const float m_cellHeight = 60.f;
+//static const CCPoint MatrixDimension = CCPoint(m_cellWidth * CellField::MatrixVisibleLineSize, m_cellHeight * CellField::MatrixVisibleLineSize);
 
 CellField::CellField() :
 m_lockedDirection(byNone),
 m_state(MSIdle),
 m_hitCell(nullptr),
-m_prevStep(0)
+m_prevStep(0),
+m_cellWidth(55.f),
+m_cellHeight(60.f)
 {
 
 }
@@ -31,12 +33,15 @@ CellField::~CellField()
 
 }
 
-bool CellField::init()
+bool CellField::init(float cellWidth, float cellHeight)
 {
+	m_cellHeight = cellHeight;
+	m_cellWidth = cellWidth;
+	
     if (CCLayer::init())
     {
-        m_spriteDimentsion[byX] = SpriteW;
-        m_spriteDimentsion[byY] = SpriteH;
+		m_spriteDimentsion[byX] = m_cellWidth;
+		m_spriteDimentsion[byY] = m_cellHeight;
 
         srand(static_cast<uint32_t>(time(nullptr)));
 
@@ -49,12 +54,12 @@ bool CellField::init()
         {
             for (uint32_t j = 0; j < MatrixVisibleLineSize; ++j)
             {
-                Cell* cell = Cell::createRandom();
+				Cell* cell = _randomCell();
 
                 assert(cell);
 
                 addChild(cell);
-                cell->setPosition(ccp(j * SpriteW, a));
+                cell->setPosition(ccp(j * m_cellWidth, a));
 
                 cell->rowId = i;
                 cell->colId = j;
@@ -65,7 +70,7 @@ bool CellField::init()
                 m_cols[j].push_back(cell);
 
                 //! The first chunk will emplace at the left of the bubble matrix
-                m_centerMatrix[i * MatrixVisibleLineSize + j] = ccp(cell->getPositionX() - MatrixVisibleLineSize * SpriteW,
+                m_centerMatrix[i * MatrixVisibleLineSize + j] = ccp(cell->getPositionX() - MatrixVisibleLineSize * m_cellWidth,
                     cell->getPositionY());
 
                 //! The second chunk will emplace at the origin of the bubble matrix
@@ -73,18 +78,18 @@ bool CellField::init()
 
                 //! The third chunk will emplace at the up of the bubble matrix
                 m_centerMatrix[MatrixSize * 2 + (i * MatrixVisibleLineSize + j)] = ccp(cell->getPositionX(),
-                    cell->getPositionY() + MatrixVisibleLineSize * SpriteH);
+                    cell->getPositionY() + MatrixVisibleLineSize * m_cellHeight);
 
                 //! The fourth chunk will emplace at the right of the bubble matrix
-                m_centerMatrix[MatrixSize * 3 + (i * MatrixVisibleLineSize + j)] = ccp(cell->getPositionX() + MatrixVisibleLineSize * SpriteW,
+                m_centerMatrix[MatrixSize * 3 + (i * MatrixVisibleLineSize + j)] = ccp(cell->getPositionX() + MatrixVisibleLineSize * m_cellWidth,
                     cell->getPositionY());
 
                 //! The fifth chunk will emplace at the bottom of the bubble matrix
                 m_centerMatrix[MatrixSize * 4 + (i * MatrixVisibleLineSize + j)] = ccp(cell->getPositionX(),
-                    cell->getPositionY() - MatrixVisibleLineSize * SpriteH);
+                    cell->getPositionY() - MatrixVisibleLineSize * m_cellHeight);
             }
 
-            a += static_cast<uint32_t>(SpriteH);
+            a += static_cast<uint32_t>(m_cellHeight);
         }
 
         return true;
@@ -187,7 +192,7 @@ bool CellField::ccTouchBegan(CCTouch *touch, CCEvent *pEvent)
 
         const CCPoint& cellPos = cell->getPosition();
 
-        if (position.x >= cellPos.x && position.y >= cellPos.y && position.x <= (SpriteW + cellPos.x) && position.y <= (SpriteH + cellPos.y))
+        if (position.x >= cellPos.x && position.y >= cellPos.y && position.x <= (m_cellWidth + cellPos.x) && position.y <= (m_cellHeight + cellPos.y))
         {
             hitCell = cell;
             break;
@@ -323,9 +328,9 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.front();
-            Cell* newCell = Cell::createRandom();
+			Cell* newCell = _randomCell();
             newCell->setPositionY(zeroCell->getPositionY());
-            newCell->setPositionX(zeroCell->getPositionX() - SpriteW);
+            newCell->setPositionX(zeroCell->getPositionX() - m_cellWidth);
             addChild(newCell);
 
             line.push_front(newCell);
@@ -341,9 +346,9 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.back();
-            Cell* newCell = Cell::createRandom();
+			Cell* newCell = _randomCell();
             newCell->setPositionY(zeroCell->getPositionY());
-            newCell->setPositionX(zeroCell->getPositionX() + SpriteW);
+            newCell->setPositionX(zeroCell->getPositionX() + m_cellWidth);
             addChild(newCell);
 
             line.push_back(newCell);
@@ -362,9 +367,9 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.front();
-            Cell* newCell = Cell::createRandom();
+			Cell* newCell = _randomCell();
 
-            newCell->setPositionY(zeroCell->getPositionY() - SpriteH);
+            newCell->setPositionY(zeroCell->getPositionY() - m_cellHeight);
             newCell->setPositionX(zeroCell->getPositionX());
 
             addChild(newCell);
@@ -382,9 +387,9 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.back();
-            Cell* newCell = Cell::createRandom();
+			Cell* newCell = _randomCell();
 
-            newCell->setPositionY(zeroCell->getPositionY() + SpriteH);
+            newCell->setPositionY(zeroCell->getPositionY() + m_cellHeight);
             newCell->setPositionX(zeroCell->getPositionX());
 
             addChild(newCell);
@@ -500,7 +505,7 @@ void CellField::_moveColumnFragmenDown(uint32_t columnIndex, uint32_t startingFr
     uint32_t newInd = toPosition;
     uint32_t oldInd = startingFromRow;
 
-    CCPoint pos = ccp(columnIndex * SpriteW, 0);
+    CCPoint pos = ccp(columnIndex * m_cellWidth, 0);
     for (; oldInd < MatrixVisibleLineSize && newInd < MatrixVisibleLineSize; ++oldInd, ++newInd)
     {
         Cell* cell = fromLine[oldInd];
@@ -511,13 +516,13 @@ void CellField::_moveColumnFragmenDown(uint32_t columnIndex, uint32_t startingFr
             cell->setPosition(pos);
             cell->rowId = newInd;
         }
-        pos.y += static_cast<uint32_t>(SpriteH);
+        pos.y += static_cast<uint32_t>(m_cellHeight);
     }
 
     return;
     for (; newInd < MatrixVisibleLineSize; ++newInd)
     {
-        Cell* cell = Cell::createRandom();
+		Cell* cell = _randomCell();
 
         assert(cell);
 
@@ -529,7 +534,7 @@ void CellField::_moveColumnFragmenDown(uint32_t columnIndex, uint32_t startingFr
         m_rows[cell->rowId][cell->colId] = cell;
         m_cols[cell->colId][cell->rowId] = cell;
 
-        pos.y += static_cast<uint32_t>(SpriteH);
+        pos.y += static_cast<uint32_t>(m_cellHeight);
     }
 }
 
@@ -596,4 +601,9 @@ void CellField::_onCellRemoved(Cell* cell)
 	cell->addChild(ps);
 #endif // 0
 
+}
+
+Cell* CellField::_randomCell()
+{
+	return Cell::createRandom(ccp(m_cellWidth, m_cellHeight));
 }

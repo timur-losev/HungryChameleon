@@ -26,30 +26,32 @@ static std::pair<const char*, Cell::Colour> SpriteDefines[] =
     std::make_pair("yellow.png", Cell::Yellow)
 };
 
-Cell::Cell(Colour c)
+Cell::Cell(Colour c, CCPoint size)
 : colour(c)
 {
 	auto& pair = SpriteDefines[c];
-
-    
     CCSprite* a = CCSprite::createWithSpriteFrameName(pair.first);
 	a->setAnchorPoint(ccp(0, 0));
 	addChild(a);
+	const CCRect currentSize = a->getTextureRect();
+	float scale = std::max(size.x / currentSize.getMaxX(), size.y / currentSize.getMaxY());
+	setScale(scale);
 }
 
-Cell* Cell::createRandom()
+Cell* Cell::createRandom(CCPoint size)
 {
     int id = rand() % 7 + 1;
 
     auto& pair = SpriteDefines[id];
 
-	Cell* cell = new AnimatedCell(pair.second);
+	Cell* cell = new AnimatedCell(pair.second, size);
 
     return cell;
 }
 
 void Cell::SetDebugInfo(int a, int b)
 {
+	return;
     removeAllChildrenWithCleanup(true);
     std::stringstream ss;
     ss << a << ":" << b;

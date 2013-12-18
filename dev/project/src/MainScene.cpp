@@ -11,8 +11,8 @@
 #include "PopupLanguage.h"
 
 MainScene::MainScene()
-    : m_CellField(nullptr)
-	, GameSceneBase(ESMAction)
+	: GameSceneBase(ESMAction)
+//	, m_CellField(nullptr)
 {
 }
 
@@ -30,6 +30,7 @@ bool MainScene::init()
 	extension::GUIReader r;
 	w->addWidget(r.widgetFromJsonFile("MainMenu/Background.ExportJson"));
 	w->addWidget(m_topBar = r.widgetFromJsonFile("MainMenu/TopBar.ExportJson"));
+	w->addWidget(m_topBar = r.widgetFromJsonFile("MainMenu/MainScene.ExportJson"));
 	addChild(w);
 
 	_setScore(GameDelegate::getPlayer()->getHighScore());
@@ -47,14 +48,20 @@ bool MainScene::init()
 		button->addTouchEventListener(this, toucheventselector(MainScene::_onPauseButtonPressed));
 	}
 
-    m_CellField = new CellField();
-    assert(m_CellField->init());
-    addChild(m_CellField);
-	m_CellField->setTouchEnabled(true);
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(m_CellField, 0, true);
-    m_CellField->setPosition(ccp(100, 100));
-    m_CellField->release();
-	
+	extension::UIWidget* cellFieldContainer = w->getWidgetByName("720-16:9");
+	if (cellFieldContainer)
+	{
+		CellField* cellField = new CellField();
+		float width = cellFieldContainer->getSize().width / CellField::MatrixVisibleLineSize;
+		float height = cellFieldContainer->getSize().height / CellField::MatrixVisibleLineSize;
+		assert(cellField->init(width, height));
+		addChild(cellField);
+		cellField->setTouchEnabled(true);
+		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(cellField, 0, true);
+		//cellField->setAnchorPoint(ccp(0, 0));
+		cellField->setPosition(cellFieldContainer->getPosition());
+		cellField->release();
+	}
 
 	return kRet;
 }
@@ -71,7 +78,6 @@ void MainScene::onMainMenuTap( CCObject* )
 
 void MainScene::_onUpdate(float dt)
 {
-    m_CellField->onUpdate(dt);
 }
 
 void MainScene::RemoveFlyingBubbles(CCNode* sender)

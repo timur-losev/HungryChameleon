@@ -14,6 +14,7 @@
     <string>PopupOk.json</string>
     <string>LangSelect.json</string>
     <string>StoryMap.json</string>
+    <string>MainScene.json</string>
   </JsonList>
   <imageFileList>
     <string>MainMenu0.plist</string>

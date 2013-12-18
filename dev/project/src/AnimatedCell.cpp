@@ -6,7 +6,7 @@
     DO NOT PULL INTO PRODUCTION
     */
 
-AnimatedCell::AnimatedCell(Colour c) : Cell(c)
+AnimatedCell::AnimatedCell(Colour c, CCPoint s) : Cell(c, s)
 {
 	if (c == Red)
 	{

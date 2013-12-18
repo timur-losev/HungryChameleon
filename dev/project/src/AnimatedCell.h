@@ -10,6 +10,6 @@ class AnimatedCell : public Cell
 {
 public:
 
-	AnimatedCell(Colour);
+	AnimatedCell(Colour, CCPoint);
 };
 

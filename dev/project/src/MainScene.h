@@ -2,13 +2,9 @@
 
 #include "GameSceneBase.h"
 
-class CellField;
-
 class MainScene: public GameSceneBase
 {
-private:
-    CellField*                  m_CellField;
-	
+private:	
 	extension::UIWidget*		m_topBar = nullptr;
 
 	void					_setScore(int value);

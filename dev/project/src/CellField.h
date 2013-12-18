@@ -55,8 +55,11 @@ private:
     float     m_spriteDimentsion[DirectionsCount];
     CCPoint   m_from;
 
-private:
+	float     m_cellWidth;
+	float     m_cellHeight;
 
+private:
+	Cell*		 _randomCell();
     void         _dragCells(const CCPoint& delta);
 
     void         _stabilizeMatrix(Line_t &line);
@@ -94,7 +97,7 @@ public:
     CellField();
     ~CellField();
 
-    virtual bool init();
+    virtual bool init(float cellWidth, float cellHeight);
 
 	bool		 ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	void		 ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
