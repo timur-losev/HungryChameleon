@@ -103,5 +103,5 @@ public:
 	void		 ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 	void		 ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 
-    void         onUpdate(float dt);
+    void         update(float dt);
 };

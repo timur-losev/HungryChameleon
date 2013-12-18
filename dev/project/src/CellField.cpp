@@ -35,6 +35,7 @@ CellField::~CellField()
 
 bool CellField::init(float cellWidth, float cellHeight)
 {
+	scheduleUpdate();
 	m_cellHeight = cellHeight;
 	m_cellWidth = cellWidth;
 	
@@ -262,7 +263,7 @@ void CellField::_stuckMovedCells()
     }
 }
 
-void CellField::onUpdate(float dt)
+void CellField::update(float dt)
 {
     if (_getState() == MSStucking)
     {
@@ -467,16 +468,15 @@ void CellField::_fallDownState(const std::list<CellList_t>& matchedCells)
 			_removeCell(cell);
 		}
     }
-
+	return;
     // Fill
     for (uint32_t i = 0; i < MatrixVisibleLineSize; ++i)
     {
         for (uint32_t j = 0; j < MatrixVisibleLineSize; ++j)
         {
             Cell* cell = m_cols[i][j];
-            while (cell == nullptr)
+            if (cell == nullptr)
             {
-                cell = m_cols[i][j];
                 _moveColumnFragmenDown(i, j, 1);
             }
         }
