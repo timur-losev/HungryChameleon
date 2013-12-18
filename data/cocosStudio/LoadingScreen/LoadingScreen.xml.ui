@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\Projects\HungryChameleon\data\cocosStudio\LoadingScreen\LoadingScreen.xml.ui</filePath>
+  <Version>1.1.0.0</Version>
+  <Name>LoadingScreen</Name>
+  <ProjectDir>D:\Projects\HungryChameleon\data\cocosStudio\LoadingScreen</ProjectDir>
+  <JsonFileName>LoadingScreen.json</JsonFileName>
+  <Resources>D:\Projects\HungryChameleon\data\cocosStudio\LoadingScreen\Resources</Resources>
+  <JsonFolder>D:\Projects\HungryChameleon\data\cocosStudio\LoadingScreen\Json</JsonFolder>
+  <JsonList>
+    <string>LoadingScreen.json</string>
+  </JsonList>
+  <imageFileList>
+    <string>LoadingScreen0.plist</string>
+  </imageFileList>
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>LoadingScreen.json</CurrentUIJson>
+  <CanvasSize>
+    <Width>720</Width>
+    <Height>1280</Height>
+  </CanvasSize>
+</UIProject>

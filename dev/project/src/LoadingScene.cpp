@@ -21,6 +21,21 @@ LoadingScene::~LoadingScene()
 
 bool LoadingScene::init()
 {
+	extension::UILayer* w = extension::UILayer::create();
+	extension::GUIReader r;
+	w->addWidget(r.widgetFromJsonFile("LoadingScreen/LoadingScreen.ExportJson"));
+	addChild(w);
+	extension::UIWidget* placeholder = w->getWidgetByName("placeholder");
+	if (placeholder)
+	{
+		extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("anim/LoadingCircle.ExportJson");
+		extension::CCArmature *armature = extension::CCArmature::create("LoadingCircle");
+		armature->getAnimation()->playByIndex(0);
+		armature->setAnchorPoint(ccp(0, 0));
+		armature->setScale(2);
+		armature->setPosition(placeholder->getPosition());
+		addChild(armature, 2);
+	}
 	return true;
 }
 

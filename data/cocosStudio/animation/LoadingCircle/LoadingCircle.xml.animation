@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\Projects\HungryChameleon\data\cocosStudio\animation\LoadingCircle\LoadingCircle.xml.animation</filePath>
+  <Name>LoadingCircle</Name>
+  <ProjectDir>D:\Projects\HungryChameleon\data\cocosStudio\animation\LoadingCircle</ProjectDir>
+  <JsonFileName>LoadingCircle.json</JsonFileName>
+  <Resources>D:\Projects\HungryChameleon\data\cocosStudio\animation\LoadingCircle\Resources</Resources>
+  <JsonFolder>D:\Projects\HungryChameleon\data\cocosStudio\animation\LoadingCircle\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>LoadingCircle0.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>true</bBatchImage>
+</AnimationProject>
