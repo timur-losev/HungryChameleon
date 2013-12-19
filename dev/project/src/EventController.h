@@ -16,6 +16,8 @@ public:
 	signal0<>						popupClosed;
 
 	signal1<const std::string&>		gameStartedWithLevel;	// level name
+
+	signal0<>						onLeaderboardLoaded;
 };
 
 typedef Loki::SingletonHolder<EventController, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedEventController;

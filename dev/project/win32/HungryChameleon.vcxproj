@@ -64,7 +64,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;libpng.lib;libjpeg.lib;libzlib.lib;libwebp.lib;libtiff.lib;libchipmunk.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;pthreadVCE2.lib;libpng.lib;libjpeg.lib;libzlib.lib;libwebp.lib;libtiff.lib;libchipmunk.lib;sqlite3.lib;libcurl_imp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>Debug.win32;$(ProjectDir)../../../libs/cocos2dx/external/sqlite3/libraries/win32</AdditionalLibraryDirectories>
     </Link>
     <PreLinkEvent>
@@ -103,6 +103,7 @@
     <ClCompile Include="..\src\LeaderboardScene.cpp" />
     <ClCompile Include="..\src\LevelSettingsController.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
+    <ClCompile Include="..\src\OnlineController.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\PopupBase.cpp" />
     <ClCompile Include="..\src\PopupController.cpp" />
@@ -138,9 +139,11 @@
     <ClInclude Include="..\src\CellFieldBaseState.h" />
     <ClInclude Include="..\src\CellFieldStateIdle.h" />
     <ClInclude Include="..\src\EventController.h" />
+    <ClInclude Include="..\src\LeaderboardEntry.h" />
     <ClInclude Include="..\src\LeaderboardScene.h" />
     <ClInclude Include="..\src\LevelSettingsController.h" />
     <ClInclude Include="..\src\LoadingScene.h" />
+    <ClInclude Include="..\src\OnlineController.h" />
     <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\PopupBase.h" />
     <ClInclude Include="..\src\PopupController.h" />

@@ -13,10 +13,10 @@ class Columns
 
 class LeaderBoard
 {
-	public $server = "127.0.0.1";
-	public $username = "entitynator";
-	public $password = "N3L6FUTNMqsKhJVj";
-	public $database = "chameleon_1";
+	public $server = "mysql.hostinger.ru";
+	public $username = "u593266246_cmlb1";
+	public $password = "ThyVK9uNErRTwFHF";
+	public $database = "u593266246_cmlb1";
 	public $table = "chameleon_leaders";
 
 	public $link;

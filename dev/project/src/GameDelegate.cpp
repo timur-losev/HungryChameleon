@@ -7,6 +7,7 @@
 #include "PopupController.h"
 #include "FileUtils.h"
 #include "LevelSettingsController.h"
+#include "OnlineController.h"
 
 GameDelegate::GameDelegate()
 {
@@ -17,6 +18,7 @@ GameDelegate::GameDelegate()
 	m_player = new Player;
 	m_popupController = new PopupController;
 	m_levelSettingsController = new LevelSettingsController;
+	m_onlineController = new OnlineController;
 }
 
 GameDelegate::~GameDelegate()
@@ -27,6 +29,7 @@ GameDelegate::~GameDelegate()
 	delete m_saveController;
 	delete FileUtils::sharedFileUtils();
 	delete m_levelSettingsController;
+	delete m_onlineController;
 }
 
 void GameDelegate::init()
@@ -66,4 +69,9 @@ PopupController* GameDelegate::getPopupController()
 LevelSettingsController* GameDelegate::getLevelSettingsController()
 {
 	return SharedGameDelegate::Instance().m_levelSettingsController;
+}
+
+OnlineController* GameDelegate::getOnlineController()
+{
+	return SharedGameDelegate::Instance().m_onlineController;
 }

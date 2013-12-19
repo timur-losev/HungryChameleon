@@ -1,21 +1,9 @@
 #pragma once
-
 #include "GameSceneBase.h"
-
-struct LeaderboardEntry
-{
-	LeaderboardEntry(const std::string _name, int _score, int _rank)
-					:name(_name), score(_score), rank(_rank){}
-
-	std::string name;
-	int score;
-	int rank;
-};
+#include "LeaderboardEntry.h"
 
 class LeaderboardScene : public GameSceneBase
 {
-	typedef std::vector<LeaderboardEntry> Entries_t;
-
 public:
 	LeaderboardScene();
 	~LeaderboardScene();
@@ -30,7 +18,7 @@ private:
 	void                    _optionsCallback(CCObject * pSender, extension::TouchEventType);
 	void                    _shopCallback(CCObject * pSender, extension::TouchEventType);
 	void					_onUpdate(float dt);
-	void					_initWithRecords(extension::UIScrollView*, extension::UIWidget*, const Entries_t&);
+	void					_initWithRecords(extension::UIScrollView*, extension::UIWidget*, const LeaderboardEntries_t&);
 
 private:
 };

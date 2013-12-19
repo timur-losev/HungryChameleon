@@ -121,6 +121,9 @@
     <ClCompile Include="..\src\LevelSettingsController.cpp">
       <Filter>src\Game\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\OnlineController.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -219,6 +222,12 @@
     </ClInclude>
     <ClInclude Include="..\src\LevelSettingsController.h">
       <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OnlineController.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\LeaderboardEntry.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

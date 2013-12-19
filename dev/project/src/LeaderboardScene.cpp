@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "LeaderboardScene.h"
 #include "GameDelegate.h"
+#include "OnlineController.h"
 
 using namespace extension;
 
@@ -57,7 +58,8 @@ bool LeaderboardScene::init(bool fromGame)
 
 		if (entry && base)
 		{
-			Entries_t records;
+#if 0
+			LeaderboardEntries_t records;
 			records.push_back(LeaderboardEntry("Andrey", 1350, 1));
 			records.push_back(LeaderboardEntry("Victor", 1301, 2));
 			records.push_back(LeaderboardEntry("Denis", 1210, 3));
@@ -70,6 +72,9 @@ bool LeaderboardScene::init(bool fromGame)
 			records.push_back(LeaderboardEntry("Фак ю", 200, 10));
 			records.push_back(LeaderboardEntry("Ноу, Фак ю", 199, 11));
 			_initWithRecords(base, entry, records);
+#else
+			_initWithRecords(base, entry, GameDelegate::getOnlineController()->getEntries());
+#endif
 		}
 
 		addChild(ul);
@@ -113,7 +118,7 @@ void LeaderboardScene::_shopCallback(CCObject * pSender, extension::TouchEventTy
 	}
 }
 
-void LeaderboardScene::_initWithRecords(UIScrollView* base, UIWidget* entry, const Entries_t& records)
+void LeaderboardScene::_initWithRecords(UIScrollView* base, UIWidget* entry, const LeaderboardEntries_t& records)
 {
 	base->removeAllChildrenAndCleanUp(true);
 	float entryHeight = entry->getRect().size.height;
