@@ -28,6 +28,7 @@ bool StoryMapScene::init()
 		extension::GUIReader reader;
 
 		ul->addWidget(reader.widgetFromJsonFile("MainMenu/StoryMap.ExportJson"));
+		ul->addWidget(reader.widgetFromJsonFile("MainMenu/TopBar.ExportJson"));
 
 		extension::UIWidget* storyMap = ul->getWidgetByName("story_map");
 		assert(storyMap);
@@ -70,13 +71,13 @@ bool StoryMapScene::init()
 		extension::UIWidget* button;
 		button = ul->getWidgetByName("btn_start");
 
-		button = ul->getWidgetByName("btn_options");
+		button = ul->getWidgetByName("btn_score_0");
 		if (button)
 		{
 			button->addTouchEventListener(this, toucheventselector(StoryMapScene::_optionsCallback));
 		}
 
-		button = ul->getWidgetByName("btn_shop");
+		button = ul->getWidgetByName("btn_cash_0");
 		if (button)
 		{
 			button->addTouchEventListener(this, toucheventselector(StoryMapScene::_shopCallback));
@@ -108,8 +109,9 @@ void StoryMapScene::_optionsCallback(CCObject * pSender, extension::TouchEventTy
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
-		PopupLanguage* p = new PopupLanguage();
-		GameDelegate::getPopupController()->queuePopup(p);
+		//PopupLanguage* p = new PopupLanguage();
+		//GameDelegate::getPopupController()->queuePopup(p);
+		_advanceToScene(ESMLeaderboard);
 	}
 }
 
@@ -117,7 +119,8 @@ void StoryMapScene::_shopCallback(CCObject * pSender, extension::TouchEventType 
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
-		PopupOk* p = new PopupOk("Well, Hello There!");
-		GameDelegate::getPopupController()->queuePopup(p);
+		//PopupOk* p = new PopupOk("Well, Hello There!");
+		//GameDelegate::getPopupController()->queuePopup(p);
+		_advanceToScene(ESMMainMenu);
 	}
 }

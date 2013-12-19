@@ -28,6 +28,7 @@ bool LeaderboardScene::init(bool fromGame)
 		UILayer* ul = extension::UILayer::create();
 		GUIReader reader;
 
+		ul->addWidget(reader.widgetFromJsonFile("MainMenu/Background.ExportJson"));
 		ul->addWidget(reader.widgetFromJsonFile("MainMenu/Leaderboard.ExportJson"));
 
 		UIWidget* button;
@@ -36,6 +37,18 @@ bool LeaderboardScene::init(bool fromGame)
 		if (button)
 		{
 			button->addTouchEventListener(this, toucheventselector(LeaderboardScene::_startCallback));
+		}
+
+
+		button = ul->getWidgetByName("btn_score_0");
+		if (button)
+		{
+			button->addTouchEventListener(this, toucheventselector(LeaderboardScene::_optionsCallback));
+		}
+		button = ul->getWidgetByName("btn_cash_0");
+		if (button)
+		{
+			button->addTouchEventListener(this, toucheventselector(LeaderboardScene::_shopCallback));
 		}
 
 		//UIWidget* base = ul->getWidgetByName("base");
@@ -59,11 +72,6 @@ bool LeaderboardScene::init(bool fromGame)
 			_initWithRecords(base, entry, records);
 		}
 
-		button = ul->getWidgetByName("btn_shop");
-		if (button)
-		{
-			button->addTouchEventListener(this, toucheventselector(LeaderboardScene::_shopCallback));
-		}
 		addChild(ul);
 
         return true;
@@ -75,7 +83,7 @@ bool LeaderboardScene::init(bool fromGame)
 void LeaderboardScene::_startCallback(CCObject * pSender, extension::TouchEventType ev)
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
-		_advanceToScene(ESMAction);
+		_advanceToScene(ESMStoryMap);
 }
 
 
@@ -93,6 +101,7 @@ void LeaderboardScene::_optionsCallback(CCObject * pSender, extension::TouchEven
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
+		_advanceToScene(ESMMainMenu);
 	}
 }
 
@@ -100,6 +109,7 @@ void LeaderboardScene::_shopCallback(CCObject * pSender, extension::TouchEventTy
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
+		_advanceToScene(ESMLeaderboard);
 	}
 }
 

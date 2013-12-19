@@ -64,7 +64,7 @@ bool MainMenuScene::init(bool fromGame)
 void MainMenuScene::_startCallback(CCObject * pSender, extension::TouchEventType ev)
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
-		_advanceToScene(ESMAction);
+		_advanceToScene(ESMStoryMap);
 }
 
 
