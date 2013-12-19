@@ -5,7 +5,7 @@
 class MainScene: public GameSceneBase
 {
 private:	
-	extension::UIWidget*		m_topBar = nullptr;
+	extension::UIWidget*	m_topBar = nullptr;
 
 	void					_setScore(int value);
 	void					_setCash(int value);

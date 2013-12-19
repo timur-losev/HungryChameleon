@@ -101,6 +101,7 @@
     <ClCompile Include="..\src\CellFieldStateIdle.cpp" />
     <ClCompile Include="..\src\EventController.cpp" />
     <ClCompile Include="..\src\LeaderboardScene.cpp" />
+    <ClCompile Include="..\src\LevelSettingsController.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\PopupBase.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="..\src\CellFieldStateIdle.h" />
     <ClInclude Include="..\src\EventController.h" />
     <ClInclude Include="..\src\LeaderboardScene.h" />
+    <ClInclude Include="..\src\LevelSettingsController.h" />
     <ClInclude Include="..\src\LoadingScene.h" />
     <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\PopupBase.h" />

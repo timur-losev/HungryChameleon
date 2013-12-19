@@ -9,6 +9,7 @@
 #include "EventController.h"
 #include "PopupController.h"
 #include "PopupLanguage.h"
+#include "LevelSettingsController.h"
 
 MainScene::MainScene()
 	: GameSceneBase(ESMAction)
@@ -28,9 +29,13 @@ bool MainScene::init()
 
 	extension::UILayer* w = extension::UILayer::create();
 	extension::GUIReader r;
-	w->addWidget(r.widgetFromJsonFile("MainMenu/Background.ExportJson"));
+
+	const std::string& levelName = GameDelegate::getLevelSettingsController()->
+		getSettingsForPoint(GameDelegate::getPlayer()->getTokenMapPositionName()).levelName;
+
+	w->addWidget(r.widgetFromJsonFile(levelName.c_str()));
 	w->addWidget(m_topBar = r.widgetFromJsonFile("MainMenu/TopBar.ExportJson"));
-	w->addWidget(m_topBar = r.widgetFromJsonFile("MainMenu/MainScene.ExportJson"));
+	w->addWidget(r.widgetFromJsonFile("MainMenu/MainScene.ExportJson"));
 	addChild(w);
 
 	_setScore(GameDelegate::getPlayer()->getHighScore());

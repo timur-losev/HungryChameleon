@@ -3,6 +3,7 @@
 #include "SaveController.h"
 #include "GameDelegate.h"
 #include "EventController.h"
+#include "LevelSettingsController.h"
 
 Player::Player()
 {
@@ -92,18 +93,15 @@ void Player::setTokenMapPositionName(const std::string& value)
 
 void Player::_initStoryProgress()
 {
-	m_storyProgress->setObject(CCString::create("1"), "pos_1");
-	m_tokenMapPosition = std::string("pos_1");
+	m_storyProgress->setObject(CCString::create("1"), GameDelegate::getLevelSettingsController()->getStartingPoint());
+	m_tokenMapPosition = GameDelegate::getLevelSettingsController()->getStartingPoint();
 }
 
 void Player::_onGameFinished(int score)
 {
-	std::stringstream ss;
-	std::string base("pos_");
-	ss << base;
-	ss << 1 + atoi(getTokenMapPositionName().substr(base.length()).c_str());
-	getStoryProgress()->setObject(CCString::create("1"), ss.str());
-	setTokenMapPositionName(ss.str());
+	const LevelSettings& setting = GameDelegate::getLevelSettingsController()->getSettingsForPoint(getTokenMapPositionName());
+	getStoryProgress()->setObject(CCString::create("1"), setting.nextPosition);
+	setTokenMapPositionName(setting.nextPosition);
 	dumpSave(true);
 }
 
