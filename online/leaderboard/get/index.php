@@ -1,5 +1,5 @@
 <?php
-require_once("leaderboard.php");
+require_once("../leaderboard.php");
 
 $lb = new LeaderBoard();
 

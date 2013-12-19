@@ -1,5 +1,5 @@
 <?php
-require_once("leaderboard.php");
+require_once("../leaderboard.php");
 
 // 127.0.0.1/post.php?id=1111&display_name=gregoriy&score=2
 
