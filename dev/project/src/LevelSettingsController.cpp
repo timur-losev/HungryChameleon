@@ -20,7 +20,7 @@ bool LevelSettingsController::init()
 		std::string key = static_cast<CCString*>(point)->getCString();
 		if (key == "start")
 		{
-			m_startingPoint = lvlDict->valueForKey("level")->getCString();
+			m_startingPoint = lvlDict->valueForKey(key)->getCString();
 		}
 		else
 		{
