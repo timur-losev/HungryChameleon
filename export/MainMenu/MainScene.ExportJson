@@ -102,7 +102,7 @@
       "classname": "Panel",
       "name": "Panel_382",
       "ZOrder": 0,
-      "actiontag": 382,
+      "actiontag": -1,
       "anchorPointX": 0,
       "anchorPointY": 0,
       "classType": null,

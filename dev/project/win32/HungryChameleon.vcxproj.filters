@@ -115,6 +115,9 @@
     <ClCompile Include="..\src\CellFieldBaseState.cpp">
       <Filter>src\Game\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\LeaderboardScene.cpp">
+      <Filter>src\Game\GameScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -207,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="..\src\CellFieldBaseState.h">
       <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\LeaderboardScene.h">
+      <Filter>src\Game\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

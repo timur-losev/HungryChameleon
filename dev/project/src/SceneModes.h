@@ -6,4 +6,5 @@ enum ESceneModes
 	ESMMainMenu,
 	ESMAction,
 	ESMStoryMap,
+	ESMLeaderboard
 };

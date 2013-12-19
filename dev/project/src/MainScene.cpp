@@ -122,7 +122,8 @@ void MainScene::_onPauseButtonPressed(CCObject* pSender, extension::TouchEventTy
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
-		PopupLanguage* p = new PopupLanguage;
-		SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
+		//PopupLanguage* p = new PopupLanguage;
+		//SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
+		_advanceToScene(ESMLeaderboard);
 	}
 }

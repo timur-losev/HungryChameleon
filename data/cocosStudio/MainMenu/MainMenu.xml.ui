@@ -8,20 +8,21 @@
   <Resources>D:\Projects\HungryChameleon\data\cocosStudio\MainMenu\Resources</Resources>
   <JsonFolder>D:\Projects\HungryChameleon\data\cocosStudio\MainMenu\Json</JsonFolder>
   <JsonList>
-    <string>MainMenu.json</string>
     <string>Background.json</string>
-    <string>TopBar.json</string>
-    <string>PopupOk.json</string>
+    <string>Leaderboard.json</string>
     <string>LangSelect.json</string>
-    <string>StoryMap.json</string>
+    <string>MainMenu.json</string>
     <string>MainScene.json</string>
+    <string>PopupOk.json</string>
+    <string>StoryMap.json</string>
+    <string>TopBar.json</string>
   </JsonList>
   <imageFileList>
     <string>MainMenu0.plist</string>
     <string>MainMenu1.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>StoryMap.json</CurrentUIJson>
+  <CurrentUIJson>Leaderboard.json</CurrentUIJson>
   <CanvasSize>
     <Width>720</Width>
     <Height>1280</Height>

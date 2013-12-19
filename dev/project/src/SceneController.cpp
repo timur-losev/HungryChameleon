@@ -6,6 +6,7 @@
 #include "MainMenuScene.h"
 #include "MainScene.h"
 #include "StoryMapScene.h"
+#include "LeaderboardScene.h"
 
 #include "PopupBase.h"
 #include "EventController.h"
@@ -64,6 +65,9 @@ GameSceneBase* SceneController::_createScene(ESceneModes mode)
 		break;
 	case ESMStoryMap:
 		ret = new StoryMapScene;
+		break;
+	case ESMLeaderboard:
+		ret = new LeaderboardScene;
 		break;
 	default:
 		break;
