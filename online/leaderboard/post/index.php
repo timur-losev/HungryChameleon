@@ -26,7 +26,6 @@ function Post($a)
 }
 
 $lb = new LeaderBoard();
-$col = new Columns();
 
 if(Validate($_GET))
 {

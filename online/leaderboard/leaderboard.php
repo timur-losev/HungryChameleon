@@ -35,21 +35,9 @@ class LeaderBoard
 	{
 		$c = new Columns();
 		$db = $this->link;
-		$resp_raw = $db->query("(SELECT $c->rank FROM $this->table WHERE $c->score>$score ORDER BY $c->score ASC LIMIT 1)");
-		if(count($resp_raw))
-		{
-			$resp =$resp_raw->fetch_all();
-			if(count($resp))
-				$myRank = 1+$resp[0][0];
-			else
-				$myRank = 1;
-		}
-			$myRank = 1;
-		$insert = "INSERT INTO $this->table ($c->id, $c->name, $c->score, $c->save, $c->other, $c->rank) VALUES ('$id', '$name', $score, '$best_save', '$other', $myRank)";
-		$update = "UPDATE $this->table SET $c->name='$name', $c->score=$score, $c->save='$best_save', $c->other='$other', $c->rank=$myRank WHERE $c->id LIKE '$id'";
-
-
-		$updateRank = "UPDATE $this->table SET $c->rank=$c->rank+1 WHERE $c->score<$score";
+		$insert = "INSERT INTO $this->table ($c->id, $c->name, $c->score, $c->save, $c->other) VALUES ('$id', '$name', $score, '$best_save', '$other')";
+		$update = "UPDATE $this->table SET $c->name='$name', $c->score=$score, $c->save='$best_save', $c->other='$other' WHERE $c->id LIKE '$id'";
+		
 		//echo $update;
 		if($this->HasMe($id))
 			$query = $update;
@@ -65,10 +53,13 @@ class LeaderBoard
 	public function GetTop($size)
 	{
 		$c = new Columns();
-		$request = "SELECT $c->id, $c->name, $c->score, $c->rank FROM $this->table ORDER BY $c->score DESC";
+		$request = "SELECT $c->id, $c->name, $c->score FROM $this->table ORDER BY $c->score DESC LIMIt $size";
 		$response = $this->link->query($request);
-		while ($myrow = $response->fetch_array(MYSQLI_ASSOC))
+		$i = 1;
+		while ($myrow = $response->fetch_assoc())
 		{
+		  $myrow["rank"] = "$i";
+		  $i++;
 		  $result[]=$myrow;
 		}
 		return $result;
@@ -77,8 +68,24 @@ class LeaderBoard
 	{
 		$c = new Columns();
 		$request = "SELECT COUNT($c->id) FROM $this->table WHERE $c->id LIKE '$id'";
-		$response = $this->link->query($request)->fetch_all();
+		$response = $this->link->query($request)->fetch_array();
 		return $response[0][0] == "1";
 	}
+	public function GetMe($id)
+	{
+		if($this->HasMe($id))
+		{
+			$c = new Columns();
+			$rankQuery = "";		
+			$rankQuery = $rankQuery."SELECT `my`.*, 1+COUNT(`b`.`$c->id`) AS `$c->rank`";
+			$rankQuery = $rankQuery."FROM `$this->table` AS `b` JOIN `$this->table` AS `my`";
+			$rankQuery = $rankQuery."ON(`b`.`$c->score`>`my`.`$c->score` OR (`b`.`$c->score`=`my`.`$c->score` AND `b`.`$c->id`<`my`.`$c->id`))";
+			$rankQuery = $rankQuery."WHERE `my`.`$c->id`='$id'";
+			$response = $this->link->query($rankQuery);
+			return $response->fetch_assoc();
+		}
+		return null;
+	}
+
 };
 ?>
