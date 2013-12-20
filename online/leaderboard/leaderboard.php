@@ -35,10 +35,15 @@ class LeaderBoard
 	{
 		$c = new Columns();
 		$db = $this->link;
-		$resp = $db->query("(SELECT $c->rank FROM $this->table WHERE $c->score>$score ORDER BY $c->score ASC LIMIT 1)")->fetch_all();
-		if(count($resp))
-			$myRank = 1+$resp[0][0];
-		else
+		$resp_raw = $db->query("(SELECT $c->rank FROM $this->table WHERE $c->score>$score ORDER BY $c->score ASC LIMIT 1)");
+		if(count($resp_raw))
+		{
+			$resp =$resp_raw->fetch_all();
+			if(count($resp))
+				$myRank = 1+$resp[0][0];
+			else
+				$myRank = 1;
+		}
 			$myRank = 1;
 		$insert = "INSERT INTO $this->table ($c->id, $c->name, $c->score, $c->save, $c->other, $c->rank) VALUES ('$id', '$name', $score, '$best_save', '$other', $myRank)";
 		$update = "UPDATE $this->table SET $c->name='$name', $c->score=$score, $c->save='$best_save', $c->other='$other', $c->rank=$myRank WHERE $c->id LIKE '$id'";

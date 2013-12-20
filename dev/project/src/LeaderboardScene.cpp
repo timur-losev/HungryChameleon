@@ -122,7 +122,9 @@ void LeaderboardScene::_initWithRecords(UIScrollView* base, UIWidget* entry, con
 {
 	base->removeAllChildrenAndCleanUp(true);
 	float entryHeight = entry->getRect().size.height;
+
 	float containerHeight = records.size() * entryHeight;
+	containerHeight = std::max(containerHeight, base->getSize().height);
 	base->setInnerContainerSize(ccp(base->getInnerContainerSize().width, containerHeight));
 
 	// get top of the container and substract entry height as it's anchor is left bottom corner
