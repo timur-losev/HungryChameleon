@@ -15,6 +15,13 @@ SceneController::SceneController()
 {
 	SharedEventController::Instance().popupClosed.connect(this, &SceneController::_onPopupClosed);
 	SharedEventController::Instance().changeLanguage.connect(this, &SceneController::_onLanguageChanged);
+
+#ifdef DEBUG
+	//CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate
+
+#endif
+
+
 }
 
 SceneController::~SceneController()

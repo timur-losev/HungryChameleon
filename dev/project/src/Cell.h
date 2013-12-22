@@ -40,5 +40,6 @@ public:
 
 	static Cell* createRandom(CCPoint size);
 
-    void SetDebugInfo(int, int);
+	void SetDebugInfo(int, int);
+	virtual void onEnterTransitionDidFinish() {}
 };
