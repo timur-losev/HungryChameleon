@@ -11,6 +11,8 @@
 #include "PopupLanguage.h"
 #include "LevelSettingsController.h"
 
+using namespace extension;
+
 MainScene::MainScene()
 	: GameSceneBase(ESMAction)
 //	, m_CellField(nullptr)
@@ -30,13 +32,21 @@ bool MainScene::init()
 	extension::UILayer* w = extension::UILayer::create();
 	extension::GUIReader r;
 
-	const std::string& levelName = GameDelegate::getLevelSettingsController()->
-		getSettingsForPoint(GameDelegate::getPlayer()->getTokenMapPositionName()).levelName;
+	const LevelSettings settings = GameDelegate::getLevelSettingsController()->
+		getSettingsForPoint(GameDelegate::getPlayer()->getTokenMapPositionName());
+
+	const std::string& levelName = settings.levelName;
+	m_levelTimeTotal = settings.time;
+	m_levelTimeLeft = m_levelTimeTotal + 1;
 
 	w->addWidget(r.widgetFromJsonFile(levelName.c_str()));
 	w->addWidget(m_topBar = r.widgetFromJsonFile("MainMenu/TopBar.ExportJson"));
 	w->addWidget(r.widgetFromJsonFile("MainMenu/MainScene.ExportJson"));
 	addChild(w);
+
+	m_labelTimer = dynamic_cast<UILabel*>(w->getWidgetByName("txt_coins_0"));
+	assert(m_labelTimer);
+	tickTimer();
 
 	_setScore(GameDelegate::getPlayer()->getHighScore());
 
@@ -131,4 +141,35 @@ void MainScene::_onPauseButtonPressed(CCObject* pSender, extension::TouchEventTy
 		//SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
 		_advanceToScene(ESMLeaderboard);
 	}
+}
+
+void MainScene::onEnterTransitionDidFinish()
+{
+	GameSceneBase::onEnterTransitionDidFinish();
+	_startTimer();
+}
+
+void MainScene::_startTimer()
+{
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(SEL_SCHEDULE(&MainScene::tickTimer), this, 1.0f, -1, 0, false);
+}
+
+void MainScene::_pauseTimer()
+{
+
+}
+
+void MainScene::_updateTimerValue(const char* time)
+{
+	m_labelTimer->setText(time);
+}
+
+void MainScene::tickTimer(float)
+{
+	--m_levelTimeLeft;
+	int seconds = int(m_levelTimeLeft)%60;
+	int minutes = int(m_levelTimeLeft)/60;
+	char timer[6];
+	sprintf(timer, "%02d:%02d", minutes, seconds);
+	_updateTimerValue(timer);
 }

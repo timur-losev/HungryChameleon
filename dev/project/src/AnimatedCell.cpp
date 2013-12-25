@@ -12,12 +12,15 @@ AnimatedCell::AnimatedCell(Colour c, CCPoint s) : Cell(c, s)
 {
 	if (c == Red)
 	{
+		float D = 0.5;
+		float M = 1;
 		removeAllChildren();
 		CCArmature *armature = CCArmature::create("spider");
 		armature->setScale(0.1f);
-		float speed = static_cast<float>(rand() % 10);
-		speed /= 20;
-		speed += 0.75;
+		float speed = static_cast<float>(rand() % 200) - 100;
+		speed /= 100;
+		speed *= D;
+		speed += M;
 		armature->getAnimation()->setSpeedScale(speed);
 		armature->setVisible(false);
 		addChild(armature, 2);
