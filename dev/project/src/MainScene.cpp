@@ -156,7 +156,12 @@ void MainScene::_startTimer()
 
 void MainScene::_pauseTimer()
 {
+	CCDirector::sharedDirector()->getScheduler()->pauseTarget(this);
+}
 
+void MainScene::_unpauseTimer()
+{
+	CCDirector::sharedDirector()->getScheduler()->resumeTarget(this);
 }
 
 void MainScene::_updateTimerValue(const char* time)
@@ -167,6 +172,11 @@ void MainScene::_updateTimerValue(const char* time)
 void MainScene::tickTimer(float)
 {
 	--m_levelTimeLeft;
+	if (m_levelTimeLeft <= 0)
+	{
+		SharedEventController::Instance().gameTimeUp();
+		_pauseTimer();
+	}
 	int seconds = int(m_levelTimeLeft)%60;
 	int minutes = int(m_levelTimeLeft)/60;
 	char timer[6];

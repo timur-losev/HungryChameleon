@@ -2,6 +2,7 @@
 #include "Cell.h"
 
 class AnimatedCell;
+class IMatrixState;
 
 /*
     ###################CONCEPT#########################
@@ -11,11 +12,30 @@ class AnimatedCell;
 class CellField : public CCLayer
 {
 public:
-    static const uint32_t MatrixVisibleLineSize = 10;
+    static const uint32_t MatrixVisibleLineSize = 5;
     static const uint32_t MatrixSize = MatrixVisibleLineSize * MatrixVisibleLineSize;
     static const uint32_t CenterMatrixSize = MatrixSize * 5;
 
 private:
+	/* State Machine */
+	std::queue<IMatrixState*>	m_stateQueue;
+	IMatrixState*				m_currentState = nullptr;
+
+	IMatrixState*				_popState();
+public:
+	void						pushState(IMatrixState*);
+
+	/* /State Machine */
+	enum Direction
+    {
+        byNone = -1,
+        byX,
+        byY,
+
+        DirectionsCount
+    };
+private:
+
     CCPoint m_centerMatrix[CenterMatrixSize];
 
     typedef std::deque<Cell*> Line_t;
@@ -24,14 +44,7 @@ private:
     Line_t m_rows[MatrixVisibleLineSize];
     Line_t m_cols[MatrixVisibleLineSize];
 
-    enum Direction
-    {
-        byNone = -1,
-        byX,
-        byY,
 
-        DirectionsCount
-    };
 
     Cell* m_movingCells[DirectionsCount];
 

@@ -34,6 +34,7 @@ private:
 
 	void					_startTimer();
 	void					_pauseTimer();
+	void					_unpauseTimer();
 	void					_updateTimerValue(const char*);
 
 private:

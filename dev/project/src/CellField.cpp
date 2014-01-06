@@ -3,6 +3,11 @@
 #include "AnimatedCell.h"
 #include "Cell.h"
 
+#include "MatrixStateMoving.h"
+#include "MatrixStateMatching.h"
+#include "MatrixStateRemove.h"
+#include "MatrixStateFill.h"
+
 // particle system test
 #include "particle_nodes/CCParticleSystem.h"
 
@@ -25,7 +30,7 @@ m_prevStep(0),
 m_cellWidth(55.f),
 m_cellHeight(60.f)
 {
-
+	pushState(new MatrixStateFill);
 }
 
 CellField::~CellField()
@@ -276,6 +281,18 @@ void CellField::update(float dt)
         _matchingState();
         _advanceState(MSIdle);
     }
+	if (m_currentState)
+	{
+		m_currentState->update(dt);
+		if (m_currentState->isFinished())
+		{
+			m_currentState = _popState();
+		}
+	}
+	else
+	{
+		m_currentState = _popState();
+	}
 }
 
 void CellField::_advanceState(MatrixState state)
@@ -606,4 +623,21 @@ void CellField::_onCellRemoved(Cell* cell)
 Cell* CellField::_randomCell()
 {
 	return Cell::createRandom(ccp(m_cellWidth, m_cellHeight));
+}
+
+
+IMatrixState* CellField::_popState()
+{
+	if (m_stateQueue.empty())
+	{
+		return nullptr;
+	}
+	IMatrixState* result = m_stateQueue.front();
+	m_stateQueue.pop();
+	return result;
+}
+
+void CellField::pushState(IMatrixState* state)
+{
+	m_stateQueue.push(state);
 }
