@@ -1,7 +1,7 @@
 #pragma once
 #include "IMatrixState.h"
-#include "CellField.h"
 
+class CellContainer;
 class MatrixController;
 
 class MatrixStateMoving : public IMatrixState, public has_slots<>
@@ -25,14 +25,21 @@ public:
     virtual void        init(MatrixController*);
 
 private:
-    void		        TouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-    void		        TouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-    void		        TouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    void		        touchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    void		        touchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    void		        touchMoved(CCTouch *pTouch, CCEvent *pEvent);
 
-    void                Finalize();
+private:
+    void                _Finalize();
+    void                _findHitCell();
+    void                _updateDirection();
+    void                _updatePositions();
+    void                _shiftMatrixElements(int column, int row, int steps, Direction dir);
 
 private:
     bool                m_isFinished = false;
     MatrixController*   m_controller = nullptr;
     Direction           m_direction = byNone;
+    CCTouch*            m_touch = nullptr;
+    CellContainer*      m_hitCell = nullptr;
 };

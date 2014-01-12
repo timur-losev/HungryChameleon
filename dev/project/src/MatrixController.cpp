@@ -11,6 +11,13 @@ MatrixController::MatrixController()
 
 MatrixController::~MatrixController()
 {
+    for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
+    {
+        for (uint32_t j = 0; j < MatrixController::MatrixVisibleLineSize; ++j)
+        {
+            delete m_matrix[i][j];
+        }
+    }
 }
 
 void MatrixController::update(float dt)
@@ -70,6 +77,8 @@ bool MatrixController::init(float cellWidth, float cellHeight)
             CellContainer* cellC = new CellContainer;
             cellC->generateRandomCell(size);
             cellC->setPosition(pos);
+            (*cellC)->colId = i;
+            (*cellC)->rowId = j;
             addChild(cellC);
             m_matrix[i].push_back(cellC);
         }
@@ -91,4 +100,18 @@ bool MatrixController::ccTouchBegan(CCTouch *touch, CCEvent *pEvent)
 void MatrixController::ccTouchEnded(CCTouch *touch, CCEvent *pEvent)
 {
     TouchEnded(touch, pEvent);
+}
+
+float MatrixController::getCellWidth() const
+{
+    return m_cellWidth;
+}
+float MatrixController::getCellHeight() const
+{
+    return m_cellHeight;
+}
+
+MatrixController::Matrix_t& MatrixController::getMatrix()
+{
+    return m_matrix;
 }

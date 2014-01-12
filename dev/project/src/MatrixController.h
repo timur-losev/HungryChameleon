@@ -10,6 +10,9 @@ public:
 	//static const uint32_t MatrixSize = MatrixVisibleLineSize * MatrixVisibleLineSize;
 	//static const uint32_t CenterMatrixSize = MatrixSize * 5;
 
+    typedef std::vector<CellContainer*> Line_t;
+    typedef std::vector<Line_t> Matrix_t;
+
     signal2<CCTouch*, CCEvent*> TouchBegan;
     signal2<CCTouch*, CCEvent*> TouchEnded;
     signal2<CCTouch*, CCEvent*> TouchMoved;
@@ -21,10 +24,14 @@ public:
 	void                        update(float);
 
     bool                        init(float cellWidth, float cellHeight);
+    float                       getCellWidth() const;
+    float                       getCellHeight() const;
 
     bool		                ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     void		                ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     void		                ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+
+    Matrix_t&                   getMatrix();
 
 private:
 	void                       _popState();
@@ -33,8 +40,6 @@ private:
     std::queue<IMatrixState*>   m_stateQueue;
     IMatrixState*               m_currentState = nullptr;
 
-    typedef std::vector<CellContainer*> Line_t;
-    typedef std::vector<Line_t> Matrix_t;
     Matrix_t                    m_matrix;
 
     float                       m_cellWidth;

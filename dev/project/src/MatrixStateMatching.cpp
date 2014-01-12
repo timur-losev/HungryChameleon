@@ -20,5 +20,5 @@ void MatrixStateMatching::update(float dt)
 
 bool MatrixStateMatching::isFinished()
 {
-	return false;
+	return true;
 }

@@ -67,7 +67,7 @@ bool MainScene::init()
 	extension::UIWidget* cellFieldContainer = w->getWidgetByName("720-16:9");
 	if (cellFieldContainer)
 	{
-#if 1
+#if 0
 		CellField* cellField = new CellField();
 		float width = cellFieldContainer->getSize().width / CellField::MatrixVisibleLineSize;
 		float height = cellFieldContainer->getSize().height / CellField::MatrixVisibleLineSize;

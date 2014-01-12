@@ -65,3 +65,18 @@ void Cell::SetDebugInfo(int a, int b)
     l->setColor(col);
     l->setPosition(ccp(20, 20));
 }
+
+void Cell::setAdditionalOffset(const CCPoint& pt)
+{
+    CCNode::setPosition(m_originalPosition + pt);
+}
+
+void Cell::setPosition(const CCPoint& p)
+{
+    m_originalPosition = p;
+}
+
+const CCPoint& Cell::getOriginalPosition()
+{
+    return m_originalPosition;
+}

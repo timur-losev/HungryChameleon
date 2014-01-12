@@ -42,4 +42,10 @@ public:
 
 	void SetDebugInfo(int, int);
 	virtual void onEnterTransitionDidFinish() {}
+
+    void setAdditionalOffset(const CCPoint&);
+    void setPosition(const CCPoint&);
+    const CCPoint& getOriginalPosition();
+private:
+    CCPoint m_originalPosition = ccp(0, 0);
 };
