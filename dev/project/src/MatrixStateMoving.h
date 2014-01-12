@@ -31,7 +31,7 @@ private:
 
 private:
     void                _Finalize();
-    void                _findHitCell();
+    bool                _findHitCell();
     void                _updateDirection();
     void                _updatePositions();
     void                _shiftMatrixElements(int column, int row, int steps, Direction dir);

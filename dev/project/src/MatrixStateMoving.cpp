@@ -40,7 +40,8 @@ void MatrixStateMoving::touchBegan(CCTouch *pTouch, CCEvent *pEvent)
     if (!m_touch)
     {
         m_touch = pTouch;
-        _findHitCell();
+        if(!_findHitCell())
+            m_touch = nullptr;
     }
 }
 
@@ -97,7 +98,7 @@ void MatrixStateMoving::_Finalize()
     m_isFinished = true;
 }
 
-void MatrixStateMoving::_findHitCell()
+bool MatrixStateMoving::_findHitCell()
 {
     MatrixController::Matrix_t& matrix = m_controller->getMatrix();
     CCNode* cellField = matrix[0][0]->getParent();
@@ -111,10 +112,11 @@ void MatrixStateMoving::_findHitCell()
             if (cellBounds.containsPoint(touch))
             {
                 m_hitCell = matrix[i][j];
-                return;
+                return true;
             }
         }
     }  
+    return false;
 }
 
 void MatrixStateMoving::_updateDirection()
