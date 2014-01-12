@@ -22,7 +22,7 @@
     <string>MainMenu1.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>Leaderboard.json</CurrentUIJson>
+  <CurrentUIJson>MainMenu.json</CurrentUIJson>
   <CanvasSize>
     <Width>720</Width>
     <Height>1280</Height>

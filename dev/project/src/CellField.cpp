@@ -281,18 +281,6 @@ void CellField::update(float dt)
         _matchingState();
         _advanceState(MSIdle);
     }
-	if (m_currentState)
-	{
-		m_currentState->update(dt);
-		if (m_currentState->isFinished())
-		{
-			m_currentState = _popState();
-		}
-	}
-	else
-	{
-		m_currentState = _popState();
-	}
 }
 
 void CellField::_advanceState(MatrixState state)

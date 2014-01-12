@@ -23,6 +23,9 @@
     <Filter Include="src\Game\Gameplay">
       <UniqueIdentifier>{f0dd620b-7d2c-4ba4-828a-8f84937a1c25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Gameplay\new">
+      <UniqueIdentifier>{70ee8f89-0f8b-4195-9a82-c9535b0fa81c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -109,12 +112,6 @@
     <ClCompile Include="..\src\CellField.cpp">
       <Filter>src\Game\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\CellFieldStateIdle.cpp">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\CellFieldBaseState.cpp">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\LeaderboardScene.cpp">
       <Filter>src\Game\GameScene</Filter>
     </ClCompile>
@@ -123,6 +120,27 @@
     </ClCompile>
     <ClCompile Include="..\src\OnlineController.cpp">
       <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\IMatrixState.cpp">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixStateFill.cpp">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixStateMatching.cpp">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixStateMoving.cpp">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixStateRemove.cpp">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixController.cpp">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CellContainer.cpp">
+      <Filter>src\Game\Gameplay\new</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,12 +229,6 @@
     <ClInclude Include="..\src\CellField.h">
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\CellFieldStateIdle.h">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\CellFieldBaseState.h">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\LeaderboardScene.h">
       <Filter>src\Game\GameScene</Filter>
     </ClInclude>
@@ -228,6 +240,27 @@
     </ClInclude>
     <ClInclude Include="..\src\LeaderboardEntry.h">
       <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\IMatrixState.h">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateFill.h">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateMatching.h">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateMoving.h">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateRemove.h">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CellContainer.h">
+      <Filter>src\Game\Gameplay\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixController.h">
+      <Filter>src\Game\Gameplay\new</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

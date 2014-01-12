@@ -10,6 +10,7 @@
 #include "PopupController.h"
 #include "PopupLanguage.h"
 #include "LevelSettingsController.h"
+#include "MatrixController.h"
 
 using namespace extension;
 
@@ -66,6 +67,7 @@ bool MainScene::init()
 	extension::UIWidget* cellFieldContainer = w->getWidgetByName("720-16:9");
 	if (cellFieldContainer)
 	{
+#if 1
 		CellField* cellField = new CellField();
 		float width = cellFieldContainer->getSize().width / CellField::MatrixVisibleLineSize;
 		float height = cellFieldContainer->getSize().height / CellField::MatrixVisibleLineSize;
@@ -76,6 +78,18 @@ bool MainScene::init()
 		//cellField->setAnchorPoint(ccp(0, 0));
 		cellField->setPosition(cellFieldContainer->getPosition());
 		cellField->release();
+#else
+        MatrixController* cellField = new MatrixController();
+        float width = cellFieldContainer->getSize().width / MatrixController::MatrixVisibleLineSize;
+        float height = cellFieldContainer->getSize().height / MatrixController::MatrixVisibleLineSize;
+        assert(cellField->init(width, height));
+        addChild(cellField);
+        cellField->setTouchEnabled(true);
+        CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(cellField, 0, true);
+        cellField->setPosition(cellFieldContainer->getPosition());
+        cellField->release();
+
+#endif
 	}
 
 	return kRet;
