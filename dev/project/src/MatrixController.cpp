@@ -77,8 +77,8 @@ bool MatrixController::init(float cellWidth, float cellHeight)
             CellContainer* cellC = new CellContainer;
             cellC->generateRandomCell(size);
             cellC->setPosition(pos);
-            (*cellC)->colId = i;
-            (*cellC)->rowId = j;
+            cellC->colId = i;
+            cellC->rowId = j;
             addChild(cellC);
             m_matrix[i].push_back(cellC);
         }

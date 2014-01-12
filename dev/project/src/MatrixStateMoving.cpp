@@ -6,7 +6,7 @@
 #include "Cell.h"
 #include "MatrixStateMatching.h"
 
-#define ALLOW_DIRECTION_CHANGE 1
+#define ALLOW_DIRECTION_CHANGE 0
 
 MatrixStateMoving::MatrixStateMoving()
 {
@@ -83,7 +83,6 @@ void MatrixStateMoving::_Finalize()
         steps = int(fstep);
     }
 
-    _shiftMatrixElements((*m_hitCell)->colId, (*m_hitCell)->rowId, steps, m_direction);
 
     // Clear additional offset
     for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
@@ -93,6 +92,7 @@ void MatrixStateMoving::_Finalize()
             (*matrix[i][j])->setAdditionalOffset(ccp(0, 0));
         }
     }
+    _shiftMatrixElements(m_hitCell->colId, m_hitCell->rowId, steps, m_direction);
 
     m_isFinished = true;
 }
@@ -150,7 +150,7 @@ void MatrixStateMoving::_updatePositions()
     CCPoint delta = ccpSub(m_touch->getLocation(), m_touch->getStartLocation());
     if (m_direction == byX)
     {
-        int row = (*m_hitCell)->rowId;
+        int row = m_hitCell->rowId;
         for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
         {
             (*matrix[i][row])->setAdditionalOffset(ccp(delta.x, 0));
@@ -158,7 +158,7 @@ void MatrixStateMoving::_updatePositions()
     }
     else
     {
-        int col = (*m_hitCell)->colId;
+        int col = m_hitCell->colId;
         for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
         {
             (*matrix[col][i])->setAdditionalOffset(ccp(0, delta.y));
@@ -166,16 +166,52 @@ void MatrixStateMoving::_updatePositions()
     }
 }
 
-void MatrixStateMoving::_shiftMatrixElements(int column, int row, int steps, Direction dir)
+void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int steps, Direction dir)
 {
+    CCPoint cellSize(m_controller->getCellWidth(), m_controller->getCellHeight());
     MatrixController::Matrix_t& matrix = m_controller->getMatrix();
     if (dir == byX)
     {
-        printf("Move by x %i steps\n", steps);
+        for (int step = 0; step < abs(steps); ++step)
+        {
+            if (steps < 0)
+            {
+                for (int col = 1; col < MatrixController::MatrixVisibleLineSize; ++col)
+                {
+                    (*matrix[col - 1][cellRow]) = matrix[col][cellRow]->pass();
+                }
+                matrix[MatrixController::MatrixVisibleLineSize-1][cellRow]->generateRandomCell(cellSize);
+            }
+            else
+            {
+                for (int col = MatrixController::MatrixVisibleLineSize - 1; col > 0; --col)
+                {
+                    (*matrix[col][cellRow]) = matrix[col - 1][cellRow]->pass();
+                }
+                matrix[0][cellRow]->generateRandomCell(cellSize);
+            }
+        }
     }
     else if (dir == byY)
     {
-        printf("Move by y %i steps\n", steps);
-
+        for (int step = 0; step < abs(steps); ++step)
+        {
+            if (steps < 0)
+            {
+                for (int row = 1; row < MatrixController::MatrixVisibleLineSize; ++row)
+                {
+                    (*matrix[cellColumn][row - 1]) = matrix[cellColumn][row]->pass();
+                }
+                matrix[cellColumn][MatrixController::MatrixVisibleLineSize-1]->generateRandomCell(cellSize);
+            }
+            else
+            {
+                for (int row = MatrixController::MatrixVisibleLineSize - 1; row > 0; --row)
+                {
+                    (*matrix[cellColumn][row]) = matrix[cellColumn][row - 1]->pass();
+                }
+                matrix[cellColumn][0]->generateRandomCell(cellSize);
+            }
+        }
     }
 }

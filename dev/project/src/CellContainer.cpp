@@ -13,8 +13,10 @@ CellContainer::~CellContainer()
 
 const CellContainer& CellContainer::operator = (Cell* cell)
 {
+    m_dirty = true;
     _releaseCell();
     m_cell = cell;
+    m_cell->travelsed = false;
     addChild(m_cell);
     return *this;
 }
@@ -29,14 +31,33 @@ void CellContainer::_releaseCell()
 {
     if (m_cell)
     {
-        removeAllChildren();
-        m_cell->release();
+        removeChild(m_cell);
+        //removeAllChildren();
         m_cell = nullptr;
     }
 }
 
 void CellContainer::generateRandomCell(CCPoint size)
 {
+    m_dirty = true;
     _releaseCell();
     (*this) = Cell::createRandom(size);
+}
+
+Cell* CellContainer::pass()
+{
+    m_dirty = true;
+    Cell* ret = m_cell;
+    _releaseCell();
+    return ret;
+}
+
+bool CellContainer::isDirty()
+{
+    return m_dirty;
+}
+
+void CellContainer::clean()
+{
+    m_dirty = false;
 }

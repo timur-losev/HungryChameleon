@@ -12,9 +12,16 @@ public:
     Cell*                   operator -> ();
 
     void                    generateRandomCell(CCPoint);
+    Cell*                   pass();
+    bool                    isDirty();
+    void                    clean();
+
+    int                     rowId = -1;
+    int                     colId = -1;
 
 private:
     Cell*                   m_cell = nullptr;
     void                    _releaseCell();
+    bool                    m_dirty = true;
 };
 
