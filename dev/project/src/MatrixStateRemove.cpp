@@ -3,7 +3,7 @@
 #include "CellField.h"
 
 
-MatrixStateRemove::MatrixStateRemove()
+MatrixStateRemove::MatrixStateRemove(std::list<std::list<CellContainer*> >)
 {
 
 }
@@ -20,5 +20,10 @@ void MatrixStateRemove::update(float dt)
 
 bool MatrixStateRemove::isFinished()
 {
-	return false;
+	return true;
+}
+
+void MatrixStateRemove::init(MatrixController* controller)
+{
+
 }

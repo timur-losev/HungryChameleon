@@ -36,7 +36,7 @@ void MatrixStateMatching::update(float dt)
     }
     if (matchings.size() > 0)
     {
-        IMatrixState* removeState = new MatrixStateRemove();
+        IMatrixState* removeState = new MatrixStateRemove(matchings);
         m_controller->pushState(removeState);
     }
     m_isFinished = true;
