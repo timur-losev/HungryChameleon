@@ -11,9 +11,9 @@ MatrixController::MatrixController()
 
 MatrixController::~MatrixController()
 {
-    for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
+    for (uint32_t i = 0; i < totalWidth(); ++i)
     {
-        for (uint32_t j = 0; j < MatrixController::MatrixVisibleLineSize; ++j)
+        for (uint32_t j = 0; j < totalHeight(); ++j)
         {
             delete m_matrix[i][j];
         }
@@ -67,20 +67,60 @@ bool MatrixController::init(float cellWidth, float cellHeight)
     const CCPoint size = ccp(cellWidth, cellHeight);
     CCPoint pos = ccp(0, 0);
 
-    for (uint32_t i = 0; i < MatrixVisibleLineSize; ++i)
+    m_matrix.resize(totalWidth());
+    for (uint32_t i = 0; i < totalWidth(); ++i)
     {
-        pos.x = i * cellWidth;
-        m_matrix.resize(MatrixVisibleLineSize);
-        for (uint32_t j = 0; j < MatrixVisibleLineSize; ++j)
+        m_matrix[i].resize(totalHeight());
+        pos.x = (i - (float)additionalWidth()) * cellWidth;
+        for (uint32_t j = 0; j < totalHeight(); ++j)
         {
-            pos.y = j * cellHeight;
+            bool leftBottomQuad = (i < additionalWidth()) && (j < additionalHeight());
+            bool leftTopQuad = (i < additionalWidth()) && (j >= additionalHeight() + visibleHeight());
+            bool rightBottomQuad = (i >= additionalWidth() + visibleWidth()) && (j <additionalHeight());
+            bool rightTopQuad = (i >= additionalWidth() + visibleWidth()) && (j >= additionalHeight() + visibleHeight());
+
+            if (leftBottomQuad || leftTopQuad || rightBottomQuad || rightTopQuad)
+            {
+                m_matrix[i][j] = nullptr;
+                continue;
+            }
+
+            pos.y = (j - (float)additionalHeight()) * cellHeight;
             CellContainer* cellC = new CellContainer;
             cellC->generateRandomCell(size);
             cellC->setPosition(pos);
             cellC->colId = i;
             cellC->rowId = j;
             addChild(cellC);
-            m_matrix[i].push_back(cellC);
+            m_matrix[i][j] = cellC;
+        }
+    }
+
+    for (uint32_t i = 0; i < totalWidth(); ++i)
+    {
+        for (uint32_t j = 0; j < totalHeight(); ++j)
+        {
+            if (!m_matrix[i][j])
+            {
+                continue;
+            }
+
+            if (i > 0)
+            {
+                m_matrix[i][j]->setLeft(m_matrix[i - 1][j]);
+            }
+            if (i < totalWidth() - 1)
+            {
+                m_matrix[i][j]->setRight(m_matrix[i + 1][j]);
+            }
+            if (j > 0)
+            {
+                m_matrix[i][j]->setDown(m_matrix[i][j - 1]);
+            }
+            if (j < totalHeight() - 1)
+            {
+                m_matrix[i][j]->setUp(m_matrix[i][j + 1]);
+            }
         }
     }
     return true;

@@ -86,11 +86,12 @@ void MatrixStateMoving::_Finalize()
 
 
     // Clear additional offset
-    for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
+    for (uint32_t i = 0; i < m_controller->totalWidth(); ++i)
     {
-        for (uint32_t j = 0; j < MatrixController::MatrixVisibleLineSize; ++j)
+        for (uint32_t j = 0; j < m_controller->totalHeight(); ++j)
         {
-            (*matrix[i][j])->setAdditionalOffset(ccp(0, 0));
+            if (matrix[i][j])
+                (*matrix[i][j])->setAdditionalOffset(ccp(0, 0));
         }
     }
     _shiftMatrixElements(m_hitCell->colId, m_hitCell->rowId, steps, m_direction);
@@ -101,10 +102,17 @@ void MatrixStateMoving::_Finalize()
 bool MatrixStateMoving::_findHitCell()
 {
     MatrixController::Matrix_t& matrix = m_controller->getMatrix();
-    CCNode* cellField = matrix[0][0]->getParent();
-    for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
+    CCNode* cellField = matrix[m_controller->visibleWidth()][m_controller->visibleHeight()]->getParent();
+
+    // Sweep visible rectangle
+    int iMin = m_controller->additionalWidth();
+    int iMax = iMin + m_controller->visibleWidth();
+    int jMin = m_controller->additionalHeight();
+    int jMax = jMin + m_controller->visibleHeight();
+
+    for (uint32_t i = iMin; i < iMax; ++i)
     {
-        for (uint32_t j = 0; j < MatrixController::MatrixVisibleLineSize; ++j)
+        for (uint32_t j = jMin; j < jMax; ++j)
         {
             CCPoint pos = matrix[i][j]->getPosition();
             CCPoint touch = cellField->convertTouchToNodeSpace(m_touch);
@@ -153,17 +161,19 @@ void MatrixStateMoving::_updatePositions()
     if (m_direction == byX)
     {
         int row = m_hitCell->rowId;
-        for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
+        for (uint32_t i = 0; i < m_controller->totalWidth(); ++i)
         {
-            (*matrix[i][row])->setAdditionalOffset(ccp(delta.x, 0));
+            if (matrix[i][row])
+                (*matrix[i][row])->setAdditionalOffset(ccp(delta.x, 0));
         }
     }
     else
     {
         int col = m_hitCell->colId;
-        for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
+        for (uint32_t i = 0; i < m_controller->totalHeight(); ++i)
         {
-            (*matrix[col][i])->setAdditionalOffset(ccp(0, delta.y));
+            if (matrix[col][i])
+                (*matrix[col][i])->setAdditionalOffset(ccp(0, delta.y));
         }
     }
 }
@@ -178,19 +188,21 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
         {
             if (steps < 0)
             {
-                for (int col = 1; col < MatrixController::MatrixVisibleLineSize; ++col)
+                for (int col = 1; col < m_controller->totalWidth(); ++col)
                 {
-                    (*matrix[col - 1][cellRow]) = matrix[col][cellRow]->pass();
+                    if (matrix[col - 1][cellRow] && (**matrix[col][cellRow]))
+                        (*matrix[col - 1][cellRow]) = matrix[col][cellRow]->pass();
                 }
-                matrix[MatrixController::MatrixVisibleLineSize-1][cellRow]->generateRandomCell(cellSize);
+                //matrix[m_controller->visibleWidth() - 1][cellRow]->generateRandomCell(cellSize);
             }
             else
             {
-                for (int col = MatrixController::MatrixVisibleLineSize - 1; col > 0; --col)
+                for (int col = m_controller->totalWidth() - 1; col > 0; --col)
                 {
-                    (*matrix[col][cellRow]) = matrix[col - 1][cellRow]->pass();
+                    if (matrix[col][cellRow] && **matrix[col - 1][cellRow])
+                        (*matrix[col][cellRow]) = matrix[col - 1][cellRow]->pass();
                 }
-                matrix[0][cellRow]->generateRandomCell(cellSize);
+                //matrix[0][cellRow]->generateRandomCell(cellSize);
             }
         }
     }
@@ -200,19 +212,21 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
         {
             if (steps < 0)
             {
-                for (int row = 1; row < MatrixController::MatrixVisibleLineSize; ++row)
+                for (int row = 1; row < m_controller->totalHeight(); ++row)
                 {
-                    (*matrix[cellColumn][row - 1]) = matrix[cellColumn][row]->pass();
+                    if (matrix[cellColumn][row - 1] && **matrix[cellColumn][row])
+                        (*matrix[cellColumn][row - 1]) = matrix[cellColumn][row]->pass();
                 }
-                matrix[cellColumn][MatrixController::MatrixVisibleLineSize-1]->generateRandomCell(cellSize);
+                //matrix[cellColumn][m_controller->visibleHeight() - 1]->generateRandomCell(cellSize);
             }
             else
             {
-                for (int row = MatrixController::MatrixVisibleLineSize - 1; row > 0; --row)
+                for (int row = m_controller->totalHeight() - 1; row > 0; --row)
                 {
-                    (*matrix[cellColumn][row]) = matrix[cellColumn][row - 1]->pass();
+                    if (matrix[cellColumn][row] && **matrix[cellColumn][row - 1])
+                        (*matrix[cellColumn][row]) = matrix[cellColumn][row - 1]->pass();
                 }
-                matrix[cellColumn][0]->generateRandomCell(cellSize);
+                //matrix[cellColumn][0]->generateRandomCell(cellSize);
             }
         }
     }

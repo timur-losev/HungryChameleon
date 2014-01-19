@@ -19,11 +19,17 @@ void MatrixStateMatching::update(float dt)
 {
     std::list<std::list<CellContainer*> > matchings;
     MatrixController::Matrix_t& matrix = m_controller->getMatrix();
-    for (uint32_t i = 0; i < MatrixController::MatrixVisibleLineSize; ++i)
+
+    // Sweep visible rectangle
+    int iMin = m_controller->additionalWidth();
+    int iMax = iMin + m_controller->visibleWidth();
+    int jMin = m_controller->additionalHeight();
+    int jMax = jMin + m_controller->visibleHeight();
+    for (uint32_t i = iMin; i < iMax; ++i)
     {
-        for (uint32_t j = 0; j < MatrixController::MatrixVisibleLineSize; ++j)
+        for (uint32_t j = jMin; j < jMax; ++j)
         {
-            if (matrix[i][j]->isDirty())
+            if (matrix[i][j] && matrix[i][j]->isDirty())
             {
                 std::list<CellContainer*> singleMatching;
                 _floodFill(matrix[i][j], (*matrix[i][j])->colour, singleMatching);
@@ -54,7 +60,7 @@ void MatrixStateMatching::init(MatrixController* controller)
 
 void MatrixStateMatching::_floodFill(CellContainer* c, Cell::Colour targetColour, std::list<CellContainer*>& matchingList)
 {
-    if ((*c)->travelsed || (*c)->colour != targetColour)
+    if (c && ((*c)->travelsed || (*c)->colour != targetColour))
     {
         return;
     }
@@ -69,7 +75,7 @@ void MatrixStateMatching::_floodFill(CellContainer* c, Cell::Colour targetColour
     int up = c->rowId + 1;
     int down = c->rowId - 1;
 
-    if (right < MatrixController::MatrixVisibleLineSize)
+    if (right < m_controller->visibleWidth())
     {
         _floodFill(matrix[right][c->rowId], targetColour, matchingList);
     }
@@ -77,7 +83,7 @@ void MatrixStateMatching::_floodFill(CellContainer* c, Cell::Colour targetColour
     {
         _floodFill(matrix[left][c->rowId], targetColour, matchingList);
     }
-    if (up < MatrixController::MatrixVisibleLineSize)
+    if (up < m_controller->visibleHeight())
     {
         _floodFill(matrix[c->colId][up], targetColour, matchingList);
     }

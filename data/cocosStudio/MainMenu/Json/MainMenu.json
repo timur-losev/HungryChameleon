@@ -6,13 +6,14 @@
     "name": "AnimationManager",
     "actionlist": []
   },
+  "dataScale": 1,
   "designHeight": 1280,
   "designWidth": 720,
   "textures": [
     "MainMenu0.plist",
     "MainMenu1.plist"
   ],
-  "version": "1.1.0.0",
+  "version": "1.2.0.0",
   "widgetTree": {
     "classname": "Panel",
     "name": null,
@@ -26,12 +27,12 @@
             "name": null,
             "children": [
               {
-                "classname": "TextArea",
+                "classname": "Label",
                 "name": null,
                 "children": [],
                 "options": {
-                  "__type": "ComGUITextAreaSurrogate:#EditorCommon.JsonModel.Component.GUI",
-                  "classname": "TextArea",
+                  "__type": "ComGUILabelSurrogate:#EditorCommon.JsonModel.Component.GUI",
+                  "classname": "Label",
                   "name": "btn_start_txt",
                   "ZOrder": 0,
                   "actiontag": 42,
@@ -65,11 +66,12 @@
                   "y": 0,
                   "areaHeight": 80,
                   "areaWidth": 400,
+                  "fontFile": null,
                   "fontName": "黑体",
                   "fontSize": 40,
-                  "fontType": 1,
                   "hAlignment": 1,
                   "text": "STR_START_GAME",
+                  "touchScaleEnable": false,
                   "vAlignment": 1
                 }
               }
@@ -110,12 +112,12 @@
               },
               "opacity": 255,
               "positionPercentX": 0.5,
-              "positionPercentY": 0.859999955,
+              "positionPercentY": 0.86,
               "positionType": 0,
               "rotation": 0,
               "scaleX": 1,
               "scaleY": 1,
-              "sizePercentX": 0.669999957,
+              "sizePercentX": 0.6666667,
               "sizePercentY": 0.08,
               "sizeType": 0,
               "tag": 3,
@@ -135,6 +137,9 @@
                 "plistFile": null,
                 "resourceType": 0
               },
+              "fontName": "微软雅黑",
+              "fontSize": 0,
+              "fontType": 0,
               "normal": null,
               "normalData": {
                 "path": "btn_idle.png",
@@ -149,7 +154,11 @@
               },
               "scale9Enable": false,
               "scale9Height": 80,
-              "scale9Width": 400
+              "scale9Width": 400,
+              "text": null,
+              "textColorB": 0,
+              "textColorG": 0,
+              "textColorR": 0
             }
           },
           {
@@ -157,12 +166,12 @@
             "name": null,
             "children": [
               {
-                "classname": "TextArea",
+                "classname": "Label",
                 "name": null,
                 "children": [],
                 "options": {
-                  "__type": "ComGUITextAreaSurrogate:#EditorCommon.JsonModel.Component.GUI",
-                  "classname": "TextArea",
+                  "__type": "ComGUILabelSurrogate:#EditorCommon.JsonModel.Component.GUI",
+                  "classname": "Label",
                   "name": "txt_btn_options",
                   "ZOrder": 0,
                   "actiontag": 43,
@@ -196,11 +205,12 @@
                   "y": 0,
                   "areaHeight": 80,
                   "areaWidth": 400,
+                  "fontFile": null,
                   "fontName": "黑体",
                   "fontSize": 40,
-                  "fontType": 1,
                   "hAlignment": 1,
                   "text": "STR_OPTIONS",
+                  "touchScaleEnable": false,
                   "vAlignment": 1
                 }
               }
@@ -246,7 +256,7 @@
               "rotation": 0,
               "scaleX": 1,
               "scaleY": 1,
-              "sizePercentX": 0.669999957,
+              "sizePercentX": 0.6666667,
               "sizePercentY": 0.08,
               "sizeType": 0,
               "tag": 5,
@@ -266,6 +276,9 @@
                 "plistFile": null,
                 "resourceType": 0
               },
+              "fontName": "微软雅黑",
+              "fontSize": 0,
+              "fontType": 0,
               "normal": null,
               "normalData": {
                 "path": "btn_idle.png",
@@ -280,7 +293,11 @@
               },
               "scale9Enable": false,
               "scale9Height": 80,
-              "scale9Width": 400
+              "scale9Width": 400,
+              "text": null,
+              "textColorB": 0,
+              "textColorG": 0,
+              "textColorR": 0
             }
           },
           {
@@ -288,12 +305,12 @@
             "name": null,
             "children": [
               {
-                "classname": "TextArea",
+                "classname": "Label",
                 "name": null,
                 "children": [],
                 "options": {
-                  "__type": "ComGUITextAreaSurrogate:#EditorCommon.JsonModel.Component.GUI",
-                  "classname": "TextArea",
+                  "__type": "ComGUILabelSurrogate:#EditorCommon.JsonModel.Component.GUI",
+                  "classname": "Label",
                   "name": "txt_btn_shop",
                   "ZOrder": 0,
                   "actiontag": 44,
@@ -327,11 +344,12 @@
                   "y": 0,
                   "areaHeight": 80,
                   "areaWidth": 400,
+                  "fontFile": null,
                   "fontName": "黑体",
                   "fontSize": 40,
-                  "fontType": 1,
                   "hAlignment": 1,
                   "text": "STR_SHOP",
+                  "touchScaleEnable": false,
                   "vAlignment": 1
                 }
               }
@@ -377,7 +395,7 @@
               "rotation": 0,
               "scaleX": 1,
               "scaleY": 1,
-              "sizePercentX": 0.669999957,
+              "sizePercentX": 0.6666667,
               "sizePercentY": 0.08,
               "sizeType": 0,
               "tag": 7,
@@ -397,6 +415,9 @@
                 "plistFile": null,
                 "resourceType": 0
               },
+              "fontName": "微软雅黑",
+              "fontSize": 0,
+              "fontType": 0,
               "normal": null,
               "normalData": {
                 "path": "btn_idle.png",
@@ -411,7 +432,11 @@
               },
               "scale9Enable": false,
               "scale9Height": 80,
-              "scale9Width": 400
+              "scale9Width": 400,
+              "text": null,
+              "textColorB": 0,
+              "textColorG": 0,
+              "textColorR": 0
             }
           }
         ],
@@ -456,8 +481,8 @@
           "rotation": 0,
           "scaleX": 1,
           "scaleY": 1,
-          "sizePercentX": 0.83,
-          "sizePercentY": 0.78,
+          "sizePercentX": 0.8333333,
+          "sizePercentY": 0.78125,
           "sizeType": 0,
           "tag": 2,
           "touchAble": true,
@@ -608,13 +633,13 @@
             "type": 2
           },
           "opacity": 255,
-          "positionPercentX": -0.890277743,
+          "positionPercentX": -0.8902778,
           "positionPercentY": -0.25390625,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
           "scaleY": 1,
-          "sizePercentX": 1.06999993,
+          "sizePercentX": 1.06666672,
           "sizePercentY": 1,
           "sizeType": 0,
           "tag": 10,
@@ -687,13 +712,13 @@
             "type": 2
           },
           "opacity": 255,
-          "positionPercentX": 0.974999964,
+          "positionPercentX": 0.975,
           "positionPercentY": 0.1171875,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
           "scaleY": 1,
-          "sizePercentX": 0.89,
+          "sizePercentX": 0.8888889,
           "sizePercentY": 0.75,
           "sizeType": 0,
           "tag": 11,

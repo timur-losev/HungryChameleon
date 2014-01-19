@@ -80,8 +80,8 @@ bool MainScene::init()
 		cellField->release();
 #else
         MatrixController* cellField = new MatrixController();
-        float width = cellFieldContainer->getSize().width / MatrixController::MatrixVisibleLineSize;
-        float height = cellFieldContainer->getSize().height / MatrixController::MatrixVisibleLineSize;
+        float width = cellFieldContainer->getSize().width / cellField->visibleWidth();
+        float height = cellFieldContainer->getSize().height / cellField->visibleHeight();
         assert(cellField->init(width, height));
         addChild(cellField);
         cellField->setTouchEnabled(true);

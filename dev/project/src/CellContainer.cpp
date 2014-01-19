@@ -27,18 +27,23 @@ Cell* CellContainer::operator -> ()
     return m_cell;
 }
 
+Cell* CellContainer::operator * ()
+{
+    return m_cell;
+}
+
 void CellContainer::_releaseCell()
 {
     if (m_cell)
     {
         removeChild(m_cell);
-        //removeAllChildren();
         m_cell = nullptr;
     }
 }
 
 void CellContainer::generateRandomCell(CCPoint size)
 {
+    m_center = ccp(size.x / 2, size.y / 2);
     m_dirty = true;
     _releaseCell();
     (*this) = Cell::createRandom(size);
@@ -61,3 +66,9 @@ void CellContainer::clean()
 {
     m_dirty = false;
 }
+
+CCPoint& CellContainer::getCenterPoint()
+{
+    return convertToWorldSpace(m_center);
+}
+

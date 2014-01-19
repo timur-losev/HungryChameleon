@@ -6,13 +6,14 @@
     "name": "AnimationManager",
     "actionlist": []
   },
+  "dataScale": 1,
   "designHeight": 1280,
   "designWidth": 720,
   "textures": [
     "MainMenu0.plist",
     "MainMenu1.plist"
   ],
-  "version": "1.1.0.0",
+  "version": "1.2.0.0",
   "widgetTree": {
     "classname": "Panel",
     "name": null,
@@ -43,7 +44,7 @@
                   "colorR": 255,
                   "flipX": false,
                   "flipY": false,
-                  "height": 23,
+                  "height": 45,
                   "ignoreSize": true,
                   "layoutParameter": null,
                   "opacity": 255,
@@ -60,14 +61,18 @@
                   "touchAble": false,
                   "useMergedTexture": false,
                   "visible": true,
-                  "width": 90,
+                  "width": 160,
                   "x": 0,
                   "y": 0,
+                  "areaHeight": 45,
+                  "areaWidth": 160,
+                  "fontFile": null,
                   "fontName": "宋体",
                   "fontSize": 40,
-                  "fontType": 0,
+                  "hAlignment": 0,
                   "text": "STR_OK",
-                  "touchScaleEnable": false
+                  "touchScaleEnable": false,
+                  "vAlignment": 0
                 }
               }
             ],
@@ -112,8 +117,8 @@
               "rotation": 0,
               "scaleX": 1,
               "scaleY": 1,
-              "sizePercentX": 0.45,
-              "sizePercentY": 0.22,
+              "sizePercentX": 0.4516129,
+              "sizePercentY": 0.222222224,
               "sizeType": 0,
               "tag": 36,
               "touchAble": true,
@@ -132,6 +137,9 @@
                 "plistFile": null,
                 "resourceType": 0
               },
+              "fontName": "微软雅黑",
+              "fontSize": 0,
+              "fontType": 0,
               "normal": null,
               "normalData": {
                 "path": "btn_idle.png",
@@ -146,16 +154,20 @@
               },
               "scale9Enable": false,
               "scale9Height": 100,
-              "scale9Width": 280
+              "scale9Width": 280,
+              "text": null,
+              "textColorB": 0,
+              "textColorG": 0,
+              "textColorR": 0
             }
           },
           {
-            "classname": "TextArea",
+            "classname": "Label",
             "name": null,
             "children": [],
             "options": {
-              "__type": "ComGUITextAreaSurrogate:#EditorCommon.JsonModel.Component.GUI",
-              "classname": "TextArea",
+              "__type": "ComGUILabelSurrogate:#EditorCommon.JsonModel.Component.GUI",
+              "classname": "Label",
               "name": "popup_text",
               "ZOrder": 0,
               "actiontag": 234,
@@ -194,8 +206,8 @@
               "rotation": 0,
               "scaleX": 1,
               "scaleY": 1,
-              "sizePercentX": 0.81,
-              "sizePercentY": 0.669999957,
+              "sizePercentX": 0.8064516,
+              "sizePercentY": 0.6666667,
               "sizeType": 0,
               "tag": 37,
               "touchAble": false,
@@ -206,11 +218,12 @@
               "y": 250,
               "areaHeight": 300,
               "areaWidth": 500,
+              "fontFile": null,
               "fontName": "宋体",
               "fontSize": 40,
-              "fontType": 0,
               "hAlignment": 1,
               "text": "Text Area",
+              "touchScaleEnable": false,
               "vAlignment": 1
             }
           }
@@ -256,8 +269,8 @@
           "rotation": 0,
           "scaleX": 1,
           "scaleY": 1,
-          "sizePercentX": 0.859999955,
-          "sizePercentY": 0.35,
+          "sizePercentX": 0.8611111,
+          "sizePercentY": 0.3515625,
           "sizeType": 0,
           "tag": 35,
           "touchAble": false,

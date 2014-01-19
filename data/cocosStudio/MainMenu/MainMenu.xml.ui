@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <filePath>D:\Projects\HungryChameleon\data\cocosStudio\MainMenu\MainMenu.xml.ui</filePath>
-  <Version>1.1.0.0</Version>
+  <Version>1.2.0.0</Version>
   <Name>MainMenu</Name>
   <ProjectDir>D:\Projects\HungryChameleon\data\cocosStudio\MainMenu</ProjectDir>
   <JsonFileName>MainMenu.json</JsonFileName>
@@ -22,7 +22,7 @@
     <string>MainMenu1.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>MainMenu.json</CurrentUIJson>
+  <CurrentUIJson>MainScene.json</CurrentUIJson>
   <CanvasSize>
     <Width>720</Width>
     <Height>1280</Height>

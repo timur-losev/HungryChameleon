@@ -6,10 +6,6 @@ class CellContainer;
 class MatrixController : public CCLayer
 {
 public:
-	static const uint32_t MatrixVisibleLineSize = 6;
-	//static const uint32_t MatrixSize = MatrixVisibleLineSize * MatrixVisibleLineSize;
-	//static const uint32_t CenterMatrixSize = MatrixSize * 5;
-
     typedef std::vector<CellContainer*> Line_t;
     typedef std::vector<Line_t> Matrix_t;
 
@@ -33,10 +29,22 @@ public:
 
     Matrix_t&                   getMatrix();
 
+    uint32_t                    additionalWidth() { return m_additionalWidth; }
+    uint32_t                    additionalHeight() { return m_additionalHeight; }
+    uint32_t                    visibleWidth() { return m_visibleWidth; }
+    uint32_t                    visibleHeight() { return m_visibleHeight; }
+    uint32_t                    totalWidth() { return m_visibleWidth + m_additionalWidth * 2; }
+    uint32_t                    totalHeight() { return m_visibleHeight + m_additionalHeight * 2; }
+
 private:
 	void                       _popState();
 
 private:
+    uint32_t                    m_additionalWidth = 5;
+    uint32_t                    m_additionalHeight = 5;
+    uint32_t                    m_visibleWidth = 5;
+    uint32_t                    m_visibleHeight = 5;
+
     std::queue<IMatrixState*>   m_stateQueue;
     IMatrixState*               m_currentState = nullptr;
 
