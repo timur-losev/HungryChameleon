@@ -87,11 +87,11 @@ bool MatrixController::init(float cellWidth, float cellHeight)
 
             pos.y = (j - (float)additionalHeight()) * cellHeight;
             CellContainer* cellC = new CellContainer;
-            cellC->generateRandomCell(size);
+            addChild(cellC);
             cellC->setPosition(pos);
+            cellC->generateRandomCell(size);
             cellC->colId = i;
             cellC->rowId = j;
-            addChild(cellC);
             m_matrix[i][j] = cellC;
         }
     }

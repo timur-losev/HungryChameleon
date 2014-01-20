@@ -91,7 +91,7 @@ void MatrixStateMoving::_Finalize()
         for (uint32_t j = 0; j < m_controller->totalHeight(); ++j)
         {
             if (matrix[i][j])
-                (*matrix[i][j])->setAdditionalOffset(ccp(0, 0));
+                matrix[i][j]->setAdditionalOffset(ccp(0, 0));
         }
     }
     _shiftMatrixElements(m_hitCell->colId, m_hitCell->rowId, steps, m_direction);
@@ -153,7 +153,7 @@ void MatrixStateMoving::_updatePositions()
     {
         for (uint32_t j = 0; j < MatrixController::MatrixVisibleLineSize; ++j)
         {
-            (*matrix[i][j])->setAdditionalOffset(ccp(0, 0));
+            matrix[i][j]->setAdditionalOffset(ccp(0, 0));
         }
     }
 #endif
@@ -164,7 +164,7 @@ void MatrixStateMoving::_updatePositions()
         for (uint32_t i = 0; i < m_controller->totalWidth(); ++i)
         {
             if (matrix[i][row])
-                (*matrix[i][row])->setAdditionalOffset(ccp(delta.x, 0));
+                matrix[i][row]->setAdditionalOffset(ccp(delta.x, 0));
         }
     }
     else
@@ -173,7 +173,7 @@ void MatrixStateMoving::_updatePositions()
         for (uint32_t i = 0; i < m_controller->totalHeight(); ++i)
         {
             if (matrix[col][i])
-                (*matrix[col][i])->setAdditionalOffset(ccp(0, delta.y));
+                matrix[col][i]->setAdditionalOffset(ccp(0, delta.y));
         }
     }
 }

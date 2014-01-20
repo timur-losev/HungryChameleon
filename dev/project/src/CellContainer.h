@@ -13,7 +13,7 @@ public:
     Cell*                   operator * ();
 
     void                    generateRandomCell(CCPoint);
-    CCPoint&                getCenterPoint();
+    CCPoint                 getCenterPoint();
     Cell*                   pass();
     bool                    isDirty();
     void                    clean();
@@ -30,6 +30,7 @@ public:
     void                    setUp(CellContainer* c) { m_up = c; }
     void                    setDown(CellContainer* c) { m_down = c; }
 
+    void                    setAdditionalOffset(const CCPoint&);
 private:
     Cell*                   m_cell = nullptr;
     void                    _releaseCell();

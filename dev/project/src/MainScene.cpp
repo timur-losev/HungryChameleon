@@ -82,8 +82,9 @@ bool MainScene::init()
         MatrixController* cellField = new MatrixController();
         float width = cellFieldContainer->getSize().width / cellField->visibleWidth();
         float height = cellFieldContainer->getSize().height / cellField->visibleHeight();
-        assert(cellField->init(width, height));
-        addChild(cellField);
+        cellField->setContentSize(cellFieldContainer->getSize());
+        cellFieldContainer->addCCNode(cellField);
+        assert(cellField->init(width, height)); 
         cellField->setTouchEnabled(true);
         CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(cellField, 0, true);
         cellField->setPosition(cellFieldContainer->getPosition());
