@@ -20,4 +20,5 @@ private:
 private:
     MatrixController* m_controller = nullptr;
     std::list<std::list<CellContainer*> > m_matchings;
+    bool m_isFinished = false;
 };
