@@ -90,3 +90,9 @@ void CellContainer::setAdditionalOffset(const CCPoint& p)
         }
     }
 }
+
+void CellContainer::deleteCell()
+{
+    removeAllChildrenWithCleanup(true);
+    m_cell = nullptr;
+}

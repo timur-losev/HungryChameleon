@@ -13,4 +13,11 @@ public:
     virtual void update(float dt);
 	virtual bool isFinished();
     virtual void init(MatrixController*);
+
+private:
+    void _execute();
+
+private:
+    MatrixController* m_controller = nullptr;
+    std::list<std::list<CellContainer*> > m_matchings;
 };

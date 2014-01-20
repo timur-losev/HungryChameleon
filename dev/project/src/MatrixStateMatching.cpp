@@ -69,6 +69,24 @@ void MatrixStateMatching::_floodFill(CellContainer* c, Cell::Colour targetColour
 
     matchingList.push_back(c);
 
+    if (c->right() && c->right()->isVisible())
+    {
+        _floodFill(c->right(), targetColour, matchingList);
+    }
+    if (c->left() && c->left()->isVisible())
+    {
+        _floodFill(c->left(), targetColour, matchingList);
+    }
+    if (c->up() && c->up()->isVisible())
+    {
+        _floodFill(c->up(), targetColour, matchingList);
+    }
+    if (c->down() && c->down()->isVisible())
+    {
+        _floodFill(c->down(), targetColour, matchingList);
+    }
+
+#if 0
     MatrixController::Matrix_t& matrix = m_controller->getMatrix();
     int right = c->colId + 1;
     int left = c->colId - 1;
@@ -91,4 +109,6 @@ void MatrixStateMatching::_floodFill(CellContainer* c, Cell::Colour targetColour
     {
         _floodFill(matrix[c->colId][down], targetColour, matchingList);
     }
+
+#endif // 0
 }

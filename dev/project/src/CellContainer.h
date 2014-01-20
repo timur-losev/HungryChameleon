@@ -15,15 +15,16 @@ public:
     void                    generateRandomCell(CCPoint);
     CCPoint                 getCenterPoint();
     Cell*                   pass();
+    void                    deleteCell();
     bool                    isDirty();
     void                    clean();
 
     int                     rowId = -1;
     int                     colId = -1;
-    CellContainer&          left() { return *m_left; }
-    CellContainer&          right() { return *m_right; }
-    CellContainer&          up() { return *m_up; }
-    CellContainer&          down() { return *m_down; }
+    CellContainer*          left() { return m_left; }
+    CellContainer*          right() { return m_right; }
+    CellContainer*          up() { return m_up; }
+    CellContainer*          down() { return m_down; }
 
     void                    setLeft(CellContainer* c) { m_left = c; }
     void                    setRight(CellContainer* c) { m_right = c; }
