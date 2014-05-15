@@ -33,7 +33,7 @@ void MatrixStateMatching::update(float dt)
             {
                 std::list<CellContainer*> singleMatching;
                 _floodFill(matrix[i][j], (*matrix[i][j])->colour, singleMatching);
-                if (singleMatching.size() > 3)
+                if (singleMatching.size() >= 3)
                 {
                     matchings.push_back(singleMatching);
                 }
