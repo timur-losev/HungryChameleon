@@ -30,7 +30,7 @@ m_prevStep(0),
 m_cellWidth(55.f),
 m_cellHeight(60.f)
 {
-	pushState(new MatrixStateFill);
+    pushState(new MatrixStateFill);
 }
 
 CellField::~CellField()
@@ -40,14 +40,14 @@ CellField::~CellField()
 
 bool CellField::init(float cellWidth, float cellHeight)
 {
-	scheduleUpdate();
-	m_cellHeight = cellHeight;
-	m_cellWidth = cellWidth;
-	
+    scheduleUpdate();
+    m_cellHeight = cellHeight;
+    m_cellWidth = cellWidth;
+
     if (CCLayer::init())
     {
-		m_spriteDimentsion[byX] = m_cellWidth;
-		m_spriteDimentsion[byY] = m_cellHeight;
+        m_spriteDimentsion[byX] = m_cellWidth;
+        m_spriteDimentsion[byY] = m_cellHeight;
 
         srand(static_cast<uint32_t>(time(nullptr)));
 
@@ -60,7 +60,7 @@ bool CellField::init(float cellWidth, float cellHeight)
         {
             for (uint32_t j = 0; j < MatrixVisibleLineSize; ++j)
             {
-				Cell* cell = _randomCell();
+                Cell* cell = _randomCell();
 
                 assert(cell);
 
@@ -214,7 +214,7 @@ bool CellField::ccTouchBegan(CCTouch *touch, CCEvent *pEvent)
         _advanceState(MSMoving);
 
     }
-	return true;
+    return true;
 }
 
 void CellField::ccTouchEnded(CCTouch *touch, CCEvent *pEvent)
@@ -334,7 +334,7 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.front();
-			Cell* newCell = _randomCell();
+            Cell* newCell = _randomCell();
             newCell->setPositionY(zeroCell->getPositionY());
             newCell->setPositionX(zeroCell->getPositionX() - m_cellWidth);
             addChild(newCell);
@@ -352,7 +352,7 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.back();
-			Cell* newCell = _randomCell();
+            Cell* newCell = _randomCell();
             newCell->setPositionY(zeroCell->getPositionY());
             newCell->setPositionX(zeroCell->getPositionX() + m_cellWidth);
             addChild(newCell);
@@ -373,7 +373,7 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.front();
-			Cell* newCell = _randomCell();
+            Cell* newCell = _randomCell();
 
             newCell->setPositionY(zeroCell->getPositionY() - m_cellHeight);
             newCell->setPositionX(zeroCell->getPositionX());
@@ -393,7 +393,7 @@ void CellField::_stabilizeMatrix(Line_t &line)
             m_prevStep = m_stepsCount;
 
             Cell* zeroCell = line.back();
-			Cell* newCell = _randomCell();
+            Cell* newCell = _randomCell();
 
             newCell->setPositionY(zeroCell->getPositionY() + m_cellHeight);
             newCell->setPositionX(zeroCell->getPositionX());
@@ -445,35 +445,35 @@ void CellField::_matchingState()
 
             cell->SetDebugInfo(cell->rowId, cell->colId);
             std::list<Cell*> matchingList;
-            
+
             if (!cell)
                 continue;
             _floodFill(cell, cell->colour, matchingList);
 
-			if (matchingList.size() >= 3)
-			{
-				matchings.push_back(matchingList);
-			}
+            if (matchingList.size() >= 3)
+            {
+                matchings.push_back(matchingList);
+            }
         }
     }
 
-	_fallDownState(matchings);
+    _fallDownState(matchings);
 }
 
 void CellField::_fallDownState(const std::list<CellList_t>& matchedCells)
 {
-	//! Clean up
-	for (const CellList_t& clist : matchedCells)
-	{
-		for (Cell* cell : clist)
-		{
-			m_rows[cell->rowId][cell->colId] = nullptr;
-			m_cols[cell->colId][cell->rowId] = nullptr;
+    //! Clean up
+    for (const CellList_t& clist : matchedCells)
+    {
+        for (Cell* cell : clist)
+        {
+            m_rows[cell->rowId][cell->colId] = nullptr;
+            m_cols[cell->colId][cell->rowId] = nullptr;
 
-			_removeCell(cell);
-		}
+            _removeCell(cell);
+        }
     }
-	return;
+    return;
     // Fill
     for (uint32_t i = 0; i < MatrixVisibleLineSize; ++i)
     {
@@ -501,11 +501,11 @@ void CellField::_moveColumnFragmenDown(uint32_t columnIndex, uint32_t startingFr
             break;
         }
     }
-    if (!m_cols[columnIndex][toPosition] && toPosition == MatrixVisibleLineSize-1)
+    if (!m_cols[columnIndex][toPosition] && toPosition == MatrixVisibleLineSize - 1)
     {
         toPosition = MatrixVisibleLineSize;
     }
-    
+
     Line_t fromLine = m_cols[columnIndex];
     uint32_t newInd = toPosition;
     uint32_t oldInd = startingFromRow;
@@ -527,7 +527,7 @@ void CellField::_moveColumnFragmenDown(uint32_t columnIndex, uint32_t startingFr
     return;
     for (; newInd < MatrixVisibleLineSize; ++newInd)
     {
-		Cell* cell = _randomCell();
+        Cell* cell = _randomCell();
 
         assert(cell);
 
@@ -600,32 +600,32 @@ void CellField::_removeCellIfPossible(Cell* cell)
 void CellField::_onCellRemoved(Cell* cell)
 {
 #if 1
-	CCParticleSystem* ps = CCParticleExplosion::createWithTotalParticles(100);
-	ps->autorelease();
-	ps->setPosition(cell->convertToNodeSpace(cell->getPosition()));
-	cell->addChild(ps);
+    CCParticleSystem* ps = CCParticleExplosion::createWithTotalParticles(100);
+    ps->autorelease();
+    ps->setPosition(cell->convertToNodeSpace(cell->getPosition()));
+    cell->addChild(ps);
 #endif // 0
 
 }
 
 Cell* CellField::_randomCell()
 {
-	return Cell::createRandom(ccp(m_cellWidth, m_cellHeight));
+    return Cell::createRandom(ccp(m_cellWidth, m_cellHeight));
 }
 
 
 IMatrixState* CellField::_popState()
 {
-	if (m_stateQueue.empty())
-	{
-		return nullptr;
-	}
-	IMatrixState* result = m_stateQueue.front();
-	m_stateQueue.pop();
-	return result;
+    if (m_stateQueue.empty())
+    {
+        return nullptr;
+    }
+    IMatrixState* result = m_stateQueue.front();
+    m_stateQueue.pop();
+    return result;
 }
 
 void CellField::pushState(IMatrixState* state)
 {
-	m_stateQueue.push(state);
+    m_stateQueue.push(state);
 }

@@ -21,10 +21,10 @@ void MatrixStateMatching::update(float dt)
     MatrixController::Matrix_t& matrix = m_controller->getMatrix();
 
     // Sweep visible rectangle
-    int iMin = m_controller->additionalWidth();
-    int iMax = iMin + m_controller->visibleWidth();
-    int jMin = m_controller->additionalHeight();
-    int jMax = jMin + m_controller->visibleHeight();
+    uint32_t iMin = m_controller->additionalWidth();
+    uint32_t iMax = iMin + m_controller->visibleWidth();
+    uint32_t jMin = m_controller->additionalHeight();
+    uint32_t jMax = jMin + m_controller->visibleHeight();
     for (uint32_t i = iMin; i < iMax; ++i)
     {
         for (uint32_t j = jMin; j < jMax; ++j)

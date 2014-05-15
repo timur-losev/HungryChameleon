@@ -3,9 +3,9 @@
 #include "SceneController.h"
 
 GameSceneBase::GameSceneBase(ESceneModes mode)
-	: m_baseSceneMode(mode)
+: m_baseSceneMode(mode)
 {
-	this->scheduleUpdate();
+    this->scheduleUpdate();
 }
 
 GameSceneBase::~GameSceneBase()
@@ -20,36 +20,36 @@ void GameSceneBase::onEnter()
 
 void GameSceneBase::addSceneSlots(SceneController* scene)
 {
-	_advanceToScene.connect(scene, &SceneController::advanceToMode);
+    _advanceToScene.connect(scene, &SceneController::advanceToMode);
 }
 
 void GameSceneBase::update(float dt)
 {
-	if (isPaused())
-		return;
-	_onUpdate(dt);
+    if (isPaused())
+        return;
+    _onUpdate(dt);
 }
 
 void GameSceneBase::setPaused(bool value)
 {
-	m_baseIsPaused = value; 
+    m_baseIsPaused = value;
 }
 
 bool GameSceneBase::isPaused() const
 {
-	return m_baseIsPaused;
+    return m_baseIsPaused;
 }
 
 void GameSceneBase::reloadLanguage()
 {
-	CCArray* children = getChildren();
-	CCObject* child;
-	CCARRAY_FOREACH(children, child)
-	{
-		extension::UILabel* pText = dynamic_cast<extension::UILabel*>(child);
-		if (pText)
-		{
-			pText->setText("changed");
-		}
-	}
+    CCArray* children = getChildren();
+    CCObject* child;
+    CCARRAY_FOREACH(children, child)
+    {
+        extension::UILabel* pText = dynamic_cast<extension::UILabel*>(child);
+        if (pText)
+        {
+            pText->setText("changed");
+        }
+    }
 }

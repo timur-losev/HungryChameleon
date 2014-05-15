@@ -18,32 +18,32 @@ public:
 
     void                    startGame();
 
-////////////////////////////////////////////////////////////
-//// Save
-	static SaveController*	getSaveController();
-	void					saveNow();
+    ////////////////////////////////////////////////////////////
+    //// Save
+    static SaveController*	getSaveController();
+    void					saveNow();
 
-////////////////////////////////////////////////////////////
-//// Scene
-	static SceneController* getSceneController();
+    ////////////////////////////////////////////////////////////
+    //// Scene
+    static SceneController* getSceneController();
 
-////////////////////////////////////////////////////////////
-//// Player
-	static Player*			getPlayer();
+    ////////////////////////////////////////////////////////////
+    //// Player
+    static Player*			getPlayer();
 
-	static PopupController* getPopupController();
+    static PopupController* getPopupController();
 
-	static LevelSettingsController* getLevelSettingsController();
+    static LevelSettingsController* getLevelSettingsController();
 
-	static OnlineController*getOnlineController();
+    static OnlineController*getOnlineController();
 
 private:
-	SceneController*		m_sceneController = nullptr;
-	SaveController*			m_saveController = nullptr;
-	Player*					m_player = nullptr;
-	PopupController*		m_popupController = nullptr;
-	LevelSettingsController*m_levelSettingsController = nullptr;
-	OnlineController*		m_onlineController = nullptr;
+    SceneController*		m_sceneController = nullptr;
+    SaveController*			m_saveController = nullptr;
+    Player*					m_player = nullptr;
+    PopupController*		m_popupController = nullptr;
+    LevelSettingsController*m_levelSettingsController = nullptr;
+    OnlineController*		m_onlineController = nullptr;
 };
 
 typedef Loki::SingletonHolder<GameDelegate, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedGameDelegate;

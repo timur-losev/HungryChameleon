@@ -4,46 +4,46 @@
 
 FileUtils::FileUtils()
 {
-	VirtualFiles::init();
+    VirtualFiles::init();
 }
 
 FileUtils::~FileUtils()
 {
-	VirtualFiles::close();
+    VirtualFiles::close();
 }
 
 bool FileUtils::init()
 {
-	return true;
+    return true;
 }
 
 CCFileUtils* FileUtils::sharedFileUtils()
 {
-	if (s_sharedFileUtils == NULL)
-	{
-		s_sharedFileUtils = new FileUtils();
-	}
-	return s_sharedFileUtils;
+    if (s_sharedFileUtils == NULL)
+    {
+        s_sharedFileUtils = new FileUtils();
+    }
+    return s_sharedFileUtils;
 }
 
 unsigned char* FileUtils::getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize)
 {
-	void* biffer; //aziriv-style
-	VirtualFiles::getBlob(pszFileName, &biffer, pSize);
-	return (unsigned char*)biffer;
+    void* biffer; //aziriv-style
+    VirtualFiles::getBlob(pszFileName, &biffer, pSize);
+    return (unsigned char*)biffer;
 }
 
 std::string FileUtils::fullPathForFilename(const char* pszFileName)
 {
-	return pszFileName;
+    return pszFileName;
 }
 
 std::string FileUtils::getWritablePath()
 {
-	return std::string();
+    return std::string();
 }
 
 bool FileUtils::isFileExist(const std::string& strFilePath)
 {
-	return VirtualFiles::doesFileExists(strFilePath.c_str());
+    return VirtualFiles::doesFileExists(strFilePath.c_str());
 }

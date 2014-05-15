@@ -76,7 +76,7 @@ void OnlineController::_onLeaderboardLoaded(CCHttpClient* client, CCHttpResponse
 		reader.parse(begin, end, value, false);
 		if (value.isArray())
 		{
-			for (int i = 0; i < value.size(); ++i)
+			for (CSJson::ArrayIndex i = 0; i < value.size(); ++i)
 			{
 				const CSJson::Value jsonEntry = value[i];
 				LeaderboardEntry entry;

@@ -129,7 +129,7 @@ void LeaderboardScene::_initWithRecords(UIScrollView* base, UIWidget* entry, con
 
 	// get top of the container and substract entry height as it's anchor is left bottom corner
 	CCPoint position = ccp(0, containerHeight - entryHeight);
-	for (int a = 0; a < records.size(); ++a)
+	for (size_t  a = 0; a < records.size(); ++a)
 	{
 		const LeaderboardEntry& record = records[a];
 

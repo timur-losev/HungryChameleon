@@ -5,15 +5,15 @@
 class FileUtils : public cocos2d::CCFileUtils
 {
 protected:
-	FileUtils();
-	virtual bool init();
+    FileUtils();
+    virtual bool init();
 public:
-	virtual ~FileUtils();
-	
-	static CCFileUtils* sharedFileUtils();
+    virtual ~FileUtils();
 
-	virtual unsigned char* getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize);
-	virtual std::string fullPathForFilename(const char* pszFileName);
-	virtual std::string getWritablePath();
-	virtual bool isFileExist(const std::string& strFilePath);	
+    static CCFileUtils* sharedFileUtils();
+
+    virtual unsigned char* getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize);
+    virtual std::string fullPathForFilename(const char* pszFileName);
+    virtual std::string getWritablePath();
+    virtual bool isFileExist(const std::string& strFilePath);
 };

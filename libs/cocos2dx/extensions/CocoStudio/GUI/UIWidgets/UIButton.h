@@ -185,7 +185,7 @@ public:
      */
     void setText(const char* text){setTitleText(text);};
     void setTextColor(int r,int g,int b){setTitleColor(ccc3(r, g, b));};
-    void setFontSize(int size){setTitleFontSize(size);};
+    void setFontSize(int size){setTitleFontSize(static_cast<float>(size));};
     void setFontName(const char* fontName){setTitleFontName(fontName);};
     void setTextures(const char* normal,const char* selected,const char* disabled,TextureResType texType = UI_TEX_TYPE_LOCAL){loadTextures(normal, selected, disabled, texType);};
     void setNormalTexture(const char* normal, TextureResType texType = UI_TEX_TYPE_LOCAL){loadTextureNormal(normal,texType);};

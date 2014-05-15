@@ -74,13 +74,13 @@ void MatrixStateMoving::_Finalize()
     if (m_direction == byX)
     {
         float fstep = delta.x / m_controller->getCellWidth();
-        fstep += (fstep > 0) ? 0.5 : -0.5;
+        fstep += (fstep > 0) ? 0.5f : -0.5f;
         steps = int(fstep);
     }
     else if (m_direction == byY)
     {
         float fstep = delta.y / m_controller->getCellHeight();
-        fstep += (fstep > 0) ? 0.5 : -0.5;
+        fstep += (fstep > 0) ? 0.5f : -0.5f;
         steps = int(fstep);
     }
 
@@ -105,10 +105,10 @@ bool MatrixStateMoving::_findHitCell()
     CCNode* cellField = matrix[m_controller->visibleWidth()][m_controller->visibleHeight()]->getParent();
 
     // Sweep visible rectangle
-    int iMin = m_controller->additionalWidth();
-    int iMax = iMin + m_controller->visibleWidth();
-    int jMin = m_controller->additionalHeight();
-    int jMax = jMin + m_controller->visibleHeight();
+    uint32_t iMin = m_controller->additionalWidth();
+    uint32_t iMax = iMin + m_controller->visibleWidth();
+    uint32_t jMin = m_controller->additionalHeight();
+    uint32_t jMax = jMin + m_controller->visibleHeight();
 
     for (uint32_t i = iMin; i < iMax; ++i)
     {
@@ -188,7 +188,7 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
         {
             if (steps < 0)
             {
-                for (int col = 1; col < m_controller->totalWidth(); ++col)
+                for (uint32_t col = 1; col < m_controller->totalWidth(); ++col)
                 {
                     if (matrix[col - 1][cellRow] && (**matrix[col][cellRow]))
                         (*matrix[col - 1][cellRow]) = matrix[col][cellRow]->pass();
@@ -212,7 +212,7 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
         {
             if (steps < 0)
             {
-                for (int row = 1; row < m_controller->totalHeight(); ++row)
+                for (uint32_t row = 1; row < m_controller->totalHeight(); ++row)
                 {
                     if (matrix[cellColumn][row - 1] && **matrix[cellColumn][row])
                         (*matrix[cellColumn][row - 1]) = matrix[cellColumn][row]->pass();
