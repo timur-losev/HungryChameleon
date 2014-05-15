@@ -13,19 +13,19 @@ public:
     signal2<CCTouch*, CCEvent*> TouchEnded;
     signal2<CCTouch*, CCEvent*> TouchMoved;
 public:
-	MatrixController();
-	~MatrixController();
-
-	void                        pushState(IMatrixState*);
-	void                        update(float);
+    MatrixController();
+    ~MatrixController();
+    
+    void                        pushState(IMatrixState*);
+    void                        update(float);
 
     bool                        init(float cellWidth, float cellHeight);
     float                       getCellWidth() const;
     float                       getCellHeight() const;
 
-    bool		                ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-    void		                ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-    void		                ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    bool                        ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    void                        ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    void                        ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 
     Matrix_t&                   getMatrix();
 
@@ -37,7 +37,7 @@ public:
     uint32_t                    totalHeight() { return m_visibleHeight + m_additionalHeight * 2; }
 
 private:
-	void                       _popState();
+    void                       _popState();
 
 private:
     uint32_t                    m_additionalWidth = 5;

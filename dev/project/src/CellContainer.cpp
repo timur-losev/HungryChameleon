@@ -11,15 +11,17 @@ CellContainer::~CellContainer()
 {
 }
 
-const CellContainer& CellContainer::operator = (Cell* cell)
+
+void CellContainer::attachCell(Cell* value)
 {
+    assert("A Null value provided." && value);
+
     m_dirty = true;
     _releaseCell();
-    m_cell = cell;
+    m_cell = value;
     m_cell->travelsed = false;
     addChild(m_cell);
     setAdditionalOffset(ccp(0, 0));
-    return *this;
 }
 
 Cell* CellContainer::operator -> ()
@@ -47,7 +49,7 @@ void CellContainer::generateRandomCell(CCPoint size)
     m_center = ccp(size.x / 2, size.y / 2);
     m_dirty = true;
     _releaseCell();
-    (*this) = Cell::createRandom(size);
+     attachCell(Cell::createRandom(size));
 }
 
 Cell* CellContainer::pass()

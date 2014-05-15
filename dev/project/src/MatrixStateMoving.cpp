@@ -191,7 +191,12 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
                 for (uint32_t col = 1; col < m_controller->totalWidth(); ++col)
                 {
                     if (matrix[col - 1][cellRow] && (**matrix[col][cellRow]))
-                        (*matrix[col - 1][cellRow]) = matrix[col][cellRow]->pass();
+                    {
+                        CellContainer* prev = matrix[col - 1][cellRow];
+                        Cell* currentCell = matrix[col][cellRow]->pass();
+
+                        prev->attachCell(currentCell);
+                    }
                 }
                 //matrix[m_controller->visibleWidth() - 1][cellRow]->generateRandomCell(cellSize);
             }
@@ -200,7 +205,12 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
                 for (int col = m_controller->totalWidth() - 1; col > 0; --col)
                 {
                     if (matrix[col][cellRow] && **matrix[col - 1][cellRow])
-                        (*matrix[col][cellRow]) = matrix[col - 1][cellRow]->pass();
+                    {
+                        CellContainer* prev = matrix[col][cellRow];
+                        Cell* currentCell = matrix[col - 1][cellRow]->pass();
+
+                        prev->attachCell(currentCell);
+                    }
                 }
                 //matrix[0][cellRow]->generateRandomCell(cellSize);
             }
@@ -215,7 +225,12 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
                 for (uint32_t row = 1; row < m_controller->totalHeight(); ++row)
                 {
                     if (matrix[cellColumn][row - 1] && **matrix[cellColumn][row])
-                        (*matrix[cellColumn][row - 1]) = matrix[cellColumn][row]->pass();
+                    {
+                        CellContainer* prev = matrix[cellColumn][row - 1];
+                        Cell* currentCell = matrix[cellColumn][row]->pass();
+
+                        prev->attachCell(currentCell);
+                    }
                 }
                 //matrix[cellColumn][m_controller->visibleHeight() - 1]->generateRandomCell(cellSize);
             }
@@ -223,8 +238,10 @@ void MatrixStateMoving::_shiftMatrixElements(int cellColumn, int cellRow, int st
             {
                 for (int row = m_controller->totalHeight() - 1; row > 0; --row)
                 {
-                    if (matrix[cellColumn][row] && **matrix[cellColumn][row - 1])
-                        (*matrix[cellColumn][row]) = matrix[cellColumn][row - 1]->pass();
+                    CellContainer* prev = matrix[cellColumn][row];
+                    Cell* currentCell = matrix[cellColumn][row - 1]->pass();
+
+                    prev->attachCell(currentCell);
                 }
                 //matrix[cellColumn][0]->generateRandomCell(cellSize);
             }

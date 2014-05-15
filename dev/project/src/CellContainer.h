@@ -4,11 +4,24 @@ class Cell;
 
 class CellContainer : public CCNode
 {
+private:
+    Cell*                   m_cell = nullptr;
+    void                    _releaseCell();
+    bool                    m_dirty = true;
+    CellContainer*          m_left = nullptr;
+    CellContainer*          m_right = nullptr;
+    CellContainer*          m_up = nullptr;
+    CellContainer*          m_down = nullptr;
+    CCPoint                 m_center;
+
 public:
     CellContainer();
     ~CellContainer();
 
-    const CellContainer&    operator = (Cell*);
+    //const CellContainer&    operator = (Cell*);
+
+    void                    attachCell(Cell* value);
+
     Cell*                   operator -> ();
     Cell*                   operator * ();
 
@@ -32,14 +45,5 @@ public:
     void                    setDown(CellContainer* c) { m_down = c; }
 
     void                    setAdditionalOffset(const CCPoint&);
-private:
-    Cell*                   m_cell = nullptr;
-    void                    _releaseCell();
-    bool                    m_dirty = true;
-    CellContainer*          m_left  = nullptr;
-    CellContainer*          m_right = nullptr;
-    CellContainer*          m_up    = nullptr;
-    CellContainer*          m_down  = nullptr;
-    CCPoint                 m_center;
 };
 
