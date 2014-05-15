@@ -3,7 +3,11 @@ HungryChameleon
 
 Simple match-3 casual game
 
-Tips:
+HOWTO:
 
-Shared libraries path for debug via MS VS
-PATH=$(SolutionDir)$(Configuration).win32\;%PATH%
+For Visual Studio users:
+
+Working directory must point to _build_win32_debug\
+Environment field: PATH=$(SolutionDir)$(Configuration).win32\;%PATH%
+
+Run exportscripts/makedata.bat before starting the application
