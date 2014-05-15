@@ -40,7 +40,7 @@ public:
 
 	static Cell* createRandom(CCPoint size);
 
-	void SetDebugInfo(int, int);
+	void setDebugInfo(int, int);
 	virtual void onEnterTransitionDidFinish() {}
 
     void setAdditionalOffset(const CCPoint&);

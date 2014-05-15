@@ -9,6 +9,14 @@ class OnlineController;
 
 class GameDelegate
 {
+protected:
+    SceneController*        m_sceneController = nullptr;
+    SaveController*         m_saveController = nullptr;
+    Player*                 m_player = nullptr;
+    PopupController*        m_popupController = nullptr;
+    LevelSettingsController*m_levelSettingsController = nullptr;
+    OnlineController*       m_onlineController = nullptr;
+
 public:
 
     GameDelegate();
@@ -20,30 +28,22 @@ public:
 
     ////////////////////////////////////////////////////////////
     //// Save
-    static SaveController*	getSaveController();
-    void					saveNow();
+    SaveController*         getSaveController();
+    void                    saveNow();
 
     ////////////////////////////////////////////////////////////
     //// Scene
-    static SceneController* getSceneController();
+    SceneController*        getSceneController();
 
     ////////////////////////////////////////////////////////////
     //// Player
-    static Player*			getPlayer();
+    Player*                 getPlayer();
 
-    static PopupController* getPopupController();
+    PopupController*        getPopupController();
 
-    static LevelSettingsController* getLevelSettingsController();
+    LevelSettingsController* getLevelSettingsController();
 
-    static OnlineController*getOnlineController();
-
-private:
-    SceneController*		m_sceneController = nullptr;
-    SaveController*			m_saveController = nullptr;
-    Player*					m_player = nullptr;
-    PopupController*		m_popupController = nullptr;
-    LevelSettingsController*m_levelSettingsController = nullptr;
-    OnlineController*		m_onlineController = nullptr;
+    OnlineController*       getOnlineController();
 };
 
 typedef Loki::SingletonHolder<GameDelegate, Loki::CreateUsingNew, Loki::DefaultLifetime> SharedGameDelegate;

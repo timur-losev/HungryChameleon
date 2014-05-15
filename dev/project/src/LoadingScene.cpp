@@ -60,7 +60,7 @@ void LoadingScene::_onUpdate(float dt)
 {
 	if (_loadResources())
 	{
-		_advanceToScene(ESMStoryMap);
+		m_advanceToScene(ESMStoryMap);
 		setPaused(true);
 	}
 }
@@ -79,11 +79,11 @@ bool LoadingScene::_loadResources()
 		break;
 	}
 	case ELoadingSave:
-		GameDelegate::getPlayer()->readSave();
+		SharedGameDelegate::Instance().getPlayer()->readSave();
 		break;
 	case ELoadingTexts:
 	{
-		std::string lang = GameDelegate::getSaveController()->getLanguage();
+		std::string lang = SharedGameDelegate::Instance().getSaveController()->getLanguage();
 		if (lang.empty())
 		{
 			lang = TextManager::s_English;

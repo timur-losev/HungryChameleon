@@ -96,7 +96,7 @@ void StoryMapScene::_startSceneCallback(CCObject * pSender, extension::TouchEven
 	{
 		extension::UIWidget* widget = static_cast<extension::UIWidget*>(pSender);
 		SharedEventController::Instance().gameStartedWithLevel(widget->getName());
-		_advanceToScene(ESMAction);
+		m_advanceToScene(ESMAction);
 	}
 }
 
@@ -110,8 +110,8 @@ void StoryMapScene::_optionsCallback(CCObject * pSender, extension::TouchEventTy
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
 		//PopupLanguage* p = new PopupLanguage();
-		//GameDelegate::getPopupController()->queuePopup(p);
-		_advanceToScene(ESMLeaderboard);
+		//SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
+		m_advanceToScene(ESMLeaderboard);
 	}
 }
 
@@ -120,7 +120,7 @@ void StoryMapScene::_shopCallback(CCObject * pSender, extension::TouchEventType 
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
 		//PopupOk* p = new PopupOk("Well, Hello There!");
-		//GameDelegate::getPopupController()->queuePopup(p);
-		_advanceToScene(ESMMainMenu);
+		//SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
+		m_advanceToScene(ESMMainMenu);
 	}
 }

@@ -19,7 +19,7 @@ Player::~Player()
 
 void Player::dumpSave(bool saveToFile /*= false*/)
 {
-    SaveController& sc = *GameDelegate::getSaveController();
+    SaveController& sc = *SharedGameDelegate::Instance().getSaveController();
     sc.setHighScore(getHighScore());
     sc.setCash(getCash());
     sc.setMapProgress(m_storyProgress);
@@ -28,7 +28,7 @@ void Player::dumpSave(bool saveToFile /*= false*/)
 
 void Player::readSave()
 {
-    SaveController& sc = *GameDelegate::getSaveController();
+    SaveController& sc = *SharedGameDelegate::Instance().getSaveController();
     _setHighScore(sc.getHighScore());
     setCash(sc.getCash());
 
@@ -93,13 +93,13 @@ void Player::setTokenMapPositionName(const std::string& value)
 
 void Player::_initStoryProgress()
 {
-    m_storyProgress->setObject(CCString::create("1"), GameDelegate::getLevelSettingsController()->getStartingPoint());
-    m_tokenMapPosition = GameDelegate::getLevelSettingsController()->getStartingPoint();
+    m_storyProgress->setObject(CCString::create("1"), SharedGameDelegate::Instance().getLevelSettingsController()->getStartingPoint());
+    m_tokenMapPosition = SharedGameDelegate::Instance().getLevelSettingsController()->getStartingPoint();
 }
 
 void Player::_onGameFinished(int score)
 {
-    const LevelSettings& setting = GameDelegate::getLevelSettingsController()->getSettingsForPoint(getTokenMapPositionName());
+    const LevelSettings& setting = SharedGameDelegate::Instance().getLevelSettingsController()->getSettingsForPoint(getTokenMapPositionName());
     getStoryProgress()->setObject(CCString::create("1"), setting.nextPosition);
     setTokenMapPositionName(setting.nextPosition);
     dumpSave(true);

@@ -26,6 +26,9 @@
     <Filter Include="src\Game\Gameplay\new">
       <UniqueIdentifier>{70ee8f89-0f8b-4195-9a82-c9535b0fa81c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Controllers">
+      <UniqueIdentifier>{0a10a6f9-7453-41eb-91b0-e7bd2929689c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -36,9 +39,6 @@
     </ClCompile>
     <ClCompile Include="..\src\VisibleRect.cpp">
       <Filter>src\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\GameDelegate.cpp">
-      <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils.cpp">
       <Filter>src\Game</Filter>
@@ -69,12 +69,6 @@
     </ClCompile>
     <ClCompile Include="..\src\MainScene.cpp">
       <Filter>src\Game\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\SaveController.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\EventController.cpp">
-      <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Player.cpp">
       <Filter>src\Game</Filter>
@@ -118,9 +112,6 @@
     <ClCompile Include="..\src\LevelSettingsController.cpp">
       <Filter>src\Game\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\OnlineController.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\IMatrixState.cpp">
       <Filter>src\Game\Gameplay\new</Filter>
     </ClCompile>
@@ -142,6 +133,18 @@
     <ClCompile Include="..\src\CellContainer.cpp">
       <Filter>src\Game\Gameplay\new</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\GameDelegate.cpp">
+      <Filter>src\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EventController.cpp">
+      <Filter>src\Game\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OnlineController.cpp">
+      <Filter>src\Game\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SaveController.cpp">
+      <Filter>src\Game\Controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -149,9 +152,6 @@
     </ClInclude>
     <ClInclude Include="..\src\VisibleRect.h">
       <Filter>src\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\GameDelegate.h">
-      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils.h">
       <Filter>src\Game</Filter>
@@ -186,12 +186,6 @@
     </ClInclude>
     <ClInclude Include="..\src\SceneModes.h">
       <Filter>src\Game\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SaveController.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\EventController.h">
-      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Player.h">
       <Filter>src\Game</Filter>
@@ -235,9 +229,6 @@
     <ClInclude Include="..\src\LevelSettingsController.h">
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\OnlineController.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\LeaderboardEntry.h">
       <Filter>src\Game</Filter>
     </ClInclude>
@@ -261,6 +252,18 @@
     </ClInclude>
     <ClInclude Include="..\src\MatrixController.h">
       <Filter>src\Game\Gameplay\new</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameDelegate.h">
+      <Filter>src\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EventController.h">
+      <Filter>src\Game\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OnlineController.h">
+      <Filter>src\Game\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SaveController.h">
+      <Filter>src\Game\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

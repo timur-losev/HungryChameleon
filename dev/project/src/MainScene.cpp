@@ -33,8 +33,8 @@ bool MainScene::init()
     extension::UILayer* w = extension::UILayer::create();
     extension::GUIReader r;
 
-    const LevelSettings settings = GameDelegate::getLevelSettingsController()->
-        getSettingsForPoint(GameDelegate::getPlayer()->getTokenMapPositionName());
+    const LevelSettings settings = SharedGameDelegate::Instance().getLevelSettingsController()->
+        getSettingsForPoint(SharedGameDelegate::Instance().getPlayer()->getTokenMapPositionName());
 
     const std::string& levelName = settings.levelName;
     m_levelTimeTotal = static_cast<float>(settings.time);
@@ -49,7 +49,7 @@ bool MainScene::init()
     assert(m_labelTimer);
     tickTimer();
 
-    _setScore(GameDelegate::getPlayer()->getHighScore());
+    _setScore(SharedGameDelegate::Instance().getPlayer()->getHighScore());
 
     extension::UIWidget* button;
 
@@ -103,7 +103,7 @@ void MainScene::onEnter()
 
 void MainScene::onMainMenuTap(CCObject*)
 {
-    _advanceToScene(ESMMainMenu);
+    m_advanceToScene(ESMMainMenu);
 }
 
 void MainScene::_onUpdate(float dt)
@@ -144,7 +144,7 @@ void MainScene::_onCheatFinishGame(CCObject * pSender, extension::TouchEventType
     if (ev == extension::TOUCH_EVENT_ENDED)
     {
         SharedEventController::Instance().gameFinishedWithScore(100);
-        _advanceToScene(ESMStoryMap);
+        m_advanceToScene(ESMStoryMap);
     }
 }
 
@@ -154,7 +154,7 @@ void MainScene::_onPauseButtonPressed(CCObject* pSender, extension::TouchEventTy
     {
         //PopupLanguage* p = new PopupLanguage;
         //SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
-        _advanceToScene(ESMLeaderboard);
+        m_advanceToScene(ESMLeaderboard);
     }
 }
 

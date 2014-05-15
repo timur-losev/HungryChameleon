@@ -11,7 +11,7 @@ private:
     bool					m_baseIsPaused = false;
 
 protected:
-    sigslot::signal1<ESceneModes> _advanceToScene;
+    sigslot::signal1<ESceneModes> m_advanceToScene;
 
     virtual void			_onUpdate(float dt) = 0;
 
@@ -23,7 +23,7 @@ public:
 
     inline ESceneModes		getMode() const { return m_baseSceneMode; }
     void                    addSceneSlots(SceneController* scene);
-    void					update(float dt);
+    void                    update(float dt);
 
     virtual bool			canShowPopup() const { return true; }
 

@@ -44,7 +44,7 @@ void GameDelegate::startGame()
 
 SaveController* GameDelegate::getSaveController()
 {
-    return SharedGameDelegate::Instance().m_saveController;
+    return m_saveController;
 }
 
 void GameDelegate::saveNow()
@@ -53,25 +53,25 @@ void GameDelegate::saveNow()
 
 SceneController* GameDelegate::getSceneController()
 {
-    return SharedGameDelegate::Instance().m_sceneController;
+    return m_sceneController;
 }
 
 Player* GameDelegate::getPlayer()
 {
-    return SharedGameDelegate::Instance().m_player;
+    return m_player;
 }
 
 PopupController* GameDelegate::getPopupController()
 {
-    return SharedGameDelegate::Instance().m_popupController;
+    return m_popupController;
 }
 
 LevelSettingsController* GameDelegate::getLevelSettingsController()
 {
-    return SharedGameDelegate::Instance().m_levelSettingsController;
+    return m_levelSettingsController;
 }
 
 OnlineController* GameDelegate::getOnlineController()
 {
-    return SharedGameDelegate::Instance().m_onlineController;
+    return m_onlineController;
 }

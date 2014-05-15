@@ -49,7 +49,7 @@ Cell* Cell::createRandom(CCPoint size)
     return cell;
 }
 
-void Cell::SetDebugInfo(int a, int b)
+void Cell::setDebugInfo(int a, int b)
 {
     return;
     removeAllChildrenWithCleanup(true);

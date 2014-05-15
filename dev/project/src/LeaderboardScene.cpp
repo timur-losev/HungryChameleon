@@ -73,7 +73,7 @@ bool LeaderboardScene::init(bool fromGame)
 			records.push_back(LeaderboardEntry("Ноу, Фак ю", 199, 11));
 			_initWithRecords(base, entry, records);
 #else
-			_initWithRecords(base, entry, GameDelegate::getOnlineController()->getEntries());
+			_initWithRecords(base, entry, SharedGameDelegate::Instance().getOnlineController()->getEntries());
 #endif
 		}
 
@@ -88,7 +88,7 @@ bool LeaderboardScene::init(bool fromGame)
 void LeaderboardScene::_startCallback(CCObject * pSender, extension::TouchEventType ev)
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
-		_advanceToScene(ESMStoryMap);
+		m_advanceToScene(ESMStoryMap);
 }
 
 
@@ -106,7 +106,7 @@ void LeaderboardScene::_optionsCallback(CCObject * pSender, extension::TouchEven
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
-		_advanceToScene(ESMMainMenu);
+		m_advanceToScene(ESMMainMenu);
 	}
 }
 
@@ -114,7 +114,7 @@ void LeaderboardScene::_shopCallback(CCObject * pSender, extension::TouchEventTy
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
-		_advanceToScene(ESMLeaderboard);
+		m_advanceToScene(ESMLeaderboard);
 	}
 }
 

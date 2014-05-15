@@ -70,7 +70,7 @@ bool CellField::init(float cellWidth, float cellHeight)
                 cell->rowId = i;
                 cell->colId = j;
 
-                cell->SetDebugInfo(cell->rowId, cell->colId);
+                cell->setDebugInfo(cell->rowId, cell->colId);
 
                 m_rows[i].push_back(cell);
                 m_cols[j].push_back(cell);
@@ -443,7 +443,7 @@ void CellField::_matchingState()
         for (Cell* cell : line)
         {
 
-            cell->SetDebugInfo(cell->rowId, cell->colId);
+            cell->setDebugInfo(cell->rowId, cell->colId);
             std::list<Cell*> matchingList;
 
             if (!cell)

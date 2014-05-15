@@ -29,8 +29,6 @@
 
 #include <loki/Singleton.h> // Contains required system headers as well
 
-#include "sigslot.h"
-
 using namespace sigslot;
 using namespace cocos2d;
 

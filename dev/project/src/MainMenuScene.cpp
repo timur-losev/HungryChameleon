@@ -64,7 +64,7 @@ bool MainMenuScene::init(bool fromGame)
 void MainMenuScene::_startCallback(CCObject * pSender, extension::TouchEventType ev)
 {
 	if (ev == extension::TOUCH_EVENT_ENDED)
-		_advanceToScene(ESMStoryMap);
+		m_advanceToScene(ESMStoryMap);
 }
 
 
@@ -83,7 +83,7 @@ void MainMenuScene::_optionsCallback(CCObject * pSender, extension::TouchEventTy
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
 		PopupLanguage* p = new PopupLanguage();
-		GameDelegate::getPopupController()->queuePopup(p);
+		SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
 	}
 }
 
@@ -92,6 +92,6 @@ void MainMenuScene::_shopCallback(CCObject * pSender, extension::TouchEventType 
 	if (ev == extension::TOUCH_EVENT_ENDED)
 	{
 		PopupOk* p = new PopupOk("Well, Hello There!");
-		GameDelegate::getPopupController()->queuePopup(p);
+		SharedGameDelegate::Instance().getPopupController()->queuePopup(p);
 	}
 }

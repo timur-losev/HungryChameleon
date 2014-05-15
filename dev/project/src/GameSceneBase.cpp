@@ -20,7 +20,7 @@ void GameSceneBase::onEnter()
 
 void GameSceneBase::addSceneSlots(SceneController* scene)
 {
-    _advanceToScene.connect(scene, &SceneController::advanceToMode);
+    m_advanceToScene.connect(scene, &SceneController::advanceToMode);
 }
 
 void GameSceneBase::update(float dt)
