@@ -3,10 +3,18 @@
 #include "IMatrixState.h"
 #include "CellContainer.h"
 #include "Cell.h"
+
 #include "MatrixStateMoving.h"
+#include "MatrixStateMatching.h"
+
+#include "MatrixStateIdle.h"
 
 MatrixController::MatrixController()
 {
+    m_matrixStates[MatrixSateType::Idle]                = new MatrixStateIdle(this);
+    m_matrixStates[MatrixSateType::SearchForMatches]    = new MatrixStateMatching(this);
+
+    m_currentState = m_matrixStates[MatrixSateType::Idle];
 }
 
 MatrixController::~MatrixController()
@@ -25,7 +33,7 @@ void MatrixController::update(float dt)
     if (m_currentState)
     {
         m_currentState->update(dt);
-        if (m_currentState->isFinished())
+        if (m_currentState->getStatus() == IMatrixState::Status::Finished)
         {
             _popState();
         }
@@ -38,7 +46,9 @@ void MatrixController::update(float dt)
 
 void MatrixController::_popState()
 {
-    delete m_currentState;
+    m_currentState = m_matrixStates[MatrixSateType::SearchForMatches];
+
+    /*delete m_currentState;
     m_currentState = nullptr;
 
     if (m_stateQueue.empty())
@@ -48,12 +58,12 @@ void MatrixController::_popState()
     }
     m_currentState = m_stateQueue.front();
     m_currentState->init(this);
-    m_stateQueue.pop();
+    m_stateQueue.pop();*/
 }
 
 void MatrixController::pushState(IMatrixState* state)
 {
-    m_stateQueue.push(state);
+    //m_stateQueue.push(state);
 }
 
 bool MatrixController::init(float cellWidth, float cellHeight)
@@ -128,18 +138,18 @@ bool MatrixController::init(float cellWidth, float cellHeight)
 
 void MatrixController::ccTouchMoved(CCTouch *touch, CCEvent *pEvent)
 {
-    TouchMoved(touch, pEvent);
+    m_onTouchMoved(touch, pEvent);
 }
 
 bool MatrixController::ccTouchBegan(CCTouch *touch, CCEvent *pEvent)
 {
-    TouchBegan(touch, pEvent);
+    m_onTouchBegan(touch, pEvent);
     return true;
 }
 
 void MatrixController::ccTouchEnded(CCTouch *touch, CCEvent *pEvent)
 {
-    TouchEnded(touch, pEvent);
+    m_onTouchEnded(touch, pEvent);
 }
 
 float MatrixController::getCellWidth() const
@@ -154,4 +164,43 @@ float MatrixController::getCellHeight() const
 MatrixController::Matrix_t& MatrixController::getMatrix()
 {
     return m_matrix;
+}
+
+const IMatrixState* MatrixController::getState(MatrixSateType::Enum e) const
+{
+    MatrixStates_t::const_iterator it = m_matrixStates.find(e);
+
+    if (it != m_matrixStates.end())
+    {
+        return it->second;
+    }
+
+    return nullptr;
+}
+
+CellContainer* MatrixController::getCellAtTouchPoint(const CCPoint& touchLocation) const
+{
+    CCNode* cellField = m_matrix[visibleWidth()][visibleHeight()]->getParent();
+
+    // Sweep visible rectangle
+    uint32_t iMin = additionalWidth();
+    uint32_t iMax = iMin + visibleWidth();
+    uint32_t jMin = additionalHeight();
+    uint32_t jMax = jMin + visibleHeight();
+
+    for (uint32_t i = iMin; i < iMax; ++i)
+    {
+        for (uint32_t j = jMin; j < jMax; ++j)
+        {
+            CCPoint pos = m_matrix[i][j]->getPosition();
+            CCPoint touch = cellField->convertToNodeSpace(touchLocation);
+            CCRect cellBounds(pos.x, pos.y, getCellWidth(), getCellHeight());
+            if (cellBounds.containsPoint(touch))
+            {
+                return m_matrix[i][j];
+            }
+        }
+    }
+
+    return nullptr;
 }

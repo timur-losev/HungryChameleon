@@ -30,7 +30,7 @@ m_prevStep(0),
 m_cellWidth(55.f),
 m_cellHeight(60.f)
 {
-    pushState(new MatrixStateFill);
+    //pushState(new MatrixStateFill);
 }
 
 CellField::~CellField()

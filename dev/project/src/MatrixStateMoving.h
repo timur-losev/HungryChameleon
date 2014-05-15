@@ -23,7 +23,7 @@ public:
     virtual void        update(float dt);
     virtual bool        isFinished();
     virtual void        init(MatrixController*);
-
+    virtual void        reset() {}
 private:
     void		        touchBegan(CCTouch *pTouch, CCEvent *pEvent);
     void		        touchEnded(CCTouch *pTouch, CCEvent *pEvent);
@@ -35,7 +35,7 @@ private:
     void                _updateDirection();
     void                _updatePositions();
     void                _shiftMatrixElements(int column, int row, int steps, Direction dir);
-
+    
 private:
     bool                m_isFinished = false;
     MatrixController*   m_controller = nullptr;

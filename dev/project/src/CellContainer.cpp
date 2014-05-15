@@ -24,16 +24,16 @@ void CellContainer::attachCell(Cell* value)
     setAdditionalOffset(ccp(0, 0));
 }
 
-Cell* CellContainer::operator -> ()
-{
-    assert(m_cell);
-    return m_cell;
-}
-
-Cell* CellContainer::operator * ()
-{
-    return m_cell;
-}
+//Cell* CellContainer::operator -> ()
+//{
+//    assert(m_cell);
+//    return m_cell;
+//}
+//
+//Cell* CellContainer::operator * ()
+//{
+//    return m_cell;
+//}
 
 void CellContainer::_releaseCell()
 {
@@ -97,4 +97,19 @@ void CellContainer::deleteCell()
 {
     removeAllChildrenWithCleanup(true);
     m_cell = nullptr;
+}
+
+Cell::Colour CellContainer::getColour() const
+{
+    return m_cell->colour;
+}
+
+bool CellContainer::isTravelsed() const
+{
+    return m_cell->travelsed;
+}
+
+void CellContainer::setTravelsed(bool value) const
+{
+    m_cell->travelsed = value;
 }

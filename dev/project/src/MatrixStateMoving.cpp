@@ -29,10 +29,10 @@ bool MatrixStateMoving::isFinished()
 
 void MatrixStateMoving::init(MatrixController* controller)
 {
-    controller->TouchBegan.connect(this, &MatrixStateMoving::touchBegan);
+    /*controller->TouchBegan.connect(this, &MatrixStateMoving::touchBegan);
     controller->TouchEnded.connect(this, &MatrixStateMoving::touchEnded);
     controller->TouchMoved.connect(this, &MatrixStateMoving::touchMoved);
-    m_controller = controller;
+    */m_controller = controller;
 }
 
 void MatrixStateMoving::touchBegan(CCTouch *pTouch, CCEvent *pEvent)

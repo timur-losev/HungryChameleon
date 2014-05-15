@@ -175,7 +175,7 @@ public:
     /** Returns index of a certain object, return UINT_MAX if doesn't contain the object */
     unsigned int indexOfObject(CCObject* object) const;
     /** Returns an element with a certain index */
-    CCObject* objectAtIndex(unsigned int index);
+    CCObject* objectAtIndex(unsigned int index) const;
     /** Returns last element */
     CCObject* lastObject();
     /** Returns a random element */

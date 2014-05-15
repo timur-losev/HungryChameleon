@@ -1,11 +1,16 @@
 #include "Precompiled.h"
 #include "MatrixStateMatching.h"
 #include "MatrixController.h"
+
 #include "CellContainer.h"
 #include "Cell.h"
 #include "MatrixStateRemove.h"
 
-MatrixStateMatching::MatrixStateMatching()
+#include "MatrixStateIdle.h"
+
+MatrixStateMatching::MatrixStateMatching(MatrixController* ctr) :
+IMatrixState(ctr),
+m_isFinished(false)
 {
 
 }
@@ -17,98 +22,66 @@ MatrixStateMatching::~MatrixStateMatching()
 
 void MatrixStateMatching::update(float dt)
 {
-    std::list<std::list<CellContainer*> > matchings;
-    MatrixController::Matrix_t& matrix = m_controller->getMatrix();
+    // get previous state for retrieving the hit result from it
+    const MatrixStateIdle* stateIdle = static_cast<const MatrixStateIdle*>(m_matrixController->getState(MatrixSateType::Idle));
+    CCTouch* touch = stateIdle->getTouch();
 
-    // Sweep visible rectangle
-    uint32_t iMin = m_controller->additionalWidth();
-    uint32_t iMax = iMin + m_controller->visibleWidth();
-    uint32_t jMin = m_controller->additionalHeight();
-    uint32_t jMax = jMin + m_controller->visibleHeight();
-    for (uint32_t i = iMin; i < iMax; ++i)
+    if (touch)
     {
-        for (uint32_t j = jMin; j < jMax; ++j)
+        CellContainer* hitCell = m_matrixController->getCellAtTouchPoint(touch->getLocation());
+
+        if (hitCell)
         {
-            if (matrix[i][j] && matrix[i][j]->isDirty())
+            _floodFill(hitCell, hitCell->getColour(), m_matchedCells);
+
+            if (m_matchedCells.size() >= 3)
             {
-                std::list<CellContainer*> singleMatching;
-                _floodFill(matrix[i][j], (*matrix[i][j])->colour, singleMatching);
-                if (singleMatching.size() >= 3)
-                {
-                    matchings.push_back(singleMatching);
-                }
+
+            }
+            else
+            {
+                m_matchedCells.clear();
             }
         }
     }
-    if (matchings.size() > 0)
-    {
-        IMatrixState* removeState = new MatrixStateRemove(matchings);
-        m_controller->pushState(removeState);
-    }
-    m_isFinished = true;
 }
 
-bool MatrixStateMatching::isFinished()
+IMatrixState::Status::Enum MatrixStateMatching::getStatus() const
 {
-	return m_isFinished;
+    return IMatrixState::Status::Working;
 }
 
-void MatrixStateMatching::init(MatrixController* controller)
+void MatrixStateMatching::_floodFill(CellContainer* cellCnt, Cell::Colour targetColour, MatchedCells_t& matchingList)
 {
-    m_controller = controller;
-}
-
-void MatrixStateMatching::_floodFill(CellContainer* c, Cell::Colour targetColour, std::list<CellContainer*>& matchingList)
-{
-    if (c && ((*c)->travelsed || (*c)->colour != targetColour))
+    if (cellCnt && (cellCnt->isTravelsed() || cellCnt->getColour() != targetColour))
     {
         return;
     }
-    (*c)->travelsed = true;
-    c->clean();
 
-    matchingList.push_back(c);
+    cellCnt->setTravelsed(true);
+    cellCnt->clean();
 
-    if (c->right() && c->right()->isVisible())
-    {
-        _floodFill(c->right(), targetColour, matchingList);
-    }
-    if (c->left() && c->left()->isVisible())
-    {
-        _floodFill(c->left(), targetColour, matchingList);
-    }
-    if (c->up() && c->up()->isVisible())
-    {
-        _floodFill(c->up(), targetColour, matchingList);
-    }
-    if (c->down() && c->down()->isVisible())
-    {
-        _floodFill(c->down(), targetColour, matchingList);
-    }
+    matchingList.push_back(cellCnt);
 
-#if 0
-    MatrixController::Matrix_t& matrix = m_controller->getMatrix();
-    int right = c->colId + 1;
-    int left = c->colId - 1;
-    int up = c->rowId + 1;
-    int down = c->rowId - 1;
+    if (cellCnt->right() && cellCnt->right()->isVisible())
+    {
+        _floodFill(cellCnt->right(), targetColour, matchingList);
+    }
+    if (cellCnt->left() && cellCnt->left()->isVisible())
+    {
+        _floodFill(cellCnt->left(), targetColour, matchingList);
+    }
+    if (cellCnt->up() && cellCnt->up()->isVisible())
+    {
+        _floodFill(cellCnt->up(), targetColour, matchingList);
+    }
+    if (cellCnt->down() && cellCnt->down()->isVisible())
+    {
+        _floodFill(cellCnt->down(), targetColour, matchingList);
+    }
+}
 
-    if (right < m_controller->visibleWidth())
-    {
-        _floodFill(matrix[right][c->rowId], targetColour, matchingList);
-    }
-    if (left >= 0)
-    {
-        _floodFill(matrix[left][c->rowId], targetColour, matchingList);
-    }
-    if (up < m_controller->visibleHeight())
-    {
-        _floodFill(matrix[c->colId][up], targetColour, matchingList);
-    }
-    if (down >= 0)
-    {
-        _floodFill(matrix[c->colId][down], targetColour, matchingList);
-    }
-
-#endif // 0
+void MatrixStateMatching::reset()
+{
+    m_matchedCells.clear();
 }

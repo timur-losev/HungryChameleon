@@ -220,7 +220,7 @@ unsigned int CCArray::indexOfObject(CCObject* object) const
     return ccArrayGetIndexOfObject(data, object);
 }
 
-CCObject* CCArray::objectAtIndex(unsigned int index)
+CCObject* CCArray::objectAtIndex(unsigned int index) const
 {
     CCAssert(index < data->num, "index out of range in objectAtIndex()");
 

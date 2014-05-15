@@ -292,7 +292,7 @@ void CCNode::setScaleY(float newScaleY)
 }
 
 /// position getter
-const CCPoint& CCNode::getPosition()
+const CCPoint& CCNode::getPosition() const
 {
     return m_obPosition;
 }
@@ -336,7 +336,7 @@ void CCNode::setPositionY(float y)
 }
 
 /// children getter
-CCArray* CCNode::getChildren()
+CCArray* CCNode::getChildren() const
 {
     return m_pChildren;
 }

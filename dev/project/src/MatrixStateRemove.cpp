@@ -42,7 +42,7 @@ void MatrixStateRemove::_execute()
                 cell->deleteCell();
             }
         }
-        m_controller->pushState(new MatrixStateFill);
+        //m_controller->pushState(new MatrixStateFill);
     }
     m_isFinished = true;
 }

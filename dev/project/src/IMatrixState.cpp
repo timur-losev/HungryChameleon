@@ -2,13 +2,7 @@
 #include "IMatrixState.h"
 #include "CellField.h"
 
-
-IMatrixState::IMatrixState()
+IMatrixState::IMatrixState(MatrixController* ctrl):
+m_matrixController(ctrl)
 {
-
-}
-
-IMatrixState::~IMatrixState()
-{
-
 }

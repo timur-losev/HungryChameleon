@@ -100,6 +100,6 @@ void MatrixStateFill::_dropDown(CellContainer* cellToMove)
     {
         // Drop down one by one
         int row = cell->rowId + closest + 1;
-        (*cellToMove) = m_controller->getMatrix()[cellToMove->colId][row]->pass();
+        cellToMove->attachCell(m_controller->getMatrix()[cellToMove->colId][row]->pass());
     }
 }

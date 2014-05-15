@@ -5,7 +5,7 @@ class AnimatedCell;
 /*
     ###################CONCEPT#########################
     DO NOT PULL INTO PRODUCTION
-*/
+    */
 
 
 class Cell : public CCNode
@@ -36,12 +36,12 @@ public:
     bool travelsed = false;
 
     Cell(Colour c, CCPoint size);
-	virtual ~Cell() {};
+    virtual ~Cell() {};
 
-	static Cell* createRandom(CCPoint size);
+    static Cell* createRandom(CCPoint size);
 
-	void setDebugInfo(int, int);
-	virtual void onEnterTransitionDidFinish() {}
+    void setDebugInfo(int, int);
+    virtual void onEnterTransitionDidFinish() {}
 
     void setAdditionalOffset(const CCPoint&);
     void setPosition(const CCPoint&);

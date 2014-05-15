@@ -29,6 +29,9 @@
     <Filter Include="src\Game\Gameplay\Visual">
       <UniqueIdentifier>{2a5887d1-d65f-479a-a2da-c58d7ac4ee81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Gameplay\States">
+      <UniqueIdentifier>{c41ec6fd-9cd2-4eb2-8a8b-00b49b468cb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -139,11 +142,14 @@
     <ClCompile Include="..\src\MatrixStateMoving.cpp">
       <Filter>src\Game\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MatrixStateMatching.cpp">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\MatrixStateRemove.cpp">
       <Filter>src\Game\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixStateIdle.cpp">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixStateMatching.cpp">
+      <Filter>src\Game\Gameplay\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,11 +264,20 @@
     <ClInclude Include="..\src\MatrixStateMoving.h">
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MatrixStateMatching.h">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\MatrixStateRemove.h">
       <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateIdle.h">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixSateType.h">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixControllerEvents.h">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateMatching.h">
+      <Filter>src\Game\Gameplay\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

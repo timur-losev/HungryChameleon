@@ -1,6 +1,6 @@
 #pragma once
 
-class Cell;
+#include "Cell.h"
 
 class CellContainer : public CCNode
 {
@@ -22,8 +22,12 @@ public:
 
     void                    attachCell(Cell* value);
 
-    Cell*                   operator -> ();
-    Cell*                   operator * ();
+    Cell::Colour            getColour() const;
+    bool                    isTravelsed() const;
+    void                    setTravelsed(bool value) const;
+
+    //Cell*                   operator -> ();
+    //Cell*                   operator * ();
 
     void                    generateRandomCell(CCPoint);
     CCPoint                 getCenterPoint();

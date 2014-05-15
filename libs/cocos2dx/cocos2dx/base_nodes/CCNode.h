@@ -310,7 +310,7 @@ public:
      *
      * @return The position (x,y) of the node in OpenGL coordinates
      */
-    virtual const CCPoint& getPosition();
+    virtual const CCPoint& getPosition() const;
     /**
      * Sets position in a more efficient way.
      *
@@ -623,7 +623,7 @@ public:
      *
      * @return An array of children
      */
-    virtual CCArray* getChildren();
+    virtual CCArray* getChildren() const;
     
     /** 
      * Get the amount of children.

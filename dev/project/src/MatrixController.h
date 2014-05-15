@@ -1,7 +1,10 @@
 #pragma once
 
-class IMatrixState;
+#include "MatrixSateType.h"
+#include "MatrixControllerEvents.h"
+
 class CellContainer;
+class IMatrixState;
 
 class MatrixController : public CCLayer
 {
@@ -9,41 +12,20 @@ public:
     typedef std::vector<CellContainer*> Line_t;
     typedef std::vector<Line_t> Matrix_t;
 
-    signal2<CCTouch*, CCEvent*> TouchBegan;
-    signal2<CCTouch*, CCEvent*> TouchEnded;
-    signal2<CCTouch*, CCEvent*> TouchMoved;
-public:
-    MatrixController();
-    ~MatrixController();
-    
-    void                        pushState(IMatrixState*);
-    void                        update(float);
-
-    bool                        init(float cellWidth, float cellHeight);
-    float                       getCellWidth() const;
-    float                       getCellHeight() const;
-
-    bool                        ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-    void                        ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-    void                        ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
-
-    Matrix_t&                   getMatrix();
-
-    uint32_t                    additionalWidth() { return m_additionalWidth; }
-    uint32_t                    additionalHeight() { return m_additionalHeight; }
-    uint32_t                    visibleWidth() { return m_visibleWidth; }
-    uint32_t                    visibleHeight() { return m_visibleHeight; }
-    uint32_t                    totalWidth() { return m_visibleWidth + m_additionalWidth * 2; }
-    uint32_t                    totalHeight() { return m_visibleHeight + m_additionalHeight * 2; }
-
-private:
-    void                       _popState();
+    MatrixControllerEvents::OnTouchBegan_t m_onTouchBegan;
+    MatrixControllerEvents::OnTouchMoved_t m_onTouchMoved;
+    MatrixControllerEvents::OnTouchEnded_t m_onTouchEnded;
 
 private:
     uint32_t                    m_additionalWidth = 5;
     uint32_t                    m_additionalHeight = 5;
     uint32_t                    m_visibleWidth = 5;
     uint32_t                    m_visibleHeight = 5;
+
+    typedef std::map<MatrixSateType::Enum,
+        IMatrixState*> MatrixStates_t;
+
+    MatrixStates_t                  m_matrixStates;
 
     std::queue<IMatrixState*>   m_stateQueue;
     IMatrixState*               m_currentState = nullptr;
@@ -53,8 +35,35 @@ private:
     float                       m_cellWidth;
     float                       m_cellHeight;
 
-	//typedef std::list<CellContainer*> CellList_t;
-	//typedef std::deque<CellContainer*> Line_t;
-	//Line_t						m_rows[MatrixVisibleLineSize];
-	//Line_t						m_cols[MatrixVisibleLineSize];
+private:
+    void                       _popState();
+
+public:
+    MatrixController();
+    ~MatrixController();
+    
+    void                        pushState(IMatrixState*);
+    void                        update(float);
+
+    const IMatrixState*         getState(MatrixSateType::Enum) const;
+
+    bool                        init(float cellWidth, float cellHeight);
+    float                       getCellWidth() const;
+    float                       getCellHeight() const;
+
+    CellContainer*              getCellAtTouchPoint(const CCPoint& touchLocation) const;
+
+    bool                        ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    void                        ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    void                        ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+
+    Matrix_t&                   getMatrix();
+
+    uint32_t                    additionalWidth() const { return m_additionalWidth; }
+    uint32_t                    additionalHeight() const { return m_additionalHeight; }
+    uint32_t                    visibleWidth() const { return m_visibleWidth; }
+    uint32_t                    visibleHeight() const { return m_visibleHeight; }
+    uint32_t                    totalWidth() const { return m_visibleWidth + m_additionalWidth * 2; }
+    uint32_t                    totalHeight() const { return m_visibleHeight + m_additionalHeight * 2; }
+
 };

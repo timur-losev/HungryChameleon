@@ -13,6 +13,7 @@ public:
     virtual void update(float dt);
 	virtual bool isFinished();
     virtual void init(MatrixController*);
+    virtual void reset() {}
 
 private:
     void            _execute();
