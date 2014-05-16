@@ -151,6 +151,9 @@
     <ClCompile Include="..\src\MatrixStateMatching.cpp">
       <Filter>src\Game\Gameplay\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\MatrixStateBlink.cpp">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -277,6 +280,9 @@
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="..\src\MatrixStateMatching.h">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateBlink.h">
       <Filter>src\Game\Gameplay\States</Filter>
     </ClInclude>
   </ItemGroup>

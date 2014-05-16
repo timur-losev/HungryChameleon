@@ -26,6 +26,11 @@ MatrixController::~MatrixController()
             delete m_matrix[i][j];
         }
     }
+
+    std::for_each(m_matrixStates.begin(), m_matrixStates.end(), [](std::pair< p)
+    {
+        delete p.second;
+    });
 }
 
 void MatrixController::update(float dt)
@@ -37,6 +42,11 @@ void MatrixController::update(float dt)
         {
             _popState();
         }
+        else if (m_currentState->getStatus() == IMatrixState::Status::Other)
+        {
+
+        }
+
     }
     else
     {

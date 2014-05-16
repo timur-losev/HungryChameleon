@@ -10,7 +10,8 @@
 
 MatrixStateMatching::MatrixStateMatching(MatrixController* ctr) :
 IMatrixState(ctr),
-m_isFinished(false)
+m_isFinished(false),
+m_status(IMatrixState::Status::Working)
 {
 
 }
@@ -36,10 +37,11 @@ void MatrixStateMatching::update(float dt)
 
             if (m_matchedCells.size() >= 3)
             {
-
+                m_status = IMatrixState::Status::Finished;
             }
             else
             {
+                m_status = IMatrixState::Status::Other;
                 m_matchedCells.clear();
             }
         }
@@ -48,7 +50,7 @@ void MatrixStateMatching::update(float dt)
 
 IMatrixState::Status::Enum MatrixStateMatching::getStatus() const
 {
-    return IMatrixState::Status::Working;
+    return m_status;
 }
 
 void MatrixStateMatching::_floodFill(CellContainer* cellCnt, Cell::Colour targetColour, MatchedCells_t& matchingList)
@@ -84,4 +86,14 @@ void MatrixStateMatching::_floodFill(CellContainer* cellCnt, Cell::Colour target
 void MatrixStateMatching::reset()
 {
     m_matchedCells.clear();
+}
+
+const MatrixStateMatching::MatchedCells_t& MatrixStateMatching::getMatchedCells() const
+{
+    return m_matchedCells;
+}
+
+MatrixStateMatching::MatchedCells_t& MatrixStateMatching::getMatchedCells()
+{
+    return m_matchedCells;
 }

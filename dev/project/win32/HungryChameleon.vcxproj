@@ -104,6 +104,7 @@
     <ClCompile Include="..\src\LevelSettingsController.cpp" />
     <ClCompile Include="..\src\LoadingScene.cpp" />
     <ClCompile Include="..\src\MatrixController.cpp" />
+    <ClCompile Include="..\src\MatrixStateBlink.cpp" />
     <ClCompile Include="..\src\MatrixStateFill.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -159,6 +160,7 @@
     <ClInclude Include="..\src\LoadingScene.h" />
     <ClInclude Include="..\src\MatrixController.h" />
     <ClInclude Include="..\src\MatrixControllerEvents.h" />
+    <ClInclude Include="..\src\MatrixStateBlink.h" />
     <ClInclude Include="..\src\MatrixStateFill.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
