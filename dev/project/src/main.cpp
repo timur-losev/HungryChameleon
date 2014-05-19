@@ -16,6 +16,8 @@ int main()
     /*UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);*/
 
+    srand(static_cast<uint32_t>(time(nullptr)));
+
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setFrameSize(540, 960);

@@ -61,3 +61,6 @@ class __class__;\
 struct __class__;\
     typedef std::weak_ptr<__class__> __class__##WeakPtr;\
     typedef std::weak_ptr<__class__ const> __class__##ConstWeakPtr
+
+#define hc_foreach(__collection, __iter)\
+    for (auto __iter = __collection.begin(), e = __collection.end(); __iter != e; ++__iter)

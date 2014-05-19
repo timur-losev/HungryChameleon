@@ -23,7 +23,8 @@ public:
 
     virtual void        update(float dt) override;
     virtual IMatrixState::Status::Enum     getStatus() const override;
-    virtual void        reset() override;
+    virtual void        stateEnter() override;
+    virtual void        stateLeave() override;
 
     const MatchedCells_t&     getMatchedCells() const;
     MatchedCells_t&           getMatchedCells();

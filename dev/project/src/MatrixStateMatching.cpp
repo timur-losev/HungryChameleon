@@ -9,7 +9,7 @@
 #include "MatrixStateIdle.h"
 
 MatrixStateMatching::MatrixStateMatching(MatrixController* ctr) :
-IMatrixState(ctr),
+IMatrixState(ctr, MatrixSateType::SearchForMatches),
 m_isFinished(false),
 m_status(IMatrixState::Status::Working)
 {
@@ -23,29 +23,7 @@ MatrixStateMatching::~MatrixStateMatching()
 
 void MatrixStateMatching::update(float dt)
 {
-    // get previous state for retrieving the hit result from it
-    const MatrixStateIdle* stateIdle = static_cast<const MatrixStateIdle*>(m_matrixController->getState(MatrixSateType::Idle));
-    CCTouch* touch = stateIdle->getTouch();
 
-    if (touch)
-    {
-        CellContainer* hitCell = m_matrixController->getCellAtTouchPoint(touch->getLocation());
-
-        if (hitCell)
-        {
-            _floodFill(hitCell, hitCell->getColour(), m_matchedCells);
-
-            if (m_matchedCells.size() >= 3)
-            {
-                m_status = IMatrixState::Status::Finished;
-            }
-            else
-            {
-                m_status = IMatrixState::Status::Other;
-                m_matchedCells.clear();
-            }
-        }
-    }
 }
 
 IMatrixState::Status::Enum MatrixStateMatching::getStatus() const
@@ -83,11 +61,6 @@ void MatrixStateMatching::_floodFill(CellContainer* cellCnt, Cell::Colour target
     }
 }
 
-void MatrixStateMatching::reset()
-{
-    m_matchedCells.clear();
-}
-
 const MatrixStateMatching::MatchedCells_t& MatrixStateMatching::getMatchedCells() const
 {
     return m_matchedCells;
@@ -96,4 +69,37 @@ const MatrixStateMatching::MatchedCells_t& MatrixStateMatching::getMatchedCells(
 MatrixStateMatching::MatchedCells_t& MatrixStateMatching::getMatchedCells()
 {
     return m_matchedCells;
+}
+
+void MatrixStateMatching::stateEnter()
+{
+    m_matchedCells.clear();
+
+    // get previous state for retrieving the hit result from it
+    const MatrixStateIdle* stateIdle = static_cast<const MatrixStateIdle*>(m_matrixController->getState(MatrixSateType::Idle));
+    CCTouch* touch = stateIdle->getTouch();
+
+    if (touch)
+    {
+        CellContainer* hitCell = m_matrixController->getCellAtTouchPoint(touch->getLocation());
+
+        if (hitCell)
+        {
+            _floodFill(hitCell, hitCell->getColour(), m_matchedCells);
+
+            if (m_matchedCells.size() >= 3)
+            {
+                m_status = IMatrixState::Status::Finished;
+            }
+            else
+            {
+                m_status = IMatrixState::Status::Other;
+            }
+        }
+    }
+}
+
+void MatrixStateMatching::stateLeave()
+{
+
 }

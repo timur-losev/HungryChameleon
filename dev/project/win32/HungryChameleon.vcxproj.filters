@@ -133,9 +133,6 @@
     <ClCompile Include="..\src\MatrixStateFill.cpp">
       <Filter>src\Game\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\IMatrixState.cpp">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\MatrixController.cpp">
       <Filter>src\Game\Controllers</Filter>
     </ClCompile>
@@ -152,6 +149,9 @@
       <Filter>src\Game\Gameplay\States</Filter>
     </ClCompile>
     <ClCompile Include="..\src\MatrixStateBlink.cpp">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\IMatrixState.cpp">
       <Filter>src\Game\Gameplay\States</Filter>
     </ClCompile>
   </ItemGroup>
@@ -258,9 +258,6 @@
     <ClInclude Include="..\src\MatrixStateFill.h">
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\IMatrixState.h">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\MatrixController.h">
       <Filter>src\Game\Controllers</Filter>
     </ClInclude>
@@ -283,6 +280,9 @@
       <Filter>src\Game\Gameplay\States</Filter>
     </ClInclude>
     <ClInclude Include="..\src\MatrixStateBlink.h">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\IMatrixState.h">
       <Filter>src\Game\Gameplay\States</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,8 +1,8 @@
 #pragma once
 
-class MatrixController;
+#include "MatrixSateType.h"
 
-//@TODO: Timur: stateEnter, stateLeave should be here. ASAP
+class MatrixController;
 
 class IMatrixState
 {
@@ -20,16 +20,22 @@ public:
         };
     };
 
+    IMatrixState *next = nullptr, *prev = nullptr, *other = nullptr;
+
 protected:
     MatrixController* m_matrixController;
+    MatrixSateType::Enum    m_stateType;
 public:
-    IMatrixState(MatrixController*);
+    IMatrixState(MatrixController*, MatrixSateType::Enum stateType);
     virtual ~IMatrixState() {};
 
     virtual void update(float dt) = 0;
     virtual Status::Enum getStatus() const = 0;
 
-    virtual void reset() = 0; //! for reusing a state
+    virtual void stateEnter() = 0;
+    virtual void stateLeave() = 0;
+
+    MatrixSateType::Enum getStateType() const;
 
     virtual void init(MatrixController*) {};
 };

@@ -3,7 +3,7 @@
 #include "MatrixController.h"
 
 MatrixStateIdle::MatrixStateIdle(MatrixController* ctrl):
-IMatrixState(ctrl),
+IMatrixState(ctrl, MatrixSateType::Idle),
 m_waitForThisTouch(nullptr)
 {
     ctrl->m_onTouchBegan.connect(this, &MatrixStateIdle::onTouchBeganSignal);
@@ -29,12 +29,17 @@ void MatrixStateIdle::onTouchBeganSignal(CCTouch* t, CCEvent*)
     m_waitForThisTouch = t;
 }
 
-void MatrixStateIdle::reset()
+CCTouch* MatrixStateIdle::getTouch() const
+{
+    return m_waitForThisTouch;
+}
+
+void MatrixStateIdle::stateEnter()
 {
     m_waitForThisTouch = nullptr;
 }
 
-CCTouch* MatrixStateIdle::getTouch() const
+void MatrixStateIdle::stateLeave()
 {
-    return m_waitForThisTouch;
+
 }

@@ -22,8 +22,7 @@ private:
     uint32_t                    m_visibleWidth = 5;
     uint32_t                    m_visibleHeight = 5;
 
-    typedef std::map<MatrixSateType::Enum,
-        IMatrixState*> MatrixStates_t;
+    typedef std::vector<IMatrixState*> MatrixStates_t;
 
     MatrixStates_t                  m_matrixStates;
 
@@ -36,16 +35,16 @@ private:
     float                       m_cellHeight;
 
 private:
-    void                       _popState();
-
+    void                       _advanceState();
+    void                       _changeState(IMatrixState*);
 public:
     MatrixController();
     ~MatrixController();
     
-    void                        pushState(IMatrixState*);
     void                        update(float);
 
     const IMatrixState*         getState(MatrixSateType::Enum) const;
+    IMatrixState*               getState(MatrixSateType::Enum);
 
     bool                        init(float cellWidth, float cellHeight);
     float                       getCellWidth() const;

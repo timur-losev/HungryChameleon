@@ -7,8 +7,9 @@ public:
     {
         Idle = 0,
         SearchForMatches,
-        RemoveCells
-        //TODO
+        Blink,
+        RemoveCells,
+        __Total
     };
 
     static std::string toString(Enum e)
@@ -17,17 +18,20 @@ public:
         {
         case MatrixSateType::Idle:
             return "Idle";
-            break;
+
         case MatrixSateType::SearchForMatches:
             return "SearchForMatches";
-            break;
+
         case MatrixSateType::RemoveCells:
             return "RemoveCells";
-            break;
+
+        case MatrixSateType::Blink:
+            return "Blink";
+
         default:
             return "UNKNOWN";
             assert(false);
-            break;
+
         }
     }
 };

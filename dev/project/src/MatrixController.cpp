@@ -6,15 +6,30 @@
 
 #include "MatrixStateMoving.h"
 #include "MatrixStateMatching.h"
+#include "MatrixStateBlink.h"
 
 #include "MatrixStateIdle.h"
 
 MatrixController::MatrixController()
 {
-    m_matrixStates[MatrixSateType::Idle]                = new MatrixStateIdle(this);
-    m_matrixStates[MatrixSateType::SearchForMatches]    = new MatrixStateMatching(this);
+    m_matrixStates.resize(MatrixSateType::__Total);
 
-    m_currentState = m_matrixStates[MatrixSateType::Idle];
+    IMatrixState* idle     = new MatrixStateIdle(this);
+    IMatrixState* matching = new MatrixStateMatching(this);
+    IMatrixState* blink    = new MatrixStateBlink(this);
+
+    m_matrixStates[MatrixSateType::Idle] = idle;
+    m_matrixStates[MatrixSateType::SearchForMatches] = matching;
+    m_matrixStates[MatrixSateType::Blink] = blink;
+
+    // build states table
+    idle->next = matching;
+    matching->other = blink;
+    matching->prev = idle;
+    blink->next = idle;
+    matching->next = idle;
+
+    m_currentState = idle;
 }
 
 MatrixController::~MatrixController()
@@ -27,10 +42,10 @@ MatrixController::~MatrixController()
         }
     }
 
-    std::for_each(m_matrixStates.begin(), m_matrixStates.end(), [](std::pair< p)
+    hc_foreach(m_matrixStates, iter)
     {
-        delete p.second;
-    });
+        delete *iter;
+    }
 }
 
 void MatrixController::update(float dt)
@@ -40,40 +55,36 @@ void MatrixController::update(float dt)
         m_currentState->update(dt);
         if (m_currentState->getStatus() == IMatrixState::Status::Finished)
         {
-            _popState();
+            assert(m_currentState->next);
+
+            m_currentState->stateLeave();
+            m_currentState = m_currentState->next;
+            m_currentState->stateEnter();
         }
         else if (m_currentState->getStatus() == IMatrixState::Status::Other)
         {
+            assert(m_currentState->other);
 
+            m_currentState->stateLeave();
+            m_currentState = m_currentState->other;
+            m_currentState->stateEnter();
         }
 
     }
     else
     {
-        _popState();
+        _advanceState();
     }
 }
 
-void MatrixController::_popState()
+void MatrixController::_advanceState()
 {
-    m_currentState = m_matrixStates[MatrixSateType::SearchForMatches];
 
-    /*delete m_currentState;
-    m_currentState = nullptr;
-
-    if (m_stateQueue.empty())
-    {
-        IMatrixState* state = new MatrixStateMoving();
-        pushState(state);
-    }
-    m_currentState = m_stateQueue.front();
-    m_currentState->init(this);
-    m_stateQueue.pop();*/
 }
 
-void MatrixController::pushState(IMatrixState* state)
+void MatrixController::_changeState(IMatrixState* state)
 {
-    //m_stateQueue.push(state);
+    m_currentState = state;
 }
 
 bool MatrixController::init(float cellWidth, float cellHeight)
@@ -178,14 +189,12 @@ MatrixController::Matrix_t& MatrixController::getMatrix()
 
 const IMatrixState* MatrixController::getState(MatrixSateType::Enum e) const
 {
-    MatrixStates_t::const_iterator it = m_matrixStates.find(e);
+    return m_matrixStates[e];
+}
 
-    if (it != m_matrixStates.end())
-    {
-        return it->second;
-    }
-
-    return nullptr;
+IMatrixState* MatrixController::getState(MatrixSateType::Enum e)
+{
+    return m_matrixStates[e];
 }
 
 CellContainer* MatrixController::getCellAtTouchPoint(const CCPoint& touchLocation) const
