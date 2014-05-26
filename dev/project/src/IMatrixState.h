@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MatrixSateType.h"
+#include "MatrixStateType.h"
 
 class MatrixController;
 
@@ -24,9 +24,9 @@ public:
 
 protected:
     MatrixController* m_matrixController;
-    MatrixSateType::Enum    m_stateType;
+    MatrixStateType::Enum    m_stateType;
 public:
-    IMatrixState(MatrixController*, MatrixSateType::Enum stateType);
+    IMatrixState(MatrixController*, MatrixStateType::Enum stateType);
     virtual ~IMatrixState() {};
 
     virtual void update(float dt) = 0;
@@ -35,7 +35,7 @@ public:
     virtual void stateEnter() = 0;
     virtual void stateLeave() = 0;
 
-    MatrixSateType::Enum getStateType() const;
+    MatrixStateType::Enum getStateType() const;
 
     virtual void init(MatrixController*) {};
 };

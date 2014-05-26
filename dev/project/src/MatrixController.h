@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MatrixSateType.h"
+#include "MatrixStateType.h"
 #include "MatrixControllerEvents.h"
 
 class CellContainer;
@@ -17,8 +17,8 @@ public:
     MatrixControllerEvents::OnTouchEnded_t m_onTouchEnded;
 
 private:
-    uint32_t                    m_additionalWidth = 5;
-    uint32_t                    m_additionalHeight = 5;
+    uint32_t                    m_additionalWidth = 0;
+    uint32_t                    m_additionalHeight = 0;
     uint32_t                    m_visibleWidth = 5;
     uint32_t                    m_visibleHeight = 5;
 
@@ -31,8 +31,7 @@ private:
 
     Matrix_t                    m_matrix;
 
-    float                       m_cellWidth;
-    float                       m_cellHeight;
+    CCSize                      m_cellSize;
 
 private:
     void                       _advanceState();
@@ -43,12 +42,12 @@ public:
     
     void                        update(float);
 
-    const IMatrixState*         getState(MatrixSateType::Enum) const;
-    IMatrixState*               getState(MatrixSateType::Enum);
+    const IMatrixState*         getState(MatrixStateType::Enum) const;
+    IMatrixState*               getState(MatrixStateType::Enum);
 
     bool                        init(float cellWidth, float cellHeight);
-    float                       getCellWidth() const;
-    float                       getCellHeight() const;
+
+    const CCSize&               getCellSize() const;
 
     CellContainer*              getCellAtTouchPoint(const CCPoint& touchLocation) const;
 
@@ -62,7 +61,7 @@ public:
     uint32_t                    additionalHeight() const { return m_additionalHeight; }
     uint32_t                    visibleWidth() const { return m_visibleWidth; }
     uint32_t                    visibleHeight() const { return m_visibleHeight; }
-    uint32_t                    totalWidth() const { return m_visibleWidth + m_additionalWidth * 2; }
-    uint32_t                    totalHeight() const { return m_visibleHeight + m_additionalHeight * 2; }
+    uint32_t                    totalWidth() const { return m_visibleWidth; }
+    uint32_t                    totalHeight() const { return m_visibleHeight; }
 
 };

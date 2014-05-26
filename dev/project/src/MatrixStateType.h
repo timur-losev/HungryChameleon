@@ -1,6 +1,6 @@
 #pragma once
 
-class MatrixSateType
+class MatrixStateType
 {
 public:
     enum Enum
@@ -8,7 +8,8 @@ public:
         Idle = 0,
         SearchForMatches,
         Blink,
-        RemoveCells,
+        RemoveCellAndGiveReward,
+        FillCells,
         __Total
     };
 
@@ -16,17 +17,20 @@ public:
     {
         switch (e)
         {
-        case MatrixSateType::Idle:
+        case MatrixStateType::Idle:
             return "Idle";
 
-        case MatrixSateType::SearchForMatches:
+        case MatrixStateType::SearchForMatches:
             return "SearchForMatches";
 
-        case MatrixSateType::RemoveCells:
-            return "RemoveCells";
-
-        case MatrixSateType::Blink:
+        case MatrixStateType::Blink:
             return "Blink";
+
+        case MatrixStateType::RemoveCellAndGiveReward:
+            return "RemoveCellAndGiveReward";
+
+        case MatrixStateType::FillCells:
+            return "FillCells";
 
         default:
             return "UNKNOWN";

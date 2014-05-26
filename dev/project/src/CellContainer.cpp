@@ -44,9 +44,9 @@ void CellContainer::_releaseCell()
     }
 }
 
-void CellContainer::generateRandomCell(CCPoint size)
+void CellContainer::generateRandomCell(const CCSize& size)
 {
-    m_center = ccp(size.x / 2, size.y / 2);
+    m_center = ccp(size.width / 2, size.height / 2);
     m_dirty = true;
     _releaseCell();
      attachCell(Cell::createRandom(size));
@@ -112,4 +112,9 @@ bool CellContainer::isTravelsed() const
 void CellContainer::setTravelsed(bool value) const
 {
     m_cell->travelsed = value;
+}
+
+bool CellContainer::isValid() const
+{
+    return m_cell != nullptr;
 }

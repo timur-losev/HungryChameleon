@@ -3,7 +3,7 @@
 #include "MatrixController.h"
 
 MatrixStateIdle::MatrixStateIdle(MatrixController* ctrl):
-IMatrixState(ctrl, MatrixSateType::Idle),
+IMatrixState(ctrl, MatrixStateType::Idle),
 m_waitForThisTouch(nullptr)
 {
     ctrl->m_onTouchBegan.connect(this, &MatrixStateIdle::onTouchBeganSignal);

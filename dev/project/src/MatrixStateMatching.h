@@ -12,9 +12,10 @@ public:
 
 private:
     void                _floodFill(CellContainer*, Cell::Colour targetColour, MatchedCells_t&);
-    bool                m_isFinished;
+    bool                _isCellTravelsed(CellContainer*);
 
     MatchedCells_t      m_matchedCells;
+    MatchedCells_t      m_travelsedCells;
     IMatrixState::Status::Enum m_status;
 
 public:

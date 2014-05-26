@@ -154,6 +154,12 @@
     <ClCompile Include="..\src\IMatrixState.cpp">
       <Filter>src\Game\Gameplay\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\MatrixStateRemoveCellAndGiveReward.cpp">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MatrixStateFillCells.cpp">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -270,9 +276,6 @@
     <ClInclude Include="..\src\MatrixStateIdle.h">
       <Filter>src\Game\Gameplay\States</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MatrixSateType.h">
-      <Filter>src\Game\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\MatrixControllerEvents.h">
       <Filter>src\Game\Gameplay</Filter>
     </ClInclude>
@@ -283,6 +286,15 @@
       <Filter>src\Game\Gameplay\States</Filter>
     </ClInclude>
     <ClInclude Include="..\src\IMatrixState.h">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateRemoveCellAndGiveReward.h">
+      <Filter>src\Game\Gameplay\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateType.h">
+      <Filter>src\Game\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MatrixStateFillCells.h">
       <Filter>src\Game\Gameplay\States</Filter>
     </ClInclude>
   </ItemGroup>

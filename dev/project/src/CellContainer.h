@@ -21,6 +21,7 @@ public:
     //const CellContainer&    operator = (Cell*);
 
     void                    attachCell(Cell* value);
+    bool                    isValid() const;
 
     Cell::Colour            getColour() const;
     bool                    isTravelsed() const;
@@ -29,7 +30,7 @@ public:
     //Cell*                   operator -> ();
     //Cell*                   operator * ();
 
-    void                    generateRandomCell(CCPoint);
+    void                    generateRandomCell(const CCSize&);
     CCPoint                 getCenterPoint();
     Cell*                   pass();
     void                    deleteCell();

@@ -4,13 +4,11 @@
 
 #include "CellContainer.h"
 #include "Cell.h"
-#include "MatrixStateRemove.h"
 
 #include "MatrixStateIdle.h"
 
 MatrixStateMatching::MatrixStateMatching(MatrixController* ctr) :
-IMatrixState(ctr, MatrixSateType::SearchForMatches),
-m_isFinished(false),
+IMatrixState(ctr, MatrixStateType::SearchForMatches),
 m_status(IMatrixState::Status::Working)
 {
 
@@ -31,14 +29,21 @@ IMatrixState::Status::Enum MatrixStateMatching::getStatus() const
     return m_status;
 }
 
+bool MatrixStateMatching::_isCellTravelsed(CellContainer* cell)
+{
+    MatchedCells_t::const_iterator it = std::find(m_travelsedCells.begin(), m_travelsedCells.end(), cell);
+
+    return it != m_travelsedCells.end();
+}
+
 void MatrixStateMatching::_floodFill(CellContainer* cellCnt, Cell::Colour targetColour, MatchedCells_t& matchingList)
 {
-    if (cellCnt && (cellCnt->isTravelsed() || cellCnt->getColour() != targetColour))
+    if (cellCnt && (cellCnt->getColour() != targetColour || _isCellTravelsed(cellCnt) ))
     {
         return;
     }
 
-    cellCnt->setTravelsed(true);
+    m_travelsedCells.push_back(cellCnt);
     cellCnt->clean();
 
     matchingList.push_back(cellCnt);
@@ -76,7 +81,7 @@ void MatrixStateMatching::stateEnter()
     m_matchedCells.clear();
 
     // get previous state for retrieving the hit result from it
-    const MatrixStateIdle* stateIdle = static_cast<const MatrixStateIdle*>(m_matrixController->getState(MatrixSateType::Idle));
+    const MatrixStateIdle* stateIdle = static_cast<const MatrixStateIdle*>(m_matrixController->getState(MatrixStateType::Idle));
     CCTouch* touch = stateIdle->getTouch();
 
     if (touch)
@@ -93,8 +98,10 @@ void MatrixStateMatching::stateEnter()
             }
             else
             {
-                m_status = IMatrixState::Status::Other;
+                m_status = IMatrixState::Status::Finished; // TEMP
             }
+
+            m_travelsedCells.clear();
         }
     }
 }

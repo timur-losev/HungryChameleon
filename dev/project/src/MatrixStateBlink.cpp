@@ -7,7 +7,7 @@
 
 #include "CellContainer.h"
 
-MatrixStateBlink::MatrixStateBlink(MatrixController* ctrl) : IMatrixState(ctrl, MatrixSateType::Blink)
+MatrixStateBlink::MatrixStateBlink(MatrixController* ctrl) : IMatrixState(ctrl, MatrixStateType::Blink)
 {
 
 }
@@ -30,12 +30,11 @@ IMatrixState::Status::Enum MatrixStateBlink::getStatus() const
 void MatrixStateBlink::stateEnter()
 {
     CCBlink* blinkAct = CCBlink::create(0.4f, 1);
-    MatrixStateMatching::MatchedCells_t& cells = (static_cast<MatrixStateMatching*>(m_matrixController->getState(MatrixSateType::SearchForMatches)))->getMatchedCells();
+    MatrixStateMatching::MatchedCells_t& cells = (static_cast<MatrixStateMatching*>(m_matrixController->getState(MatrixStateType::SearchForMatches)))->getMatchedCells();
 
     hc_foreach(cells, iter)
     {
-        blinkAct->startWithTarget(*iter);
-        //(*iter)->runAction(CCSequence::createWithTwoActions(blinkAct, nullptr));
+        (*iter)->runAction(CCBlink::create(0.4f, 1));
     }
 }
 

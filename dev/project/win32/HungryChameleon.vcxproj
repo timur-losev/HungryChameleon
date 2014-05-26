@@ -108,6 +108,7 @@
     <ClCompile Include="..\src\MatrixStateFill.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\src\MatrixStateFillCells.cpp" />
     <ClCompile Include="..\src\MatrixStateIdle.cpp" />
     <ClCompile Include="..\src\MatrixStateMatching.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -118,6 +119,7 @@
     <ClCompile Include="..\src\MatrixStateRemove.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\src\MatrixStateRemoveCellAndGiveReward.cpp" />
     <ClCompile Include="..\src\OnlineController.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\PopupBase.cpp" />
@@ -164,6 +166,7 @@
     <ClInclude Include="..\src\MatrixStateFill.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\src\MatrixStateFillCells.h" />
     <ClInclude Include="..\src\MatrixStateIdle.h" />
     <ClInclude Include="..\src\MatrixStateMatching.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -174,7 +177,8 @@
     <ClInclude Include="..\src\MatrixStateRemove.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\src\MatrixSateType.h" />
+    <ClInclude Include="..\src\MatrixStateType.h" />
+    <ClInclude Include="..\src\MatrixStateRemoveCellAndGiveReward.h" />
     <ClInclude Include="..\src\OnlineController.h" />
     <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\PopupBase.h" />
